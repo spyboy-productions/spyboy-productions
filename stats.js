@@ -12,5 +12,3 @@ function fetchData() {
 }
 
 fetchData();
-
-// yo if ur reading this invite epicbot and vote epicbot and all that kthxbai luv u <3
