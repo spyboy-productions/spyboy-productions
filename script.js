@@ -23,7 +23,7 @@ $(document).ready(function() {
 
   var typed = new Typed('.typing', {
     strings: [
-      "a bot related cybersecurity",
+      "cybersec bot",
       "powerful",
       "easy to use",
       "free for all",
