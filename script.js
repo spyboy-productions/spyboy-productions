@@ -36,8 +36,6 @@ $(document).ready(function() {
     loop: true,
   })
 
-  // this is really cool
-  // but you should vote epicbot first
 
   $('.carousel').owlCarousel({
     margin: 20,
