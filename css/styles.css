@@ -172,8 +172,8 @@ td:nth-child(4) { text-align: center; }
 .cat-bar { width: 100%; }
 .cat-btn { cursor: pointer; }
 #search-input { background-color: transparent; outline: none; border: 0; width: 100%; height: auto; padding: 10px; font-size: 0.9em; font-family: 'JetBrainsMono'; }
-.resu-wrapper { width: 100%; height: 100%; }
-#resu-container { width: 200%; height: 580px; overflow: scroll; padding: 0%; scrollbar-width: none; }
+.resu-wrapper { width: 150%; height: 200%; }
+#resu-container { width: 150%; height: 580px; overflow: scroll; padding: 0%; scrollbar-width: none; }
 .res-title { }
 .res-desc { font-size: 0.8em; list-style-type: none; }
 .res-url { font-size: 0.8em; list-style-type: none; }
