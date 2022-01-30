@@ -37,7 +37,7 @@
 ---
 ### People behind bot
 
-╰Developer: ]spyboy](https://discord.com/users/783880179671367712)
+╰Developer: [spyboy](https://discord.com/users/783880179671367712)
 
 ╰Co-Developer: [sudo whoami](https://discord.com/users/729429813726543975)
 
