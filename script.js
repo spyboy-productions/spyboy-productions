@@ -23,15 +23,13 @@ $(document).ready(function() {
 
   var typed = new Typed('.typing', {
     strings: [
-      "simple",
+      "a bot related cybersecurity",
       "powerful",
       "easy to use",
-      "cute",
-      "open source",
+      "free for all",
+      "goo at Osint",
       "made with love",
-      "sexy",
       "well developed",
-      "epic",
     ],
     typeSpeed: 100,
     backSpeed: 60,
