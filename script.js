@@ -30,7 +30,7 @@ $(document).ready(function() {
       "doing forensics",
       "scanning ip address",
       "scanning url",
-      "decoding base64",
+      "decoding cypher",
       "Hiding message in message",
       "generating qr-code",
       "Scanning qr-code",
