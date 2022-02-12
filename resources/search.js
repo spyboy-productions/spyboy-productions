@@ -1,8 +1,10 @@
 [
   
     {
-      "title"    : "MailSniper",
-      "desc"     : "MailSniper is a penetration testing tool for searching through email in a Microsoft Exchange environment for specific terms",
+      "title"    : "osint",
+      "desc"     : "sudo ip <ip> - can fetch IP information"<br>
+                   "sudo phlookup <number> <country_name_code> - caller id lookup"<br>
+                   "sudo checkpass <password> - Check password is compromised or not",
       "category" : "Tools",
       "tags"     : "email, microsoft, exchange, pentest",
       "url"      : "https://github.com/dafthack/MailSniper"
