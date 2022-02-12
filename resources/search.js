@@ -1,19 +1,19 @@
 [
   
     {
-      "title"    : "MailSniper",
-      "desc"     : "sudo ip <ip> - can fetch IP information",
+      "title"    : "sudo ip <ip/domain>",
+      "desc"     : "Example: sudo ip 1.1.1.1 or sudo ip google.com",
       "category" : "Tools",
-      "tags"     : "email, microsoft, exchange, pentest",
-      "url"      : "https://github.com/dafthack/MailSniper"
+      "tags"     : "domain",
+      "url"      : "fetch IP information of an ip address or domain"
     } ,
   
     {
-      "title"    : "Hak5",
-      "desc"     : "Founded in 2005, Hak5's mission is to advance the InfoSec industry. We do this through our award winning podcasts, leading pentest gear, and inclusive community where all hackers belong.",
-      "category" : "YouTube",
-      "tags"     : "youtube, channel",
-      "url"      : "https://www.youtube.com/channel/UC3s0BtrBJpwNDaflRSoiieQ"
+      "title"    : "sudo whois <domain>",
+      "desc"     : "Example: sudo ip discord.com",
+      "category" : "Tools",
+      "tags"     : "website",
+      "url"      : "Fetch domain information"
     } ,
   
     {
