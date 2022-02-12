@@ -2,9 +2,7 @@
   
     {
       "title"    : "osint",
-      "desc"     : "sudo ip <ip> - can fetch IP information"
-                   "sudo phlookup <number> <country_name_code> - caller id lookup"
-                   "sudo checkpass <password> - Check password is compromised or not",
+      "desc"     : "sudo ip <ip> - can fetch IP information",
       "category" : "Tools",
       "tags"     : "email, microsoft, exchange, pentest",
       "url"      : "https://github.com/dafthack/"
