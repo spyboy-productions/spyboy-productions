@@ -1,11 +1,11 @@
 [
   
     {
-      "title"    : "osint",
-      "desc"     : "sudo ip <ip> - can fetch IP information",
+      "title"    : "MailSniper",
+      "desc"     : "MailSniper is a penetration testing tool for searching through email in a Microsoft Exchange environment for specific terms",
       "category" : "Tools",
       "tags"     : "email, microsoft, exchange, pentest",
-      "url"      : "https://github.com/dafthack/"
+      "url"      : "https://github.com/dafthack/MailSniper"
     } ,
   
     {
