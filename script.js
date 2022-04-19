@@ -23,7 +23,7 @@ $(document).ready(function() {
 
   var typed = new Typed('.typing', {
     strings: [
-      "cybersec bot",
+      "cybersec bot, app and blog",
       "easy to use",
       "playing ctf",
       "good at Osint",
