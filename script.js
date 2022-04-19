@@ -23,7 +23,9 @@ $(document).ready(function() {
 
   var typed = new Typed('.typing', {
     strings: [
-      "cybersec bot, app and blog",
+      "Cyber security bot",
+      "Cyber security app",
+      "Cyber security blog",
       "easy to use",
       "playing ctf",
       "good at Osint",
@@ -32,11 +34,8 @@ $(document).ready(function() {
       "scanning url",
       "decoding cypher",
       "Hiding message in message",
-      "generating qr-code",
-      "Scanning qr-code",
       "generating temp mail",
       "generating temp number",
-      "installing kali linux on android",
       "Providing tutorials",
     ],
     typeSpeed: 100,
