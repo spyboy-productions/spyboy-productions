@@ -22,7 +22,7 @@
 
 <!-- <h1 align="center">This is coming soon™ <img src="https://cdn.discordapp.com/emojis/458404644268539905.gif?v=1" height="25px"></h1> -->
 
-<h3 align="center"><a href="https://discord.com/oauth2/authorize?client_id=877644741339144244&permissions=549755813887&scope=bot%20applications.commands">Invite Bot</a> | <a href="https://discord.gg/ZChEmMwE8d">Discord Server</a> | <a href="https://thisisshubhamkumar.github.io/spyo">Website</a></h3>
+<h3 align="center"><a href="https://discord.com/oauth2/authorize?client_id=877644741339144244&permissions=1241178832081&scope=bot">Invite Bot</a> | <a href="https://discord.gg/ZChEmMwE8d">Discord Server</a> | <a href="https://spyboy.in">Website</a></h3>
 
 
 ---
