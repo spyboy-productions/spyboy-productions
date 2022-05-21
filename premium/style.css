@@ -1,0 +1,16 @@
+.enabled {
+    background-color: #ef4444;
+}
+.enabled:hover {
+    background-color: #dc2626;
+}
+.disabled {
+    background-color: #f87171;
+    color: rgba(255, 255, 255, 0.7);
+}
+#logged-in {
+    text-align: center;
+    color: #cbcbcb;
+    font-weight: 500;
+    display: none;
+}
