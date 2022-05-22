@@ -39,6 +39,8 @@ checkoutBtn.addEventListener('click', () => {
         //headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: userId
     }).then(res => {
-        console.log("Checkout request complete! response:", res);
+        if (res.redirected) {
+            window.location.href = res.url;
+        }
     });
 });
