@@ -35,8 +35,8 @@ loginBtn.addEventListener('click', () => {
 checkoutBtn.addEventListener('click', () => {
     fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
         method: "POST",
-        mode: 'no-cors',
-        headers: {'Content-Type': 'application/json'},
+        mode: 'cors',
+        headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify({'discord_id': userId})
     }).then(res => {
         console.log("Checkout request complete! response:", res);
