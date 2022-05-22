@@ -21,6 +21,8 @@ if (token != null) {
     }).then(res => res.json()).then(data => {
         userId = data.user_id;
         username = data.username;
+        console.log("here");
+        console.log(username);
     });
     loggedIn.innerText = 'Logged in as ' + username;
     loginBtn.style.display = 'none';
