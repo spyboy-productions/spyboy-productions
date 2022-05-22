@@ -37,7 +37,7 @@ checkoutBtn.addEventListener('click', () => {
         method: "POST",
         //mode: 'cors',
         //headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-        body: JSON.stringify({'discord_id': userId})
+        body: userId
     }).then(res => {
         console.log("Checkout request complete! response:", res);
     });
