@@ -24,7 +24,7 @@ if (discordUsername != null && discordId != null) {
 loginBtn.addEventListener('click', () => {
     fetch("https://spyoweb.herokuapp.com/discord-login", {
       method: "GET",
-      mode: 'cors',
+      mode: 'no-cors',
     }).then(res => {
       console.log("Request complete! response:", res);
     });
