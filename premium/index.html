@@ -23,6 +23,7 @@
 <meta property="theme-color" content="#B81217" />
 <meta property="og:image" content="../images/logo.png" />
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="stylesheet" href="style.css">
 <script src="https://kit.fontawesome.com/9a19702cee.js" crossorigin="anonymous" type="999db75a1c624f19b5d2ccbe-text/javascript"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,15 +93,11 @@
 </div>
 <hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 rounded-lg" style="height: 0.5px;">
 <div class="flex flex-col gap-2 mt-4">
-<form action="https://spyoweb.herokuapp.com/create-checkout-session" method="POST">
 <a class='text-white text-md'>
-<button class="p-2 bg-red-500 hover:bg-red-600 hover:ring-2 hover:ring-red-600 w-full rounded-sm">
-Log In
-</button>
-<br><br>
-<button class="p-2 bg-red-400 hover:bg-red-600 hover:ring-2 hover:ring-red-600 w-full rounded-sm" disabled>Checkout
-</button></a>
-</form>
+<button id="login-btn" class="p-2 w-full enabled rounded-sm">Log In</button>
+<p id="logged-in">Logged In As Flampt#3906</p>
+<button id="checkout-btn" class="p-2 mt-5 w-full disabled rounded-sm" disabled>Checkout</button>
+</a>
 <div id='paypal-button-container'>
 <button class="w-full rounded-sm"></button>
 </div>
@@ -116,5 +113,6 @@ Log In
 <br>
 <br>
 
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
