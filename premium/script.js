@@ -26,9 +26,9 @@ loginBtn.addEventListener('click', () => {
       method: "GET",
       headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': 'true',
-          'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
-          'Access-Control-Allow-Headers': 'access-control-allow-credentials,access-control-allow-headers,access-control-allow-methods,access-control-allow-origin'
+          'Access-Control-Allow-Credentials': 'true'
+          //'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
+          //'Access-Control-Allow-Headers': 'access-control-allow-credentials,access-control-allow-headers,access-control-allow-methods,access-control-allow-origin'
       }
     }).then(res => {
       console.log("Request complete! response:", res);
