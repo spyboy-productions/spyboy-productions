@@ -5,15 +5,20 @@ var loggedIn = document.getElementById('logged-in');
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
-if (params.di != null && params.du != null) {
-    localStorage.setItem('discordId', params.di);
-    localStorage.setItem('discordUsername', params.du);
+if (params.t != null) {
+    localStorage.setItem('token', params.t);
 }
 
-const discordUsername = localStorage.getItem('discordUsername');
-const discordId = localStorage.getItem('discordId')
+const token = localStorage.getItem('token');
 
-if (discordUsername != null && discordId != null) {
+if (token != null) {
+    fetch("https://spyoweb.herokuapp.com/get-user", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({'token': token})
+    }).then(res => res.json()).then(data => {
+        console.log(data);
+    });
     loggedIn.innerText = 'Logged in as ' + discordUsername
     loginBtn.style.display = 'none';
     loggedIn.style.display = 'block'
@@ -26,10 +31,10 @@ loginBtn.addEventListener('click', () => {
 });
 checkoutBtn.addEventListener('click', () => {
     fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
-      method: "POST",
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({'discord_id': discordId})
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({'discord_id': discordId})
     }).then(res => {
-      console.log("Request complete! response:", res);
+        console.log("Checkout request complete! response:", res);
     });
 });
