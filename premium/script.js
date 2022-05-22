@@ -27,7 +27,7 @@ loginBtn.addEventListener('click', () => {
       mode: 'cors',
       headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': 'true'
+          'Access-Control-Allow-Credentials': 'true',
           'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
           'Access-Control-Allow-Headers': '*' // access-control-allow-credentials,access-control-allow-headers,access-control-allow-methods,access-control-allow-origin
       }
