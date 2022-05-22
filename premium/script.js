@@ -25,9 +25,6 @@ loginBtn.addEventListener('click', () => {
     fetch("https://spyoweb.herokuapp.com/discord-login", {
       method: "GET",
       mode: 'cors',
-      headers: {
-          'Access-Control-Allow-Origin': '*'
-      }
     }).then(res => {
       console.log("Request complete! response:", res);
     });
