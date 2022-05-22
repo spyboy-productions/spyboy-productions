@@ -24,13 +24,7 @@ if (discordUsername != null && discordId != null) {
 loginBtn.addEventListener('click', () => {
     fetch("https://spyoweb.herokuapp.com/discord-login", {
       method: "GET",
-      mode: 'cors',
-      headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': 'true',
-          'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
-          'Access-Control-Allow-Headers': '*' // access-control-allow-credentials,access-control-allow-headers,access-control-allow-methods,access-control-allow-origin
-      }
+      mode: 'cors'
     }).then(res => {
       console.log("Request complete! response:", res);
     });
