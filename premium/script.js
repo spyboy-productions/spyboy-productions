@@ -21,6 +21,10 @@ if (token != null) {
         body: JSON.stringify({'token': token})
     }).then(res => res.json()).then(data => {
         userId = data.user_id;
+        if (userId === 'expired') {
+            localStorage.removeItem('token');
+            window.location.reload();
+        }
         username = data.username;
         loggedIn.innerText = 'Logged in as ' + username;
         loginBtn.style.display = 'none';
@@ -40,15 +44,4 @@ checkoutBtn.addEventListener('click', () => {
     hiddenField.value = userId;
     form.appendChild(hiddenField);
     form.submit();
-    // fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
-    //     method: "POST",
-    //     mode: 'cors',
-    //     //headers: {'Content-Type': 'application/x-www-form-urlencoded'}, // 'Access-Control-Allow-Origin': '*'
-    //     body: userId
-    // }).then(res => {
-    //     console.log("Request complete ", res);
-    //     if (res.redirected) {
-    //         window.location.href = res.url;
-    //     }
-    // });
 });
