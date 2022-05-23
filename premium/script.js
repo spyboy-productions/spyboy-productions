@@ -1,6 +1,7 @@
 var loginBtn = document.getElementById('login-btn');
 var checkoutBtn = document.getElementById('checkout-btn');
 var loggedIn = document.getElementById('logged-in');
+var form = document.getElementById('form');
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
@@ -33,15 +34,21 @@ loginBtn.addEventListener('click', () => {
     window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=877644741339144244&redirect_uri=https://spyoweb.herokuapp.com/redirect&response_type=code&scope=identify'
 });
 checkoutBtn.addEventListener('click', () => {
-    fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
-        method: "POST",
-        mode: 'cors',
-        //headers: {'Content-Type': 'application/x-www-form-urlencoded'}, // 'Access-Control-Allow-Origin': '*'
-        body: userId
-    }).then(res => {
-        console.log("Request complete ", res);
-        if (res.redirected) {
-            window.location.href = res.url;
-        }
-    });
+    const hiddenField = document.createElement('input');
+    hiddenField.type = 'hidden';
+    hiddenField.name = 'userId';
+    hiddenField.value = userId;
+    form.appendChild(hiddenField);
+    form.submit();
+    // fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
+    //     method: "POST",
+    //     mode: 'cors',
+    //     //headers: {'Content-Type': 'application/x-www-form-urlencoded'}, // 'Access-Control-Allow-Origin': '*'
+    //     body: userId
+    // }).then(res => {
+    //     console.log("Request complete ", res);
+    //     if (res.redirected) {
+    //         window.location.href = res.url;
+    //     }
+    // });
 });
