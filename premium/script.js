@@ -35,7 +35,7 @@ loginBtn.addEventListener('click', () => {
 checkoutBtn.addEventListener('click', () => {
     fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
         method: "POST",
-        //mode: 'cors',
+        mode: 'cors',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}, // 'Access-Control-Allow-Origin': '*'
         body: userId
     }).then(res => {
