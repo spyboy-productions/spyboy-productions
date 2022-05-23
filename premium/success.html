@@ -1,14 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Thanks for your order!</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="spyboy">
+    <meta property="og:title" content="premium success">
+    <meta property="og:image" content="https://1.gravatar.com/avatar/44d8e29193e5561e53f11ad0ddefe84d?s=256&d=identicon&r=G">
+    <meta property="og:url" content="https://spyboy.in/">
+    <meta content="#006CFF" data-react-helmet="true" name="theme-color" />
+    <title>success</title>
+    <link rel="icon" type="image/png" href="https://1.gravatar.com/avatar/44d8e29193e5561e53f11ad0ddefe84d?s=256&d=identicon&r=G" />
+    <style>
+        @font-face {
+            font-family: 'pixel-genericism';
+            src: url('https://thisisshubhamkumar.github.io/wormhole/pixel-genericism.ttf');
+        }
+
+        body {
+            background: radial-gradient(circle at bottom, navy 0, black 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .space {
+            background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
+            border: 1px dashed purple;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .star1 {
+            animation: space 18s ease-in-out infinite;
+            background-image:
+                radial-gradient(1px 1px at 25px 5px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1px 1px at 50px 25px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1px 1px at 125px 20px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1.5px 1.5px at 50px 75px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 15px 125px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(2.5px 2.5px at 110px 80px, white, rgba(255, 255, 255, 0));
+        }
+
+        .star2 {
+            animation: space 24s ease-in-out infinite;
+            background-image:
+                radial-gradient(1px 1px at 75px 125px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1px 1px at 100px 75px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1.5px 1.5px at 199px 100px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 20px 50px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(2.5px 2.5px at 100px 5px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(2.5px 2.5px at 5px 5px, white, rgba(255, 255, 255, 0));
+        }
+
+        .star3 {
+            animation: space 30s ease-in-out infinite;
+            background-image:
+                radial-gradient(1px 1px at 10px 10px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1px 1px at 150px 150px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1.5px 1.5px at 60px 170px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(1.5px 1.5px at 175px 180px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 195px 95px, white, rgba(255, 255, 255, 0)),
+                radial-gradient(2.5px 2.5px at 95px 145px, white, rgba(255, 255, 255, 0));
+        }
+
+        @keyframes space {
+            40% {
+                opacity: 0.75;
+            }
+
+            50% {
+                opacity: 0.25;
+            }
+
+            60% {
+                opacity: 0.75;
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .text {
+            color: white;
+            font-family: pixel-genericism;
+            font-size: 7.5vw;
+            left: 0;
+            line-height: 20px;
+            margin-top: -10px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-  <section>
-    <p>
-      Thanks for your order!
-    </p>
-  </section>
+    
+    <script>
+    setTimeout(function(){
+      window.location.href = 'https://spyboy.in/';
+    }, 9000);
+    </script>
+    
+    <div class="space star1"></div>
+    <div class="space star2"></div>
+    <div class="space star3"></div>
+    <h1 class="text">Successful !</h1>
 </body>
+
 </html>
