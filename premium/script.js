@@ -33,21 +33,15 @@ loginBtn.addEventListener('click', () => {
     window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=877644741339144244&redirect_uri=https://spyoweb.herokuapp.com/redirect&response_type=code&scope=identify'
 });
 checkoutBtn.addEventListener('click', () => {
-    $.ajax({
-      type: "POST",
-      url: "https://spyoweb.herokuapp.com/create-checkout-session",
-      data: userId,
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      success: function(res) { console.log("Request complete ", res); }
+    fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
+        method: "POST",
+        //mode: 'cors',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}, // 'Access-Control-Allow-Origin': '*'
+        body: userId
+    }).then(res => {
+        console.log("Request complete ", res);
+        if (res.redirected) {
+            window.location.href = res.url;
+        }
     });
-    // fetch("https://spyoweb.herokuapp.com/create-checkout-session", {
-    //     method: "POST",
-    //     //mode: 'cors',
-    //     //headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-    //     body: userId
-    // }).then(res => {
-    //     if (res.redirected) {
-    //         window.location.href = res.url;
-    //     }
-    // });
 });
