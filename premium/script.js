@@ -1,6 +1,8 @@
 var loginBtn = document.getElementById('login-btn');
 var checkoutBtn = document.getElementById('checkout-btn');
 var loggedIn = document.getElementById('logged-in');
+var logoutBtn = document.getElementById('logout');
+var userInfo = document.getElementById('userInfo');
 var form = document.getElementById('form');
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -26,14 +28,18 @@ if (token != null) {
             window.location.reload();
         }
         username = data.username;
-        loggedIn.innerText = 'Logged in as ' + username;
+        userInfo.innerText = 'Logged in as ' + username;
         loginBtn.style.display = 'none';
-        loggedIn.style.display = 'block'
+        loggedIn.style.display = 'flex';
         checkoutBtn.removeAttribute('disabled');
         checkoutBtn.classList.replace('disabled', 'enabled');
     });
 }
 
+logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('token');
+    window.location.href = window.location.href.split("?")[0];
+});
 loginBtn.addEventListener('click', () => {
     window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=877644741339144244&redirect_uri=https://spyoweb.herokuapp.com/redirect&response_type=code&scope=identify'
 });

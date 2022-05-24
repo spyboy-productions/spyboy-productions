@@ -8,9 +8,24 @@
     background-color: #f87171;
     color: rgba(255, 255, 255, 0.7);
 }
+#logout {
+    background-color: #ef4444;
+    height: 33px;
+    color: white;
+    font-size: 15px;
+    display: inline-block;
+    flex-basis: 12%;
+}
+#userInfo {
+    display: inline-block;
+    flex-basis: 65%;
+    margin-right: 15px;
+    text-align: right;
+    padding-top: 3px;
+}
 #logged-in {
-    text-align: center;
     color: #cbcbcb;
     font-weight: 500;
     display: none;
+    flex-direction: row;
 }
