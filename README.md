@@ -37,9 +37,9 @@
 ---
 ### People behind bot
 
-╰Developer: [spyboy](https://discord.com/users/783880179671367712)
+╰Founder: [spyboy](https://discord.com/users/783880179671367712)
 
-╰Co-Developer: [sudo whoami](https://discord.com/users/729429813726543975)
+╰Co-Founder: [sudo whoami](https://discord.com/users/729429813726543975)
 
 ### Contributors:
 
@@ -50,6 +50,8 @@ Awesome developers who helped us and made some new commands for bot
 • [professor_kueue](https://discord.com/users/811988284996976672)
 
 • [Denzven](https://discord.com/users/530395525179244557)
+
+• [Flampt](https://discord.com/users/621309926631014410)
 
 ### Credits:
 
