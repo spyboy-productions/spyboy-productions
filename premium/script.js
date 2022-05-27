@@ -52,7 +52,7 @@ checkoutBtn.addEventListener('click', () => {
     hiddenField.type = 'hidden';
     hiddenField2.type = 'hidden';
     hiddenField.name = 'userId';
-    hiddenField.name2 = 'username';
+    hiddenField2.name = 'username';
     hiddenField.value = userId;
     hiddenField2.value = username;
     form.appendChild(hiddenField);
