@@ -5,11 +5,14 @@ var logoutBtn = document.getElementById('logout');
 var userInfo = document.getElementById('userInfo');
 var form = document.getElementById('form');
 
+function rawReload() { window.location.href = window.location.href.split("?")[0]; }
+
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 if (params.t != null) {
     localStorage.setItem('token', params.t);
+    rawReload();
 }
 
 const token = localStorage.getItem('token');
@@ -38,7 +41,7 @@ if (token != null) {
 
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('token');
-    window.location.href = window.location.href.split("?")[0];
+    rawReload();
 });
 loginBtn.addEventListener('click', () => {
     window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=877644741339144244&redirect_uri=https://spyoweb.herokuapp.com/redirect&response_type=code&scope=identify'
