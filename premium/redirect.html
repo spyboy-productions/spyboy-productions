@@ -5,6 +5,7 @@
     <form id="request" action="https://spyoweb.herokuapp.com/create-checkout-session" method="POST">
         <input id="userId" type="hidden" name="userId">
         <input id="username" type="hidden" name="username">
+        <input id="subscriptionType" type="hidden" name="subscriptionType">
     </form>
     <script type="text/javascript">
         const queryString = window.location.search;
@@ -14,6 +15,7 @@
         const subscriptionType = urlParams.get('subscriptionType');
         document.getElementById('userId').value = userId;
         document.getElementById('username').value = username;
+        document.getElementById('subscriptionType').value = subscriptionType;
         const formRequest = document.getElementById('request');
         formRequest.submit();
     </script>
