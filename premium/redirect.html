@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <form id="request" action="https://spyoweb.herokuapp.com/create-checkout-session" method="POST">
+        <input id="userId" type="hidden" name="userId">
+        <input id="username" type="hidden" name="username">
+    </form>
+    <script type="text/javascript">
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const userId = urlParams.get('userId');
+        const username = urlParams.get('username');
+        const subscriptionType = urlParams.get('subscriptionType');
+        document.getElementById('userId').value = userId;
+        document.getElementById('username').value = username;
+        const formRequest = document.getElementById('request');
+        formRequest.submit();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
