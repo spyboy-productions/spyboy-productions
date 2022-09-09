@@ -31,97 +31,232 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet">
 
+<style>
+.button {
+  display: inline-block;
+  border-radius: 16px;
+  background-color: #202127;
+  border: 2px solid #FFFFFF; /* Green */
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px 25px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+
+
 </head>
-<body style="background-color:#272934;">
-<div class="z-50" style="position: relative; top: 1%; background-color: #272934;">
 
-<header class="hidden md:block text-gray-600 body-font rounded-lg mx-5">
-<div class="container mx-auto flex flex-wrap gap-4 md:gap-0 p-5 flex-row justify-center items-center">
-<a class="flex flex-wrap title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-<a id="nav-image" href="https://spyboy.in"><img src="../images/logo.png" class="w-12 h-12 bg-red-0" style="border-radius: 50%;"></a>
-<h1 class="text-2xl text-white ml-0 md:ml-3" style="font-family: 'Open Sans', sans-serif; font-weight: 700;">Spyo</h1>
-</a>
-<nav class="flex sm:flex-row gap-x-4 ml-auto">
-<a class="mr-5 font-medium text-gray-300 hover:text-white transform transition duration-75 two" href="https://spyboy.in">
-<span class="absolute -bottom-1 left-1/2 w-0 h-1 bg-white"></span>
-<span class="absolute -bottom-1 right-1/2 w-0 h-1 bg-white"></span>Home</a>
-<a class="mr-5 font-medium text-gray-300 hover:text-white transform transition duration-75 two" href="https://spyboy.in/faq">
-<span class="absolute -bottom-1 left-1/2 w-0 h-1 bg-white"></span>
-<span class="absolute -bottom-1 right-1/2 w-0 h-1 bg-white"></span>FAQs</a>
-<a class="mr-5 font-medium text-gray-300 hover:text-white transform transition duration-75 two" href="https://spyboy.in/Discord">
-<span class="absolute -bottom-1 left-1/2 w-0 h-1 bg-white"></span>
-<span class="absolute -bottom-1 right-1/2 w-0 h-1 bg-white"></span>Contact</a>
+<body style="background-color:#121212;">
+<div class="z-50" style="position: relative; top: 1%; background-color: #202127;">
+
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+            <div class="logo"><a href="#home">Spyo</a></div>
+            <ul class="menu">
+                <li><a href="https://spyboy.in" class="menu-btn">Home</a></li>
+                <li><a href="https://spyboy.in/faq" class="menu-btn" class="menu-btn">Faq</a></li>
+                <li><a href="https://spyboy.in/Discord" class="menu-btn">Contact</a></li>
+                <li><a href="#stats" class="menu-btn">LogIn</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section class="features">
+        <div class="max-width">
+
+            <center>
+                <div style="width: 40px; height: 40px;">
+                     <svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="sc-bjUoiL lknMVF"><g clip-path="url(#prefix__clip0)"><path d="M13.174 17.44h-1.349v.003h1.349v-.003z" fill="#FFCB39"></path><path opacity="0.3" d="M13.174 17.44h-1.349v.003h1.349v-.003z" fill="#fff"></path><path d="M12.144 6.184a.317.317 0 00-.056-.074l-.019-.015a.44.44 0 00-.059-.037h-.016l-.072-.021a.332.332 0 00-.088 0v4.47l1.137-2.774-.827-1.549z" fill="#FFCB39"></path><path d="M11.826 18.91v-1.186H4.154a1.62 1.62 0 00-1.135.462c-.301.296-.47.697-.47 1.116v.131c0 .418.169.82.47 1.116.301.295.71.462 1.135.462h6.858l.803-1.986.01-.115z" fill="#FFE570"></path><path d="M21.977 19.088a.42.42 0 000-.052c-.009-.06-.022-.12-.04-.179v-.018a1.463 1.463 0 00-.072-.19l-.016-.034a1.655 1.655 0 00-.094-.165 1.616 1.616 0 00-.283-.321 1.673 1.673 0 00-.375-.24l-.155-.06-.153-.042h-.016l-.13-.021-1.339 3.26h1.121a1.58 1.58 0 001.012-.357c.079-.065.152-.137.22-.213a1.601 1.601 0 00.352-.818V19.302a1.346 1.346 0 00-.032-.213zM16.548 17.724L15.205 21h1.857l1.343-3.276h-1.857z" fill="#FFCB39"></path><path d="M11.012 21h.813v-1.985L11.012 21z" fill="#FFE570"></path><path opacity="0.3" d="M11.012 21h.813v-1.985L11.012 21z" fill="#fff"></path><path d="M12.355 17.724l-.53 1.29V21h3.38l1.343-3.276h-4.193z" fill="#FFCB39"></path><path opacity="0.3" d="M12.355 17.724l-.53 1.29V21h3.38l1.343-3.276h-4.193z" fill="#fff"></path><path d="M11.825 19.015l.53-1.291h-.53v1.291zM20.596 17.737h-2.191l-1.338 3.276h2.21l1.338-3.26-.019-.016z" fill="#FFCB39"></path><path opacity="0.3" d="M20.596 17.737h-2.191l-1.338 3.276h2.21l1.338-3.26-.019-.016z" fill="#fff"></path><path d="M18.763 8.784c-.789-1.717-.647-1.577-2.394-2.366 1.747-.773 1.605-.634 2.394-2.353.787 1.72.645 1.577 2.395 2.366-1.75.776-1.608.64-2.395 2.353zM22.224 6.492c-.587-1.276-.482-1.17-1.777-1.746 1.295-.576 1.19-.47 1.777-1.746.583 1.275.478 1.17 1.776 1.746-1.298.576-1.193.47-1.776 1.746z" fill="#C8D4FF"></path><path d="M20.968 17.443H3.578a.281.281 0 00-.283.278v.003c0 .154.127.279.284.279h17.39a.281.281 0 00.283-.28v-.002a.281.281 0 00-.284-.278z" fill="#D0A500"></path><path d="M11.825 6.024a.308.308 0 00-.22.155l-3.7 7.075a.296.296 0 01-.22.157.305.305 0 01-.259-.083l-4.91-4.822a.304.304 0 00-.474.063.293.293 0 00-.04.173l1.496 8.7h5.48l2.847-6.94V6.023z" fill="#FFE570"></path><path d="M16.297 13.333a.308.308 0 01-.474-.082l-.522-1.001-2.14 5.19h1.806l1.902-4.636-.572.529zM22.303 8.077a.297.297 0 00-.267.074l-1.648 1.488-3.211 7.801h3.917l1.448-9.029a.29.29 0 00-.051-.214.3.3 0 00-.188-.12z" fill="#FFCB39"></path><path d="M11.825 10.501L8.98 17.443h2.847V10.5z" fill="#FFE570"></path><path opacity="0.3" d="M11.825 10.501L8.98 17.443h2.847V10.5z" fill="#fff"></path><path d="M12.957 7.743l-1.132 2.758v6.939h1.349l2.127-5.19-2.344-4.507z" fill="#FFCB39"></path><path opacity="0.3" d="M12.957 7.743l-1.132 2.758v6.939h1.349l2.127-5.19-2.344-4.507z" fill="#fff"></path><path d="M16.882 12.805L14.98 17.44h2.213l3.2-7.801-3.51 3.166z" fill="#FFCB39"></path><path opacity="0.3" d="M16.882 12.805L14.98 17.44h2.213l3.2-7.801-3.51 3.166z" fill="#fff"></path></g><defs><clipPath id="prefix__clip0"><path fill="#fff" transform="translate(2 3)" d="M0 0h22v18H0z"></path></clipPath></defs></svg>
+                </div>
+              </center>
 
 
-</header>
-</div>
-<div class="mt-10">
-<h1 id="premium-title" class="text-white font-bold text-4xl text-white text-center mt-2"><i class="fas fa-crown mr-2" style="color:gold; "></i>Spyo Premium</h1>
-<br>
-<h2 class="text-white text-center font-medium text-lg mb-8">Upgrade yourself to the top!</h2>
-</div>
-<div>
-<div class="shadow-lg p-3 rounded-sm w-auto md:w-1/3 mx-5 md:mx-auto mt-5 p-8" style="background-color: #1f2129;">
-<h1 class="text-white font-medium text-lg text-center mb-4">Lifetime Plan</h1>
-<h2 class="text-white font-bold text-4xl text-white text-center mt-2">$29.99<i class="fa-solid fa-euro-sign fa-lg ml-2 text-gray-600"></i></h2>
-<hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 mb-5 rounded-lg" style="height: 0.5px;">
-<div class="flex flex-col gap-6 p-4">
-<div class="inline-flex">
-<a class="text-white font-bold text-sm">
-<i class="fa-solid fa-check fa-sm text-green-400 mr-2"></i>
-☑︎ Access to all Premium commands.
-</a>
-</div>
-<div class="inline-flex">
-<a class="text-white font-bold text-sm">
-<i class="fa-solid fa-check fa-sm text-green-400 mr-2"></i>
-☑︎ 30+ Premium commands & fetures.
-</a>
-</div>
-<div class="inline-flex">
-<a class="text-white font-bold text-sm">
-<i class="fa-solid fa-check fa-sm text-green-400 mr-2"></i>
-☑︎ Custom Role in our Discord servers.
-</a>
-</div>
-<div class="inline-flex">
-<a class="text-white font-bold text-sm">
-<i class="fa-solid fa-check fa-sm text-green-400 mr-2"></i>
-☑︎ private channel Support.
-</a>
-</div>
-<div class="inline-flex">
-<a class="text-white font-bold text-sm">
-<i class="fa-solid fa-check fa-sm text-green-400 mr-2"></i>
-☑︎ Quicker Suggestion Consideration.
-</a>
-</div>
-</div>
-<hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 rounded-lg" style="height: 0.5px;">
-<div class="flex flex-col gap-2 mt-4">
-<a class='text-white text-md'>
-<button id="login-btn" class="p-2 w-full enabled rounded-sm">Log In</button>
-<div id="logged-in">
-    <p id="userInfo">Logged In As Flampt#3906</p>
-    <button id="logout" class="p-1 w-full rounded-sm">Logout</button>
-</div>
-<form id="form" action="https://spyoweb.herokuapp.com/create-checkout-session" method="POST"></form>
-<button id="checkout-btn" class="p-2 mt-5 w-full disabled rounded-sm" disabled>Checkout</button>
-</a>
-<div id='paypal-button-container'>
-<button class="w-full rounded-sm"></button>
-</div>
-</div>
-</div>
+            <h2 class="title">Premium</h2>
 
-</div>
-<p class="mt-2 mx-5 justify-center items-center text-center text-gray-400">Read more about Premium
-<a href="https://spyboy.in/faq" class="hover:underline text-blue-400 hover:text-blue-500">here.</a>
-</p>
-<br>
-<br>
-<br>
-<br>
+            <div class="features-content">
+                <div class="card">
+                    <div class="box">
+                        <div class="sc-gpsre9-5 dJRKGM" style="background: linear-gradient(93.4deg, rgb(99, 25, 140) 0%, rgb(33, 101, 81) 100%);">Starter Pack</div>
+
+                        <div class="text">Monthly Plan</div>
+                        <h3 class="text-white font-bold text-4xl text-white text-center mt-2">US 3$/m</h3>
+                        <p class="sc-gpsre9-9 dFynQG">Billed every month</p>
+                        <hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 mb-5 rounded-lg" style="height: 0.5px;">
+
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Access to all Premium commands.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ 30+ Premium commands & features.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Custom Role in our Discord servers.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Private channel Support.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Quicker Suggestion Consideration.
+                        </a>
+                        </div>
+                        <hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 rounded-lg" style="height: 0.5px;">
+                        <div class="flex flex-col gap-2 mt-4">
+                        <button onclick="checkout('M')" class="button" style="vertical-align:middle"><span>Subscribe</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <div class="sc-gpsre9-5 dJRKGM" style="background: linear-gradient(93.4deg, rgb(99, 245, 140) 0%, rgb(53, 201, 86) 100%);">Most popular</div>
+
+                        <div class="text">Lifetime Plan </div>
+
+                        <h3 class="text-white font-bold text-4xl text-white text-center mt-2">US 45.00 $</h2>
+                        <p class="sc-gpsre9-9 dFynQG">Single payment</p>
+                        <hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 mb-5 rounded-lg" style="height: 0.5px;">
+
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Access to all Premium commands.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ 30+ Premium commands & features.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Custom Role in our Discord servers.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Private channel Support.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Quicker Suggestion Consideration.
+                        </a>
+                        </div>
+                        <hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 rounded-lg" style="height: 0.5px;">
+                        <div class="flex flex-col gap-2 mt-4">
+                        <button onclick="checkout('L')" class="button" style="vertical-align:middle"><span>Subscribe</span></button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="box">
+
+                        <div class="sc-gpsre9-5 dJRKGM" style="background: linear-gradient(93.4deg, rgb(255, 107, 134) 0%, rgb(255, 79, 100) 100%);">Big Save</div>
+
+                        <div class="text">Yearly Plan</div>
+                        <h3 class="text-white font-bold text-4xl text-white text-center mt-2">US 30$/y</h2>
+                        <p class="sc-gpsre9-9 dFynQG">Billed every year</p>
+                        <hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 mb-5 rounded-lg" style="height: 0.5px;">
+
+                        <div class="inline-flex">
+                        <a class="text-white font-bold text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Access to all Premium commands.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ 30+ Premium commands & features.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Custom Role in our Discord servers.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Private channel Support.
+                        </a>
+                        </div>
+                        <div class="inline-flex">
+                        <a class="text-white text-sm">
+                        <i class="fa-solid fa-sm text-green-400 mr-2"></i>
+                        ☑︎ Quicker Suggestion Consideration.
+                        </a>
+                        </div>
+                        <hr class="bg-gray-600 border-gray-600 w-full mx-auto mt-5 rounded-lg" style="height: 0.5px;">
+                        <div class="flex flex-col gap-2 mt-4">
+                        <button onclick=" checkout('Y')" class="button" style="vertical-align:middle"><span>Subscribe</span></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 <script type="text/javascript" src="script.js"></script>
 </body>
