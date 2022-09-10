@@ -16,7 +16,10 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const state = urlParams.get('state');
-        if (state !== 'P') {
+        if (state == null || !['M', 'Y', 'L', 'P'].includes(state)) {
+            window.location.href = 'https://spyboy.in/premium';
+        }
+        else if (state !== 'P') {
             document.getElementById('userId').value = urlParams.get('userId');
             document.getElementById('username').value = urlParams.get('username');
             document.getElementById('subscriptionType').value = state;
