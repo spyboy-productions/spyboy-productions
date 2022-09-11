@@ -9,13 +9,13 @@
   <a href="https://top.gg/bot/877644741339144244">
       <img src="https://top.gg/api/widget/status/877644741339144244.svg" alt=Spyo" />
   </a>
-  <a href="https://top.gg/bot/751100444188737617">
+  <a href="https://top.gg/bot/877644741339144244">
       <img src="https://top.gg/api/widget/servers/877644741339144244.svg" alt="Spyo" />
   </a>
-  <a href="https://top.gg/bot/751100444188737617">
+  <a href="https://top.gg/bot/877644741339144244">
       <img src="https://top.gg/api/widget/upvotes/877644741339144244.svg" alt="Spyo" />
   </a>
-  <a href="https://top.gg/bot/751100444188737617">
+  <a href="https://top.gg/bot/877644741339144244">
       <img src="https://top.gg/api/widget/owner/877644741339144244.svg" alt="Spyo" />
   </a>
 </h1>
