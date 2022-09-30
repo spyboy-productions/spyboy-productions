@@ -321,6 +321,10 @@ section .title::after {
   background: #7289DA;
   color: #222;
 }
+.badges.staff {
+  background: #7289DA;
+  color: #222;
+}
 
 .owl-dots {
   text-align: center;
