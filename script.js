@@ -33,7 +33,7 @@ $(document).ready(function() {
       "Easy To Use",
       "Good At Osint",
       "Doing Forensics",
-      "Running CTF Challenges"
+      "Running CTF Challenges",
       "Scanning for vulnerability",
       "Providing free tutorials",
       "Cyber security Chat Server",
