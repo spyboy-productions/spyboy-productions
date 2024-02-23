@@ -2,32 +2,43 @@ function fetchData() {
     fetch('https://statcord.com/api/bots/877644741339144244/stats')
         .then(response => response.json())
         .then(data => {
-            const stats = data.data[0];
+            const mainStats = data.mainStats;
+            
+            const shardsData = mainStats.stats.find(e => e.name === 'Shards').data.datasets[0].data;
+            const shards = shardsData[shardsData.length - 1];
 
-            const serverCount = stats.guildCount || 0;
-            const userCount = stats.userCount || 0;
-            const cpuLoad = stats.cpuUsage || 0;
-            const memLoad = stats.ramUsage || 0;
-            const activeMembers = stats.members || 0;
-            const commandsExecuted = stats.shardCount || 0;
+            const userData = mainStats.stats.find(e => e.name === 'User Count').data.datasets[0].data;
+            const users = userData[userData.length - 1];
 
-            console.log(userCount);
-            document.querySelector('#user-count').innerHTML = `<p>${userCount}+</p>`;
+            const cpuData = mainStats.stats.find(e => e.name === 'CPU Usage').data.datasets[0].data;
+            const cpu = cpuData[cpuData.length - 1];
 
-            console.log(activeMembers);
-            document.querySelector('#active').innerHTML = `<p>${activeMembers}+</p>`;
+            const ramData = mainStats.stats.find(e => e.name === 'Ram Usage').data.datasets[0].data;
+            const ram = ramData[ramData.length - 1];
 
-            console.log(commandsExecuted);
-            document.querySelector('#commands').innerHTML = `<p>${commandsExecuted}+</p>`;
+            const guildData = mainStats.stats.find(e => e.name === 'Guild Growth').data.datasets[0].data;
+            const guilds = guildData[guildData.length - 1];
 
-            console.log(cpuLoad);
-            document.querySelector('#cpuload').innerHTML = `<p>${cpuLoad}%</p>`;
+            const membersData = mainStats.stats.find(e => e.name === 'Members').data.datasets[0].data;
+            const members = membersData[membersData.length - 1];
 
-            console.log(memLoad);
-            document.querySelector('#memload').innerHTML = `<p>${memLoad}%</p>`;
+            console.log(users);
+            document.querySelector('#user-count').innerHTML = `<p>${users}+</p>`;
 
-            console.log(serverCount);
-            document.querySelector('#server-count').innerHTML = `<p>${serverCount}+</p>`;
+            console.log(members);
+            document.querySelector('#active').innerHTML = `<p>${members}+</p>`;
+
+            console.log(shards);
+            document.querySelector('#commands').innerHTML = `<p>${shards}+</p>`;
+
+            console.log(cpu);
+            document.querySelector('#cpuload').innerHTML = `<p>${cpu}%</p>`;
+
+            console.log(ram);
+            document.querySelector('#memload').innerHTML = `<p>${ram}%</p>`;
+
+            console.log(guilds);
+            document.querySelector('#server-count').innerHTML = `<p>${guilds}+</p>`;
         })
         .catch(error => {
             console.log("Error fetching data:", error);
