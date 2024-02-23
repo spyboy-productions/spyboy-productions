@@ -36,7 +36,7 @@ function fetchData() {
             document.querySelector('#active').innerHTML = `<p>${members}+</p>`;
 
             console.log("Shards:", shards);
-            document.querySelector('#shards').innerHTML = `<p>${shards}+</p>`;
+            document.querySelector('#shard').innerHTML = `<p>${shards}+</p>`;
 
             console.log("CPU Load:", cpu);
             document.querySelector('#cpuload').innerHTML = `<p>${cpu}%</p>`;
