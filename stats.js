@@ -4,7 +4,7 @@ function fetchData() {
 	}).then(data => {
 		console.log(data.data[0].guildCount);
 		document.querySelector('#server-count').innerHTML = `<p>${data.data[0].servers}+</p>`
-		console.log(data.data[0].uerCounst);
+		console.log(data.data[0].userCount);
 		document.querySelector('#user-count').innerHTML = `<p>${data.data[0].users}+</p>`
 		console.log(data.data[0].members);
 		document.querySelector('#active').innerHTML = `<p>${data.data[0].active}+</p>`
