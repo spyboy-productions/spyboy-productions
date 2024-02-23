@@ -3,17 +3,17 @@ function fetchData() {
 		return response.json();
 	}).then(data => {
 		console.log(data.data[0].guildCount);
-		document.querySelector('#server-count').innerHTML = `<p>${data.data[0].servers}+</p>`
+		document.querySelector('#server-count').innerHTML = `<p>${data.data[0].guildCount}+</p>`
 		console.log(data.data[0].userCount);
-		document.querySelector('#user-count').innerHTML = `<p>${data.data[0].users}+</p>`
+		document.querySelector('#user-count').innerHTML = `<p>${data.data[0].userCount}+</p>`
 		console.log(data.data[0].members);
-		document.querySelector('#active').innerHTML = `<p>${data.data[0].active}+</p>`
-		console.log(data.data[0].commands);
-		document.querySelector('#commands').innerHTML = `<p>${data.data[0].commands}+</p>`
+		document.querySelector('#active').innerHTML = `<p>${data.data[0].members}+</p>`
+		console.log(data.data[0].shardCount);
+		document.querySelector('#commands').innerHTML = `<p>${data.data[0].shardCount}+</p>`
 		console.log(data.data[0].cpuUsage);
-		document.querySelector('#cpuload').innerHTML = `<p>${data.data[0].cpuload}%</p>`
+		document.querySelector('#cpuload').innerHTML = `<p>${data.data[0].cpuUsage}%</p>`
 		console.log(data.data[0].ramUsage);
-		document.querySelector('#memload').innerHTML = `<p>${data.data[0].memload}%</p>`
+		document.querySelector('#memload').innerHTML = `<p>${data.data[0].ramUsage}%</p>`
 	}).catch(error => {
 		console.log(error);
 	});
