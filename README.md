@@ -55,12 +55,8 @@ Awesome developers who helped us and made some new commands for bot
 
 ### Credits:
 
-Took snippet off their code...
-
 https://github.com/Rapptz/RoboDanny
 
 https://github.com/Nirlep5252/EpicBot
-
-https://github.com/LeoCx1000/discord-bots/tree/master/DuckBot
 
 Note: if you want to get credit because you helped us, or because we took a snippet off your code, let me know and we will gladly mention you here.
