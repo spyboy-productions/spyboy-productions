@@ -9,7 +9,7 @@
         <input id="username" type="hidden" name="username">
         <input id="subscriptionType" type="hidden" name="subscriptionType">
     </form>
-    <form id="portal" action="https://spyoweb.onrender.com/create-checkout-session" method="POST">
+    <form id="portal" action="https://spyo.netlify.app/create-checkout-session" method="POST">
         <input id="customer" type="hidden" name="customer">
     </form>
     <script type="text/javascript">
@@ -24,12 +24,12 @@
             document.getElementById('username').value = urlParams.get('username');
             document.getElementById('subscriptionType').value = state;
             const formRequest = document.getElementById('checkout');
-            formRequest.action = 'https://spyoweb.onrender.com/create-checkout-session';
+            formRequest.action = 'https://spyo.netlify.app/create-checkout-session';
             formRequest.submit();
         } else {
             document.getElementById('customer').value = urlParams.get('customer');
             const formRequest = document.getElementById('portal');
-            formRequest.action = 'https://spyoweb.onrender.com/create-customer-portal-session';
+            formRequest.action = 'https://spyo.netlify.app/create-customer-portal-session';
             formRequest.submit();
         }
     </script>
