@@ -28,6 +28,23 @@ html {
   box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25), inset -2px -2px -2px rgba(0,0,0,0.25);
 }
 
+.flex-container {
+    display: flex;
+    gap: 20px; /* Adds space between the cards */
+    justify-content: center; /* Center-aligns the cards */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.card_flex {
+    width: 300px; /* Fixed width for each card */
+    background-color: #222; /* Matches the dark theme */
+    color: #fff; /* White text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
 .navbar {
   position: fixed;
   width: 100%;
@@ -255,6 +272,46 @@ section .title::after {
 .stats p {
   color: #fff;
   font-size: 18px;
+}
+
+.Reviews .title::after {
+  content: "Reviews";
+}
+.Reviews .carousel .cardd {
+  background: #222;
+  border-radius: 6px;
+  padding: 25px 35px;
+  transition: all 0.3s ease;
+}
+.Reviews .carousel .cardd:hover {
+  background: crimson;
+}
+.Reviews .carousel .cardd .boxx {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.Reviews .carousel .cardd:hover .boxx {
+  transform: scale(1.05);
+}
+.Reviews .carousel .cardd .text {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 10px 0 7px 0;
+}
+.Reviews .carousel .cardd img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid crimson;
+  transition: all 0.3s ease;
+}
+.Reviews .carousel .cardd:hover img {
+  border-color: #fff;
 }
 
 
