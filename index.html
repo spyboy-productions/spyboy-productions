@@ -14,11 +14,11 @@
 
     <link rel="icon" href="./images/logo.png">
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet" type="text/css" href="./aos/aos.css">
     <link rel="canonical" href="https://spyboy.in/">
@@ -31,7 +31,10 @@
     <meta property="og:site_name" content="Spyboy" />
     <meta name="twitter:creator" content="@shubhamkumar__" />
     <meta name="twitter:site" content="@shubhamkumar__" />
-    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="title" content="Spyboy">
     <meta name="description" content="Powerful CyberSecurity app, blog and discord bot that come with  OSINT, Cryptography, Forensics, Recon tools also runs several CTF hacking challenges">
     <meta name="keywords" content="Hacking bot, Infosec blog, Cybersec app, Play CTF, Learn Cybersecurity, OSINT Bot, Cryptography tool, Forensics bot, Recon bot, pen-testing bot">
@@ -42,68 +45,25 @@
     <meta name="author" content="shubham kumar">
     <meta name="theme-color" content="#F1EC40">
 
-<style>
-.dropbtn {
-  display: inline-block;
-  background: crimson;
-  color: #fff;
-  font-size: 25px;
-  padding: 12px 36px;
-  margin-top: 20px;
-  border-radius: 6px;
-  border: 2px solid crimson;
-  transition: all 0.3s ease;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  background: none;
-  color: crimson;
-  position: absolute;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: crimson;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {
-  background: none;
-  color: crimson;
-}
-</style>
-
 </head>
 <body>
     <div id="particles-js"></div>
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary">
         <div class="max-width">
             <div class="logo"><a href="#home">Spy<span>Boy</span></a></div>
             <ul class="menu">
                 <li><a href="#home" class="menu-btn">Home</a></li>
-                <li><a href="#features" class="menu-btn" class="menu-btn">Features</a></li>
+                <li><a href="#projects" class="menu-btn">Projects</a></li>
+                <li><a href="#bot" class="menu-btn">Bot</a></li>
+                <li><a href="#about" class="menu-btn">About</a></li>
                 <li><a href="#stats" class="menu-btn">Stats</a></li>
                 <li><a href="#Reviews" class="menu-btn">Reviews</a></li>
-                <li><a href="#contributors" class="menu-btn">About</a></li>
+                <li><a href="#contributors" class="menu-btn">Contributors</a></li>
                 <li><a href="https://top.gg/bot/877644741339144244" class="menu-btn">Commands</a></li>
-                <li><a href="https://spyboy-productions.github.io/spyboy-productions/Discord/index.html" class="menu-btn">Contact</a></li>
+                <li><a href="#" class="menu-btn" id="contactEmailBtn">Contact</a></li>
                 <li><a href="https://spyboy-productions.github.io/spyboy-productions/premium" class="menu-btn">Premium</a></li>
             </ul>
             <div class="menu-btn">
@@ -115,80 +75,450 @@
     <section class="home" id="home">
         <div class="max-width">
             <div class="home-content">
-                <div class="text-1">Hello there, it's</div>
+                <div class="text-1">Hello there, I’m</div>
                 <div class="text-2">Spyboy</div>
-                <div class="text-3">And I am <span class="typing"></span></div>
+                <div class="text-3">Building <span class="typing" aria-live="polite"></span></div>
             </div>
-            <div class="dropdown">
-              <button class="dropbtn">Get here</button>
-              <div class="dropdown-content">
-                <a href="https://spyboy-productions.github.io/spyboy-productions/Invite/index.html">INVITE BOT</a>
-                <a href="https://play.google.com/store/apps/dev?id=6188034454598466210">DOWNLOAD APPS</a>
-                <a href="https://spyboy.blog/">LEARN Cybersecurity</a>
-                <a href="https://github.com/spyboy-productions/r4ven">LOCATION TRACKER</a>
-                <a href="https://github.com/spyboy-productions/unve1ler">TRACK DIGITAL FOOTPRINTS</a>
-                <a href="https://github.com/spyboy-productions/omnisci3nt">WEB RECONNAISSANCE</a>  
-              </div>
+            <div class="hero-explore">
+                <button class="hero-explore-btn" type="button" data-scroll-to="#projects">
+                    <span class="hero-explore-label">Explore</span>
+                    <span class="hero-explore-ring" aria-hidden="true"></span>
+                    <span class="hero-explore-arrow" aria-hidden="true">↓</span>
+                </button>
+                <p class="hero-explore-note">Scroll to the projects lab and peek at every open-source drop.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="max-width">
+            <div class="projects-hero">
+                <div class="projects-copy">
+                    <p class="eyebrow">¯\_(ツ)_/¯&nbsp; Cr4ft!ng !d3as</p>
+                    <h1 class="title">Open-source security projects built for real-world research</h1>
+                    <p>Spyboy ships reconnaissance suites, privacy utilities, cipher labs, and automation designed for hackers, learners, and defenders. Launch the bot, read the playbooks, or go straight to the GitHub repos.</p>
+                    <div class="projects-cta">
+                        <a class="btn primary" href="https://github.com/spyboy-productions" target="_blank" rel="noopener">Explore GitHub</a>
+                        <a class="btn secondary" href="https://top.gg/bot/877644741339144244" target="_blank" rel="noopener">Invite Spyo Bot</a>
+                        <a class="btn ghost" href="https://spyboy.blog/" target="_blank" rel="noopener">Visit Spyboy Blog</a>
+                    </div>
+                </div>
+                <div class="projects-visual">
+                    <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2025/04/dont-e1743754230810.png" alt="Spyboy collage">
+                </div>
+            </div>
+
+            <div class="project-grid">
+                <article class="project-card">
+                    <span class="project-tag">Location Recon</span>
+                    <h3>R4ven</h3>
+                    <p>Track the true location of mobile/desktop targets using crafted social engineering payloads.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/r4ven?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="R4ven GitHub stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/r4ven?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="R4ven GitHub forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/r4ven?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="R4ven last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/r4ven" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Infra Intel</span>
+                    <h3>CloakQuest3r</h3>
+                    <p>Unmask the real IP behind Cloudflare-protected targets and surface their exposed services.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/CloakQuest3r?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="CloakQuest3r stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/CloakQuest3r?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="CloakQuest3r forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/CloakQuest3r?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="CloakQuest3r last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/CloakQuest3r" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Proxy Lab</span>
+                    <h3>Valid8Proxy</h3>
+                    <p>Fetch, validate, and store rotating proxy lists for testing scrapers, crawlers, and automation.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/Valid8Proxy?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="Valid8Proxy stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/Valid8Proxy?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="Valid8Proxy forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/Valid8Proxy?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="Valid8Proxy last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/Valid8Proxy" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Social Engineering</span>
+                    <h3>Facad1ng</h3>
+                    <p>Mask phishing URLs with convincing overlays and redirects for awareness training.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/Facad1ng?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="Facad1ng stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/Facad1ng?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="Facad1ng forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/Facad1ng?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="Facad1ng last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/Facad1ng" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Web Recon</span>
+                    <h3>Omnisci3nt</h3>
+                    <p>Complete web reconnaissance toolkit covering enumeration, fingerprinting, and attack-surface mapping.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/omnisci3nt?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="Omnisci3nt stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/omnisci3nt?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="Omnisci3nt forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/omnisci3nt?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="Omnisci3nt last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/omnisci3nt" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">OSINT</span>
+                    <h3>Unve1ler</h3>
+                    <p>Hunt people across usernames, emails, and image hashes with multi-source correlation.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/unve1ler?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="Unve1ler stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/unve1ler?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="Unve1ler forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/unve1ler?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="Unve1ler last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/unve1ler" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Automation</span>
+                    <h3>PhantomCrawler</h3>
+                    <p>Boost site hits, rotate proxies, and simulate aggressive scraping for stress testing.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/PhantomCrawler?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="PhantomCrawler stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/PhantomCrawler?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="PhantomCrawler forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/PhantomCrawler?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="PhantomCrawler last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/PhantomCrawler" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Crypto Lab</span>
+                    <h3>CrabCrypt</h3>
+                    <p>GUI utility to encrypt or decrypt any file with reliable ciphers and workflow automation.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/CrabCrypt?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="CrabCrypt stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/CrabCrypt?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="CrabCrypt forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/CrabCrypt?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="CrabCrypt last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/CrabCrypt" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Obfuscation</span>
+                    <h3>ObfuXtreme</h3>
+                    <p>Advanced Python code obfuscator for protecting proprietary tradecraft before distribution.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/ObfuXtreme?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="ObfuXtreme stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/ObfuXtreme?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="ObfuXtreme forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/ObfuXtreme?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="ObfuXtreme last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/ObfuXtreme" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Recon</span>
+                    <h3>CamXploit</h3>
+                    <p>Scan IPs for exposed CCTV feeds to assess physical security gaps before attackers do.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/CamXploit?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="CamXploit stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/CamXploit?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="CamXploit forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/CamXploit?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="CamXploit last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/CamXploit" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Automation</span>
+                    <h3>M474</h3>
+                    <p>Change MAC addresses, randomize internal IPs, and refresh network leases for fast pivots.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/M474?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="M474 stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/M474?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="M474 forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/M474?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="M474 last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/M474" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Desktop Tools</span>
+                    <h3>Quot3w4ll</h3>
+                    <p>Rotate inspirational wallpapers with new quotes every time Windows boots.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/Quot3w4ll?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="Quot3w4ll stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/Quot3w4ll?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="Quot3w4ll forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/Quot3w4ll?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="Quot3w4ll last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/Quot3w4ll" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag">Messaging</span>
+                    <h3>CipherGist</h3>
+                    <p>End-to-end encrypted messaging that lives entirely inside GitHub Gists.</p>
+                    <div class="project-metrics">
+                        <img src="https://img.shields.io/github/stars/spyboy-productions/CipherGist?label=Stars&amp;color=F1EC40&amp;style=flat-square" alt="CipherGist stars" loading="lazy">
+                        <img src="https://img.shields.io/github/forks/spyboy-productions/CipherGist?label=Forks&amp;color=8B5CF6&amp;style=flat-square" alt="CipherGist forks" loading="lazy">
+                        <img src="https://img.shields.io/github/last-commit/spyboy-productions/CipherGist?label=Last%20commit&amp;color=10B981&amp;style=flat-square" alt="CipherGist last commit" loading="lazy">
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn primary" href="https://github.com/spyboy-productions/CipherGist" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="projects-closed">
+                <div>
+                    <h3>Closed-source pillars</h3>
+                    <p><strong>Spyo Bot</strong> — Cybersecurity Discord bot powering OSINT, cipher tools, CTF leaderboards, and certifications across 5k+ servers.</p>
+                    <p><strong>Spyboy Blog</strong> — Free, practical cybersecurity tutorials with 10M+ reads.</p>
+                    <p><strong>Android Apps</strong> — Security and programming utilities for students, hackers, and builders.</p>
+                </div>
+                <div class="projects-links">
+                    <a class="btn secondary" href="https://top.gg/bot/877644741339144244" target="_blank" rel="noopener">Invite Spyo</a>
+                    <a class="btn ghost" href="https://spyboy.blog/" target="_blank" rel="noopener">Read the Blog</a>
+                    <a class="btn primary" href="https://play.google.com/store/apps/dev?id=6188034454598466210" target="_blank" rel="noopener">Browse Apps</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="features" id="features">
+    <section class="bot" id="bot">
         <div class="max-width">
-            <h1 class="title">My Features</h1>
-            <div class="features-content">
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-cogs"></i>
-                        <div class="text">Osint</div>
-                        <p>It can help with CTF & Bug Bounty, includes Recon, Forensic and Osint tools like traceroute, whois, headers, phlookup. 20+ tools</p>
+            <div class="bot-header">
+                <h2 class="title">Invite Spyo, the Discord cyber range</h2>
+                <div class="bot-hero-card">
+                    <p>One of the only Discord bots built exclusively for cybersecurity teams. Launch 300+ commands covering recon, cryptography, DFIR, and gamified CTF missions.</p>
+                </div>
+            </div>
+
+            <div class="bot-grid">
+                <div class="bot-intro">
+                    <p class="eyebrow">Your defensive co-pilot</p>
+                    <h3>Spyo &mdash; always-on operator</h3>
+                    <p>Over 300 commands wrap OSINT, cryptography, forensics, recon automations, and playful challenges into one lightning-fast assistant. Spin up CTF arenas, automate recon, or teach your community how real tradecraft works &mdash; all inside your server.</p>
+                    <ul class="bot-intro-highlights">
+                        <li><span>300+ modules</span> covering OSINT, recon, DFIR, crypto, and utilities</li>
+                        <li><span>Live CTF engine</span> with certifications, badges, and leaderboards</li>
+                        <li><span>Always-on assistant</span> answering IT, cyber, and tooling queries</li>
+                    </ul>
+                    <div class="bot-cta">
+                        <a class="btn primary" href="https://discord.com/api/oauth2/authorize?client_id=877644741339144244&permissions=8&scope=bot%20applications.commands" target="_blank" rel="noopener">Invite Spyo</a>
+                        <a class="btn secondary" href="https://top.gg/bot/877644741339144244" target="_blank" rel="noopener">View on Top.gg</a>
+                        <button class="btn ghost" type="button">Show all commands</button>
+                    </div>
+                    <div class="bot-pill">
+                        <span>Bot prefix:</span>
+                        <code>sudo</code>
+                        <span>or</span>
+                        <code>@Spyo#0756</code>
+                    </div>
+                    <div class="bot-premium-offer" role="complementary" aria-label="Spyo Premium lifetime deal">
+                        <div class="bot-premium-copy">
+                            <p class="eyebrow">Limited launch deal</p>
+                            <h4>Unlock Spyo Premium for your Discord account</h4>
+                            <p>Lifetime license, private support lanes, and every premium command we build next. Save over 40% while this launch window is live.</p>
+                            <div class="bot-premium-pricing">
+                                <span class="bot-premium-price">$25</span>
+                                <span class="bot-premium-compare">$45</span>
+                                <span class="bot-premium-badge">40%+ OFF</span>
+                            </div>
+                            <p class="bot-premium-timer">
+                                Limited time deal resets in
+                                <span class="bot-premium-countdown" data-limited-timer data-duration-hours="36" data-offset-mins="720">36:00:00</span>
+                            </p>
+                        </div>
+                        <a class="btn premium" href="https://www.paypal.com/ncp/payment/X92PUHTV6U9TU" target="_blank" rel="noopener">
+                            Buy Bot Premium
+                            <span>Lifetime access • private support</span>
+                        </a>
                     </div>
                 </div>
 
-                
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Cypher</div>
-                        <p>Bot comes with loads of cypher encoder & decoder tools like Base, Rot, braille, atbash, Md5, Sha also Steganography tool and more</p>
+                <div class="bot-details">
+                    <div class="bot-feature-card">
+                        <h3>What makes it different?</h3>
+                        <p>OSINT, Cryptography, Forensics, and Recon tooling tuned for penetration testing, bug bounty workflows, and CTF overlays. Launch in-server hacking challenges, issue certificates per solve, and climb leaderboards with thousands of analysts.</p>
+                        <ul>
+                            <li>➤ Hybrid OSINT + recon pipelines</li>
+                            <li>➤ Cipher labs, stego helpers, and encrypt/decrypt utilities</li>
+                            <li>➤ DFIR helpers for log, hash, and artifact triage</li>
+                            <li>➤ CTF arenas, badges, and certification engine</li>
+                        </ul>
+                    </div>
+                    <div class="bot-how">
+                        <h3>How to use Spyo</h3>
+                        <ol>
+                            <li>Invite the bot above, then run commands directly inside your server channels (not DM).</li>
+                            <li>Type <code>sudo help</code> for the global menu, or <code>sudo help &lt;command&gt;</code> for deep guidance.</li>
+                            <li>Navigate modules with <code>sudo cd &lt;folder&gt;</code> (example: <code>sudo cd tools</code>).</li>
+                            <li>Ask for IT, cybersecurity, PC tips, or fun prompts &mdash; Spyo responds with contextual utilities.</li>
+                            <li>Need help? Hop into the <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener">support server</a> any time.</li>
+                        </ol>
+                        <p class="bot-note">📌 Use Spyo inside the invited server. Commands won’t respond in DMs.</p>
                     </div>
                 </div>
+            </div>
 
-                
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-terminal"></i>
-                        <div class="text">Ctf</div>
-                        <p>Bot runs discord based ctf that you can setup in your server. user need to find hidden credentials to get access. it is fun :) </p>
+            <div class="bot-preview-gallery" aria-label="Spyo command previews">
+                <div class="owl-carousel bot-preview-carousel">
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/08/screen-shot-2021-08-19-at-4.11.36-am.png" alt="Spyo bot preview 1" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/08/screen-shot-2021-08-19-at-4.24.30-am.png" alt="Spyo bot preview 2" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/09/screen-shot-2021-09-16-at-5.28.04-am.png" alt="Spyo bot preview 3" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2022/11/screenshot-2022-11-05-at-9.19.36-pm.png" alt="Spyo bot preview 4" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2022/11/screenshot-2022-11-05-at-9.26.33-pm.png" alt="Spyo bot preview 5" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2022/11/screenshot-2022-11-05-at-9.27.22-pm.png" alt="Spyo bot preview 6" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2022/11/screenshot-2022-11-05-at-9.49.39-pm.png" alt="Spyo bot preview 7" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2022/11/screenshot-2022-11-05-at-9.48.50-pm.png" alt="Spyo bot preview 8" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/08/screen-shot-2021-08-19-at-4.38.26-am.png" alt="Spyo bot preview 9" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/08/screen-shot-2021-08-19-at-4.25.44-am.png" alt="Spyo bot preview 10" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/08/screen-shot-2021-08-19-at-4.29.52-am.png" alt="Spyo bot preview 11" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/08/screen-shot-2021-08-19-at-4.27.37-am.png" alt="Spyo bot preview 12" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/09/screen-shot-2021-09-16-at-5.26.39-am.png" alt="Spyo bot preview 13" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2021/09/screen-shot-2021-09-16-at-5.25.13-am.png" alt="Spyo bot preview 14" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2022/11/screenshot-2022-11-05-at-9.35.53-pm.png" alt="Spyo bot preview 15" loading="lazy">
+                    </div>
+                    <div class="bot-preview-slide">
+                        <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2022/11/screenshot-2022-11-05-at-9.20.53-pm.png" alt="Spyo bot preview 16" loading="lazy">
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-lock"></i>
-                        <div class="text">Utility</div>
-                        <p>most epic commands like search exploitdb, create tempmail, tempnumber, tinyurl, check redirect, scan link, create or scan QR code etc.</p>
+    <section class="blog" id="blog">
+        <div class="max-width">
+            <div class="blog-grid">
+                <article class="blog-intro-card">
+                    <p class="eyebrow">Spyboy.blog</p>
+                    <h2>Cybersecurity field notes, shipped weekly</h2>
+                    <p>Reverse-engineering phish kits, decoding OSINT workflows, and documenting every tactic that moves Spyboy projects forward. Browse deep dives or drop straight into ready-to-use playbooks.</p>
+                    <ul class="blog-stats">
+                        <li>
+                            <span>500+</span>
+                            <small>hacking tutorials</small>
+                        </li>
+                        <li>
+                            <span>11M+</span>
+                            <small>lifetime reads</small>
+                        </li>
+                    </ul>
+                    <a class="btn primary" href="https://spyboy.blog/" target="_blank" rel="noopener">Open the blog</a>
+                </article>
+                <article class="blog-feed-card">
+                    <div class="blog-feed-header">
+                        <div>
+                            <p class="eyebrow">Latest dispatches</p>
+                            <h3>Fresh posts, automatically pulled</h3>
+                        </div>
+                        <button class="btn ghost blog-refresh-btn" type="button">Refresh feed</button>
                     </div>
-                </div>
+                    <div class="blog-feed-carousel owl-carousel" aria-live="polite"></div>
+                    <p class="blog-feed-empty" role="status">Fetching the latest intel…</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
-                
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-music"></i>
-                        <div class="text">Fun</div>
-                        <p>25+ fun commands. play games, generate or make cool wallpapers, find lyrics & generate fakeprofile, meme, jokes, pickup lines ;)</p>
-                    </div>
-                </div>
+    <section class="about" id="about">
+        <div class="max-width">
+            <h2 class="title">About Spyboy</h2>
+            <div class="about-grid">
+                <article class="about-copy">
+                    <h2 class="title">Why Spyboy</h2>
+                    <p>At its core, Spyboy believes in one idea: <strong>security through understanding, not obscurity.</strong> We build tools that help curious people see how infrastructure, OSINT, encryption, reconnaissance, and defensive testing truly work.</p>
+                    <p>Every project is designed with a hands-on mindset—encouraging ethical experimentation, learning by doing, and responsible disclosure. Spyboy is a research-driven lab, a learning platform, and a toolkit for curious minds.</p>
+                    <blockquote>Cr4ft!ng !d3as. Breaking systems. Teaching security. Building openly.</blockquote>
+                    <p class="about-tagline">Open-source cybersecurity. Real-world research. Community-driven tools.</p>
+                </article>
 
-                
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-arrow-up"></i>
-                        <div class="text">Tutorials</div>
-                        <p>Search or ask cybersecurity, Windows tip & tricks, linux tips, android tricks tutorials. Includes 500+ tutorials</p>
+                <article class="about-detail">
+                    <h3>What We Do</h3>
+                    <ul class="about-feature-list">
+                        <li>
+                            <strong>Open-Source Security Tools</strong>
+                            <span>Web recon & attack surface mapping, OSINT & digital footprint analysis, encryption & privacy tooling, proxy/network analysis, and research utilities for red + blue teams.</span>
+                        </li>
+                        <li>
+                            <strong>Cybersecurity Education at Scale</strong>
+                            <span><a href="https://spyboy.blog/" target="_blank" rel="noopener">Spyboy Blog</a> delivers millions of practical tutorials—focused on real-world techniques, not fluff.</span>
+                        </li>
+                        <li>
+                            <strong>Community & Automation</strong>
+                            <span><a href="https://top.gg/bot/877644741339144244" target="_blank" rel="noopener">Spyo</a> runs inside 5,000+ Discord servers with OSINT tools, cipher utilities, CTF challenges, leaderboards, and certifications.</span>
+                        </li>
+                        <li>
+                            <strong>Apps & Experiments</strong>
+                            <span>Android apps and experimental projects that make cybersecurity accessible to students, devs, and researchers.</span>
+                        </li>
+                    </ul>
+
+                    <div class="about-pillars">
+                        <h3>Our Philosophy</h3>
+                        <ul>
+                            <li>🧠 Learn by building</li>
+                            <li>🔓 Open-source by default</li>
+                            <li>⚖️ Ethical use only</li>
+                            <li>🛠️ Practical over theoretical</li>
+                            <li>🌍 Community-driven growth</li>
+                        </ul>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
@@ -201,73 +531,87 @@
             <div class="stats-content">
                 <div class="card">
                     <div class="box">
-                        <i class="fas fa-server"></i>
-                        <div class="text">Bot Servers</div>
-                        <p id="server-count"></p>
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
+                        <div class="text">
+                            <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">Open Source Projects</a>
+                        </div>
+                        <p id="stat-open-source" class="stat-value" aria-live="polite">Loading…</p>
                     </div>
                 </div>
         
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-server"></i>
-                    <div class="text">Cpu Load</div>
-                    <p id="cpuload"></p>
+                    <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                    <div class="text">
+                        <a href="https://play.google.com/store/apps/dev?id=6188034454598466210" target="_blank" rel="noopener">Apps Published</a>
+                    </div>
+                    <p id="stat-apps" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
                 
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-server"></i>
-                    <div class="text">Memory Load</div>
-                    <p id="memload"></p>
+                    <i class="fas fa-server" aria-hidden="true"></i>
+                    <div class="text">
+                        <a href="https://top.gg/bot/877644741339144244" target="_blank" rel="noopener">Bot Servers</a>
+                    </div>
+                    <p id="stat-bot-servers" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
                 
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user-friends" aria-hidden="true"></i>
                     <div class="text">Active Users</div>
-                    <p id="user-count"></p>
+                    <p id="stat-active-users" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
                 
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-user"></i>
-                    <div class="text">Bot Members</div>
-                    <p id="active"></p>
+                    <i class="fas fa-mobile" aria-hidden="true"></i>
+                    <div class="text">App Users</div>
+                    <p id="stat-app-users" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
                 
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-user"></i>
-                    <div class="text">Bot Shards</div>
-                    <p id="shard"></p>
+                    <i class="fas fa-newspaper" aria-hidden="true"></i>
+                    <div class="text">
+                        <a href="https://spyboy.blog/" target="_blank" rel="noopener">Blog Hits</a>
+                    </div>
+                    <p id="stat-blog-hits" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-arrow-up"></i>
-                    <div class="text">App users</div>
-                    <p>1M+</p>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <div class="text">
+                        <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener">Discord Members</a>
+                    </div>
+                    <p id="stat-discord-members" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-arrow-up"></i>
-                    <div class="text">Blog hits</div>
-                    <p>10M+</p>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <div class="text">
+                        <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">GitHub Stars</a>
+                    </div>
+                    <p id="stat-github-stars" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="box">
-                    <i class="fas fa-arrow-up"></i>
-                    <div class="text">Discord</div>
-                    <p>10k+</p>
+                    <i class="fas fa-code-branch" aria-hidden="true"></i>
+                    <div class="text">
+                        <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">GitHub Forks</a>
+                    </div>
+                    <p id="stat-github-forks" class="stat-value" aria-live="polite">Loading…</p>
                 </div>
             </div>
 
@@ -291,125 +635,133 @@
             
         <div class="carousel owl-carousel">
             <div class="card_flex">
-                <div class="boxx">
-                    <div class="flex items-center pl-2">
-                        <div class="p-avatar p-avatar-circle" style="border-radius: 50%; overflow: hidden; display: inline-block;">
-                            <img src="https://cdn.discordapp.com/avatars/530395525179244557/0a830741f3f65cdd1b7cf5539af1a1e6.png" alt="avatar" class="rounded-full" style="width: 70px; height: 70px; border: 3px solid crimson; border-radius: 50%;">
+                <article class="review-card">
+                    <div class="review-author">
+                        <div class="review-profile">
+                            <img src="https://cdn.discordapp.com/avatars/530395525179244557/0a830741f3f65cdd1b7cf5539af1a1e6.png" alt="Avatar of Denzven" class="review-avatar">
+                            <div>
+                                <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank" rel="noopener" class="review-name">Denzven</a>
+                                <p class="review-source">Discord · top.gg</p>
+                            </div>
                         </div>
-
-                        <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank">
-                            <span class="text" style="font-size: 20px; color: crimson;">Denzven</span>
-                        </a>
-
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <span>★★★★★</span>
+                        </div>
                     </div>
-                    <p class="text" style="font-size: 18px;">⭐⭐⭐⭐⭐<br> The BESTT cyber-security themed bot I've seen, it's fun in the server and has a ton of ""geeky"" commands. Perfect for any server especially cybersecurity based :chef_kiss:</p>
-                </div>
+                    <p class="review-quote">&ldquo;The best cyber-security themed bot I’ve used—it keeps every server fun and loaded with geeky commands.&rdquo;</p>
+                </article>
             </div>
 
             <div class="card_flex">
-                <div class="boxx">
-                    <div class="flex items-center pl-2">
-                        <div class="p-avatar p-avatar-circle" style="border-radius: 50%; overflow: hidden; display: inline-block;">
-                            <img src="https://images.discordapp.net/avatars/748414256197664789/089d172d2c09ef68014ad024a374f85b.png" alt="avatar" class="rounded-full" style="width: 70px; height: 70px; border: 3px solid crimson; border-radius: 50%;">
+                <article class="review-card">
+                    <div class="review-author">
+                        <div class="review-profile">
+                            <img src="https://images.discordapp.net/avatars/748414256197664789/089d172d2c09ef68014ad024a374f85b.png" alt="Avatar of mercykknight" class="review-avatar">
+                            <div>
+                                <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank" rel="noopener" class="review-name">mercykknight</a>
+                                <p class="review-source">Discord · top.gg</p>
+                            </div>
                         </div>
-
-                        <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank">
-                            <span class="text" style="font-size: 20px; color: crimson;">mercykknight</span>
-                        </a>
-
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <span>★★★★★</span>
+                        </div>
                     </div>
-                    <p class="text" style="font-size: 18px;">⭐⭐⭐⭐⭐<br> Such a great tool Thankyou very much developer now i not need to open virtual box again and again for small stuff really thats a great idea i appreciate u. thanks a lot. The most amazing things i like for this bot is no need to connect with your own api.</p>
-                </div>
+                    <p class="review-quote">&ldquo;No more spinning up VMs for small tests—Spyboy handles the utility work and still keeps things fun.&rdquo;</p>
+                </article>
             </div>
 
             <div class="card_flex">
-                <div class="boxx">
-                    <div class="flex items-center pl-2">
-                        <div class="p-avatar p-avatar-circle" style="border-radius: 50%; overflow: hidden; display: inline-block;">
-                            <img src="https://t3.ftcdn.net/jpg/03/64/62/36/360_F_364623623_ERzQYfO4HHHyawYkJ16tREsizLyvcaeg.jpg" alt="avatar" class="rounded-full" style="width: 70px; height: 70px; border: 3px solid crimson; border-radius: 50%;">
+                <article class="review-card">
+                    <div class="review-author">
+                        <div class="review-profile">
+                            <img src="https://cdn.discordapp.com/avatars/877644741339144244/a_7d359c895291fed54a8edc596cb8f179.gif?size=512" alt="Avatar of October_Rust" class="review-avatar">
+                            <div>
+                                <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank" rel="noopener" class="review-name">October_Rust</a>
+                                <p class="review-source">Discord · top.gg</p>
+                            </div>
                         </div>
-
-                        <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank">
-                            <span class="text" style="font-size: 20px; color: crimson;">October_Rust</span>
-                        </a>
-
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <span>★★★★★</span>
+                        </div>
                     </div>
-                    <p class="text" style="font-size: 18px;">⭐⭐⭐⭐⭐<br>This is one of the most unique and intricate bots that I saw released in a good function form from early development! After only around 4-5min of utilizing this bot, I knew it would be one that no matter where I set up, would surely be added to my server(s) or those I help!...</p>
-                </div>
+                    <p class="review-quote">&ldquo;Spyboy is uniquely comprehensive—minutes after onboarding I knew it belonged in every security community I help.&rdquo;</p>
+                </article>
             </div>
 
             <div class="card_flex">
-                <div class="boxx">
-                    <div class="flex items-center pl-2">
-                        <div class="p-avatar p-avatar-circle" style="border-radius: 50%; overflow: hidden; display: inline-block;">
-                            <img src="https://t3.ftcdn.net/jpg/03/64/62/36/360_F_364623623_ERzQYfO4HHHyawYkJ16tREsizLyvcaeg.jpg" alt="avatar" class="rounded-full" style="width: 70px; height: 70px; border: 3px solid crimson; border-radius: 50%;">
+                <article class="review-card">
+                    <div class="review-author">
+                        <div class="review-profile">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=160&q=80" alt="Avatar of Wolfyman" class="review-avatar">
+                            <div>
+                                <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank" rel="noopener" class="review-name">.wolfyman</a>
+                                <p class="review-source">Discord · top.gg</p>
+                            </div>
                         </div>
-
-                        <a href="https://top.gg/bot/877644741339144244#reviews" target="_blank">
-                            <span class="text" style="font-size: 20px; color: crimson;">.wolfyman</span>
-                        </a>
-
-
+                        <div class="review-stars" aria-label="4 out of 5 stars">
+                            <span>★★★★☆</span>
+                        </div>
                     </div>
-                    <p class="text" style="font-size: 18px;">⭐⭐⭐⭐<br>Very useful and fun I rate 44444444444444444! I love it!</p>
-                </div>
+                    <p class="review-quote">&ldquo;Ridiculously useful yet playful—Spyboy keeps our server buzzing with challenges and mini utilities.&rdquo;</p>
+                </article>
             </div>
 
             <div class="card_flex">
-                <div class="boxx">
-                    <div class="flex items-center pl-2">
-                        <div class="p-avatar p-avatar-circle" style="border-radius: 50%; overflow: hidden; display: inline-block;">
-                            <img src="https://t3.ftcdn.net/jpg/03/64/62/36/360_F_364623623_ERzQYfO4HHHyawYkJ16tREsizLyvcaeg.jpg" alt="avatar" class="rounded-full" style="width: 70px; height: 70px; border: 3px solid crimson; border-radius: 50%;">
+                <article class="review-card">
+                    <div class="review-author">
+                        <div class="review-profile">
+                            <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=160&q=80" alt="Avatar of Anju Singh" class="review-avatar">
+                            <div>
+                                <a href="https://play.google.com/store/apps/details?id=com.spyboy.javaprogramming" target="_blank" rel="noopener" class="review-name">Anju Singh</a>
+                                <p class="review-source">Play Store</p>
+                            </div>
                         </div>
-
-                        <a href="https://play.google.com/store/apps/details?id=com.spyboy.javaprogramming" target="_blank">
-                            <span class="text" style="font-size: 20px; color: crimson;">Anju Singh</span>
-                        </a>
-
-
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <span>★★★★★</span>
+                        </div>
                     </div>
-                    <p class="text" style="font-size: 18px;">⭐⭐⭐⭐⭐<br>This app is a great app.. I learnt java for developing apps. Please also develop apps to learn kotlin and other tutorials about apps, otherewise, 5🌟to this app, great work!</p>
-                </div>
+                    <p class="review-quote">&ldquo;Spyboy’s Java lessons helped me ship my first Android app—now I’m ready for Kotlin and more.&rdquo;</p>
+                </article>
             </div>
 
             <div class="card_flex">
-                <div class="boxx">
-                    <div class="flex items-center pl-2">
-                        <div class="p-avatar p-avatar-circle" style="border-radius: 50%; overflow: hidden; display: inline-block;">
-                            <img src="https://play-lh.googleusercontent.com/a-/ALV-UjX-4Nk1kzAtSjpr66nDZ-13wXDzEmtSzWxtoRDwgH2Cgo2e6Qcj=s32-rw" alt="avatar" class="rounded-full" style="width: 70px; height: 70px; border: 3px solid crimson; border-radius: 50%;">
+                <article class="review-card">
+                    <div class="review-author">
+                        <div class="review-profile">
+                            <img src="https://play-lh.googleusercontent.com/a-/ALV-UjX-4Nk1kzAtSjpr66nDZ-13wXDzEmtSzWxtoRDwgH2Cgo2e6Qcj=s64" alt="Avatar of Simpk" class="review-avatar">
+                            <div>
+                                <a href="https://play.google.com/store/apps/details?id=com.spyboy.cprogramming" target="_blank" rel="noopener" class="review-name">Simpk</a>
+                                <p class="review-source">Play Store</p>
+                            </div>
                         </div>
-
-                        <a href="https://play.google.com/store/apps/details?id=com.spyboy.cprogramming" target="_blank">
-                            <span class="text" style="font-size: 20px; color: crimson;">Simpk</span>
-                        </a>
-
-
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <span>★★★★★</span>
+                        </div>
                     </div>
-                    <p class="text" style="font-size: 18px;">⭐⭐⭐⭐⭐<br>I couldn't believe that this type of simple app can have plenty of knowledge about C programing. Such a very good app and informative. Well done job, Sir.</p>
-                </div>
+                    <p class="review-quote">&ldquo;A deceptively simple learning companion—Spyboy packs tons of C programming wisdom into every screen.&rdquo;</p>
+                </article>
             </div>
 
             <div class="card_flex">
-                <div class="boxx">
-                    <div class="flex items-center pl-2">
-                        <div class="p-avatar p-avatar-circle" style="border-radius: 50%; overflow: hidden; display: inline-block;">
-                            <img src="https://t3.ftcdn.net/jpg/03/64/62/36/360_F_364623623_ERzQYfO4HHHyawYkJ16tREsizLyvcaeg.jpg" alt="avatar" class="rounded-full" style="width: 70px; height: 70px; border: 3px solid crimson; border-radius: 50%;">
+                <article class="review-card">
+                    <div class="review-author">
+                        <div class="review-profile">
+                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=160&q=80" alt="Avatar of Abhishek" class="review-avatar">
+                            <div>
+                                <a href="https://play.google.com/store/apps/details?id=com.spyboy.cprogramming" target="_blank" rel="noopener" class="review-name">Abhishek</a>
+                                <p class="review-source">Play Store</p>
+                            </div>
                         </div>
-
-                        <a href="https://play.google.com/store/apps/details?id=com.spyboy.cprogramming" target="_blank">
-                            <span class="text" style="font-size: 20px; color: crimson;">Abhishek</span>
-                        </a>
-
-
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <span>★★★★★</span>
+                        </div>
                     </div>
-                    <p class="text" style="font-size: 18px;">⭐⭐⭐⭐⭐<br>Hi....Shubham, i am ur very old fan and i was eagerly waiting for ur spyboy app to come again, u are fabulous, and these new apps are also good, i have installed all ur apps... i have a suggestion that can u make an app for python programming... there should be an high level language too.. Thank u Shubham for taking time to read this ur best fan abhishek</p>
-                </div>
+                    <p class="review-quote">&ldquo;I’ve followed Spyboy for years—the new apps stay friendly while covering serious security workflows.&rdquo;</p>
+                </article>
             </div>
 
-            
         </div>
     </div>
-    <!-- Scrollable Container End -->
     
     </section>
 
@@ -422,7 +774,7 @@
 
                 <div class="cardd">
                     <div class="boxx">
-                        <img src="images/shubh.png" alt="">
+                        <img src="images/shubh.png" alt="Portrait of Shubh, Spyboy founder">
                         <div class="text">Shubh</div>
                         <p>
                             <button class="badges owner">Founder</button>
@@ -432,7 +784,7 @@
                 </div>
                 <div class="cardd">
                     <div class="boxx">
-                        <img src="https://cdn.discordapp.com/avatars/729429813726543975/a_bc97398db335a9bac1abf8d1981e170c.gif?size=1024" alt="">
+                        <img src="https://cdn.discordapp.com/avatars/729429813726543975/a_bc97398db335a9bac1abf8d1981e170c.gif?size=1024" alt="Avatar of Sudo whoami">
                         <div class="text">Sudo whoami</div>
                         
                         <p>
@@ -443,7 +795,7 @@
                 </div>
                 <div class="cardd">
                     <div class="boxx">
-                        <img src="https://cdn.discordapp.com/avatars/621309926631014410/1bbdf35d4e623ba425b40ab9df2e86de.png?size=1024" alt="">
+                        <img src="https://cdn.discordapp.com/avatars/621309926631014410/1bbdf35d4e623ba425b40ab9df2e86de.png?size=1024" alt="Avatar of Flampt">
                         <div class="text">Flampt</div>
                         
                         <p>
@@ -453,7 +805,7 @@
                 </div>
                 <div class="cardd">
                     <div class="boxx">
-                        <img src="https://cdn.discordapp.com/avatars/716144986797899807/de6c48083aeaf2f49006c1ffae8cbfa1.png?size=1024" alt="">
+                        <img src="https://cdn.discordapp.com/avatars/716144986797899807/de6c48083aeaf2f49006c1ffae8cbfa1.png?size=1024" alt="Avatar of Taj">
                         <div class="text">Taj</div>
                         
                         <p>
@@ -463,7 +815,7 @@
                 </div>
                 <div class="cardd">
                     <div class="boxx">
-                        <img src="https://cdn.discordapp.com/avatars/530395525179244557/0a830741f3f65cdd1b7cf5539af1a1e6.png?size=1024" alt="">
+                        <img src="https://cdn.discordapp.com/avatars/530395525179244557/0a830741f3f65cdd1b7cf5539af1a1e6.png?size=1024" alt="Avatar of Denzven">
                         <div class="text">Denzven</div>
                         
                         <p>
@@ -473,7 +825,7 @@
                 </div>
                 <div class="cardd">
                     <div class="boxx">
-                        <img src="https://cdn.discordapp.com/avatars/805782085695832115/0eaad5e2fd48079ec4ae0d28ad7037ad.png?size=1024" alt="">
+                        <img src="https://cdn.discordapp.com/avatars/805782085695832115/0eaad5e2fd48079ec4ae0d28ad7037ad.png?size=1024" alt="Avatar of professor_kueue">
                         <div class="text">professor_kueue</div>
                         
                         <p>
@@ -483,7 +835,7 @@
                 </div>
                 <div class="cardd">
                     <div class="boxx">
-                        <img src="images/khyrs.png" alt="">
+                        <img src="images/khyrs.png" alt="Portrait of Khrys">
                         <div class="text">Khrys</div>
                         
                         <p>
@@ -497,7 +849,21 @@
         </div>
     </section>
 
-    <div class="loader-wrapper">
+    <div class="email-popup-overlay" id="emailPopup" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+        <div class="email-popup">
+            <h3 id="contactModalTitle">Contact Spyboy</h3>
+            <p>Drop us a note or hop into the community—we usually reply fast.</p>
+            <div class="email-popup-code" id="contactEmailValue">contact@spyboy.in</div>
+            <div class="email-popup-actions">
+                <button class="primary" id="copyEmailBtn">Copy email</button>
+                <a class="secondary" href="mailto:contact@spyboy.in">Open mail app</a>
+                <a class="discord" href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener">Join Discord</a>
+            </div>
+            <button class="ghost" id="closeEmailBtn">Close</button>
+        </div>
+    </div>
+
+    <div class="loader-wrapper" role="status" aria-live="polite" aria-label="Content loading">
         <img src="https://cdn.discordapp.com/emojis/800605718444376075.gif?v=1" alt="Loading...">
         <div class="longfazers">
             <span></span>
@@ -510,25 +876,18 @@
 
 
     <footer>
-        <span>Spyo's <a href="https://thisisshubhamkumar.github.io/shubhamkumar/spyo-privacy-policy.html" target="_blank">Privacy policy & Tos</a> | <a href="https://status.watchbot.app/bot/877644741339144244" target="_blank">Is bot up?</a> | <a href="https://spyboy.blog/" target="_blank">Spyboy blog</a> | <a href="https://top.gg/bot/877644741339144244" target="_blank">Vote</a> | <a href="https://www.paypal.com/paypalme/iamshubhamkumar" target="_blank">Donate</a> | <a href="https://spyboy.blog/contact/" target="_blank">Email us</a></span>
+        <span>Spyo's <a href="https://thisisshubhamkumar.github.io/shubhamkumar/spyo-privacy-policy.html" target="_blank">Privacy policy & Tos</a> | <a href="https://top.gg/bot/877644741339144244" target="_blank">Vote</a> | <a href="https://www.paypal.com/paypalme/iamshubhamkumar" target="_blank">Donate</a> | <a href="https://spyboy.blog/contact/" target="_blank">Email us</a></span>
     </footer>
 
-    <script src="./aos/aos.js"></script>
-    <script type="text/javascript">
-        AOS.init({
-            duration: 1000,
+    <script src="./aos/aos.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="stats.js" defer></script>
+    <script>
+        window.addEventListener('load', function() {
+            document.querySelector('.loader-wrapper')?.classList.add('loader-hidden');
         });
     </script>
-
-    <script src="script.js"></script>
-    <script src="stats.js"></script>
-
-    <script>
-        $(window).on("load", function() {
-            $(".loader-wrapper").fadeOut("slow")
-        })
-    </script>
-    <script src="./particles/particles.js"></script>
-    <script src="./particles/app.js"></script>
+    <script src="./particles/particles.js" defer></script>
+    <script src="./particles/app.js" defer></script>
 </body>
 </html>
