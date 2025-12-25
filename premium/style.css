@@ -12,10 +12,65 @@
 html {
   scroll-behavior: smooth;
 }
+.premium-body {
+  background-color: #121212;
+}
 .max-width {
   max-width: 1300px;
   padding: 0 80px;
   margin: auto;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 16px;
+  background-color: #202127;
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px 25px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.plan-urgency {
+  margin-top: 12px;
+}
+
+.limited-deal-label {
+  letter-spacing: 0.2em;
+}
+
+.purchase-badge {
+  color: #FCD34D;
 }
 
 ::-webkit-scrollbar {
@@ -229,6 +284,9 @@ section .title::after {
 }
 .card .box {
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .card:hover .box {
   transform: scale(1.05);
@@ -372,6 +430,9 @@ footer span a:hover {
 @media (max-width: 1000px) {
   .max-width {
     padding: 0 50px;
+  }
+  .card {
+    width: calc(50% - 20px);
   }
 }
 
