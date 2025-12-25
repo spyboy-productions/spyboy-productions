@@ -45,7 +45,8 @@
                 <li><a href="https://spyboy.in" class="menu-btn">Home</a></li>
                 <li><a href="https://spyboy.in/faq" class="menu-btn" class="menu-btn">Faq</a></li>
                 <li><a href="https://spyboy.in/Discord" class="menu-btn">Contact</a></li>
-                <li><a onclick="openPortal()" class="menu-btn">Portal</a></li>
+                <!-- <li><a onclick="openPortal()" class="menu-btn">Portal</a></li> -->
+                <li><a href="#" class="menu-btn" id="contactEmailBtn">Email</a></li>
             </ul>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
@@ -244,6 +245,18 @@
             </div>
         </div>
     </section>
+
+    <div class="email-popup-overlay" id="emailPopup">
+        <div class="email-popup">
+            <h3>Contact via Email</h3>
+            <p>Drop us a line and we’ll get back asap.</p>
+            <div class="email-popup-code">contact@spyboy.in</div>
+            <div class="email-popup-actions">
+                <button class="primary" id="copyEmailBtn">Copy email</button>
+                <button class="secondary" id="closeEmailBtn">Close</button>
+            </div>
+        </div>
+    </div>
 
 <script type="text/javascript" src="script.js"></script>
 </body>

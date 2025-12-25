@@ -7,112 +7,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="spyboy">
-    <meta property="og:title" content="premium success">
-    <meta property="og:image" content="https://1.gravatar.com/avatar/44d8e29193e5561e53f11ad0ddefe84d?s=256&d=identicon&r=G">
+    <meta property="og:title" content="Spyo Premium · Payment Confirmed">
+    <meta property="og:image" content="https://spyboy.in/images/logo.png">
     <meta property="og:url" content="https://spyboy.in/">
-    <meta content="#006CFF" data-react-helmet="true" name="theme-color" />
-    <title>success</title>
-    <link rel="icon" type="image/png" href="https://1.gravatar.com/avatar/44d8e29193e5561e53f11ad0ddefe84d?s=256&d=identicon&r=G" />
+    <meta content="#141E30" name="theme-color" />
+    <title>Premium Payment Confirmed</title>
+    <link rel="icon" type="image/png" href="../images/logo.png" />
     <style>
-        @font-face {
-            font-family: 'pixel-genericism';
-            src: url('https://thisisshubhamkumar.github.io/wormhole/pixel-genericism.ttf');
+        :root {
+            font-family: 'Inter', 'Poppins', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #e8eaf6;
+            background-color: #0b0d16;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background: radial-gradient(circle at bottom, navy 0, black 100%);
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.25), transparent 45%),
+                radial-gradient(circle at bottom, rgba(59, 130, 246, 0.35), transparent 50%),
+                #05060b;
             overflow: hidden;
         }
 
-        .space {
-            background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
-            border: 1px dashed purple;
-            bottom: 0;
-            left: 0;
+        .stars {
             position: absolute;
-            right: 0;
-            top: 0;
-        }
-
-        .star1 {
-            animation: space 18s ease-in-out infinite;
+            inset: 0;
             background-image:
-                radial-gradient(1px 1px at 25px 5px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1px 1px at 50px 25px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1px 1px at 125px 20px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1.5px 1.5px at 50px 75px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(2px 2px at 15px 125px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(2.5px 2.5px at 110px 80px, white, rgba(255, 255, 255, 0));
+                radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+                radial-gradient(1px 1px at 120px 80px, rgba(255, 255, 255, 0.35), transparent),
+                radial-gradient(2px 2px at 220px 140px, rgba(255, 255, 255, 0.2), transparent),
+                radial-gradient(1px 1px at 320px 60px, rgba(255, 255, 255, 0.25), transparent);
+            opacity: 0.4;
+            animation: twinkle 12s linear infinite alternate;
         }
 
-        .star2 {
-            animation: space 24s ease-in-out infinite;
-            background-image:
-                radial-gradient(1px 1px at 75px 125px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1px 1px at 100px 75px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1.5px 1.5px at 199px 100px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(2px 2px at 20px 50px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(2.5px 2.5px at 100px 5px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(2.5px 2.5px at 5px 5px, white, rgba(255, 255, 255, 0));
-        }
-
-        .star3 {
-            animation: space 30s ease-in-out infinite;
-            background-image:
-                radial-gradient(1px 1px at 10px 10px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1px 1px at 150px 150px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1.5px 1.5px at 60px 170px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(1.5px 1.5px at 175px 180px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(2px 2px at 195px 95px, white, rgba(255, 255, 255, 0)),
-                radial-gradient(2.5px 2.5px at 95px 145px, white, rgba(255, 255, 255, 0));
-        }
-
-        @keyframes space {
-            40% {
-                opacity: 0.75;
+        @keyframes twinkle {
+            from {
+                opacity: 0.3;
+                transform: scale(1);
             }
 
-            50% {
-                opacity: 0.25;
-            }
-
-            60% {
-                opacity: 0.75;
-            }
-
-            100% {
-                transform: rotate(360deg);
+            to {
+                opacity: 0.6;
+                transform: scale(1.05);
             }
         }
 
-        .text {
-            color: white;
-            font-family: pixel-genericism;
-            font-size: 7.5vw;
-            left: 0;
-            line-height: 20px;
-            margin-top: -10px;
-            position: absolute;
+        .card {
+            position: relative;
+            z-index: 1;
+            width: min(540px, 92vw);
+            background: rgba(15, 17, 31, 0.8);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 30px 60px rgba(5, 6, 11, 0.65);
+            backdrop-filter: blur(12px);
             text-align: center;
-            top: 50%;
-            width: 100%;
+        }
+
+        .icon-ring {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 25px rgba(22, 163, 74, 0.3);
+        }
+
+        .icon-ring svg {
+            width: 48px;
+            height: 48px;
+            color: white;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 3vw, 2.4rem);
+            margin-bottom: 0.35rem;
+        }
+
+        h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #94a3b8;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .detail-list {
+            text-align: left;
+            border-top: 1px solid rgba(148, 163, 184, 0.12);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+            padding: 1.5rem 0;
+            margin: 1.5rem 0;
+        }
+
+        .detail-list li {
+            list-style: none;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+            color: #cbd5f5;
+            line-height: 1.5;
+        }
+
+        .detail-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-list svg {
+            width: 20px;
+            height: 20px;
+            color: #22d3ee;
+            flex-shrink: 0;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #22d3ee);
+            color: #fff;
+            box-shadow: 0 10px 35px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #cbd5f5;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+        }
+
+        @media (max-width: 520px) {
+            .card {
+                padding: 32px 24px;
+            }
         }
     </style>
 </head>
 
 <body>
-    
+    <div class="stars"></div>
+    <div class="card">
+        <div class="icon-ring">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h1>Payment confirmed</h1>
+        <h2>Welcome to Spyo Premium</h2>
+        <p>Thanks for trusting us! We’re getting your account ready.</p>
+
+        <ul class="detail-list">
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Premium activation can take up to 24 hours while we link your account to the bot.
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-3 9H6a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2z" />
+                </svg>
+                We’ll email you as soon as Premium access is active.
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M8.625 12a.375.375 0 00.375-.375V5.25a.375.375 0 00-.375-.375h-2.25A2.25 2.25 0 004.125 7.125v9.75A2.25 2.25 0 006.375 19.125h11.25A2.25 2.25 0 0019.875 16.875v-9.75A2.25 2.25 0 0017.625 4.875h-2.25a.375.375 0 00-.375.375V11.625A.375.375 0 0015.375 12h3.75" />
+                </svg>
+                In a hurry? Join Discord and ping a moderator for faster activation.
+            </li>
+        </ul>
+
+        <div class="actions">
+            <a class="btn btn-primary" href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer">
+                Join Discord
+            </a>
+            <a class="btn btn-secondary" href="mailto:contact@spyboy.in">
+                Email support
+            </a>
+        </div>
+    </div>
+
     <script>
-    setTimeout(function(){
-      window.location.href = 'https://spyboy.in/';
-    }, 9000);
+        setTimeout(function () {
+            window.location.href = 'https://spyboy.in/';
+        }, 10000);
     </script>
-    
-    <div class="space star1"></div>
-    <div class="space star2"></div>
-    <div class="space star3"></div>
-    <h1 class="text">Successful !</h1>
 </body>
 
 </html>

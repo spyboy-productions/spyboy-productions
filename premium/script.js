@@ -149,7 +149,48 @@ document.addEventListener('DOMContentLoaded', () => {
             setInterval(() => updateLimitedTimers(timerConfigs), 1000);
         }
         updatePurchaseBadges();
+        initEmailPopup();
     } catch (error) {
         console.error('Failed to initialize premium timers or badges', error);
     }
 });
+
+const CONTACT_EMAIL = 'contact@spyboy.in';
+
+function initEmailPopup() {
+    const trigger = document.getElementById('contactEmailBtn');
+    const overlay = document.getElementById('emailPopup');
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const closeBtn = document.getElementById('closeEmailBtn');
+
+    if (!trigger || !overlay) return;
+
+    const closePopup = () => overlay.classList.remove('active');
+    const openPopup = (event) => {
+        event.preventDefault();
+        overlay.classList.add('active');
+    };
+
+    trigger.addEventListener('click', openPopup);
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            closePopup();
+        }
+    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closePopup);
+    }
+    if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(CONTACT_EMAIL);
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy email';
+                }, 1500);
+            } catch (err) {
+                window.prompt('Copy email address', CONTACT_EMAIL);
+            }
+        });
+    }
+}
