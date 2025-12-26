@@ -25,15 +25,15 @@ $(document).ready(function() {
   if (!prefersReducedMotion) {
     new Typed('.typing', {
       strings: [
-        "Cyber security Bot",
-        "Cyber security App",
-        "Cyber security Blog",
-        "Cyber security Tools",
+        "Ethical Hacking Tools",
+        "Security Bots & APPs",
+        "Open-Source Security Projects",
+        "Security Research Platforms",
         "Cyber security API",
         "Cyber security Library",
         "Cyber security Framework",
-        "Providing free tutorials",
-        "Cyber security Chat Server",
+        "Free Learning Resources",
+        "CTF Challenges & Labs",
       ],
       typeSpeed: 100,
       backSpeed: 60,
