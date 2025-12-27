@@ -86,12 +86,17 @@ body {
   display: inline-block;
 }
 .navbar .menu li a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   margin-left: 25px;
   transition: color 0.3s ease;
+}
+.navbar .menu li a i {
+  font-size: 16px;
 }
 .navbar .menu li a:hover {
   color: crimson;
@@ -1713,7 +1718,8 @@ footer span a:hover {
     width: 100%;
     left: -100%;
     top: 0;
-    background: #121212;
+    background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(241,236,64,0.1) 100%);
+    backdrop-filter: blur(20px);
     text-align: center;
     padding-top: 80px;
     transition: all 0.3s ease;
@@ -1723,11 +1729,27 @@ footer span a:hover {
   }
   .navbar .menu li {
     display: block;
+    margin: 15px 0;
   }
   .navbar .menu li a {
-    display: block;
-    margin: 20px 0;
-    font-size: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+  .navbar .menu li a:hover {
+    background: rgba(241,236,64,0.2);
+    border-color: rgba(241,236,64,0.3);
+    transform: translateY(-2px);
+  }
+  .navbar .menu li a i {
+    margin-right: 8px;
   }
   .home .home-content .text-2 {
     font-size: 70px;
