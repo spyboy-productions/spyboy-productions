@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spyo Bot Commands | Spyboy</title>
+  <meta name="description" content="Browse the Spyo Bot manual: OSINT utilities, DFIR helpers, CTF engines, fun modules, and premium perks.">
+  <link rel="icon" href="./images/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030303;
+      --panel: rgba(255,255,255,0.02);
+      --panel-strong: rgba(10,10,16,0.75);
+      --border: rgba(255,255,255,0.1);
+      --muted: rgba(255,255,255,0.75);
+      --accent: #dc143c;
+      --accent-soft: rgba(220,20,60,0.22);
+      --gold: #f7c948;
+      --mono: 'JetBrains Mono', Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Space Grotesk','Poppins',sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(220,20,60,0.22), transparent 55%),
+                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.08), transparent 45%),
+                  #040404;
+      color: #f5f5f5;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(1.6rem, 4vw, 3rem);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .brand { text-transform: uppercase; letter-spacing: 0.2em; }
+    .brand span { color: var(--accent); }
+
+    .nav-link {
+      padding: 0.7rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      padding: clamp(2rem, 5vw, 4rem);
+      background: linear-gradient(135deg, rgba(5,5,12,0.9), rgba(8,4,6,0.95));
+      box-shadow: 0 40px 90px rgba(0,0,0,0.6);
+      margin-bottom: clamp(2rem, 5vw, 4rem);
+    }
+
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); }
+    .hero p { color: var(--muted); margin: 1rem 0 1.5rem; max-width: 70ch; }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-cta a {
+      padding: 0.85rem 2.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #dc143c, #ff4d6d);
+      box-shadow: 0 20px 45px rgba(220,20,60,0.45);
+    }
+
+    .btn-ghost {
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 1.3rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .hero-card h4 { letter-spacing: 0.12em; font-size: 0.85rem; text-transform: uppercase; color: var(--muted); }
+    .hero-card code { font-family: var(--mono); font-size: 1rem; }
+
+    .how-to {
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      background: var(--panel);
+      backdrop-filter: blur(6px);
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+    .how-to h2 { margin-bottom: 1rem; }
+    .how-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; color: var(--muted); }
+    .how-list li { padding-left: 1.5rem; position: relative; }
+    .how-list li::before { content: "■"; color: var(--accent); position: absolute; left: 0; top: 0.2rem; font-size: 0.8rem; }
+
+    .command-section {
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: clamp(1.4rem, 4vw, 2.4rem);
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+      background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(0,0,0,0.38));
+      box-shadow: 0 25px 70px rgba(0,0,0,0.55);
+    }
+
+    .section-label { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.82rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 0.6rem; }
+    .section-copy { color: var(--muted); margin-bottom: 1.4rem; }
+
+    .command-highlight-area {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight-card {
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 24px;
+      padding: 1.35rem 1.5rem;
+      background: radial-gradient(circle at 0% 0%, rgba(255,255,255,0.08), transparent 45%), rgba(8,6,14,0.85);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 35px 60px rgba(0,0,0,0.55);
+    }
+
+    .highlight-card h3 {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+      color: var(--muted);
+    }
+
+    .highlight-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .highlight-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 14px;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .highlight-command {
+      font-family: var(--mono);
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .highlight-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .command-table {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .command-row {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 1rem 1.25rem;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .command-line { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .command-line code { font-family: var(--mono); font-size: 0.95rem; }
+    .command-row p { color: var(--muted); margin-top: 0.4rem; font-size: 0.92rem; }
+
+    .tier {
+      font-size: 0.72rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.15rem 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tier-premium {
+      color: var(--gold);
+      border-color: rgba(247,201,72,0.6);
+      background: rgba(247,201,72,0.12);
+    }
+
+    .premium-showcase {
+      border-radius: 36px;
+      border: 1px solid rgba(247,201,72,0.45);
+      padding: 2rem;
+      background: linear-gradient(140deg, rgba(247,201,72,0.15), rgba(220,20,60,0.3));
+      box-shadow: 0 30px 80px rgba(220,20,60,0.35);
+      margin-bottom: 1.5rem;
+    }
+
+    .premium-showcase h3 {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.9rem;
+      color: rgba(247,201,72,0.9);
+      margin-bottom: 0.9rem;
+    }
+
+    .premium-showcase p {
+      color: rgba(255,255,255,0.85);
+      max-width: 60ch;
+      margin-bottom: 1.2rem;
+    }
+
+    .premium-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .premium-group {
+      border: 1px solid rgba(247,201,72,0.3);
+      border-radius: 28px;
+      padding: 1.5rem;
+      background: rgba(12,10,6,0.55);
+      box-shadow: inset 0 0 30px rgba(247,201,72,0.08);
+    }
+
+    .premium-group h3 {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.88rem;
+      color: rgba(247,201,72,0.85);
+      margin-bottom: 1rem;
+    }
+
+    .premium-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .premium-list .command-row {
+      border-color: rgba(247,201,72,0.35);
+      background: rgba(247,201,72,0.06);
+    }
+
+    .premium-list .command-line code {
+      color: var(--gold);
+    }
+
+    .premium-list .command-row p {
+      color: rgba(255,255,255,0.85);
+    }
+
+    footer {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      margin: 4rem 0 2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      header { flex-direction: column; gap: 0.8rem; }
+      .hero-cta { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-shell">
+    <div class="brand">Spy<span>boy</span></div>
+    <a class="nav-link" href="index.html">Back to home</a>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <p class="section-label">Spyo Bot Manual</p>
+      <h1>Operator-grade command surface for Discord.</h1>
+      <p>300+ modules wrap recon, cryptography, DFIR, CTF arenas, utilities, and playful prompts. Run every command with <strong>sudo</strong> or by mentioning <strong>@Spyo#0756</strong>.</p>
+      <div class="hero-stats">
+        <article class="hero-card">
+          <h4>Prefix</h4>
+          <code>sudo &lt;command&gt;</code>
+          <p class="section-copy">Example: <code>sudo ip 1.1.1.1</code></p>
+        </article>
+        <article class="hero-card">
+          <h4>Alternate invoke</h4>
+          <code>@Spyo #0756</code>
+          <p class="section-copy">Mention the bot then type your command.</p>
+        </article>
+        <article class="hero-card">
+          <h4>Legend</h4>
+          <p class="section-copy">Commands are free by default. Gold tags point to premium or whitelist utilities.</p>
+        </article>
+      </div>
+      <div class="hero-cta">
+        <a class="btn-primary" href="https://discord.com/api/oauth2/authorize?client_id=877644741339144244&permissions=8&scope=bot%20applications.commands" target="_blank" rel="noopener">Invite Spyo</a>
+        <a class="btn-ghost" href="https://top.gg/bot/877644741339144244" target="_blank" rel="noopener">Add via Top.gg</a>
+        <a class="btn-ghost" href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener">Join support</a>
+      </div>
+    </section>
+
+    <section class="how-to">
+      <h2>How to use Spyo</h2>
+      <ul class="how-list">
+        <li>Invite the bot above, then run commands inside your server channels (not DMs).</li>
+        <li>Type <code>sudo help</code> for the global menu, or <code>sudo help &lt;command&gt;</code> for deep guidance.</li>
+        <li>Navigate modules with <code>sudo cd &lt;folder&gt;</code> (example: <code>sudo cd tools</code>).</li>
+        <li>Ask for IT, cybersecurity, PC tips, or fun prompts — Spyo responds with contextual utilities.</li>
+        <li>Need help? Hop into the support server any time. 📌 Commands respond only inside the invited server.</li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="tools">
+      <div class="section-header">
+        <p class="section-label">OSINT & Recon Lab</p>
+        <h2 class="section-title">Tools module</h2>
+        <p class="section-copy">Infrastructure reconnaissance, domain intel, SSL inspection, and URL hygiene workflows.</p>
+      </div>
+      <div class="command-highlight-area">
+        <article class="highlight-card">
+          <h3>Recon staples</h3>
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo ip &lt;ip&gt;</code></div>
+              <p class="highlight-note">IP reputation, ASN, and geolocation.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo whois &lt;domain&gt;</code></div>
+              <p class="highlight-note">Registration and contact intel.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo wayback &lt;url&gt;</code></div>
+              <p class="highlight-note">Historical snapshots from Wayback.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo intelx &lt;email&gt;</code></div>
+              <p class="highlight-note">Pivot across IntelX archives.</p>
+            </li>
+          </ul>
+        </article>
+        <article class="highlight-card">
+          <h3>Signal pivots</h3>
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo whatsapp_check</code></div>
+              <p class="highlight-note">Check avatar presence on WhatsApp.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo email_lookup</code></div>
+              <p class="highlight-note">Aggregate OSINT on an email target.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo socialmedia</code> <span class="tier tier-premium">Premium</span></div>
+              <p class="highlight-note">Cross-platform username reconnaissance.</p>
+            </li>
+          </ul>
+        </article>
+        <article class="highlight-card">
+          <h3>Surface scans</h3>
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo scan &lt;url&gt;</code></div>
+              <p class="highlight-note">Quick malware sweep for websites.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo urlscan &lt;url&gt;</code> <span class="tier tier-premium">Premium</span></div>
+              <p class="highlight-note">Deep malicious/suspicious inspection.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo ping &lt;domain&gt;</code></div>
+              <p class="highlight-note">Basic connectivity probe.</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo getproxy</code></div><p>Fetch rotating HTTP / SOCKS proxies.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo dmarc_scan &lt;domain&gt;</code></div><p>Summarize DMARC, SPF, DKIM posture.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo reverse_image_search &lt;image_url&gt;</code></div><p>Track where an image appears online.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo checkpass &lt;password&gt;</code></div><p>Verify if a password is compromised.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo subdomain_enum &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Enumerate subdomains via extended sources.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo phlookup &lt;number&gt; &lt;country&gt;</code><span class="tier tier-premium">Premium</span></div><p>Caller ID lookup with global formats.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo phcode &lt;calling_code&gt;</code></div><p>Identify countries from calling codes.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo curl &lt;url&gt; &lt;grep&gt;</code><span class="tier tier-premium">Premium</span></div><p>Curl and inline grep remote assets.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo header &lt;url&gt;</code><span class="tier tier-premium">Premium</span></div><p>Inspect HTTP response headers.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo robots &lt;url&gt;</code></div><p>Display robots.txt contents.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo sitemap &lt;url&gt;</code></div><p>Pull sitemap.xml.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo ssl &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Summarize certificate issuer, expiry, protocols.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo pagelink &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Dump every page URL discovered on the target.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo shareddns &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Reveal shared DNS infrastructure.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo reversedns &lt;target&gt;</code><span class="tier tier-premium">Premium</span></div><p>Reverse DNS lookup.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo hostsearch &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Enumerate hostnames.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo dnslookup &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>DNS records on demand.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo tinyurl &lt;url&gt;</code></div><p>Shorten links instantly.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo expand &lt;url&gt;</code></div><p>Reveal redirects.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo address &lt;place&gt;</code></div><p>Lookup addresses via place names.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo gps &lt;lat&gt; &lt;long&gt;</code></div><p>Decode GPS coordinates.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo zipcode &lt;zip&gt;</code></div><p>Reverse search postal regions.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo countryinfo &lt;country&gt;</code></div><p>Country-level intel pack.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="utility">
+      <p class="section-label">Utility & Productivity</p>
+      <h2 class="section-title">Automation helpers</h2>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo tempmail &lt;name&gt;</code></div><p>Create disposable inboxes.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo tempnumber</code></div><p>Receive SMS online instantly.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo qrcode &lt;data&gt;</code></div><p>Generate QR codes.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo dqrcode &lt;link&gt;</code></div><p>Decode QR payloads.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo readfree &lt;link&gt;</code></div><p>Strip paywalls for reading.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo charinfo &lt;data&gt;</code></div><p>Inspect Unicode / ASCII info.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="language">
+      <p class="section-label">Language & Encoding</p>
+      <h2 class="section-title">Translation + Cipher lab</h2>
+      <div class="command-highlight-area">
+        <article class="highlight-card">
+          <h3>Translation</h3>
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo tran &lt;reply|type&gt;</code></div>
+              <p class="highlight-note">Translate replies into English instantly.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo translate &lt;lang&gt; &lt;msg&gt;</code></div>
+              <p class="highlight-note">Send text in any target language.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo ts &lt;lang&gt; &lt;msg&gt;</code> <span class="tier tier-premium">Premium</span></div>
+              <p class="highlight-note">Generate audio with multilingual TTS.</p>
+            </li>
+          </ul>
+        </article>
+        <article class="highlight-card">
+          <h3>Stego</h3>
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo hidemsg "msg" -e "secret"</code></div>
+              <p class="highlight-note">Embed hidden text inside cover data.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo hidemsg "msg" -d</code></div>
+              <p class="highlight-note">Extract concealed payloads.</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo base64/base32/base58/base85 -e/-d</code></div><p>Encode or decode Base families.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo rot -e/-d &lt;type&gt;</code></div><p>Any ROT cipher.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo affine -e/-d</code>, <code>sudo atbash -e/-d</code>, <code>sudo braille -e/-d</code></div><p>Classical cipher helpers.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo url -e/-d</code></div><p>URL encode/decode.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo hash &lt;msg&gt;</code>, <code>sudo md5 &lt;msg&gt;</code>, <code>sudo sha &lt;msg&gt;</code></div><p>Hash lookups and generators.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="ctf">
+      <p class="section-label">CTF engines</p>
+      <h2 class="section-title">Discord missions</h2>
+      <div class="command-highlight-area">
+        <article class="highlight-card">
+          <h3>Access</h3>
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo su</code></div>
+              <p class="highlight-note">Gain Spyo super user context before missions.</p>
+            </li>
+          </ul>
+        </article>
+        <article class="highlight-card">
+          <h3>Stats</h3>
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo mystat</code></div>
+              <p class="highlight-note">View your CTF history and points.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo leaderboard</code></div>
+              <p class="highlight-note">Check the global rankings.</p>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-command"><code>sudo cat ctfrules</code></div>
+              <p class="highlight-note">Print the arena rulebook.</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo time_machine</code>, <code>sudo imagemsg</code>, <code>sudo itsthere</code></div><p>Hidden flag quests across web and imagery.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo which_state</code>, <code>sudo esab32</code>, <code>sudo zero_polyalpha</code></div><p>OSINT and cipher puzzles.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo botosint</code>, <code>sudo plzstay</code>, <code>sudo esoteric_programming</code></div><p>Bot security & quirky language challenges.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo hexoctdecbin</code>, <code>sudo restore</code>, <code>sudo itsgross</code></div><p>Base conversions, image repair, cipher decode.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo unknown</code>, <code>sudo sherlock_t4g</code>, <code>sudo serverosint</code></div><p>Mystery hunts and server OSINT.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo attachment</code>, <code>sudo obscurity</code>, <code>sudo emplacement</code>, <code>sudo obfuscation</code></div><p>Malware triage and reversing practice.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo rox</code>, <code>sudo dissociative</code>, <code>sudo statement</code>, <code>sudo encontrar</code></div><p>Oddball puzzles to sharpen instincts.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="fun">
+      <p class="section-label">Fun & Creation</p>
+      <h2 class="section-title">Epic, random, games, and art</h2>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo noperson</code>, <code>sudo fakeprofile</code>, <code>sudo readmind</code></div><p>AI personas and mind tricks.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo insult</code>, <code>sudo motivate</code>, <code>sudo roast &lt;@user&gt;</code>, <code>sudo joke</code>, <code>sudo advice</code>, <code>sudo facts</code></div><p>Instant banter prompts.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo funnylaw</code>, <code>sudo askgirl</code>, <code>sudo flirt</code></div><p>Conversation sparks.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo gradient_wallpaper</code>, <code>sudo quotewallpaper</code>, <code>sudo news_on &lt;topic&gt;</code></div><p>Visuals and briefings.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo tictactoe</code>, <code>sudo connectfour &lt;@user&gt;</code></div><p>Quick multiplayer games.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo pcwall</code>, <code>sudo mwall</code>, <code>sudo instapost</code></div><p>Create wallpapers and social posts.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo spoil</code>, <code>sudo ascii</code>, <code>sudo act &lt;@user&gt; &lt;msg&gt;</code></div><p>Formatting & identity fun.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo choose &lt;1&gt; &lt;2&gt;</code>, <code>sudo giphy &lt;query&gt;</code></div><p>Random pickers and GIF search.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="system">
+      <p class="section-label">System & Moderation</p>
+      <h2 class="section-title">Utility + guild intel</h2>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo afk &lt;reason&gt;</code>, <code>sudo remind &lt;time&gt; &lt;msg&gt;</code>, <code>sudo cleanup &lt;count&gt;</code></div><p>Status, reminders, and chat hygiene.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo userinfo &lt;@mention&gt;</code>, <code>sudo uiforce &lt;id&gt;</code>, <code>sudo avatar &lt;@mention&gt;</code></div><p>User intelligence.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo permissions &lt;@mention&gt;</code>, <code>sudo botpermissions &lt;#channel&gt;</code>, <code>sudo fullaccess</code></div><p>Permission audits.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo recover</code> / <code>sudo recover edit</code></div><p>Restore deleted or edited messages.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo newusers</code>, <code>sudo mutual_servers</code></div><p>Membership insights.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo findhardmention</code>, <code>sudo finddups</code>, <code>sudo findsame &lt;name&gt;</code></div><p>Locate tricky usernames.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo hidden_channels</code>, <code>sudo rolemembers</code>, <code>sudo channelinfo</code>, <code>sudo roleinfo</code></div><p>Channel and role discovery.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo pwd</code>, <code>sudo serverinfo</code>, <code>sudo uptime</code>, <code>sudo about</code></div><p>Guild + bot stats.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="search">
+      <p class="section-label">General Search</p>
+      <h2 class="section-title">Knowledge lookups</h2>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo search &lt;query&gt;</code></div><p>Find tutorials.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo exploitdb &lt;query&gt;</code><span class="tier tier-premium">Premium</span></div><p>Exploit-DB lookup.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo urban &lt;word&gt;</code></div><p>Urban dictionary definitions.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo define &lt;query&gt;</code><span class="tier tier-premium">Premium</span></div><p>General knowledge answers.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo pypi &lt;query&gt;</code>, <code>sudo pypistats &lt;query&gt;</code></div><p>Python package intel.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo wiki &lt;query&gt;</code></div><p>Wikipedia search.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo github &lt;username&gt;</code></div><p>Pull GitHub account stats.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="emoji">
+      <p class="section-label">Emoji Lab</p>
+      <h2 class="section-title">Guild emoji utilities</h2>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo emoji_clone &lt;emoji&gt;</code>, <code>sudo emoji_delete &lt;emoji&gt;</code></div><p>Clone or remove emoji.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo guild_emoji</code>, <code>sudo find_emoji</code>, <code>sudo search_emoji</code>, <code>sudo random_emoji</code></div><p>Discover emoji catalogs.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo show_emoji &lt;emoji&gt;</code>, <code>sudo emoji_rename &lt;emoji&gt; &lt;name&gt;</code></div><p>Inspect or rename emoji.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="files">
+      <p class="section-label">File system</p>
+      <h2 class="section-title">Persistent notes</h2>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo touch &lt;file&gt; &lt;content&gt;</code>, <code>sudo cat &lt;file&gt;</code>, <code>sudo nano &lt;file&gt; &lt;data&gt;</code></div><p>Create, read, edit notes.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo ls</code>, <code>sudo ls &lt;user&gt;</code></div><p>List files.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo mv &lt;old&gt; &lt;new&gt;</code>, <code>sudo rm &lt;file&gt;</code></div><p>Rename or delete.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo transfer &lt;file&gt; &lt;user&gt;</code></div><p>Change ownership.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo find &lt;name&gt;</code></div><p>Locate file owners or matches.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="reporting">
+      <p class="section-label">Reporting & misc</p>
+      <h2 class="section-title">Reach Spyboy + extras</h2>
+      <ul class="command-table">
+        <li class="command-row"><div class="command-line"><code>sudo vote</code>, <code>sudo botlist</code>, <code>sudo invite</code></div><p>Engage with the ecosystem.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo report &lt;msg&gt;</code></div><p>Ping the developers.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo nostalgia</code>, <code>sudo msgraw</code>, <code>sudo color</code>, <code>sudo gist &lt;msg&gt;</code></div><p>Misc utilities and logging aids.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo iambig &lt;emoji&gt;</code>, <code>sudo echo &lt;channel&gt; &lt;msg&gt;</code>, <code>sudo cd &lt;folder&gt;</code></div><p>Server helpers and navigation.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo makeinvite &lt;bot_id&gt;</code></div><p>Generate bot invite links.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo t2e &lt;msg&gt;</code>, <code>sudo t2h &lt;msg&gt;</code><span class="tier tier-premium">Premium</span></div><p>Text-to-speech (English / Hindi).</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo rtlo &lt;name&gt;&lt;ext&gt;</code>, <code>sudo blue &lt;msg&gt;</code>, <code>sudo zaglo &lt;msg&gt;</code>, <code>sudo fancify &lt;msg&gt;</code>, <code>sudo notsame &lt;msg&gt;</code></div><p>Stylized text builders.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo poll &lt;title&gt; &lt;items&gt;</code>, <code>sudo embed &lt;color&gt; | ...</code>, <code>sudo selfdestruct &lt;channel&gt; &lt;time&gt; &lt;msg&gt;</code></div><p>Advanced messaging utilities.</p></li>
+        <li class="command-row"><div class="command-line"><code>sudo credits</code>, <code>sudo source</code>, <code>sudo privacy</code>, <code>sudo call &lt;msg&gt;</code>, <code>sudo contact &lt;msg&gt;</code></div><p>Policies + direct line to Spyboy.</p></li>
+      </ul>
+    </section>
+
+    <section class="command-section" id="premium">
+      <p class="section-label">Premium runway</p>
+      <h2 class="section-title">Gold-tier perks</h2>
+      <p class="section-copy">Upgrade to Spyo Premium to unlock heavy recon modules, Google dorks, private support lanes, and early command access.</p>
+      <div class="premium-showcase">
+        <h3>Premium command stack</h3>
+        <p>Every gold-tag module is documented below with exact syntax and intent so you can brief teammates before firing a command.</p>
+        <div class="premium-groups">
+          <article class="premium-group">
+            <h3>Recon &amp; enumeration</h3>
+            <ul class="premium-list">
+              <li class="command-row"><div class="command-line"><code>sudo subdomain_enum &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Fetch all known subdomains for a target domain.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo phlookup &lt;number&gt; &lt;country_code&gt;</code><span class="tier tier-premium">Premium</span></div><p>Caller ID lookup with country-aware intelligence.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo social &lt;username&gt;</code> / <code>sudo socialmedia &lt;username&gt;</code><span class="tier tier-premium">Premium</span></div><p>Find profiles by username across 100+ networks in seconds.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo portscan &lt;ip&gt; &lt;port&gt;</code><span class="tier tier-premium">Premium</span></div><p>Check whether a specific service is open on a target IP.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo pagelink &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Extract every hyperlink from a website for crawl analysis.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo shareddns &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Identify other domains that share the same DNS servers.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo reversedns &lt;ip|domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Perform reverse DNS lookups to pivot on infrastructure.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo hostsearch &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>List subdomains and hostnames tied to the target.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo dnslookup &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Pull A, MX, TXT, and NS records for any host.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo ssl &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Review SSL certificate chains and expiry metadata.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo urlscan &lt;url&gt;</code><span class="tier tier-premium">Premium</span></div><p>Scan suspicious or malicious URLs with deep heuristics.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo curl &lt;url&gt; &lt;grep_obj&gt;</code><span class="tier tier-premium">Premium</span></div><p>Fetch a URL and grep for specific objects inline.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo header &lt;url&gt;</code><span class="tier tier-premium">Premium</span></div><p>Inspect HTTP response headers for a given endpoint.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo mask_url &lt;real&gt; &lt;fake&gt; &lt;keyword&gt;</code><span class="tier tier-premium">Premium</span></div><p>Disguise a URL behind a custom domain and phishing keyword.</p></li>
+            </ul>
+          </article>
+          <article class="premium-group">
+            <h3>Google dork suite</h3>
+            <ul class="premium-list">
+              <li class="command-row"><div class="command-line"><code>sudo dork</code><span class="tier tier-premium">Premium</span></div><p>Dump curated Google dorks for cybersecurity investigations.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo subdomain &lt;domain&gt;</code><span class="tier tier-premium">Premium</span></div><p>Use dorks to uncover public subdomains.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo resume &lt;company&gt;</code><span class="tier tier-premium">Premium</span></div><p>Locate resumes mentioning a company via dorks.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo course &lt;subject&gt;</code><span class="tier tier-premium">Premium</span></div><p>Find courseware via advanced Google operators.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo index &lt;data&gt;</code><span class="tier tier-premium">Premium</span></div><p>Search exposed indexes for specific data.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo docs &lt;data&gt;</code><span class="tier tier-premium">Premium</span></div><p>Hunt for public docs containing target keywords.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo mp3 &lt;name&gt;</code><span class="tier tier-premium">Premium</span></div><p>Locate audio files through tailored queries.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo video &lt;name&gt;</code><span class="tier tier-premium">Premium</span></div><p>Find videos exposed on the open web.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo file &lt;data&gt; &lt;type&gt; &lt;year&gt;</code><span class="tier tier-premium">Premium</span></div><p>Zero in on specific file types and years.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo shodan &lt;data&gt;</code><span class="tier tier-premium">Premium</span></div><p>Proxy shodan.io searches from Discord.</p></li>
+            </ul>
+          </article>
+          <article class="premium-group">
+            <h3>Research &amp; automation</h3>
+            <ul class="premium-list">
+              <li class="command-row"><div class="command-line"><code>sudo exploitdb &lt;exploit&gt;</code><span class="tier tier-premium">Premium</span></div><p>Search Exploit Database for published PoCs.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo define &lt;query&gt;</code><span class="tier tier-premium">Premium</span></div><p>Answer general research questions instantly.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo yt &lt;video_name&gt;</code><span class="tier tier-premium">Premium</span></div><p>Pull YouTube matches without leaving Discord.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo fakeprofile</code><span class="tier tier-premium">Premium</span></div><p>Generate realistic burner identities.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo gist &lt;name&gt; &lt;desc&gt;</code><span class="tier tier-premium">Premium</span></div><p>Create unlimited GitHub gists via the bot.</p></li>
+            </ul>
+          </article>
+          <article class="premium-group">
+            <h3>Voice &amp; translation</h3>
+            <ul class="premium-list">
+              <li class="command-row"><div class="command-line"><code>sudo ts &lt;text&gt; &lt;lang&gt;</code><span class="tier tier-premium">Premium</span></div><p>Convert text into speech in any supported language.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo t2e &lt;msg&gt;</code><span class="tier tier-premium">Premium</span></div><p>English-only text-to-speech output.</p></li>
+              <li class="command-row"><div class="command-line"><code>sudo t2h &lt;msg&gt;</code><span class="tier tier-premium">Premium</span></div><p>Hindi text-to-speech delivery.</p></li>
+            </ul>
+          </article>
+          <article class="premium-group">
+            <h3>Access &amp; perks</h3>
+            <ul class="premium-list">
+              <li class="command-row"><div class="command-line"><code>Early access</code><span class="tier tier-premium">Premium</span></div><p>Unlock new commands before public rollout.</p></li>
+              <li class="command-row"><div class="command-line"><code>Whitelist</code><span class="tier tier-premium">Premium</span></div><p>Get whitelisted for sensitive file commands.</p></li>
+              <li class="command-row"><div class="command-line"><code>Exclusive role</code><span class="tier tier-premium">Premium</span></div><p>Receive a bespoke gold role inside Spyboy servers.</p></li>
+              <li class="command-row"><div class="command-line"><code>Private channel</code><span class="tier tier-premium">Premium</span></div><p>Access a private support lane with the team.</p></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Built with ♥ by Spyboy • Need help? <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener">Join the support server</a>
+  </footer>
+</body>
+</html>

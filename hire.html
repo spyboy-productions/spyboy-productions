@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire Spyboy | Cybersecurity Product Engineering & Services</title>
+  <meta name="description" content="Partner with Spyboy for bots, automation, cybersecurity tools, OSINT labs, CTF builds, and secure software delivery. Explore 20+ open-source releases with 4K+ stars.">
+  <meta name="keywords" content="Spyboy, hire Spyboy, cybersecurity services, discord bot development, OSINT tools, automation scripts, CTF challenge builds, security research, penetration testing tools, secure software engineering">
+  <meta name="author" content="Spyboy Productions">
+  <link rel="canonical" href="https://spyboy.in/hire">
+  <link rel="icon" href="./images/logo.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hire Spyboy | Cybersecurity Product Engineering & Services">
+  <meta property="og:description" content="Hire Spyboy to architect bots, automation, apps, CTF labs, and research tooling. 20+ open-source projects with 4,000+ GitHub stars.">
+  <meta property="og:url" content="https://spyboy.in/hire">
+  <meta property="og:image" content="https://spyboy.in/images/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hire Spyboy | Cybersecurity Product Engineering & Services">
+  <meta name="twitter:description" content="Security-first product builds: bots, tools, apps, labs, APIs, and research.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030303;
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-border: rgba(255, 255, 255, 0.08);
+      --text: #f5f5f5;
+      --muted: rgba(255, 255, 255, 0.75);
+      --accent: #f1ec40;
+      --accent-strong: #dc143c;
+      --glow: rgba(241, 236, 64, 0.3);
+      --mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', 'Poppins', sans-serif;
+      background: radial-gradient(circle at 15% 20%, rgba(241,236,64,0.18), transparent 60%),
+                  radial-gradient(circle at 80% 0%, rgba(220,20,60,0.18), transparent 50%),
+                  #050505;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 70px 70px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    header.hire-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.35rem clamp(1.5rem, 4vw, 3rem);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: transparent;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .brand-mark {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark span {
+      color: var(--accent);
+    }
+
+    .hire-nav a.btn-link {
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      transition: 0.2s ease;
+    }
+
+    .hire-nav a.btn-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero {
+      margin-top: clamp(1rem, 4vw, 3rem);
+      padding: clamp(2rem, 5vw, 4rem);
+      border-radius: 40px;
+      border: 1px solid rgba(241, 236, 64, 0.35);
+      background: linear-gradient(135deg, rgba(8,8,15,0.95), rgba(3,3,6,0.9));
+      box-shadow: 0 35px 80px rgba(0,0,0,0.6);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 34px;
+      border: 1px dashed rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
+      font-weight: 600;
+      background: linear-gradient(120deg, #fef9b0, var(--accent-strong));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      max-width: 48ch;
+    }
+
+    .hero-panel-stats,
+    .hero-stats {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .hero-stat {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 0.85rem 1rem;
+      background: rgba(10,10,10,0.4);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-stat span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-points {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .hero-points li {
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 0.35rem 1.1rem;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .hero-cta {
+      margin-top: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.9rem 2.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+      color: #050505;
+      box-shadow: 0 20px 40px rgba(220,20,60,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-note-link {
+      margin-top: 0.5rem;
+      color: var(--muted);
+    }
+
+    .hero-note-link a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(241,236,64,0.4);
+    }
+
+    .hero-note-link a:hover {
+      color: #fff9c4;
+    }
+
+    .hero-panel {
+      background: radial-gradient(circle at 20% 20%, rgba(241,236,64,0.18), transparent 65%), rgba(12,12,12,0.85);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+      padding: 1.5rem;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .hero-panel h2 {
+      font-size: 0.95rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero-panel ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .hero-panel li strong {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-panel li span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section {
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .section-heading {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      border-radius: 26px;
+      padding: 1.75rem;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -35% -35%;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, var(--glow), transparent 70%);
+      pointer-events: none;
+    }
+
+    .service-icon {
+      font-size: 1.5rem;
+    }
+
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .service-list li {
+      border-left: 2px solid rgba(241,236,64,0.25);
+      padding-left: 0.85rem;
+    }
+
+    .service-list strong {
+      font-size: 1rem;
+    }
+
+    .service-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: block;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      border-radius: 28px;
+      padding: 1.75rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+    }
+
+    .info-card h3 {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      color: var(--muted);
+    }
+
+    .pricing-panel {
+      border-radius: 36px;
+      padding: clamp(1.75rem, 4vw, 2.5rem);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(135deg, rgba(241,236,64,0.08), rgba(255,255,255,0));
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    }
+
+    .pricing-panel .tagline {
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .price {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-panel p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-panel ul {
+      list-style: none;
+      text-align: left;
+      color: var(--muted);
+      margin: 0 auto 1.5rem;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-block {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.45);
+    }
+
+    .contact-block h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-block a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(241,236,64,0.5);
+    }
+
+    .contact-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+
+    .ethical {
+      margin-top: 2.5rem;
+      padding: 1.2rem 1.6rem;
+      border-radius: 22px;
+      border: 1px solid rgba(220,20,60,0.35);
+      background: rgba(220,20,60,0.08);
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      margin: 3rem 0 1.5rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 100;
+    }
+
+    .contact-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .contact-modal-card {
+      max-width: 420px;
+      width: 100%;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(5,5,5,0.9));
+      padding: 2rem;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.55);
+      position: relative;
+      text-align: center;
+    }
+
+    .contact-modal h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-modal p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 14px;
+      border: 1px solid rgba(241,236,64,0.6);
+      background: rgba(241,236,64,0.08);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-family: var(--mono);
+      margin-bottom: 1rem;
+      word-break: break-all;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .copy-status {
+      font-size: 0.85rem;
+      color: var(--accent);
+      min-height: 1.2rem;
+    }
+
+    @media (max-width: 640px) {
+      header.hire-nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .hero-points {
+        flex-direction: column;
+      }
+
+      .hero-cta .btn-primary,
+      .hero-cta .btn-secondary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hire-nav">
+    <div class="brand-mark">Spy<span>Boy</span> Services</div>
+    <a class="btn-link" href="index.html">Home</a>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero" id="top">
+      <div>
+        <p class="section-heading">Hire Spyboy</p>
+        <h1>Ship mission-ready security products.</h1>
+        <p>At <strong>Spyboy</strong>, we architect, prototype, and harden security-grade software—ethical hacking utilities, OSINT suites, Discord bots, automation scripts, mobile apps, training labs, and research-grade tooling. Every engagement blends offensive insight with product polish, backed by an active open-source lab.</p>
+        <ul class="hero-points" aria-label="Key capabilities">
+          <li>Ethical Recon &amp; OSINT</li>
+          <li>Bots • Apps • Tools</li>
+          <li>CTF &amp; Education Labs</li>
+          <li>Security Research</li>
+        </ul>
+        <div class="hero-cta">
+          <button class="btn-primary js-open-contact" type="button">Request a build</button>
+          <a class="btn-secondary" href="#quote">View pricing</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>Engagement snapshot</h2>
+        <ul>
+          <li>
+            <strong>Scope</strong>
+            <span>Bots, automation, apps, security tooling, CTF builds</span>
+          </li>
+          <li>
+            <strong>Delivery</strong>
+            <span>Concept → architecture → build → QA → handoff</span>
+          </li>
+          <li>
+            <strong>Lead time</strong>
+            <span>Starts at 7-10 business days, faster with rush fee</span>
+          </li>
+          <li>
+            <strong>Support</strong>
+            <span>Ongoing maintenance available as an add-on</span>
+          </li>
+        </ul>
+        <div class="hero-panel-stats">
+          <div class="hero-stat">
+            <strong>20+</strong>
+            <span>Open-source builds</span>
+          </div>
+          <div class="hero-stat">
+            <strong>4,000+</strong>
+            <span>GitHub stars</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1,000+</strong>
+            <span>Forks</span>
+          </div>
+          <a class="hero-stat" href="https://github.com/spyboy-productions" target="_blank" rel="noopener">
+            <strong>Explore</strong>
+            <span>github.com/spyboy-productions</span>
+          </a>
+        </div>
+        <p class="hero-note-link">Browse every repo at <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">github.com/spyboy-productions</a>.</p>
+      </aside>
+    </section>
+
+    <section id="offerings">
+      <p class="section-heading">What we can build &amp; deliver</p>
+      <h2 class="section-title">Product engineering across the security stack</h2>
+      <p class="section-copy">Every project is scoped for legal, ethical, and authorized use only. Below are baseline deliverables and starting budgets—real quotes account for complexity, integrations, research time, and post-launch support.</p>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3 class="service-title">Bots &amp; Automation</h3>
+          <p>Security-first automations, Discord copilots, and workflow scripts.</p>
+          <ul class="service-list">
+            <li><strong>Discord Bot Development</strong> — from $150<span class="service-note">Security bots, moderation, alerts, CTF utilities</span></li>
+            <li><strong>Custom Automation Bot / Script</strong> — from $120<span class="service-note">CLI, API-driven, or scheduled jobs</span></li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">💻</div>
+          <h3 class="service-title">Software &amp; Tools</h3>
+          <p>From PoCs to production-ready cross-platform tooling.</p>
+          <ul class="service-list">
+            <li><strong>CLI-based PC Software</strong> — from $200<span class="service-note">Windows • Linux • macOS</span></li>
+            <li><strong>Desktop Software with GUI</strong> — from $300<span class="service-note">Python / cross-platform interfaces</span></li>
+            <li><strong>Educational Hacking Tool / PoC</strong> — from $100<span class="service-note">Strictly for learning &amp; research</span></li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">📱</div>
+          <h3 class="service-title">Apps &amp; Extensions</h3>
+          <p>Mobile and browser-native delivery for your security use case.</p>
+          <ul class="service-list">
+            <li><strong>Android App Development</strong> — from $300</li>
+            <li><strong>Chrome / Chromium Extension</strong> — from $150</li>
+            <li><strong>Website Setup (WordPress / others)</strong> — from $100<span class="service-note">Theme install, security hardening, launch</span></li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🧩</div>
+          <h3 class="service-title">Libraries, APIs &amp; Packages</h3>
+          <p>Ship reusable components, SDKs, or internal APIs.</p>
+          <ul class="service-list">
+            <li><strong>Python Package (PyPI-ready)</strong> — from $120</li>
+            <li><strong>Cybersecurity API</strong> — from $250<span class="service-note">Recon, automation, scoring, or intel feeds</span></li>
+            <li><strong>Security Library / SDK</strong> — from $200</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🧪</div>
+          <h3 class="service-title">CTFs &amp; Training</h3>
+          <p>Education-first experiences for teams, classrooms, or communities.</p>
+          <ul class="service-list">
+            <li><strong>Custom CTF Challenges</strong> — from $150</li>
+            <li><strong>CTF Labs / Vulnerable Environments</strong> — from $250</li>
+            <li><strong>Tailor-Made Hacking Course</strong> — from $200<span class="service-note">1-on-1 or team-based, topic-specific</span></li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3 class="service-title">Security &amp; Research</h3>
+          <p>Applied research, bug bounty style reviews, and OSINT briefs.</p>
+          <ul class="service-list">
+            <li><strong>Web / API Security Review</strong> — from $300<span class="service-note">Bug bounty methodology</span></li>
+            <li><strong>OSINT &amp; Attack Surface Analysis</strong> — from $200</li>
+            <li><strong>Security Research &amp; Tooling PoC</strong> — from $150</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="process">
+      <p class="section-heading">How we collaborate</p>
+      <h2 class="section-title">Transparent build, test, and delivery</h2>
+      <div class="two-column">
+        <article class="info-card">
+          <h3>Delivery rhythm</h3>
+          <ul>
+            <li>📋 Intake brief → scope lock → formal quote</li>
+            <li>🧠 Architecture &amp; research sprint with check-ins</li>
+            <li>🛠️ Build cycles with demos or preview links</li>
+            <li>🧪 QA, documentation, and operator handbook</li>
+            <li>🚀 Deployment support + optional maintenance retainer</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h3>Notes &amp; policies</h3>
+          <ul>
+            <li>Pricing scales with features, integrations, and urgency</li>
+            <li>Rush turnarounds and weekend builds available with surcharge</li>
+            <li>Discounts for open-source, student teams, or long-term retainers</li>
+            <li>Source code, documentation, and credentials handed off securely</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="quote">
+      <div class="pricing-panel">
+        <p class="tagline">Base pricing</p>
+        <div class="price">Starting ₹25,000 / $300 USD</div>
+        <p>Educational hacking tools &amp; PoCs begin at $100 USD. Complex builds (multi-surface apps, infra, research) receive a custom quotation after scoping.</p>
+        <ul>
+          <li>Feature complexity &amp; integrations</li>
+          <li>Platform (bot / app / API / course)</li>
+          <li>Timeline &amp; support requirements</li>
+          <li>Research depth &amp; infrastructure spend</li>
+        </ul>
+        <button class="btn-primary js-open-contact" type="button">Get a custom quote</button>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-block">
+        <p class="section-heading">Get a quote</p>
+        <h2>Ready to build with Spyboy?</h2>
+        <p>Send a concise brief to <a href="mailto:contact@spyboy.in">contact@spyboy.in</a>.</p>
+        <ul class="contact-details">
+          <li>• What you want to build (bot, tool, API, course, etc.)</li>
+          <li>• Target platform &amp; audience</li>
+          <li>• Desired timeline &amp; budget range</li>
+          <li>• Any compliance, hosting, or support constraints</li>
+        </ul>
+        <div class="ethical">
+          <strong>Ethical Use Policy</strong><br>
+          All services are provided strictly for legal, ethical, and authorized purposes. Spyboy does not engage in or support illegal hacking or misuse of delivered tools.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Build smart. Build secure. Build with Spyboy.
+    </footer>
+  </main>
+
+  <div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="contact-modal-card">
+      <button class="modal-close" type="button" aria-label="Close contact popup">&times;</button>
+      <p class="section-heading" id="contactModalTitle">Contact Spyboy</p>
+      <h3>Send your request</h3>
+      <p>Drop a detailed brief to unlock a scoped quote. Include platform, purpose, timeline, and budget range.</p>
+      <div class="contact-email" id="contactEmailDisplay">contact@spyboy.in</div>
+      <div class="modal-actions">
+        <button class="btn-primary" type="button" id="copyContactEmail">Copy email</button>
+        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Spyboy%20Custom%20Quote">Open mail client</a>
+        <div class="copy-status" id="copyStatus" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const CONTACT_EMAIL = 'contact@spyboy.in';
+      const modal = document.getElementById('contactModal');
+      const closeBtn = modal?.querySelector('.modal-close');
+      const copyBtn = document.getElementById('copyContactEmail');
+      const statusEl = document.getElementById('copyStatus');
+      const emailDisplay = document.getElementById('contactEmailDisplay');
+      const openers = document.querySelectorAll('.js-open-contact');
+
+      if (emailDisplay) emailDisplay.textContent = CONTACT_EMAIL;
+
+      const openModal = () => modal?.classList.add('active');
+      const closeModal = () => {
+        modal?.classList.remove('active');
+        if (statusEl) statusEl.textContent = '';
+      };
+
+      openers.forEach((btn) => btn.addEventListener('click', openModal));
+      closeBtn?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeModal();
+      });
+
+      copyBtn?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(CONTACT_EMAIL);
+          if (statusEl) statusEl.textContent = 'Copied!';
+        } catch (err) {
+          window.prompt('Copy email', CONTACT_EMAIL);
+        } finally {
+          setTimeout(() => {
+            if (statusEl) statusEl.textContent = '';
+          }, 1500);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

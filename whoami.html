@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spyboy Specter Recon Lab | Zero-Trust Exposure Scanner</title>
+  <meta name="description" content="Spyboy Specter Recon Lab reveals the IP, DNS, WebRTC, fingerprinting, and device signals every website can read — all computed client-side.">
+  <meta name="keywords" content="IP leak test, browser fingerprinting, WebRTC leak detector, DNS resolver check, VPN detection tool, Spyboy recon lab, privacy scanner">
+  <link rel="canonical" href="https://spyboy-productions.github.io/whoami.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Spyboy Specter Recon Lab">
+  <meta property="og:description" content="Run a zero-trust exposure scan that maps your IP lineage, DNS resolvers, WebRTC surfaces, and browser fingerprints without leaving the browser.">
+  <meta property="og:url" content="https://spyboy-productions.github.io/whoami.html">
+  <meta property="og:image" content="https://spyboy-productions.github.io/assets/spyboy-recon-share.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./images/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ::selection {
+      background: rgba(220, 20, 60, 0.6);
+      color: #050505;
+    }
+
+    :root {
+      --bg: #050505;
+      --bg-secondary: #0b0b12;
+      --panel: rgba(255, 255, 255, 0.02);
+      --panel-border: rgba(255, 255, 255, 0.08);
+      --panel-highlight: rgba(241, 236, 64, 0.35);
+      --text: #f5f5f5;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --accent: #f1ec40;
+      --accent-strong: #dc143c;
+      --warning: #fbbf24;
+      --error: #ef4444;
+      --mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+    }
+
+    body {
+      font-family: 'Poppins', 'Ubuntu', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(241, 236, 64, 0.08), transparent 60%),
+        radial-gradient(circle at 80% 0%, rgba(220, 20, 60, 0.18), transparent 55%),
+        linear-gradient(120deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem) 4rem;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(2rem, 5vw, 3rem);
+      padding: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+      border-radius: 36px;
+      border: 1px solid rgba(241, 236, 64, 0.35);
+      background: radial-gradient(circle at 20% 20%, rgba(241, 236, 64, 0.06), transparent 60%),
+                  radial-gradient(circle at 80% 0%, rgba(220, 20, 60, 0.08), transparent 55%),
+                  linear-gradient(135deg, rgba(7,7,12,0.95), rgba(3,3,8,0.95));
+      box-shadow: 0 35px 85px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        120deg,
+        rgba(241, 236, 64, 0.03),
+        rgba(241, 236, 64, 0.03) 2px,
+        transparent 2px,
+        transparent 12px
+      );
+      animation: scan 8s linear infinite;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, rgba(241, 236, 64, 0.6), rgba(220, 20, 60, 0.25));
+      mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.28;
+    }
+
+    @keyframes scan {
+      0% { transform: translateX(-10%); }
+      100% { transform: translateX(10%); }
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-eyebrow::before {
+      content: "▣";
+      font-size: 0.9rem;
+      color: var(--accent-strong);
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 6vw, 3.6rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(120deg, #f7ff8f, var(--accent-strong));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .meta-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.4rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      backdrop-filter: blur(20px);
+    }
+
+    .meta-pill.accent {
+      border-color: rgba(241, 236, 64, 0.6);
+      color: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero-actions .btn.secondary {
+      background: linear-gradient(120deg, rgba(241,236,64,0.18), rgba(241,236,64,0.05));
+      border-color: rgba(241,236,64,0.65);
+      color: var(--accent);
+      box-shadow: inset 0 0 12px rgba(241,236,64,0.15), 0 10px 25px rgba(0,0,0,0.35);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-actions .btn.secondary:hover {
+      box-shadow: inset 0 0 18px rgba(241,236,64,0.25), 0 14px 30px rgba(0,0,0,0.45);
+      color: #fff7b3;
+      border-color: rgba(241,236,64,0.9);
+    }
+
+    .hero-scroll-icon {
+      font-size: 1.1rem;
+      display: inline-flex;
+      transform: translateY(2px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.85rem 1.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      font-family: inherit;
+    }
+
+    .btn.primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+      color: #050505;
+      box-shadow: 0 18px 45px rgba(220, 20, 60, 0.35);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 55px rgba(220, 20, 60, 0.45);
+    }
+
+    .hero-note {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      padding: 1.75rem;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .hero-panel h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero-panel ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-panel li {
+      display: flex;
+      gap: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-panel li::before {
+      content: "◆";
+      color: var(--accent);
+      font-size: 0.65rem;
+      margin-top: 0.35rem;
+    }
+
+    .recon-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0;
+      margin: 0 0 1.25rem;
+    }
+
+    .recon-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .recon-list strong {
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .recon-list span {
+      color: rgba(245,245,245,0.8);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .hero-terminal {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.45);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--accent);
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .hero-terminal span {
+      color: var(--text-muted);
+    }
+
+    .client-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(241,236,64,0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .client-note::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #34ff5a, rgba(52,255,90,0.1));
+      box-shadow: 0 0 12px rgba(52, 255, 90, 0.8);
+    }
+
+    .intel-overview {
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .intel-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .intel-header h2 {
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      color: #fff;
+    }
+
+    .intel-header p {
+      color: var(--text-muted);
+      max-width: 760px;
+    }
+
+    .intel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .intel-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 1.25rem;
+      background: rgba(5,5,5,0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intel-card::after {
+      content: attr(data-code);
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: rgba(241,236,64,0.35);
+    }
+
+    .intel-card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .intel-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.92rem;
+    }
+
+    .intel-card li::before {
+      content: "▹";
+      margin-right: 0.35rem;
+      color: var(--accent-strong);
+    }
+
+    .seo-overview,
+    .faq-section {
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.015);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .seo-overview h2,
+    .faq-section h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .seo-overview p,
+    .faq-section p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .seo-highlight {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .seo-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 1rem;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .seo-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 1.25rem;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+
+    .inline-link {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(241,236,64,0.4);
+    }
+
+    .inline-link:hover {
+      color: var(--accent-strong);
+      border-color: var(--accent-strong);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 22px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(18px);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      overflow: hidden;
+    }
+
+    .stacked-block {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .signals-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .signal-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .signal-item span:last-child {
+      color: var(--text);
+      font-family: var(--mono);
+      text-align: right;
+    }
+
+    .map-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .map-frame {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 240px;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .map-frame iframe {
+      border: 0;
+      width: 100%;
+      height: 260px;
+    }
+
+    .map-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .map-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: var(--mono);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .map-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -40% -40%;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(241, 236, 64, 0.2), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      border-color: rgba(241, 236, 64, 0.7);
+      transform: translateY(-6px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 35px rgba(241, 236, 64, 0.2);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .data-row:last-child {
+      border-bottom: none;
+    }
+
+    .data-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .data-value {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--text);
+      text-align: right;
+      max-width: 60%;
+      word-break: break-all;
+    }
+
+    .data-value.highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: var(--text-muted);
+      padding: 1rem 0;
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .headers-table {
+      width: 100%;
+      min-width: 420px;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .headers-table th,
+    .headers-table td {
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .headers-table th {
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .headers-table td:first-child {
+      color: var(--text-muted);
+      width: 28%;
+      white-space: nowrap;
+    }
+
+    .headers-table td:last-child {
+      font-family: var(--mono);
+      color: var(--text);
+      white-space: normal;
+      word-break: break-all;
+    }
+
+    .ip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      max-width: 260px;
+      justify-content: flex-end;
+    }
+
+    .ip-tag {
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid rgba(241, 236, 64, 0.6);
+      background: rgba(241, 236, 64, 0.08);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    .warning-tag {
+      border-color: rgba(220, 20, 60, 0.6);
+      background: rgba(220, 20, 60, 0.08);
+      color: var(--accent-strong);
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--panel-border);
+      color: var(--text-muted);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .copy-btn:hover,
+    .copy-btn.copied {
+      background: var(--accent);
+      color: #050505;
+      border-color: var(--accent);
+    }
+
+    .fingerprint-score {
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .fingerprint-score .btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .score-high {
+      color: var(--error);
+    }
+
+    .score-medium {
+      color: var(--warning);
+    }
+
+    .score-low {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+      padding: 2rem 0 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .data-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .data-value {
+        max-width: 100%;
+        text-align: left;
+      }
+
+      .ip-list {
+        justify-content: flex-start;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Spyboy Specter Recon Lab</p>
+        <h1>Zero-Trust Exposure Scanner</h1>
+        <p class="hero-subtitle">
+          This is the exact telemetry packet every site can siphon the moment you connect—IP lineage, DNS resolvers, WebRTC leaks,
+          fingerprint entropy, GPU traits, and locale metadata—no servers, no storage, no excuses.
+        </p>
+        <div class="hero-meta">
+          <span class="meta-pill">Client-side only</span>
+          <span class="meta-pill">No storage or logs</span>
+          <span class="meta-pill accent">WebRTC • DNS • Headers</span>
+          <span class="meta-pill">Map-ready geo hits</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn primary" type="button" onclick="location.reload()">
+            ↻ Run New Sweep
+          </button>
+          <a class="btn secondary" href="#recon-cards">
+            <span class="hero-scroll-icon">▼</span>
+            View Recon Suite
+          </a>
+          <span class="hero-note">Cycle this scan every time your VPN, browser, or device context changes.</span>
+        </div>
+        <div class="client-note">
+          All detection happens client-side • no data leaves your machine
+        </div>
+      </div>
+      <div class="hero-panel">
+        <h2>Recon modules</h2>
+        <ul class="recon-list">
+          <li>
+            <strong>Network Surface</strong>
+            <span>IP lineage, ASN ownership, and IPv6 reachability reveal whether you look like a home user, VPN exit, or data-center host.</span>
+          </li>
+          <li>
+            <strong>Leak Surfaces</strong>
+            <span>WebRTC candidates, DNS resolvers, and timezone drift expose hidden interfaces or mismatch signals that deanonymize you.</span>
+          </li>
+          <li>
+            <strong>Device Signals</strong>
+            <span>Browser, screen, GPU, canvas, and audio hashes create a fingerprint that persists even when your IP changes.</span>
+          </li>
+          <li>
+            <strong>Privacy Controls</strong>
+            <span>DNT, GPC, storage availability, and connection throttles show whether your browser leaks or blocks high-entropy data.</span>
+          </li>
+        </ul>
+        <div class="hero-terminal">
+          <strong>Recon stack</strong><br>
+          • Client script sweeps public + local network hints<br>
+          • Signals are scored, never transmitted<br>
+          • Export locally and purge when finished
+        </div>
+      </div>
+    </header>
+
+    <section class="intel-overview" aria-labelledby="intel-heading">
+      <div class="intel-header">
+        <h2 id="intel-heading">What every website fingerprints instantly</h2>
+        <p>
+          Before any consent banner or login form loads, the browser already leaks a dossier. Below is the standard collection kit:
+          no scripts, no tracking pixels—just raw HTTP/JS surfaces. Use this to tighten privacy budgets or brief teammates.
+        </p>
+      </div>
+      <div class="intel-grid">
+        <div class="intel-card" data-code="IP/DNS">
+          <h3>Network Identity</h3>
+          <ul>
+            <li>Public IPv4 &amp; IPv6 pairing</li>
+            <li>ASN / ISP org fingerprint</li>
+            <li>DNS resolver geolocation</li>
+            <li>VPN / hosting heuristics</li>
+          </ul>
+        </div>
+        <div class="intel-card" data-code="RTC">
+          <h3>Leak Surfaces</h3>
+          <ul>
+            <li>WebRTC local/public candidates</li>
+            <li>Potential IPv6 bleed</li>
+            <li>Timezone drift vs. IP region</li>
+            <li>Navigator connection hints</li>
+          </ul>
+        </div>
+        <div class="intel-card" data-code="FPX">
+          <h3>Fingerprint Stack</h3>
+          <ul>
+            <li>Browser + OS user agent</li>
+            <li>Screen, pixel ratio, viewport</li>
+            <li>Canvas, audio, WebGL hashes</li>
+            <li>Privacy flags (DNT, GPC, storage)</li>
+          </ul>
+        </div>
+        <div class="intel-card" data-code="GEO">
+          <h3>Geospatial Context</h3>
+          <ul>
+            <li>City and region resolution</li>
+            <li>Lat/Long map handoff</li>
+            <li>Locale clock + UTC offset</li>
+            <li>Quick map links for review</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-overview" aria-labelledby="seo-overview-heading" id="recon-suite">
+      <h2 id="seo-overview-heading">Why run a Spyboy recon sweep?</h2>
+      <p>
+        Spyboy Specter Recon Lab is built for privacy researchers, VPN providers, blue-team analysts, and curious users who need proof of
+        what the web can infer. This client-side exposure scan surfaces the exact telemetry packet most analytics scripts harvest:
+        IP and ASN lineage, DNS resolver footprint, WebRTC leaks, browser fingerprints, locale and connection metadata, and even GPU
+        signatures—all without sending your data off-device.
+      </p>
+      <div class="seo-highlight">
+        <div class="seo-card">
+          <h3>Client-side zero trust</h3>
+          <p>Everything happens in your browser. No API keys, no backend storage, no tracking pixels—just pure diagnostics.</p>
+        </div>
+        <div class="seo-card">
+          <h3>High-entropy signals</h3>
+          <p>Fingerprinting inputs (canvas/audio hashes, WebGL vendors, headers, storage flags) show how persistent you really appear.</p>
+        </div>
+        <div class="seo-card">
+          <h3>Instant VPN sanity check</h3>
+          <p>Compare ISP, ASN, DNS, and WebRTC data to see if a VPN truly masks your access point, then jump to maps with one click.</p>
+        </div>
+        <div class="seo-card">
+          <h3>Shareable evidence</h3>
+          <p>Copy key readings, export screenshots, or reference the live map links when reporting privacy or compliance issues.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently asked privacy questions</h2>
+      <div class="faq-list">
+        <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+          <h3 itemprop="name">What makes this different from generic IP checkers?</h3>
+          <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <span itemprop="text">Most IP checkers only display your public IPv4 address. Spyboy Specter Recon Lab inspects DNS resolver paths, WebRTC candidates,
+            browser APIs, GPU fingerprints, storage flags, and locale offsets to show the same high-entropy fingerprint ad-tech companies assemble.</span>
+          </p>
+        </article>
+        <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+          <h3 itemprop="name">Is my data sent to Spyboy servers?</h3>
+          <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <span itemprop="text">No. Every detection runs inside your browser with open APIs (ipapi, ipify, EDNS). Nothing is stored, logged, or transmitted back.
+            View the page source or host it yourself to verify.</span>
+          </p>
+        </article>
+        <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+          <h3 itemprop="name">Can I link to this scanner or embed it?</h3>
+          <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <span itemprop="text">Yes—share <a class="inline-link" href="https://spyboy-productions.github.io/whoami.html">Spyboy Specter Recon Lab</a> or fork the
+            repo to serve it privately. Attribution is appreciated but not required.</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <div class="grid" id="recon-cards" itemscope itemtype="https://schema.org/WebApplication">
+      <meta itemprop="name" content="Spyboy Specter Recon Lab">
+      <meta itemprop="description" content="Client-side zero-trust exposure scanner revealing IP, DNS, WebRTC, fingerprint, and privacy signals.">
+      <meta itemprop="applicationCategory" content="SecurityApplication">
+      <meta itemprop="operatingSystem" content="Web">
+      <!-- Network Surface -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="card-title">Network Surface</span>
+        </div>
+        <div id="ip-info">
+          <div class="loading"><div class="spinner"></div> Detecting...</div>
+        </div>
+        <div id="ipv6-info" class="stacked-block">
+          <div class="loading"><div class="spinner"></div> Checking IPv6...</div>
+        </div>
+      </div>
+
+      <!-- Geo Footprint -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span class="card-title">Geo &amp; ISP Footprint</span>
+        </div>
+        <div id="ip-details">
+          <div class="loading"><div class="spinner"></div> Loading...</div>
+        </div>
+      </div>
+
+      <!-- Recon Map -->
+      <div class="card map-card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M20 6L9 17l-5-5"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span class="card-title">Recon Map Links</span>
+        </div>
+        <div class="map-frame" id="map-frame">
+          <div class="loading"><div class="spinner"></div> Awaiting coordinates...</div>
+        </div>
+        <div class="map-links" id="map-links">
+          <span class="data-label">Links populate once geo lookup resolves.</span>
+        </div>
+      </div>
+
+      <!-- VPN / Proxy -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+          <span class="card-title">VPN / Proxy Signals</span>
+        </div>
+        <div id="vpn-info">
+          <div class="loading"><div class="spinner"></div> Analyzing...</div>
+        </div>
+      </div>
+
+      <!-- DNS Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span class="card-title">DNS Resolvers</span>
+        </div>
+        <div id="dns-info">
+          <div class="loading"><div class="spinner"></div> Detecting...</div>
+        </div>
+      </div>
+
+      <!-- WebRTC Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span class="card-title">WebRTC Exposure</span>
+        </div>
+        <div id="webrtc-info">
+          <div class="loading"><div class="spinner"></div> Scanning...</div>
+        </div>
+      </div>
+
+      <!-- Connection Insights -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M2 12h20"></path>
+            <path d="M7 16l4-8 2.5 5 2-3 1.5 2"></path>
+          </svg>
+          <span class="card-title">Connection Insights</span>
+        </div>
+        <div id="connection-info">
+          <div class="loading"><div class="spinner"></div> Probing...</div>
+        </div>
+      </div>
+
+      <!-- System Info Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+          <span class="card-title">System Information</span>
+        </div>
+        <div id="system-info"></div>
+      </div>
+
+      <!-- Browser Info Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="21.17" y1="8" x2="12" y2="8"></line>
+            <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+            <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+          </svg>
+          <span class="card-title">Browser Information</span>
+        </div>
+        <div id="browser-info"></div>
+      </div>
+
+      <!-- Screen Info Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span class="card-title">Screen &amp; Display</span>
+        </div>
+        <div id="screen-info"></div>
+      </div>
+
+      <!-- Locale & Time -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l3 2"></path>
+          </svg>
+          <span class="card-title">Locale &amp; Time</span>
+        </div>
+        <div id="locale-info"></div>
+      </div>
+
+      <!-- Graphics & GPU -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <polygon points="3 11 12 2 21 11 12 22 3 11"></polygon>
+            <circle cx="12" cy="11" r="2"></circle>
+          </svg>
+          <span class="card-title">Graphics &amp; GPU</span>
+        </div>
+        <div id="graphics-info"></div>
+      </div>
+
+      <!-- Privacy Signals -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+          <span class="card-title">Privacy Signals</span>
+        </div>
+        <div id="privacy-info"></div>
+      </div>
+
+      <!-- Headers Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span class="card-title">HTTP Request Headers</span>
+        </div>
+        <div id="headers-info"></div>
+      </div>
+
+      <!-- Fingerprinting Score Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+            <rect x="6" y="6" width="4" height="4"></rect>
+            <rect x="14" y="6" width="4" height="4"></rect>
+            <rect x="6" y="14" width="4" height="4"></rect>
+            <rect x="14" y="14" width="4" height="4"></rect>
+          </svg>
+          <span class="card-title">Browser Fingerprinting</span>
+        </div>
+        <div id="fingerprint-info">
+          <div class="loading"><div class="spinner"></div> Calculating...</div>
+        </div>
+      </div>
+
+      <!-- Canvas/Audio Fingerprint Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          <span class="card-title">Canvas &amp; Audio Fingerprint</span>
+        </div>
+        <div id="canvas-audio-info">
+          <div class="loading"><div class="spinner"></div> Generating...</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>All detection happens client-side • No data is stored or transmitted</p>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function setHTML(id, html) {
+      const node = $(id);
+      if (node) node.innerHTML = html;
+    }
+
+    function createDataRow(label, value, highlight = false) {
+      return `
+        <div class="data-row">
+          <span class="data-label">${label}</span>
+          <span class="data-value ${highlight ? 'highlight' : ''}">${value}</span>
+        </div>
+      `;
+    }
+
+    function renderSignalList(signals = []) {
+      if (!signals.length) {
+        return `<p class="data-label">No signals collected.</p>`;
+      }
+      return `
+        <div class="signals-list">
+          ${signals.map(([label, value]) => `
+            <div class="signal-item">
+              <span>${label}</span>
+              <span>${value}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    async function hashString(source) {
+      const text = String(source || '');
+      if (window.crypto?.subtle) {
+        const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 16);
+      }
+      let hash = 0;
+      for (let i = 0; i < text.length; i += 1) {
+        hash = (hash << 5) - hash + text.charCodeAt(i);
+        hash |= 0;
+      }
+      return Math.abs(hash).toString(16);
+    }
+
+    async function fetchIPDetails() {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+
+        setHTML('ip-info', `
+          ${createDataRow('Public IP (IPv4)', data.ip || 'Unknown', true)}
+          ${createDataRow('IP Version', data.version || 'Unknown')}
+          ${createDataRow('ASN', data.asn || 'Unknown')}
+          ${createDataRow('Organization', data.org || 'Unknown')}
+        `);
+
+        setHTML('ip-details', `
+          ${createDataRow('Country', `${data.country_name || 'Unknown'} (${data.country_code || '--'})`)}
+          ${createDataRow('Region', data.region || 'Unknown')}
+          ${createDataRow('City', data.city || 'Unknown')}
+          ${createDataRow('Timezone', data.timezone || 'Unknown')}
+          ${createDataRow('Latitude', data.latitude || 'Unknown')}
+          ${createDataRow('Longitude', data.longitude || 'Unknown')}
+        `);
+
+        updateVPNSignals(data);
+        updateMapVisualization(data);
+      } catch (error) {
+        setHTML('ip-info', createDataRow('Error', 'Failed to fetch IP'));
+        setHTML('ip-details', createDataRow('Error', 'Failed to fetch details'));
+        setHTML('vpn-info', createDataRow('Status', 'IP intelligence unavailable'));
+        setHTML('map-frame', `<div class="loading"><div class="spinner"></div> Map requires geo data.</div>`);
+        setHTML('map-links', `<span class="data-label">Unable to render links without coordinates.</span>`);
+      }
+    }
+
+    function updateMapVisualization(data = {}) {
+      const latitude = parseFloat(data.latitude ?? data.lat);
+      const longitude = parseFloat(data.longitude ?? data.lon);
+      if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+        setHTML('map-frame', `<div class="loading"><div class="spinner"></div> Coordinates unavailable.</div>`);
+        setHTML('map-links', `<span class="data-label">Waiting for provider to expose lat/long.</span>`);
+        return;
+      }
+      const latFixed = latitude.toFixed(5);
+      const lonFixed = longitude.toFixed(5);
+      const delta = 0.08;
+      const bbox = [
+        (longitude - delta).toFixed(5),
+        (latitude - delta).toFixed(5),
+        (longitude + delta).toFixed(5),
+        (latitude + delta).toFixed(5),
+      ];
+      const osmEmbed = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox.join('%2C')}&layer=mapnik&marker=${latFixed}%2C${lonFixed}`;
+      setHTML('map-frame', `
+        <iframe src="${osmEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map preview for ${latFixed}, ${lonFixed}"></iframe>
+      `);
+      const google = `https://maps.google.com/?q=${latFixed},${lonFixed}`;
+      const openstreet = `https://www.openstreetmap.org/?mlat=${latFixed}&mlon=${lonFixed}#map=12/${latFixed}/${lonFixed}`;
+      const bing = `https://www.bing.com/maps?cp=${latFixed}~${lonFixed}&lvl=12`;
+      const apple = `https://maps.apple.com/?ll=${latFixed},${lonFixed}&q=${encodeURIComponent(data.city || 'Pin')}`;
+      setHTML('map-links', `
+        <a href="${google}" target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a href="${openstreet}" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>
+        <a href="${bing}" target="_blank" rel="noopener noreferrer">Bing Maps</a>
+        <a href="${apple}" target="_blank" rel="noopener noreferrer">Apple Maps</a>
+      `);
+    }
+
+    async function detectIPv6() {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 4000);
+        const response = await fetch('https://api64.ipify.org?format=json', { signal: controller.signal });
+        clearTimeout(timeout);
+        const data = await response.json();
+        if (data?.ip && data.ip.includes(':')) {
+          setHTML('ipv6-info', `
+            ${createDataRow('IPv6 Detected', data.ip, true)}
+            ${createDataRow('Status', 'Native IPv6 support ✓')}
+          `);
+          return;
+        }
+        setHTML('ipv6-info', `
+          ${createDataRow('IPv6 Detected', 'Not available')}
+          ${createDataRow('Status', 'No IPv6 address returned')}
+        `);
+      } catch (error) {
+        setHTML('ipv6-info', `
+          ${createDataRow('IPv6 Detected', 'Unknown')}
+          ${createDataRow('Status', 'IPv6 lookup timed out')}
+        `);
+      }
+    }
+
+    function detectWebRTC() {
+      const localIPs = new Set();
+      const publicIPs = new Set();
+
+      try {
+        const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+        if (!RTCPeerConnection) {
+          setHTML('webrtc-info', createDataRow('Status', 'WebRTC not supported in this browser'));
+          return;
+        }
+
+        const pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] });
+        pc.createDataChannel('');
+        pc.createOffer().then(offer => pc.setLocalDescription(offer));
+
+        pc.onicecandidate = (event) => {
+          if (!event.candidate) return;
+          const candidate = event.candidate.candidate;
+          const ipRegex = /([0-9]{1,3}(?:\.[0-9]{1,3}){3})|([a-f0-9:]{3,})/gi;
+          const matches = candidate.match(ipRegex);
+          if (matches) {
+            matches.forEach((ip) => {
+              if (ip.includes(':')) {
+                publicIPs.add(ip);
+              } else if (ip.startsWith('10.') || ip.startsWith('192.168.') || ip.startsWith('172.')) {
+                localIPs.add(ip);
+              } else if (!ip.startsWith('0.') && ip !== '0.0.0.0') {
+                publicIPs.add(ip);
+              }
+            });
+            updateWebRTCDisplay([...localIPs], [...publicIPs]);
+          }
+        };
+
+        setTimeout(() => {
+          pc.close();
+          if (!localIPs.size && !publicIPs.size) {
+            setHTML('webrtc-info', createDataRow('Status', 'No WebRTC leaks detected ✓'));
+          }
+        }, 3500);
+      } catch (error) {
+        setHTML('webrtc-info', createDataRow('Status', 'WebRTC detection unavailable'));
+      }
+    }
+
+    function updateWebRTCDisplay(localIPs, publicIPs) {
+      let html = '';
+      if (localIPs.length) {
+        html += `
+          <div class="data-row">
+            <span class="data-label">Local IPs</span>
+            <div class="ip-list">${localIPs.map(ip => `<span class="ip-tag">${ip}</span>`).join('')}</div>
+          </div>`;
+      }
+      if (publicIPs.length) {
+        html += `
+          <div class="data-row">
+            <span class="data-label">Public IPs (Leak!)</span>
+            <div class="ip-list">${publicIPs.map(ip => `<span class="ip-tag warning-tag">${ip}</span>`).join('')}</div>
+          </div>`;
+      }
+      if (html) setHTML('webrtc-info', html);
+    }
+
+    async function detectDNS() {
+      try {
+        const response = await fetch('https://edns.ip-api.com/json');
+        const data = await response.json();
+        if (data.dns?.ip) {
+          setHTML('dns-info', `
+            ${createDataRow('DNS Server', data.dns.ip, true)}
+            ${createDataRow('DNS Location', data.dns.geo || 'Unknown')}
+            ${createDataRow('Resolver', data.dns.engine || 'Unknown')}
+          `);
+        } else {
+          setHTML('dns-info', createDataRow('Status', 'Unable to detect DNS server'));
+        }
+      } catch (error) {
+        setHTML('dns-info', createDataRow('Status', 'DNS detection unavailable'));
+      }
+    }
+
+    function getSystemInfo() {
+      const nav = navigator;
+      setHTML('system-info', `
+        ${createDataRow('Platform', nav.platform || 'Unknown')}
+        ${createDataRow('Language', nav.language || 'Unknown')}
+        ${createDataRow('Languages', (nav.languages || []).join(', ') || 'Unknown')}
+        ${createDataRow('CPU Cores', nav.hardwareConcurrency || 'Unknown')}
+        ${createDataRow('Device Memory', nav.deviceMemory ? `${nav.deviceMemory} GB` : 'Unknown')}
+        ${createDataRow('Online Status', nav.onLine ? 'Online ✓' : 'Offline')}
+        ${createDataRow('Cookies Enabled', nav.cookieEnabled ? 'Yes' : 'No')}
+      `);
+    }
+
+    function getBrowserInfo() {
+      const ua = navigator.userAgent;
+      let browser = 'Unknown';
+      let version = '';
+      if (ua.includes('Firefox/')) {
+        browser = 'Firefox';
+        version = ua.match(/Firefox\/([0-9.]+)/)?.[1] || '';
+      } else if (ua.includes('Edg/')) {
+        browser = 'Edge';
+        version = ua.match(/Edg\/([0-9.]+)/)?.[1] || '';
+      } else if (ua.includes('Chrome/')) {
+        browser = 'Chrome';
+        version = ua.match(/Chrome\/([0-9.]+)/)?.[1] || '';
+      } else if (ua.includes('Safari/') && !ua.includes('Chrome')) {
+        browser = 'Safari';
+        version = ua.match(/Version\/([0-9.]+)/)?.[1] || '';
+      }
+
+      let os = 'Unknown';
+      if (ua.includes('Windows')) os = 'Windows';
+      else if (ua.includes('Mac')) os = 'macOS';
+      else if (ua.includes('Linux')) os = 'Linux';
+      else if (ua.includes('Android')) os = 'Android';
+      else if (ua.includes('iPhone') || ua.includes('iPad')) os = 'iOS';
+
+      setHTML('browser-info', `
+        ${createDataRow('Browser', `${browser}${version ? ` ${version}` : ''}`)}
+        ${createDataRow('Operating System', os)}
+        ${createDataRow('User Agent', ua)}
+        ${createDataRow('Vendor', navigator.vendor || 'Unknown')}
+        ${createDataRow('App Version', navigator.appVersion?.split(' ')[0] || 'Unknown')}
+      `);
+    }
+
+    function getScreenInfo() {
+      const screen = window.screen;
+      setHTML('screen-info', `
+        ${createDataRow('Resolution', `${screen.width} × ${screen.height}`)}
+        ${createDataRow('Available', `${screen.availWidth} × ${screen.availHeight}`)}
+        ${createDataRow('Color Depth', `${screen.colorDepth} bit`)}
+        ${createDataRow('Pixel Ratio', window.devicePixelRatio)}
+        ${createDataRow('Viewport', `${window.innerWidth} × ${window.innerHeight}`)}
+        ${createDataRow('Orientation', screen.orientation?.type || 'Unknown')}
+      `);
+    }
+
+    function getConnectionInfo() {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      const nav = navigator;
+      const baseSignals = [
+        createDataRow('Online', nav.onLine ? 'Yes' : 'No'),
+        createDataRow('Platform', nav.platform || 'Unknown'),
+      ];
+
+      const navigationEntries = performance?.getEntriesByType?.('navigation') || [];
+      if (navigationEntries.length) {
+        const navEntry = navigationEntries[0];
+        baseSignals.push(
+          createDataRow('Load Type', navEntry.type || 'Unknown'),
+          createDataRow('Transfer Size', navEntry.transferSize ? `${(navEntry.transferSize / 1024).toFixed(1)} KB` : 'Unknown'),
+        );
+      } else if (performance?.timing) {
+        const timing = performance.timing;
+        const transfer = timing.transferSize || timing.responseEnd - timing.requestStart;
+        baseSignals.push(
+          createDataRow('Response Time', transfer ? `${transfer} ms` : 'Unknown'),
+        );
+      }
+
+      if (!connection) {
+        setHTML('connection-info', `
+          ${createDataRow('Status', 'Network Information API unavailable')}
+          ${baseSignals.join('')}
+        `);
+        return;
+      }
+
+      setHTML('connection-info', `
+        ${createDataRow('Type', connection.type || 'Unknown')}
+        ${createDataRow('Effective Type', connection.effectiveType || 'Unknown')}
+        ${createDataRow('Downlink', connection.downlink ? `${connection.downlink} Mbps` : 'Unknown')}
+        ${createDataRow('RTT', connection.rtt ? `${connection.rtt} ms` : 'Unknown')}
+        ${createDataRow('Data Saver', connection.saveData ? 'Enabled' : 'Disabled')}
+        ${baseSignals.join('')}
+      `);
+    }
+
+    function getLocaleInfo() {
+      const now = new Date();
+      const options = Intl.DateTimeFormat().resolvedOptions();
+      const offsetMinutes = -now.getTimezoneOffset();
+      const sign = offsetMinutes >= 0 ? '+' : '-';
+      const hours = String(Math.floor(Math.abs(offsetMinutes) / 60)).padStart(2, '0');
+      const minutes = String(Math.abs(offsetMinutes) % 60).padStart(2, '0');
+      const offset = `UTC${sign}${hours}:${minutes}`;
+      setHTML('locale-info', `
+        ${createDataRow('Locale', navigator.language || options.locale || 'Unknown')}
+        ${createDataRow('Time Zone', options.timeZone || 'Unknown')}
+        ${createDataRow('Local Time', now.toLocaleString())}
+        ${createDataRow('UTC Offset', offset)}
+        ${createDataRow('Hour Cycle', (options.hourCycle || (options.hour12 ? 'h12' : 'h23')).toUpperCase())}
+      `);
+    }
+
+    function getGraphicsInfo() {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) {
+          setHTML('graphics-info', createDataRow('Status', 'WebGL not supported'));
+          return;
+        }
+        const ext = gl.getExtension('WEBGL_debug_renderer_info');
+        const vendor = ext ? gl.getParameter(ext.UNMASKED_VENDOR_WEBGL) : gl.getParameter(gl.VENDOR);
+        const renderer = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+        setHTML('graphics-info', `
+          ${createDataRow('Vendor', vendor)}
+          ${createDataRow('Renderer', renderer)}
+          ${createDataRow('WebGL Version', gl.getParameter(gl.VERSION))}
+          ${createDataRow('Shader Version', gl.getParameter(gl.SHADING_LANGUAGE_VERSION))}
+        `);
+      } catch (error) {
+        setHTML('graphics-info', createDataRow('Status', 'Unable to query WebGL context'));
+      }
+    }
+
+    function storageAvailable(type) {
+      try {
+        const storage = window[type];
+        const testKey = '__spyboy_storage_test__';
+        storage.setItem(testKey, testKey);
+        storage.removeItem(testKey);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function renderPrivacySignals() {
+      const nav = navigator;
+      const signals = [
+        ['Do Not Track', nav.doNotTrack === '1' ? 'Enabled' : 'Disabled'],
+        ['Global Privacy Control', nav.globalPrivacyControl ? 'Enabled' : 'Unavailable'],
+        ['Cookies Enabled', nav.cookieEnabled ? 'Yes' : 'No'],
+        ['Local Storage', storageAvailable('localStorage') ? 'Accessible' : 'Blocked'],
+        ['Session Storage', storageAvailable('sessionStorage') ? 'Accessible' : 'Blocked'],
+        ['Battery API', nav.getBattery ? 'Available' : 'Unavailable'],
+      ];
+      setHTML('privacy-info', renderSignalList(signals));
+    }
+
+    function getHeaders() {
+      const headers = [
+        ['Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'],
+        ['Accept-Language', navigator.language],
+        ['User-Agent', navigator.userAgent],
+        ['Connection', 'keep-alive'],
+        ['Sec-Fetch-Dest', 'document'],
+        ['Sec-Fetch-Mode', 'navigate'],
+        ['Sec-Fetch-Site', 'none'],
+      ];
+      setHTML('headers-info', `
+        <div class="table-scroll">
+          <table class="headers-table">
+            <thead>
+              <tr><th>Header</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              ${headers.map(([name, value]) => `<tr><td>${name}</td><td>${value}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      `);
+    }
+
+    function updateVPNSignals(ipData = {}) {
+      const keywords = ['vpn', 'proxy', 'hosting', 'datacenter', 'cloud', 'colo', 'digitalocean', 'aws', 'azure', 'gcp', 'ovh', 'linode'];
+      const signals = [];
+      const org = (ipData.org || '').toLowerCase();
+      const keyword = keywords.find(key => org.includes(key));
+      if (keyword) signals.push(['ASN Organization', ipData.org || 'Unknown']);
+      if (ipData.asn && /^AS\d{5,}/.test(ipData.asn)) signals.push(['Large ASN', ipData.asn]);
+      if (ipData.country_code_iso3 && ipData.country_code_iso3 !== ipData.country_code) {
+        signals.push(['Country Code Variance', `${ipData.country_code_iso3} vs ${ipData.country_code}`]);
+      }
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (connection?.type) signals.push(['Device Network Type', connection.type]);
+      if (connection?.effectiveType) signals.push(['Effective Type', connection.effectiveType]);
+
+      const riskClass = signals.length >= 3 ? 'score-high' : signals.length === 2 ? 'score-medium' : 'score-low';
+      const riskLabel = signals.length >= 3 ? 'High' : signals.length === 2 ? 'Medium' : 'Low';
+      const summary = `<div class="fingerprint-score ${riskClass}">Client heuristics: ${riskLabel} VPN/Proxy likelihood</div>`;
+      const detail = signals.length ? renderSignalList(signals) : `<p class="data-label">No obvious VPN/proxy traits detected from client-side heuristics.</p>`;
+      setHTML('vpn-info', summary + detail);
+    }
+
+    async function renderFingerprintScore() {
+      const nav = navigator;
+      const screen = window.screen;
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      const signals = [
+        nav.userAgent,
+        nav.language,
+        (nav.languages || []).join(','),
+        nav.platform,
+        nav.hardwareConcurrency,
+        nav.deviceMemory,
+        `${screen.width}x${screen.height}`,
+        screen.colorDepth,
+        window.devicePixelRatio,
+        Intl.DateTimeFormat().resolvedOptions().timeZone,
+        connection?.effectiveType || 'unknown',
+      ];
+      const hash = await hashString(signals.join('|'));
+      const entropy = Math.min(10, new Set(signals.filter(Boolean)).size);
+      const levelClass = entropy >= 8 ? 'score-high' : entropy >= 5 ? 'score-medium' : 'score-low';
+      const levelLabel = entropy >= 8 ? 'High' : entropy >= 5 ? 'Medium' : 'Low';
+      setHTML('fingerprint-info', `
+        <div class="fingerprint-score ${levelClass}">${levelLabel} uniqueness (${entropy}/10)</div>
+        ${createDataRow('Fingerprint ID', hash)}
+        ${createDataRow('Signals Count', `${signals.filter(Boolean).length}`)}
+      `);
+    }
+
+    function generateCanvasData() {
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = 300;
+        canvas.height = 150;
+        const ctx = canvas.getContext('2d');
+        ctx.textBaseline = 'top';
+        ctx.font = "16px 'Poppins'";
+        ctx.fillStyle = '#f1ec40';
+        ctx.fillText('spyboy-fingerprint', 2, 2);
+        ctx.fillStyle = '#dc143c';
+        ctx.fillRect(10, 40, 150, 8);
+        ctx.globalCompositeOperation = 'multiply';
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(120, 60, 20, 0, Math.PI * 2);
+        ctx.fill();
+        return canvas.toDataURL();
+      } catch (error) {
+        return 'unavailable';
+      }
+    }
+
+    async function generateAudioData() {
+      const AudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+      if (!AudioContext) return 'unavailable';
+      try {
+        const context = new AudioContext(1, 44100, 44100);
+        const oscillator = context.createOscillator();
+        oscillator.type = 'triangle';
+        oscillator.frequency.value = 1000;
+        const compressor = context.createDynamicsCompressor();
+        oscillator.connect(compressor);
+        compressor.connect(context.destination);
+        oscillator.start(0);
+        const buffer = await context.startRendering();
+        let sum = 0;
+        const channelData = buffer.getChannelData(0);
+        for (let i = 0; i < channelData.length; i += 100) {
+          sum += Math.abs(channelData[i]);
+        }
+        return sum.toString();
+      } catch (error) {
+        return 'unavailable';
+      }
+    }
+
+    async function renderCanvasAudioFingerprint() {
+      const canvasData = generateCanvasData();
+      const audioData = await generateAudioData();
+      const [canvasHash, audioHash] = await Promise.all([
+        hashString(canvasData),
+        hashString(audioData),
+      ]);
+      setHTML('canvas-audio-info', `
+        ${createDataRow('Canvas Hash', canvasHash)}
+        ${createDataRow('Audio Hash', audioHash)}
+        ${createDataRow('WebGL Seed', canvasData === 'unavailable' ? 'Unavailable' : 'Captured')}
+      `);
+    }
+
+    // Initialize all detections
+    fetchIPDetails();
+    detectIPv6();
+    detectWebRTC();
+    detectDNS();
+    getSystemInfo();
+    getBrowserInfo();
+    getScreenInfo();
+    getConnectionInfo();
+    getLocaleInfo();
+    getGraphicsInfo();
+    renderPrivacySignals();
+    getHeaders();
+    renderFingerprintScore();
+    renderCanvasAudioFingerprint();
+  </script>
+</body>
+</html>

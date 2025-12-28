@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advertise with Spyboy | Cybersecurity Audience Packages</title>
+  <meta name="description" content="Partner with Spyboy to reach a global cybersecurity audience through blog features, tool sponsorships, Discord promotions, CTF events, and bundled campaigns.">
+  <link rel="icon" href="./images/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030303;
+      --text: #f5f5f5;
+      --muted: rgba(255,255,255,0.72);
+      --accent: #dc143c;
+      --accent-soft: rgba(220,20,60,0.25);
+      --card: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.08);
+      --mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Space Grotesk', 'Poppins', sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(220,20,60,0.18), transparent 60%),
+                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.08), transparent 45%),
+                  #050505;
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 70px 70px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a { color: inherit; }
+
+    .page-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-link {
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+    }
+
+    .hero {
+      padding: clamp(2rem, 5vw, 4rem);
+      border-radius: 36px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(135deg, rgba(5,5,12,0.9), rgba(12,6,8,0.95));
+      box-shadow: 0 40px 90px rgba(0,0,0,0.6);
+      margin-bottom: clamp(2rem, 6vw, 4rem);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero .cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.9rem 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid transparent;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #dc143c, #ff4d6d);
+      box-shadow: 0 20px 40px rgba(220,20,60,0.45);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+
+    section {
+      margin-bottom: clamp(2rem, 5vw, 4rem);
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    .copy {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -40% -35%;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+      pointer-events: none;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .pricing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      color: var(--muted);
+    }
+
+    .pricing-list strong {
+      color: var(--text);
+    }
+
+    .pricing-tag {
+      font-family: var(--mono);
+      color: var(--accent);
+    }
+
+    .bundle {
+      border: 1px solid rgba(255,255,255,0.15);
+      background: linear-gradient(145deg, rgba(220,20,60,0.1), rgba(255,255,255,0.02));
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .media-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.45);
+    }
+
+    .faq-item h4 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta-panel {
+      text-align: center;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      background: linear-gradient(135deg, rgba(5,5,5,0.8), rgba(220,20,60,0.15));
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+    }
+
+    .cta-panel h2 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .cta-panel p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-email {
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem 1.4rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .hero .cta {
+        flex-direction: column;
+      }
+      .contact-email {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 100;
+    }
+    .contact-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .contact-modal-card {
+      width: min(420px, 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(145deg, rgba(10,10,15,0.95), rgba(5,5,5,0.95));
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .modal-actions .btn-secondary,
+    .modal-actions .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+    .modal-email {
+      font-family: var(--mono);
+      margin: 1rem 0;
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
+    }
+    .modal-copy-status {
+      min-height: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <header class="page-shell">
+    <div class="brand">Spy<span>boy</span></div>
+    <a class="nav-link" href="index.html">Back to home</a>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <p class="section-label">Advertise with Spyboy</p>
+      <h1>Reach the security minds who actually build.</h1>
+      <p>Spyboy connects cybersecurity founders, researchers, and learners across blogs, Discord, GitHub, tools, and CTF labs. Every placement is ethical, community-friendly, and tuned for real engagement—not vanity traffic.</p>
+      <div class="cta">
+        <button class="btn-primary js-open-contact" type="button">Book a slot</button>
+        <a class="btn-secondary" href="#pricing">View pricing</a>
+      </div>
+    </section>
+
+    <section id="pitch">
+      <p class="section-label">Pitch</p>
+      <h2 class="section-title">Advertise where security minds gather.</h2>
+      <p class="copy">Spyboy is a growing cybersecurity ecosystem trusted by hackers, developers, and security professionals. We don’t sell fake traffic—we connect brands with real, engaged, tech-savvy users across blogs, tools, bots, Discord, GitHub, and CTF platforms.</p>
+      <p class="copy"><strong>Audience:</strong> Security researchers, ethical hackers, developers, students, and professionals.</p>
+    </section>
+
+    <section id="pricing">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">Advertising & Sponsorship Menu</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Blog Advertising</h3>
+          <ul class="pricing-list">
+            <li><strong>Sponsored blog post</strong> – SEO article + social push <span class="pricing-tag">$20 / post</span></li>
+            <li><strong>Link insertion</strong> in existing article <span class="pricing-tag">$10 / link</span></li>
+            <li><strong>Banner ads</strong> (header/sidebar/footer) <span class="pricing-tag">$50 / month</span></li>
+            <li><strong>Newsletter feature</strong> with sponsored post <span class="pricing-tag">Free</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Tools, Bots & Apps</h3>
+          <p class="copy">Brand placements inside Spyboy tooling with high recurring traffic.</p>
+          <p class="pricing-tag">$100 / month per tool</p>
+        </article>
+        <article class="card">
+          <h3>GitHub & Discord</h3>
+          <ul class="pricing-list">
+            <li><strong>GitHub post sharing</strong> to Discord – <span class="pricing-tag">Included</span></li>
+            <li><strong>Pinned post</strong> (Discord/platform) – <span class="pricing-tag">$50 / month</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Discord CTF Events (3 days)</h3>
+          <ul class="pricing-list">
+            <li>CTF creation – <span class="pricing-tag">$80</span></li>
+            <li>CTF hosting – <span class="pricing-tag">$120</span></li>
+            <li>CTF management – <span class="pricing-tag">$100</span></li>
+            <li><strong>Total</strong> – <span class="pricing-tag">$300 / event</span></li>
+          </ul>
+        </article>
+        <article class="card bundle">
+          <h3>Promotion bundle</h3>
+          <p class="copy">Sponsored blog post + Discord promotion + tool/bot sponsorship option.</p>
+          <p class="pricing-tag">Starting from $150</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="media-kit">
+      <p class="section-label">Media kit</p>
+      <h2 class="section-title">Spyboy reach & inventory</h2>
+      <div class="media-grid">
+        <div class="media-item"><strong>Brand:</strong> Spyboy<br>Cybersecurity, OSINT, CTF, automation.</div>
+        <div class="media-item"><strong>Audience:</strong> Security researchers, ethical hackers, devs, students.</div>
+        <div class="media-item"><strong>Traffic:</strong> 10,000+ monthly blog visitors + active Discord & GitHub.</div>
+        <div class="media-item"><strong>Regions:</strong> USA, India, UK.</div>
+        <div class="media-item"><strong>Platforms:</strong> Blog, tools, bots, Discord, GitHub, CTF labs.</div>
+        <div class="media-item"><strong>Ad formats:</strong> Sponsored posts, banner ads, tool/bot sponsorship, Discord promos, CTF branding.</div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Answers for advertisers</h2>
+      <div class="faq-item">
+        <h4>What brands can advertise?</h4>
+        <p>Cybersecurity tools, SaaS products, developer platforms, education services, privacy tools, and ethical tech brands.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you accept gambling or shady promos?</h4>
+        <p>No. We reject gambling, scams, malware, illegal hacking services, and unethical products.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is the traffic real?</h4>
+        <p>Yes. Everything is organic and community-driven—no bots, no paid traffic.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I get a custom package?</h4>
+        <p>Absolutely. We scope bundles based on your goal, platform, and budget.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you guarantee conversions?</h4>
+        <p>We guarantee relevant exposure, not vanity metrics. You get a real security audience.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How long do sponsored posts stay live?</h4>
+        <p>Permanently, unless otherwise requested.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How do I start?</h4>
+        <p>Email <a href="mailto:contact@spyboy.in">contact@spyboy.in</a> with your requirements.</p>
+      </div>
+    </section>
+
+    <section class="cta-panel">
+      <h2>Promote where cybersecurity actually happens.</h2>
+      <p>Spyboy helps ethical brands reach the builders shaping security—blogs, bots, Discord, GitHub, and CTFs.</p>
+      <div class="contact-email">
+        <span>contact@spyboy.in</span>
+        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Spyboy%20Advertising">Email us</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="contact-modal" id="advertiseModal" role="dialog" aria-modal="true" aria-labelledby="advertiseModalTitle">
+    <div class="contact-modal-card">
+      <button class="modal-close" type="button" aria-label="Close pop-up">&times;</button>
+      <p class="section-label" id="advertiseModalTitle">Contact Spyboy</p>
+      <h2>Send your campaign brief</h2>
+      <p class="copy">Share your goals, audience, and preferred surfaces (blog, Discord, tools, CTF). We reply within 24 hours.</p>
+      <div class="modal-email" id="modalEmailValue">contact@spyboy.in</div>
+      <div class="modal-actions">
+        <button class="btn-primary" type="button" id="modalCopyBtn">Copy email</button>
+        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Spyboy%20Advertising">Open mail app</a>
+        <div class="modal-copy-status" id="modalCopyStatus" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const EMAIL = 'contact@spyboy.in';
+      const modal = document.getElementById('advertiseModal');
+      const openers = document.querySelectorAll('.js-open-contact');
+      const closeBtn = modal?.querySelector('.modal-close');
+      const copyBtn = document.getElementById('modalCopyBtn');
+      const statusEl = document.getElementById('modalCopyStatus');
+
+      const openModal = () => modal?.classList.add('active');
+      const closeModal = () => {
+        modal?.classList.remove('active');
+        if (statusEl) statusEl.textContent = '';
+      };
+
+      openers.forEach((btn) => btn.addEventListener('click', openModal));
+      closeBtn?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeModal();
+      });
+
+      copyBtn?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(EMAIL);
+          if (statusEl) statusEl.textContent = 'Copied!';
+        } catch (err) {
+          window.prompt('Copy email', EMAIL);
+        } finally {
+          setTimeout(() => {
+            if (statusEl) statusEl.textContent = '';
+          }, 1500);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
