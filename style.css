@@ -51,6 +51,11 @@ body {
     flex: 1 1 260px;
 }
 
+/* FAQ Button Styles */
+.about-cta .btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(241, 236, 64, 0.4);
+}
 
 .navbar {
   position: fixed;

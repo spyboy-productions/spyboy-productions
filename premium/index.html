@@ -43,8 +43,9 @@
             <div class="logo"><a href="https://spyboy.in">Spyo</a></div>
             <ul class="menu">
                 <li><a href="https://spyboy.in" class="menu-btn">Home</a></li>
-                <li><a href="https://spyboy.in/faq" class="menu-btn" class="menu-btn">Faq</a></li>
                 <li><a href="https://spyboy.in/Discord" class="menu-btn">Discord</a></li>
+                <li><a href="https://discord.com/api/oauth2/authorize?client_id=877644741339144244&permissions=8&scope=bot%20applications.commands" class="menu-btn">Add to Server</a></li>
+                <li><a href="https://spyboy.in/bot-commands.html" class="menu-btn">Commands</a></li>
                 <!-- <li><a onclick="openPortal()" class="menu-btn">Portal</a></li> -->
                 <li><a href="#" class="menu-btn" id="contactEmailBtn">Email</a></li>
             </ul>
@@ -283,67 +284,110 @@
                 </div>
 
                 <!-- Not Just Another Bot -->
-                <div class="specialty-card" style="background: rgba(241, 236, 64, 0.08); backdrop-filter: blur(20px); border: 1px solid rgba(241, 236, 64, 0.2); border-radius: 24px; padding: 3rem; margin-bottom: 3rem;">
-                    <div class="card-header" style="text-align: center; margin-bottom: 2.5rem;">
-                        <div class="header-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #dc143c, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-shield-alt" style="color: #fff; font-size: 2.2rem;"></i>
+                <div class="specialty-card" style="background: linear-gradient(135deg, rgba(241, 236, 64, 0.05) 0%, rgba(220, 20, 60, 0.08) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(241, 236, 64, 0.15); border-radius: 32px; padding: 4rem; margin-bottom: 3rem; position: relative; overflow: hidden;">
+                    <!-- Background decoration -->
+                    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(241, 236, 64, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+                    <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(220, 20, 60, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+                    
+                    <div class="card-header" style="text-align: center; margin-bottom: 3rem; position: relative; z-index: 2;">
+                        <div class="header-icon" style="width: 100px; height: 100px; background: linear-gradient(135deg, #dc143c, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 15px 35px rgba(220, 20, 60, 0.3); position: relative;">
+                            <div style="position: absolute; inset: -3px; background: linear-gradient(45deg, #f1ec40, #dc143c, #f1ec40); border-radius: 50%; z-index: -1; animation: rotate 3s linear infinite;"></div>
+                            <i class="fas fa-shield-alt" style="color: #fff; font-size: 2.5rem; z-index: 1;"></i>
                         </div>
-                        <h3 style="color: #fff; font-size: 2rem; font-weight: 700; margin: 0;">Not Just Another Discord Bot</h3>
+                        <h3 style="color: #fff; font-size: 2.5rem; font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(135deg, #f1ec40, #dc143c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Not Just Another Discord Bot</h3>
+                        <div style="width: 80px; height: 4px; background: linear-gradient(90deg, #f1ec40, #dc143c); margin: 1rem auto 0; border-radius: 2px;"></div>
                     </div>
                     
-                    <div class="card-content">
-                        <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.2rem; text-align: center; margin-bottom: 2rem; font-weight: 500;">
-                            Spyo is a <span style="color: #f1ec40; font-weight: 700;">dedicated cybersecurity intelligence platform</span> inside Discord.
-                        </p>
+                    <div class="card-content" style="position: relative; z-index: 2;">
+                        <!-- Main statement -->
+                        <div style="text-align: center; margin-bottom: 3rem;">
+                            <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.4;">
+                                Spyo is a <span style="color: #f1ec40; font-weight: 800; text-shadow: 0 0 20px rgba(241, 236, 64, 0.3);">dedicated cybersecurity intelligence platform</span> inside Discord.
+                            </p>
+                            <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; margin-bottom: 2rem; font-style: italic;">
+                                Designed for professionals who <span style="color: #dc143c; font-weight: 700;">actually do</span> security work
+                            </p>
+                        </div>
                         
-                        <p style="color: rgba(255, 255, 255, 0.8); text-align: center; margin-bottom: 2rem;">
-                            It's designed for people who actually <span style="color: #dc143c; font-weight: 600;">do</span> security:
-                        </p>
-                        
-                        <div class="target-audience" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                            <div class="audience-item" style="text-align: center; padding: 1.5rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                                <i class="fas fa-search" style="color: #f1ec40; font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
-                                <span style="color: #fff; font-weight: 600;">OSINT Researchers</span>
+                        <!-- Target audience grid -->
+                        <div class="target-audience" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(241, 236, 64, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f1ec40, #dc143c);"></div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f1ec40, #f59e0b); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                                    <i class="fas fa-search" style="color: #000; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="color: #f1ec40; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">OSINT Researchers</h4>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Deep intelligence gathering</p>
                             </div>
-                            <div class="audience-item" style="text-align: center; padding: 1.5rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                                <i class="fas fa-bug" style="color: #dc143c; font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
-                                <span style="color: #fff; font-weight: 600;">Penetration Testers</span>
+                            
+                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(220, 20, 60, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #dc143c, #8b0000);"></div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc143c, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                                    <i class="fas fa-bug" style="color: #fff; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="color: #dc143c; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Penetration Testers</h4>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Security assessment experts</p>
                             </div>
-                            <div class="audience-item" style="text-align: center; padding: 1.5rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                                <i class="fas fa-trophy" style="color: #f1ec40; font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
-                                <span style="color: #fff; font-weight: 600;">Bug Bounty Hunters</span>
+                            
+                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(241, 236, 64, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f1ec40, #dc143c);"></div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f1ec40, #f59e0b); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                                    <i class="fas fa-trophy" style="color: #000; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="color: #f1ec40; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Bug Bounty Hunters</h4>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Vulnerability researchers</p>
                             </div>
-                            <div class="audience-item" style="text-align: center; padding: 1.5rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                                <i class="fas fa-flag" style="color: #dc143c; font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
-                                <span style="color: #fff; font-weight: 600;">CTF Players</span>
+                            
+                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(220, 20, 60, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #dc143c, #8b0000);"></div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc143c, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                                    <i class="fas fa-flag" style="color: #fff; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="color: #dc143c; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">CTF Players</h4>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Competition enthusiasts</p>
                             </div>
                         </div>
                         
-                        <div class="key-features" style="background: rgba(0, 0, 0, 0.4); border-radius: 16px; padding: 2rem; border: 1px solid rgba(241, 236, 64, 0.2);">
-                            <p style="color: #f1ec40; font-weight: 600; text-align: center; margin-bottom: 1rem; font-size: 1.1rem;">
-                                Every command is handcrafted with real-world use in mind:
-                            </p>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                                <div style="display: flex; align-items: center;">
-                                    <i class="fas fa-check-circle" style="color: #10b981; margin-right: 0.75rem;"></i>
-                                    <span style="color: rgba(255, 255, 255, 0.9);">Reconnaissance</span>
+                        <!-- Key features -->
+                        <div class="key-features" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); border-radius: 24px; padding: 3rem; border: 1px solid rgba(241, 236, 64, 0.2); position: relative;">
+                            <div style="text-align: center; margin-bottom: 2rem;">
+                                <h4 style="color: #f1ec40; font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    <i class="fas fa-tools" style="margin-right: 0.5rem;"></i>
+                                    Real-World Security Tools
+                                </h4>
+                                <p style="color: rgba(255, 255, 255, 0.85); font-size: 1rem; margin: 0;">
+                                    Every command is handcrafted for actual security work
+                                </p>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                                <div style="display: flex; align-items: center; padding: 1rem; background: rgba(241, 236, 64, 0.1); border-radius: 12px; border-left: 4px solid #f1ec40; transition: all 0.3s ease;">
+                                    <i class="fas fa-binoculars" style="color: #f1ec40; font-size: 1.2rem; margin-right: 1rem;"></i>
+                                    <span style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Reconnaissance</span>
                                 </div>
-                                <div style="display: flex; align-items: center;">
-                                    <i class="fas fa-check-circle" style="color: #10b981; margin-right: 0.75rem;"></i>
-                                    <span style="color: rgba(255, 255, 255, 0.9);">Enumeration</span>
+                                <div style="display: flex; align-items: center; padding: 1rem; background: rgba(220, 20, 60, 0.1); border-radius: 12px; border-left: 4px solid #dc143c; transition: all 0.3s ease;">
+                                    <i class="fas fa-list-ol" style="color: #dc143c; font-size: 1.2rem; margin-right: 1rem;"></i>
+                                    <span style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Enumeration</span>
                                 </div>
-                                <div style="display: flex; align-items: center;">
-                                    <i class="fas fa-check-circle" style="color: #10b981; margin-right: 0.75rem;"></i>
-                                    <span style="color: rgba(255, 255, 255, 0.9);">Investigation</span>
+                                <div style="display: flex; align-items: center; padding: 1rem; background: rgba(241, 236, 64, 0.1); border-radius: 12px; border-left: 4px solid #f1ec40; transition: all 0.3s ease;">
+                                    <i class="fas fa-magnifying-glass" style="color: #f1ec40; font-size: 1.2rem; margin-right: 1rem;"></i>
+                                    <span style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Investigation</span>
                                 </div>
-                                <div style="display: flex; align-items: center;">
-                                    <i class="fas fa-check-circle" style="color: #10b981; margin-right: 0.75rem;"></i>
-                                    <span style="color: rgba(255, 255, 255, 0.9);">Automation</span>
+                                <div style="display: flex; align-items: center; padding: 1rem; background: rgba(220, 20, 60, 0.1); border-radius: 12px; border-left: 4px solid #dc143c; transition: all 0.3s ease;">
+                                    <i class="fas fa-robot" style="color: #dc143c; font-size: 1.2rem; margin-right: 1rem;"></i>
+                                    <span style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Automation</span>
                                 </div>
                             </div>
-                            <p style="color: rgba(255, 255, 255, 0.8); text-align: center; margin-top: 1.5rem; font-style: italic;">
-                                No fluff. No moderation nonsense. No copy-paste features.
-                            </p>
+                            
+                            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                                <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; font-weight: 600; margin: 0;">
+                                    <i class="fas fa-ban" style="color: #dc143c; margin-right: 0.5rem;"></i>
+                                    No fluff. No moderation. No copy-paste features.
+                                </p>
+                                <p style="color: #f1ec40; font-size: 1rem; margin-top: 0.5rem; font-style: italic;">
+                                    Just pure cybersecurity tools that professionals actually use.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -498,6 +542,11 @@
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
         }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
         @media (max-width: 768px) {
             .why-premium-section {
@@ -532,6 +581,110 @@
             .premium-features,
             .support-items {
                 grid-template-columns: 1fr !important;
+            }
+            
+            /* Redesigned "Not Just Another Bot" section mobile fixes */
+            .specialty-card {
+                padding: 2rem 1.5rem !important;
+                border-radius: 20px !important;
+            }
+            
+            .specialty-card .card-header h3 {
+                font-size: 1.6rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .specialty-card .header-icon {
+                width: 70px !important;
+                height: 70px !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .specialty-card .header-icon i {
+                font-size: 1.8rem !important;
+            }
+            
+            .specialty-card .card-content > div:first-child {
+                margin-bottom: 2rem !important;
+            }
+            
+            .specialty-card .card-content > div:first-child p {
+                font-size: 1.1rem !important;
+                padding: 0 1rem !important;
+            }
+            
+            .audience-item {
+                padding: 1.5rem 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .audience-item .icon-wrapper {
+                width: 50px !important;
+                height: 50px !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .audience-item .icon-wrapper i {
+                font-size: 1.2rem !important;
+            }
+            
+            .audience-item h4 {
+                font-size: 1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .audience-item p {
+                font-size: 0.85rem !important;
+            }
+            
+            .key-features {
+                padding: 2rem 1.5rem !important;
+                margin: 0 !important;
+            }
+            
+            .key-features > div:first-child {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .key-features > div:first-child h4 {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .key-features > div:first-child p {
+                font-size: 0.9rem !important;
+            }
+            
+            .key-features > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .key-features > div:nth-child(2) > div {
+                padding: 0.75rem !important;
+            }
+            
+            .key-features > div:nth-child(2) > div i {
+                font-size: 1rem !important;
+                margin-right: 0.75rem !important;
+            }
+            
+            .key-features > div:nth-child(2) > div span {
+                font-size: 0.9rem !important;
+            }
+            
+            .key-features > div:last-child {
+                margin-top: 1.5rem !important;
+                padding-top: 1.5rem !important;
+            }
+            
+            .key-features > div:last-child p {
+                font-size: 1rem !important;
+            }
+            
+            .key-features > div:last-child p:last-child {
+                font-size: 0.9rem !important;
             }
         }
     </style>
