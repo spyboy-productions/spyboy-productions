@@ -1684,78 +1684,252 @@ section .title::after {
 }
 .features .features-content, 
 .stats .stats-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-.card {
-  width: calc(33% - 20px);
-  background: #222;
-  text-align: center;
-  border-radius: 6px;
-  padding: 20px 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-}
-.card:hover {
-  background: crimson;
-}
-.card:hover i {
-  color: #fff;
-}
-.card .box {
-  transition: all 0.3s ease;
-}
-.card:hover .box {
-  transform: scale(1.05);
-}
-.card i {
-  font-size: 50px;
-  color: crimson;
-  transition: color 0.3s ease;
-}
-.card .text {
-  font-size: 25px;
-  font-weight: 500;
-  margin: 10px 0 7px 0;
-  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
 
 .stats {
   font-family: 'Poppins', sans-serif;
-  background: #f9f9f9;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
   color: #121212;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
 }
-.stats .title::after {
-  content: "thank you <3";
+
+.stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(241,236,64,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(220,20,60,0.08) 0%, transparent 50%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  pointer-events: none;
+  z-index: 0;
 }
+
+.stats .max-width {
+  position: relative;
+  z-index: 1;
+}
+
+.stats .title {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.stats .title span {
+  color: #f1ec40;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 20px rgba(241,236,64,0.3);
+}
+
+.stats .title a {
+  color: #f1ec40;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(241,236,64,0.1);
+  border: 1px solid rgba(241,236,64,0.2);
+}
+
+.stats .title a:hover {
+  background: rgba(241,236,64,0.2);
+  border-color: rgba(241,236,64,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(241,236,64,0.2);
+}
+
 .stats p {
   color: #111;
   font-size: 18px;
 }
-.stats .card p {
-  color: #fdfdfd;
+
+.stats .stats-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
+
 .stats .card {
-  background: #0f0f0f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+  width: 100%;
+  background: linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(25,25,25,0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
 }
+
+.stats .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f1ec40, #dc143c, #f1ec40);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stats .card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(241,236,64,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.stats .card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(241,236,64,0.3);
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.4),
+    0 0 30px rgba(241,236,64,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.stats .card:hover::before {
+  opacity: 1;
+}
+
+.stats .card:hover::after {
+  opacity: 1;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+}
+
+.stats .card .box {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+}
+
+.stats .card:hover .box {
+  transform: scale(1.05);
+}
+
+.stats .card i {
+  font-size: 48px;
+  color: #f1ec40;
+  transition: all 0.4s ease;
+  margin-bottom: 16px;
+  display: inline-block;
+  text-shadow: 0 0 20px rgba(241,236,64,0.3);
+}
+
+.stats .card:hover i {
+  color: #fff;
+  transform: translateY(-4px) rotate(5deg);
+  text-shadow: 0 0 30px rgba(241,236,64,0.6);
+}
+
 .stats .card .text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 16px 0 12px 0;
   color: #f5f5f5;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
 }
+
 .stats .card .text a {
   color: #f5f5f5;
   text-decoration: none;
-  border-bottom: 1px solid rgba(245,245,245,0.25);
-  transition: color .2s ease, border-color .2s ease;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  padding-bottom: 2px;
+  position: relative;
 }
+
+.stats .card .text a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f1ec40, #dc143c);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
 .stats .card .text a:hover,
 .stats .card .text a:focus-visible {
-  color: crimson;
-  border-color: crimson;
+  color: #f1ec40;
+}
+
+.stats .card .text a:hover::after,
+.stats .card .text a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.stats .card p {
+  color: #fdfdfd;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 12px 0 0 0;
+  background: linear-gradient(135deg, #f1ec40, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(241,236,64,0.3);
+  transition: all 0.3s ease;
+}
+
+.stats .card:hover p {
+  transform: scale(1.1);
+  text-shadow: 0 0 40px rgba(241,236,64,0.5);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.stats .card:nth-child(odd) {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.stats .card:nth-child(even) {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 3s;
 }
 .stat-value {
   color: #fdfdfd;
@@ -2029,9 +2203,25 @@ footer span a:hover {
     padding: 10px 30px;
   }
 
-  .card {
-    width: calc(50% - 10px);
-    margin-bottom: 20px;
+  .stats .stats-content {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .stats .card {
+    padding: 24px 20px;
+  }
+  
+  .stats .card i {
+    font-size: 40px;
+  }
+  
+  .stats .card .text {
+    font-size: 1.1rem;
+  }
+  
+  .stats .card p {
+    font-size: 1.5rem;
   }
 }
 
@@ -2060,8 +2250,26 @@ footer span a:hover {
     font-size: 20px;
     padding: 9px 25px;
   }
-  .card {
-    width: 100%;
+
+  .stats .stats-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .stats .card {
+    padding: 20px 16px;
+  }
+  
+  .stats .card i {
+    font-size: 36px;
+  }
+  
+  .stats .card .text {
+    font-size: 1rem;
+  }
+  
+  .stats .card p {
+    font-size: 1.3rem;
   }
 }
 
@@ -2158,9 +2366,25 @@ footer span a:hover {
     padding: 10px 30px;
   }
 
-  .card {
-    width: calc(50% - 10px);
-    margin-bottom: 20px;
+  .stats .stats-content {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  
+  .stats .card {
+    padding: 22px 18px;
+  }
+  
+  .stats .card i {
+    font-size: 38px;
+  }
+  
+  .stats .card .text {
+    font-size: 1.05rem;
+  }
+  
+  .stats .card p {
+    font-size: 1.4rem;
   }
 }
 
