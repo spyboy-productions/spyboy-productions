@@ -2954,6 +2954,60 @@ footer span a:hover {
     margin-top: 4px;
 }
 
+/* Image Optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+img[loading="lazy"] {
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"]:not([src]) {
+  opacity: 0;
+}
+
+img[loading="lazy"][src] {
+  opacity: 1;
+}
+
+/* Responsive images */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Image compression hints */
+img {
+  image-orientation: from-image;
+  image-resolution: from-image;
+}
+
+/* Performance optimizations */
+.project-metrics img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.bot-gif-grid img {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contributors img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* Center - Trend Card */
 .trend-card {
     position: absolute;
