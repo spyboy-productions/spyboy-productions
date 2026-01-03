@@ -285,17 +285,27 @@
 
                 <!-- Not Just Another Bot -->
                 <div class="specialty-card" style="background: linear-gradient(135deg, rgba(241, 236, 64, 0.05) 0%, rgba(220, 20, 60, 0.08) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(241, 236, 64, 0.15); border-radius: 32px; padding: 4rem; margin-bottom: 3rem; position: relative; overflow: hidden;">
-                    <!-- Background decoration -->
-                    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(241, 236, 64, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
-                    <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(220, 20, 60, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+                    <!-- Enhanced animated background elements -->
+                    <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(241, 236, 64, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none; animation: float-up 12s ease-in-out infinite;"></div>
+                    <div style="position: absolute; bottom: -80px; left: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(220, 20, 60, 0.06) 0%, transparent 70%); border-radius: 50%; pointer-events: none; animation: float-down 10s ease-in-out infinite;"></div>
+                    <div style="position: absolute; top: 50%; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(241, 236, 64, 0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; animation: pulse 8s ease-in-out infinite;"></div>
                     
-                    <div class="card-header" style="text-align: center; margin-bottom: 3rem; position: relative; z-index: 2;">
-                        <div class="header-icon" style="width: 100px; height: 100px; background: linear-gradient(135deg, #dc143c, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 15px 35px rgba(220, 20, 60, 0.3); position: relative;">
-                            <div style="position: absolute; inset: -3px; background: linear-gradient(45deg, #f1ec40, #dc143c, #f1ec40); border-radius: 50%; z-index: -1; animation: rotate 3s linear infinite;"></div>
-                            <i class="fas fa-shield-alt" style="color: #fff; font-size: 2.5rem; z-index: 1;"></i>
+                    <!-- Moving particles effect -->
+                    <div class="particles-container" style="position: absolute; inset: 0; overflow: hidden; pointer-events: none;">
+                        <div style="position: absolute; top: 20%; left: 10%; width: 4px; height: 4px; background: rgba(241, 236, 64, 0.6); border-radius: 50%; animation: particle-float 15s linear infinite;"></div>
+                        <div style="position: absolute; top: 60%; left: 80%; width: 3px; height: 3px; background: rgba(220, 20, 60, 0.6); border-radius: 50%; animation: particle-float 12s linear infinite 2s;"></div>
+                        <div style="position: absolute; top: 30%; left: 70%; width: 5px; height: 5px; background: rgba(241, 236, 64, 0.4); border-radius: 50%; animation: particle-float 18s linear infinite 4s;"></div>
+                        <div style="position: absolute; top: 80%; left: 30%; width: 3px; height: 3px; background: rgba(220, 20, 60, 0.5); border-radius: 50%; animation: particle-float 14s linear infinite 1s;"></div>
+                        <div style="position: absolute; top: 10%; left: 50%; width: 4px; height: 4px; background: rgba(241, 236, 64, 0.5); border-radius: 50%; animation: particle-float 16s linear infinite 3s;"></div>
+                    </div>
+                    
+                    <div class="card-header" style="text-align: center; margin-bottom: 4rem; position: relative; z-index: 2;">
+                        <div class="header-icon" style="width: 120px; height: 120px; background: linear-gradient(135deg, #000, #111); border-radius: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 2.5rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); position: relative; border: 2px solid rgba(251, 191, 36, 0.3);">
+                            <div style="position: absolute; inset: -2px; background: linear-gradient(45deg, #fbbf24, #fff, #fbbf24); border-radius: 32px; z-index: -1; opacity: 0.7; animation: rotate 8s linear infinite;"></div>
+                            <i class="fas fa-shield-alt" style="color: #fbbf24; font-size: 3rem; z-index: 1;"></i>
                         </div>
-                        <h3 style="color: #fff; font-size: 2.5rem; font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(135deg, #f1ec40, #dc143c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Not Just Another Discord Bot</h3>
-                        <div style="width: 80px; height: 4px; background: linear-gradient(90deg, #f1ec40, #dc143c); margin: 1rem auto 0; border-radius: 2px;"></div>
+                        <h3 style="color: #fff; font-size: 2.8rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.02em; background: linear-gradient(135deg, #fbbf24, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Not Just Another Discord Bot</h3>
+                        <div style="width: 100px; height: 4px; background: linear-gradient(90deg, #fbbf24, #fff); margin: 1.5rem auto 0; border-radius: 2px; background-size: 200% 100%; animation: shimmer 4s ease-in-out infinite;"></div>
                     </div>
                     
                     <div class="card-content" style="position: relative; z-index: 2;">
@@ -310,41 +320,41 @@
                         </div>
                         
                         <!-- Target audience grid -->
-                        <div class="target-audience" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(241, 236, 64, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f1ec40, #dc143c);"></div>
-                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f1ec40, #f59e0b); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                                    <i class="fas fa-search" style="color: #000; font-size: 1.5rem;"></i>
+                        <div class="target-audience" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                            <div class="audience-item" style="padding: 2rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border-left: 4px solid #fbbf24; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), transparent); border-radius: 0 16px 0 60px; pointer-events: none;"></div>
+                                <div class="icon-wrapper" style="width: 50px; height: 50px; background: rgba(251, 191, 36, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: all 0.3s ease; border: 1px solid rgba(251, 191, 36, 0.3);">
+                                    <i class="fas fa-search" style="color: #fbbf24; font-size: 1.5rem;"></i>
                                 </div>
-                                <h4 style="color: #f1ec40; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">OSINT Researchers</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Deep intelligence gathering</p>
+                                <h4 style="color: #fbbf24; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.3rem;">OSINT Researchers</h4>
+                                <p style="color: rgba(255, 255, 255, 0.8); margin: 0; font-size: 1rem;">Deep intelligence gathering</p>
                             </div>
                             
-                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(220, 20, 60, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #dc143c, #8b0000);"></div>
-                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc143c, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                                    <i class="fas fa-bug" style="color: #fff; font-size: 1.5rem;"></i>
+                            <div class="audience-item" style="padding: 2rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border-left: 4px solid #dc143c; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), transparent); border-radius: 0 16px 0 60px; pointer-events: none;"></div>
+                                <div class="icon-wrapper" style="width: 50px; height: 50px; background: rgba(220, 20, 60, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: all 0.3s ease; border: 1px solid rgba(220, 20, 60, 0.3);">
+                                    <i class="fas fa-flask" style="color: #dc143c; font-size: 1.5rem;"></i>
                                 </div>
-                                <h4 style="color: #dc143c; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Penetration Testers</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Security assessment experts</p>
+                                <h4 style="color: #dc143c; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.3rem;">Penetration Testers</h4>
+                                <p style="color: rgba(255, 255, 255, 0.8); margin: 0; font-size: 1rem;">Security assessment experts</p>
                             </div>
                             
-                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(241, 236, 64, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f1ec40, #dc143c);"></div>
-                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f1ec40, #f59e0b); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                                    <i class="fas fa-trophy" style="color: #000; font-size: 1.5rem;"></i>
+                            <div class="audience-item" style="padding: 2rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border-left: 4px solid #fbbf24; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), transparent); border-radius: 0 16px 0 60px; pointer-events: none;"></div>
+                                <div class="icon-wrapper" style="width: 50px; height: 50px; background: rgba(251, 191, 36, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: all 0.3s ease; border: 1px solid rgba(251, 191, 36, 0.3);">
+                                    <i class="fas fa-bug" style="color: #fbbf24; font-size: 1.5rem;"></i>
                                 </div>
-                                <h4 style="color: #f1ec40; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Bug Bounty Hunters</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Vulnerability researchers</p>
+                                <h4 style="color: #fbbf24; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.3rem;">Bug Bounty Hunters</h4>
+                                <p style="color: rgba(255, 255, 255, 0.8); margin: 0; font-size: 1rem;">Vulnerability researchers</p>
                             </div>
                             
-                            <div class="audience-item" style="text-align: center; padding: 2rem 1.5rem; background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)); border-radius: 20px; border: 1px solid rgba(220, 20, 60, 0.2); transition: all 0.3s ease; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #dc143c, #8b0000);"></div>
-                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc143c, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                                    <i class="fas fa-flag" style="color: #fff; font-size: 1.5rem;"></i>
+                            <div class="audience-item" style="padding: 2rem; background: rgba(0, 0, 0, 0.3); border-radius: 16px; border-left: 4px solid #dc143c; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), transparent); border-radius: 0 16px 0 60px; pointer-events: none;"></div>
+                                <div class="icon-wrapper" style="width: 50px; height: 50px; background: rgba(220, 20, 60, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: all 0.3s ease; border: 1px solid rgba(220, 20, 60, 0.3);">
+                                    <i class="fas fa-flag-checkered" style="color: #dc143c; font-size: 1.5rem;"></i>
                                 </div>
-                                <h4 style="color: #dc143c; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">CTF Players</h4>
-                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">Competition enthusiasts</p>
+                                <h4 style="color: #dc143c; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.3rem;">CTF Players</h4>
+                                <p style="color: rgba(255, 255, 255, 0.8); margin: 0; font-size: 1rem;">Competition enthusiasts</p>
                             </div>
                         </div>
                         
@@ -546,6 +556,38 @@
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float-up {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-30px) scale(1.1); opacity: 0.6; }
+        }
+        
+        @keyframes float-down {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+            50% { transform: translateY(30px) scale(1.05); opacity: 0.5; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+        }
+        
+        @keyframes particle-float {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100px, -100px) scale(0.5); opacity: 0; }
+        }
+        
+        .audience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .audience-item:hover .icon-wrapper {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         @media (max-width: 768px) {
