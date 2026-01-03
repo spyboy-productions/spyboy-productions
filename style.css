@@ -3468,3 +3468,79 @@ img {
         font-size: 12px;
     }
 }
+
+/* Stats Links Styling */
+.stats-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border-radius: inherit;
+}
+
+.stats-link:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.stats-link:hover .stat-card {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.2);
+}
+
+.stats-link:hover .main-stats .big-number {
+    color: #f1ec40;
+    text-shadow: 0 0 20px rgba(241, 236, 64, 0.5);
+}
+
+.stats-link:hover .forecast .stat-value {
+    color: #f1ec40;
+}
+
+.stats-link:focus-visible {
+    outline: 2px solid #f1ec40;
+    outline-offset: 2px;
+    border-radius: inherit;
+}
+
+/* Ensure stat cards maintain their styling when wrapped in links */
+.stats-link .stat-card,
+.stats-link .main-stats,
+.stats-link .forecast {
+    transition: all 0.3s ease;
+}
+
+/* Fix trend card layout when wrapped in links */
+.trend-card .stats-link {
+    display: flex;
+    align-items: center;
+    gap: inherit;
+    text-decoration: none;
+    color: inherit;
+}
+
+.trend-card .stats-link:first-child {
+    gap: 0;
+}
+
+.trend-card .stats-link:last-child {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.trend-card .stats-link:hover {
+    transform: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+.trend-card .stats-link:hover .trend-value {
+    color: #f1ec40;
+}
+
+.trend-card .stats-link:hover .coverage-circle {
+    border-color: #f1ec40;
+    color: #f1ec40;
+}
