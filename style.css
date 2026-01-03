@@ -1726,8 +1726,11 @@ section .title::after {
 
 .stats .title {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+  margin-top: 0;
   position: relative;
+  z-index: 20;
+  padding-top: 0;
 }
 
 .stats .title span {
@@ -2022,7 +2025,7 @@ section .title::after {
 
 
 .contributors .title::after {
-  content: "amazing people";
+  content: "";
 }
 .contributors .carousel .cardd {
   background: #222;
@@ -2540,5 +2543,709 @@ footer span a:hover {
     
     .bot-gif-grid img {
         min-height: 160px;
+    }
+}
+
+/* Glass-morphism Stats Design - Full Width */
+.stats {
+    position: relative;
+    padding: 40px 24px 100px 24px;
+    background: linear-gradient(180deg, #0a0a1a 0%, #12122a 50%, rgba(88, 28, 135, 0.3) 100%);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f5f5f5;
+    width: 100%;
+}
+
+.stats .max-width {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 80vh;
+    min-height: 600px;
+}
+
+.font-display {
+    font-family: 'Orbitron', sans-serif;
+}
+
+#canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Background gradients - Updated to match bot_stat.html exactly */
+.bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #0a0a1a 0%, #12122a 50%, rgba(88, 28, 135, 0.3) 100%);
+    z-index: 0;
+}
+
+.bottom-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, rgba(147, 51, 234, 0.3), transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 3px;
+    background: #a855f7;
+    filter: blur(8px);
+    opacity: 0.8;
+    z-index: 3;
+}
+
+/* Stats overlay - Full Width */
+.stats-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    padding: 24px;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+.stats-overlay > * {
+    pointer-events: auto;
+}
+
+/* Glass card */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    z-index: 12;
+}
+
+/* CSS Variables - Updated to match bot_stat.html while maintaining visibility */
+:root {
+    --bg-primary: #0a0a1a;
+    --bg-secondary: #12122a;
+    --text-primary: #f0f0ff;
+    --text-muted: #9ca3af;
+    --accent-cyan: #22d3ee;
+    --accent-purple: #a855f7;
+    --accent-emerald: #10b981;
+    --accent-pink: #f472b6;
+    --glass-bg: rgba(18, 18, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+/* Top left - Main stats */
+.main-stats {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 16;
+    background: var(--glass-bg);
+    padding: 16px;
+    border-radius: 8px;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    max-width: 300px;
+}
+
+.main-stats .label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.main-stats .big-number {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 700;
+    color: #f5f5f5;
+    text-shadow: 0 0 20px rgba(241, 236, 64, 0.3);
+}
+
+.main-stats .subtitle {
+    font-size: 14px;
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+/* Top right - Forecast */
+.forecast {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    text-align: right;
+    z-index: 16;
+}
+
+.forecast .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #9ca3af;
+    text-transform: uppercase;
+}
+
+.forecast .stat-row {
+    margin-top: 12px;
+}
+
+.forecast .stat-label {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.forecast .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+.forecast .trend-up {
+    color: var(--accent-emerald);
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+/* Left panel - Activity */
+.activity-panel {
+    position: absolute;
+    left: 24px;
+    top: 180px;
+    width: 220px;
+    padding: 16px;
+    z-index: 15;
+}
+
+.activity-panel h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #f5f5f5;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.activity-country {
+    flex: 1;
+    color: #9ca3af;
+}
+
+.activity-value {
+    font-weight: 500;
+    color: #f5f5f5;
+}
+
+.activity-percent {
+    color: #9ca3af;
+    width: 35px;
+    text-align: right;
+}
+
+/* Bottom stats cards */
+.bottom-stats {
+    position: absolute;
+    bottom: 120px;
+    left: 24px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    z-index: 13;
+}
+
+.stat-card {
+    padding: 16px;
+    min-width: 140px;
+    max-width: 160px;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-card .icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.stat-card .card-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.stat-card .card-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+.stat-card .card-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--accent-emerald);
+    margin-top: 4px;
+}
+
+/* Center - Trend Card */
+.trend-card {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 14;
+}
+
+.trend-info .trend-label {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.trend-info .trend-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+.trend-info .trend-compare {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.divider {
+    width: 1px;
+    height: 50px;
+    background: var(--glass-border);
+}
+
+.coverage-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-emerald);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.coverage-info .coverage-label {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.coverage-info .coverage-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+/* Right indicator */
+.global-reach {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 11;
+}
+
+.reach-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-cyan);
+}
+
+.reach-info .reach-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #f5f5f5;
+}
+
+.reach-info .reach-subtitle {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; opacity: 0; }
+.delay-200 { animation-delay: 0.2s; opacity: 0; }
+.delay-300 { animation-delay: 0.3s; opacity: 0; }
+.delay-400 { animation-delay: 0.4s; opacity: 0; }
+.delay-500 { animation-delay: 0.5s; opacity: 0; }
+.delay-600 { animation-delay: 0.6s; opacity: 0; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive Design for Glass Stats */
+@media (max-width: 1100px) {
+    .stats {
+        padding: 30px 20px 80px 20px;
+    }
+    
+    .main-stats {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 16;
+        background: var(--glass-bg);
+        padding: 12px;
+        border-radius: 8px;
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        max-width: 250px;
+    }
+    
+    .forecast {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        text-align: right;
+        z-index: 16;
+        background: var(--glass-bg);
+        padding: 12px;
+        border-radius: 8px;
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+    }
+    
+    .activity-panel {
+        position: absolute;
+        left: 20px;
+        top: 140px;
+        width: 200px;
+        padding: 12px;
+        z-index: 15;
+    }
+    
+    .bottom-stats {
+        position: absolute;
+        bottom: 100px;
+        left: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        z-index: 13;
+    }
+    
+    .stat-card {
+        padding: 12px;
+        min-width: 120px;
+        max-width: 140px;
+    }
+    
+    .trend-card {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        z-index: 14;
+    }
+    
+    .global-reach {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 11;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats {
+        padding: 20px 15px 60px 15px;
+        min-height: 80vh;
+    }
+    
+    .main-stats {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        max-width: 200px;
+        padding: 10px;
+    }
+    
+    .main-stats .big-number {
+        font-size: 2rem;
+    }
+    
+    .main-stats .label {
+        font-size: 10px;
+    }
+    
+    .main-stats .subtitle {
+        font-size: 12px;
+    }
+    
+    .forecast {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 10px;
+    }
+    
+    .forecast .section-label {
+        font-size: 10px;
+    }
+    
+    .forecast .stat-row {
+        margin-bottom: 8px;
+    }
+    
+    .forecast .stat-label {
+        font-size: 11px;
+    }
+    
+    .forecast .stat-value {
+        font-size: 14px;
+    }
+    
+    .activity-panel {
+        position: absolute;
+        left: 15px;
+        top: 120px;
+        width: 180px;
+        padding: 10px;
+    }
+    
+    .activity-panel h3 {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .activity-item {
+        margin-bottom: 8px;
+        font-size: 11px;
+    }
+    
+    .bottom-stats {
+        position: absolute;
+        bottom: 80px;
+        left: 15px;
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 10px;
+        min-width: 100px;
+        max-width: 120px;
+    }
+    
+    .stat-card .card-label {
+        font-size: 10px;
+    }
+    
+    .stat-card .card-value {
+        font-size: 18px;
+    }
+    
+    .trend-card {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 15px;
+        gap: 15px;
+    }
+    
+    .trend-info .trend-label {
+        font-size: 10px;
+    }
+    
+    .trend-info .trend-value {
+        font-size: 18px;
+    }
+    
+    .global-reach {
+        position: absolute;
+        top: auto;
+        bottom: 60px;
+        right: 15px;
+        transform: none;
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .reach-info .reach-title {
+        font-size: 12px;
+    }
+    
+    .reach-info .reach-value {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats {
+        padding: 15px 10px 40px 15px;
+        min-height: 70vh;
+    }
+    
+    .main-stats {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        max-width: 160px;
+        padding: 8px;
+    }
+    
+    .main-stats .big-number {
+        font-size: 1.5rem;
+    }
+    
+    .forecast {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 8px;
+    }
+    
+    .activity-panel {
+        position: absolute;
+        left: 10px;
+        top: 100px;
+        width: 150px;
+        padding: 8px;
+    }
+    
+    .activity-panel h3 {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    
+    .activity-item {
+        margin-bottom: 6px;
+        font-size: 10px;
+    }
+    
+    .bottom-stats {
+        position: absolute;
+        bottom: 60px;
+        left: 10px;
+        gap: 8px;
+        flex-direction: column;
+    }
+    
+    .stat-card {
+        padding: 8px;
+        min-width: 90px;
+        max-width: 110px;
+    }
+    
+    .stat-card .card-label {
+        font-size: 9px;
+    }
+    
+    .stat-card .card-value {
+        font-size: 16px;
+    }
+    
+    .trend-card {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 12px;
+        gap: 12px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .trend-info .trend-label {
+        font-size: 9px;
+    }
+    
+    .trend-info .trend-value {
+        font-size: 16px;
+    }
+    
+    .global-reach {
+        position: absolute;
+        top: auto;
+        bottom: 50px;
+        right: 10px;
+        padding: 6px 10px;
+        gap: 6px;
+    }
+    
+    .reach-info .reach-title {
+        font-size: 10px;
+    }
+    
+    .reach-info .reach-value {
+        font-size: 12px;
     }
 }

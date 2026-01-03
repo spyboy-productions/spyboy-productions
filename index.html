@@ -10,22 +10,36 @@
 
     <title>Spyboy - Crafting CyberSecurity app, blog, bot & tools</title>
 
+    <link rel="icon" href="./images/logo.png" width="32" height="32">
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" as="style">
+    <link rel="preload" href="./aos/aos.css" as="style">
+    
+    <!-- Load critical CSS first -->
     <link rel="stylesheet" href="style.css">
-
-    <link rel="icon" href="./images/logo.png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="./aos/aos.css" media="print" onload="this.media='all'">
+    
+    <!-- Preload non-critical scripts -->
+    <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" as="script">
+    
+    <!-- Load scripts with defer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" type="text/css" href="./aos/aos.css">
     <link rel="canonical" href="https://spyboy.in/">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Spyboy - Crafting CyberSecurity app, blog, bot & tools">
-    <meta name="og:description" content="Powerful CyberSecurity app, blog and discord bot that come with  OSINT, Cryptography, Forensics, Recon tools also runs several CTF hacking challenges">
+    <meta name="og:description" content="Powerful CyberSecurity app, blog and discord bot that come with OSINT, Cryptography, Forensics, Recon tools also runs several CTF hacking challenges for ethical hackers and security researchers.">
     <meta property="og:image" content="https://cdn.discordapp.com/avatars/877644741339144244/bcb8e0ac84d5042181f1baf34189b797.png?size=1024">
     <meta property="og:url" content="https://spyboy.in/" />
     <meta property="og:site_name" content="Spyboy" />
@@ -35,15 +49,141 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
     <meta name="title" content="Spyboy">
-    <meta name="description" content="Powerful CyberSecurity app, blog and discord bot that come with  OSINT, Cryptography, Forensics, Recon tools also runs several CTF hacking challenges">
+    <meta name="description" content="Powerful CyberSecurity app, blog and discord bot that come with OSINT, Cryptography, Forensics, Recon tools also runs several CTF hacking challenges for ethical hackers and security researchers.">
     <meta name="keywords" content="Hacking bot, Infosec blog, Cybersec app, Play CTF, Learn Cybersecurity, OSINT Bot, Cryptography tool, Forensics bot, Recon bot, pen-testing bot">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
+    <meta name="language" content="en">
     <meta name="revisit-after" content="1 days">
     <meta name="author" content="shubham kumar">
     <meta name="theme-color" content="#F1EC40">
+
+    <!-- Structured Data - JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Spyboy",
+        "url": "https://spyboy.in/",
+        "logo": "https://spyboy.in/images/logo.png",
+        "description": "Powerful CyberSecurity app, blog and discord bot that come with OSINT, Cryptography, Forensics, Recon tools also runs several CTF hacking challenges",
+        "sameAs": [
+            "https://github.com/spyboy-productions",
+            "https://discord.gg/ZChEmMwE8d",
+            "https://spyboy.blog/",
+            "https://top.gg/bot/877644741339144244"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@spyboy.in",
+            "contactType": "customer support"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "shubham kumar"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Spyboy",
+        "url": "https://spyboy.in/",
+        "description": "Powerful CyberSecurity app, blog and discord bot that come with OSINT, Cryptography, Forensics, Recon tools also runs several CTF hacking challenges",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://spyboy.in/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Spyo Discord Bot",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Discord",
+        "description": "Powerful Discord bot for cybersecurity with OSINT, Cryptography, Forensics, Recon tools and CTF challenges",
+        "url": "https://top.gg/bot/877644741339144244",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1000+"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Spyboy Blog",
+        "url": "https://spyboy.blog/",
+        "description": "Cybersecurity blog covering OSINT, Cryptography, Forensics, Recon tools and hacking techniques",
+        "author": {
+            "@type": "Organization",
+            "name": "Spyboy"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Spyboy Open Source Projects",
+        "description": "Collection of open-source cybersecurity tools and utilities",
+        "itemListElement": [
+            {
+                "@type": "SoftwareApplication",
+                "name": "R4ven",
+                "description": "Track the true location of mobile/desktop targets using crafted social engineering payloads",
+                "url": "https://github.com/spyboy-productions/r4ven",
+                "applicationCategory": "SecurityApplication"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "CloakQuest3r",
+                "description": "Unmask the real IP behind Cloudflare-protected targets and surface their exposed services",
+                "url": "https://github.com/spyboy-productions/CloakQuest3r",
+                "applicationCategory": "SecurityApplication"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Valid8Proxy",
+                "description": "Fetch, validate, and store rotating proxy lists for testing scrapers, crawlers, and automation",
+                "url": "https://github.com/spyboy-productions/Valid8Proxy",
+                "applicationCategory": "SecurityApplication"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Omnisci3nt",
+                "description": "Complete web reconnaissance toolkit covering enumeration, fingerprinting, and attack-surface mapping",
+                "url": "https://github.com/spyboy-productions/omnisci3nt",
+                "applicationCategory": "SecurityApplication"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Unve1ler",
+                "description": "Hunt people across usernames, emails, and image hashes with multi-source correlation",
+                "url": "https://github.com/spyboy-productions/unve1ler",
+                "applicationCategory": "SecurityApplication"
+            }
+        ]
+    }
+    </script>
 
 </head>
 <body>
@@ -118,7 +258,7 @@
                     </div>
                 </div>
                 <div class="projects-visual">
-                    <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2025/04/dont-e1743754230810.png" alt="Spyboy collage">
+                    <img src="https://spyboyblog.wordpress.com/wp-content/uploads/2025/04/dont-e1743754230810.png" alt="Spyboy collage" loading="lazy">
                 </div>
             </div>
 
@@ -402,10 +542,10 @@
             <div class="bot-features-preview">
                 <h3>Previews of some features</h3>
                 <div class="bot-gif-grid">
-                    <img src="https://spyboy.in/images/exploitdb.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
-                    <img src="https://spyboy.in/images/fakeprofile.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
-                    <img src="https://spyboy.in/images/phlookup.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
-                    <img src="https://spyboy.in/images/socail.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
+                    <img src="https://spyboy.in/images/exploitdb.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm" alt="ExploitDB search feature demonstration">
+                    <img src="https://spyboy.in/images/fakeprofile.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm" alt="Fake profile detection feature demonstration">
+                    <img src="https://spyboy.in/images/phlookup.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm" alt="Phone number lookup feature demonstration">
+                    <img src="https://spyboy.in/images/socail.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm" alt="Social media search feature demonstration">
                 </div>
             </div>
 
@@ -470,7 +610,7 @@
             <div class="blog-grid">
                 <article class="blog-intro-card">
                     <p class="eyebrow">Spyboy.blog</p>
-                    <h2>Where curiosity meets cybersecurity</h2>
+                    <h3>Where curiosity meets cybersecurity</h3>
                     <p>Spyboy Blog is your essential destination for mastering <strong>ethical hacking</strong>, <strong>cybersecurity</strong>, <strong>penetration testing</strong>, and <strong>digital forensics</strong>. Whether you’re a beginner stepping into the world of cyber defense or an experienced security enthusiast sharpening your skills, Spyboy Blog delivers practical insights, cutting-edge techniques, and real-world guides built on hands-on experience.</p>
                     <p>Explore in-depth content across <strong>Linux</strong>, <strong>networking</strong>, <strong>social engineering</strong>, <strong>OSINT</strong>, <strong>bug bounty hunting</strong>, <strong>payload development</strong>, and essential security tips and tricks. From step-by-step tutorials and vulnerability analysis to tools and workflows trusted by professionals, Spyboy Blog is where curiosity meets cybersecurity—helping you think like an attacker and secure like a pro in today’s evolving digital battleground.</p>
                     <ul class="blog-stats">
@@ -798,7 +938,7 @@
             <h2 class="title">About Spyboy</h2>
             <div class="about-grid">
                 <article class="about-copy">
-                    <h2 class="title">Why Spyboy</h2>
+                    <h3 class="title">Why Spyboy</h3>
                     <p>At its core, Spyboy believes in one idea: <strong>security through understanding, not obscurity.</strong> We build tools that help curious people see how infrastructure, OSINT, encryption, reconnaissance, and defensive testing truly work.</p>
                     <p>Every project is designed with a hands-on mindset—encouraging ethical experimentation, learning by doing, and responsible disclosure. Spyboy is a research-driven lab, a learning platform, and a toolkit for curious minds.</p>
                     <blockquote>Cr4ft!ng !d3as. Breaking systems. Teaching security. Building openly.</blockquote>
@@ -853,105 +993,170 @@
     </section>
 
     <section class="stats" id="stats">
-        <div class="max-width">
-            <h2 class="title">
-                 <span>All Stats</span>
-            </h2>
-            <div class="stats-content">
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                        <div class="text">
-                            <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">Open Source Projects</a>
+        <div id="canvas-container"></div>
+
+            <div class="stats-overlay">
+                <!-- Top Left - Main Stats -->
+                <div class="main-stats animate-fade-in">
+                    <p class="label">Global Statistics</p>
+                    <h1 class="big-number font-display" id="main-counter">0</h1>
+                    <p class="subtitle">Blog hits worldwide</p>
+                </div>
+
+                <!-- Top Right - GitHub Stats -->
+                <div class="forecast animate-fade-in delay-100">
+                    <p class="section-label">GitHub Stats</p>
+                    <div class="stat-row">
+                        <p class="stat-label">Stars</p>
+                        <p class="stat-value font-display">4,000+ <span class="trend-up">▲15%</span></p>
+                    </div>
+                    <div class="stat-row">
+                        <p class="stat-label">Forks</p>
+                        <p class="stat-value font-display">1,000+</p>
+                    </div>
+                </div>
+
+                <!-- Left - Activity Panel -->
+                <div class="activity-panel glass-card animate-fade-in delay-200">
+                    <h3>Current activity</h3>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background: #22d3ee;"></div>
+                        <span class="activity-country">United States</span>
+                        <span class="activity-value">4,504,210</span>
+                        <span class="activity-percent">35%</span>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background: #fbbf24;"></div>
+                        <span class="activity-country">India</span>
+                        <span class="activity-value">3,204,210</span>
+                        <span class="activity-percent">25%</span>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background: #a78bfa;"></div>
+                        <span class="activity-country">France</span>
+                        <span class="activity-value">2,100,950</span>
+                        <span class="activity-percent">17%</span>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background: #f472b6;"></div>
+                        <span class="activity-country">China</span>
+                        <span class="activity-value">1,980,240</span>
+                        <span class="activity-percent">15%</span>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background: #10b981;"></div>
+                        <span class="activity-country">Brazil</span>
+                        <span class="activity-value">1,504,210</span>
+                        <span class="activity-percent">8%</span>
+                    </div>
+                </div>
+
+                <!-- Bottom - Stat Cards -->
+                <div class="bottom-stats">
+                    <div class="stat-card glass-card animate-fade-in delay-300" style="border-color: rgba(34, 211, 238, 0.3); box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);">
+                        <div class="icon-wrap" style="background: rgba(34, 211, 238, 0.15);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                            </svg>
                         </div>
-                        <p id="stat-open-source" class="stat-value" aria-live="polite">Loading…</p>
+                        <p class="card-label">Servers</p>
+                        <p class="card-value font-display" style="color: #22d3ee;" id="stat-bot-servers">0</p>
+                        <div class="card-trend">
+                            <span>▲</span>
+                            <span>+12%</span>
+                        </div>
                     </div>
-                </div>
-        
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-                    <div class="text">
-                        <a href="https://play.google.com/store/apps/dev?id=6188034454598466210" target="_blank" rel="noopener">Apps Published</a>
-                    </div>
-                    <p id="stat-apps" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
-                
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-server" aria-hidden="true"></i>
-                    <div class="text">
-                        <a href="https://top.gg/bot/877644741339144244" target="_blank" rel="noopener">Bot Servers</a>
-                    </div>
-                    <p id="stat-bot-servers" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
-                
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-user-friends" aria-hidden="true"></i>
-                    <div class="text">Active Users</div>
-                    <p id="stat-active-users" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
-                
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-mobile" aria-hidden="true"></i>
-                    <div class="text">App Users</div>
-                    <p id="stat-app-users" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
-                
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-newspaper" aria-hidden="true"></i>
-                    <div class="text">
-                        <a href="https://spyboy.blog/" target="_blank" rel="noopener">Blog Hits</a>
-                    </div>
-                    <p id="stat-blog-hits" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-users" aria-hidden="true"></i>
-                    <div class="text">
-                        <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener">Discord Members</a>
+                    <div class="stat-card glass-card animate-fade-in delay-400" style="border-color: rgba(16, 185, 129, 0.3); box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);">
+                        <div class="icon-wrap" style="background: rgba(16, 185, 129, 0.15);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <p class="card-label">Users</p>
+                        <p class="card-value font-display" style="color: #10b981;" id="stat-active-users">0</p>
+                        <div class="card-trend">
+                            <span>▲</span>
+                            <span>+8%</span>
+                        </div>
                     </div>
-                    <p id="stat-discord-members" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <div class="text">
-                        <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">GitHub Stars</a>
+                    <div class="stat-card glass-card animate-fade-in delay-500" style="border-color: rgba(168, 85, 247, 0.3); box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);">
+                        <div class="icon-wrap" style="background: rgba(168, 85, 247, 0.15);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                            </svg>
+                        </div>
+                        <p class="card-label">Premium</p>
+                        <p class="card-value font-display" style="color: #a855f7;" id="premium-counter">10K+</p>
+                        <div class="card-trend">
+                            <span>▲</span>
+                            <span>+15%</span>
+                        </div>
                     </div>
-                    <p id="stat-github-stars" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="box">
-                    <i class="fas fa-code-fork" aria-hidden="true"></i>
-                    <div class="text">
-                        <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">GitHub Forks</a>
+                    <div class="stat-card glass-card animate-fade-in delay-500" style="border-color: rgba(251, 191, 36, 0.3); box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);">
+                        <div class="icon-wrap" style="background: rgba(251, 191, 36, 0.15);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <p class="card-label">App Installs</p>
+                        <p class="card-value font-display" style="color: #fbbf24;" id="stat-app-users">1M+</p>
+                        <div class="card-trend">
+                            <span>▲</span>
+                            <span>+22%</span>
+                        </div>
                     </div>
-                    <p id="stat-github-forks" class="stat-value" aria-live="polite">Loading…</p>
-                </div>
-            </div>
 
-                
-                 <!--div class="card">
-                    <div class="box">
-                        <i class="fas fa-terminal"></i>
-                        <div class="text">Commands Used</div>
-                        <p id="cmd-count">38400+</p>
+                    <div class="stat-card glass-card animate-fade-in delay-500" style="border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 30px rgba(239, 68, 68, 0.1);">
+                        <div class="icon-wrap" style="background: rgba(239, 68, 68, 0.15);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </div>
+                        <p class="card-label">Discord Members</p>
+                        <p class="card-value font-display" style="color: #ef4444;" id="stat-discord-members">13K+</p>
+                        <div class="card-trend">
+                            <span>▲</span>
+                            <span>+18%</span>
+                        </div>
                     </div>
-                </div>-->
+                </div>
+
+                <!-- Center - Trend Card -->
+                <div class="trend-card glass-card animate-fade-in delay-600">
+                    <div class="trend-info">
+                        <p class="trend-label">Open Source Projects</p>
+                        <p class="trend-value font-display" id="stat-open-source">14</p>
+                        <p class="trend-compare">Across GitHub repositories</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="coverage-circle font-display">5+</div>
+                    <div class="coverage-info">
+                        <p class="coverage-label">Published Apps</p>
+                        <p class="coverage-value font-display">Android</p>
+                    </div>
+                </div>
+
+                <!-- Right - Projects Info -->
+                <div class="global-reach glass-card animate-fade-in delay-600">
+                    <svg class="reach-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                        <line x1="5" y1="7" x2="19" y2="7"></line>
+                    </svg>
+                    <div class="reach-info">
+                        <p class="reach-title">Security Tools</p>
+                        <p class="reach-subtitle">OSINT, Crypto, Forensics</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1194,7 +1399,7 @@
     <footer class="site-footer">
         <div class="max-width footer-grid">
             <div class="footer-brand">
-                <h2>Spyboy</h2>
+                <h3>Spyboy</h3>
                 
                 <p class="footer-quote">“Defense is a mindset. Every line of code is a surface.”</p>
             </div>
@@ -1235,7 +1440,7 @@
                 </div>
             </div>
             <div class="footer-meta">
-                <span>© 2025 Spyboy. All rights reserved.</span>
+                <span>© 2026 Spyboy. All rights reserved.</span>
                 <span>Educational and ethical use only.</span>
                 <div class="footer-contact">
                     <span>Email: <strong>contact@spyboy.in</strong></span>
@@ -1246,7 +1451,16 @@
         </div>
     </footer>
 
-    <script src="/aos/aos.js"></script>
+    <!-- Preload heavy scripts -->
+    <link rel="preload" href="/aos/aos.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="stats.js" as="script">
+    <link rel="preload" href="./particles/particles.js" as="script">
+    <link rel="preload" href="./particles/app.js" as="script">
+
+    <script src="/aos/aos.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <script src="script.js" defer></script>
     <script src="stats.js" defer></script>
     <script>
@@ -1256,6 +1470,342 @@
     </script>
     <script src="./particles/particles.js" defer></script>
     <script src="./particles/app.js" defer></script>
+    
+    <!-- Stats Section Scripts -->
+    <script>
+        // Counter animation
+        function animateCounter(elementId, target, duration = 2500, delay = 0, formatter = (n) => n.toLocaleString()) {
+            setTimeout(() => {
+                const element = document.getElementById(elementId);
+                if (!element) return;
+                const start = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 4);
+                    const current = Math.floor(easeOut * target);
+                    
+                    element.textContent = formatter(current);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.textContent = formatter(target);
+                    }
+                }
+                
+                requestAnimationFrame(update);
+            }, delay);
+        }
+
+        function formatK(num) {
+            if (num >= 1000) {
+                return (num / 1000).toFixed(num >= 10000 ? 0 : 1) + 'K+';
+            }
+            return num.toLocaleString() + '+';
+        }
+
+        // Initialize stats animations when page loads
+        window.addEventListener('load', function() {
+            document.querySelector('.loader-wrapper')?.classList.add('loader-hidden');
+            
+            // Start counters
+            animateCounter('main-counter', 11202248, 3000, 300);
+            animateCounter('stat-bot-servers', 6500, 2500, 600, formatK);
+            animateCounter('stat-active-users', 100000, 2500, 800, formatK);
+            
+            // Initialize Three.js globe for stats section
+            initStatsGlobe();
+        });
+
+        // Three.js Globe for Stats Section
+        function initStatsGlobe() {
+            const container = document.getElementById('canvas-container');
+            if (!container) return;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            camera.position.z = 8;
+
+            // Continent data (simplified lat/lng ranges)
+            const continents = [
+                { latMin: 25, latMax: 70, lngMin: -170, lngMax: -50 },   // North America
+                { latMin: -55, latMax: 12, lngMin: -80, lngMax: -35 },   // South America
+                { latMin: 35, latMax: 70, lngMin: -10, lngMax: 40 },     // Europe
+                { latMin: -35, latMax: 37, lngMin: -20, lngMax: 50 },    // Africa
+                { latMin: 5, latMax: 75, lngMin: 40, lngMax: 145 },      // Asia
+                { latMin: -45, latMax: -10, lngMin: 110, lngMax: 155 },  // Australia
+            ];
+
+            function isLand(lat, lng) {
+                for (const c of continents) {
+                    if (lat >= c.latMin && lat <= c.latMax && lng >= c.lngMin && lng <= c.lngMax) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            // Create hexagonal dots for globe with enhanced professional design
+            const globeGroup = new THREE.Group();
+            const radius = 3;
+            const dotCount = 10000;
+
+            // Enhanced color palette for different regions - less bright, more professional
+            const regionColors = {
+                northAmerica: { color: 0x1e40af, opacity: 0.8 },      // Deep blue
+                southAmerica: { color: 0x065f46, opacity: 0.75 },     // Dark green  
+                europe: { color: 0x6b21a8, opacity: 0.8 },           // Deep purple
+                africa: { color: 0x92400e, opacity: 0.75 },           // Dark amber
+                asia: { color: 0x9f1239, opacity: 0.8 },             // Deep pink
+                oceania: { color: 0x1e3a8a, opacity: 0.75 },          // Dark blue
+                ocean: { color: 0x0f172a, opacity: 0.25 }             // Very dark ocean
+            };
+
+            for (let i = 0; i < dotCount; i++) {
+                const phi = Math.acos(-1 + (2 * i) / dotCount);
+                const theta = Math.sqrt(dotCount * Math.PI) * phi;
+                
+                const lat = 90 - (phi * 180) / Math.PI;
+                const lng = ((theta * 180) / Math.PI) % 360 - 180;
+                
+                const x = radius * Math.cos(theta) * Math.sin(phi);
+                const y = radius * Math.sin(theta) * Math.sin(phi);
+                const z = radius * Math.cos(phi);
+                
+                // Enhanced continent detection with better boundaries
+                let regionColor = regionColors.ocean;
+                
+                if (lat >= 25 && lat <= 70 && lng >= -170 && lng <= -50) {
+                    regionColor = regionColors.northAmerica;
+                } else if (lat >= -55 && lat <= 12 && lng >= -80 && lng <= -35) {
+                    regionColor = regionColors.southAmerica;
+                } else if (lat >= 35 && lat <= 70 && lng >= -10 && lng <= 40) {
+                    regionColor = regionColors.europe;
+                } else if (lat >= -35 && lat <= 37 && lng >= -20 && lng <= 50) {
+                    regionColor = regionColors.africa;
+                } else if (lat >= 5 && lat <= 75 && lng >= 40 && lng <= 145) {
+                    regionColor = regionColors.asia;
+                } else if (lat >= -45 && lat <= -10 && lng >= 110 && lng <= 155) {
+                    regionColor = regionColors.oceania;
+                }
+                
+                // Vary dot sizes for more visual interest
+                const isLand = regionColor !== regionColors.ocean;
+                const baseSize = isLand ? 0.035 : 0.02;
+                const sizeVariation = Math.random() * 0.01;
+                const dotSize = baseSize + sizeVariation;
+                
+                const geometry = new THREE.CircleGeometry(dotSize, 6);
+                const material = new THREE.MeshBasicMaterial({
+                    color: regionColor.color,
+                    transparent: true,
+                    opacity: regionColor.opacity,
+                    side: THREE.DoubleSide
+                });
+                
+                const dot = new THREE.Mesh(geometry, material);
+                dot.position.set(x, y, z);
+                dot.lookAt(0, 0, 0);
+                globeGroup.add(dot);
+            }
+
+            scene.add(globeGroup);
+
+            // Minimal subtle internal lines matching the clean image
+            const cyberLinesGroup = new THREE.Group();
+            
+            // Just a few simple straight lines
+            for (let i = 0; i < 15; i++) {
+                const points = [];
+                
+                // Random points on globe surface
+                const theta1 = Math.random() * Math.PI * 2;
+                const phi1 = Math.random() * Math.PI;
+                const r1 = radius * 1.01;
+                
+                const x1 = r1 * Math.sin(phi1) * Math.cos(theta1);
+                const y1 = r1 * Math.sin(phi1) * Math.sin(theta1);
+                const z1 = r1 * Math.cos(phi1);
+                
+                const theta2 = Math.random() * Math.PI * 2;
+                const phi2 = Math.random() * Math.PI;
+                const r2 = radius * 1.01;
+                
+                const x2 = r2 * Math.sin(phi2) * Math.cos(theta2);
+                const y2 = r2 * Math.sin(phi2) * Math.sin(theta2);
+                const z2 = r2 * Math.cos(phi2);
+                
+                points.push(new THREE.Vector3(x1, y1, z1));
+                points.push(new THREE.Vector3(x2, y2, z2));
+                
+                const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                const lineMaterial = new THREE.LineBasicMaterial({ 
+                    color: 0x64748b,
+                    transparent: true,
+                    opacity: 0.15
+                });
+                const line = new THREE.Line(lineGeometry, lineMaterial);
+                cyberLinesGroup.add(line);
+            }
+            
+            scene.add(cyberLinesGroup);
+
+            // Enhanced atmosphere with sophisticated glow
+            const atmosphereGeometry = new THREE.SphereGeometry(3.1, 64, 64);
+            const atmosphereMaterial = new THREE.MeshBasicMaterial({
+                color: 0x1e293b,
+                transparent: true,
+                opacity: 0.12,
+                side: THREE.BackSide
+            });
+            const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+            scene.add(atmosphere);
+
+            // Additional subtle glow layer
+            const midGlowGeometry = new THREE.SphereGeometry(3.3, 64, 64);
+            const midGlowMaterial = new THREE.MeshBasicMaterial({
+                color: 0x334155,
+                transparent: true,
+                opacity: 0.06,
+                side: THREE.BackSide
+            });
+            const midGlow = new THREE.Mesh(midGlowGeometry, midGlowMaterial);
+            scene.add(midGlow);
+
+            const outerGlowGeometry = new THREE.SphereGeometry(3.5, 64, 64);
+            const outerGlowMaterial = new THREE.MeshBasicMaterial({
+                color: 0x475569,
+                transparent: true,
+                opacity: 0.03,
+                side: THREE.BackSide
+            });
+            const outerGlow = new THREE.Mesh(outerGlowGeometry, outerGlowMaterial);
+            scene.add(outerGlow);
+
+            // Enhanced network with optimized connections
+            const linesMaterial = new THREE.LineBasicMaterial({ 
+                color: 0x3b82f6, 
+                transparent: true, 
+                opacity: 0.15 
+            });
+            
+            for (let i = 0; i < 50; i++) { // Reduced from 120 to 50
+                const points = [];
+                const x1 = (Math.random() - 0.5) * 25;
+                const y1 = (Math.random() - 0.5) * 25;
+                const z1 = (Math.random() - 0.5) * 12 - 8;
+                const x2 = x1 + (Math.random() - 0.5) * 6;
+                const y2 = y1 + (Math.random() - 0.5) * 6;
+                const z2 = z1 + (Math.random() - 0.5) * 6;
+                
+                points.push(new THREE.Vector3(x1, y1, z1));
+                points.push(new THREE.Vector3(x2, y2, z2));
+                
+                const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                const line = new THREE.Line(lineGeometry, linesMaterial);
+                scene.add(line);
+            }
+
+            // Enhanced network dots with optimized count
+            const dotGeometry = new THREE.BufferGeometry();
+            const dotPositions = [];
+            const dotColors = [];
+            const dotSizes = [];
+            
+            for (let i = 0; i < 80; i++) { // Reduced from 200 to 80
+                dotPositions.push(
+                    (Math.random() - 0.5) * 25,
+                    (Math.random() - 0.5) * 25,
+                    (Math.random() - 0.5) * 12 - 8
+                );
+                
+                // Vary dot colors for more visual interest
+                const colorChoice = Math.random();
+                if (colorChoice < 0.3) {
+                    dotColors.push(0.13, 0.51, 1.0);  // Blue
+                } else if (colorChoice < 0.6) {
+                    dotColors.push(0.66, 0.54, 0.98);  // Purple
+                } else {
+                    dotColors.push(0.38, 0.51, 0.96);  // Light blue
+                }
+                
+                dotSizes.push(Math.random() * 0.1 + 0.05);
+            }
+            
+            dotGeometry.setAttribute('position', new THREE.Float32BufferAttribute(dotPositions, 3));
+            dotGeometry.setAttribute('color', new THREE.Float32BufferAttribute(dotColors, 3));
+            dotGeometry.setAttribute('size', new THREE.Float32BufferAttribute(dotSizes, 1));
+            
+            const dotMaterial = new THREE.PointsMaterial({ 
+                color: 0x60a5fa, 
+                size: 0.08, 
+                transparent: true, 
+                opacity: 0.6,
+                vertexColors: true,
+                sizeAttenuation: true
+            });
+            const networkDots = new THREE.Points(dotGeometry, dotMaterial);
+            scene.add(networkDots);
+
+            // Animation
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+
+            document.addEventListener('mousedown', () => isDragging = true);
+            document.addEventListener('mouseup', () => isDragging = false);
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const deltaX = e.clientX - previousMousePosition.x;
+                    const deltaY = e.clientY - previousMousePosition.y;
+                    globeGroup.rotation.y += deltaX * 0.005;
+                    globeGroup.rotation.x += deltaY * 0.005;
+                }
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            function animate() {
+                // Only animate when the stats section is visible
+                const statsSection = document.getElementById('stats');
+                const rect = statsSection.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    requestAnimationFrame(animate);
+                    
+                    if (!isDragging) {
+                        globeGroup.rotation.y += 0.002; // Increased from 0.0005 to match particle speed
+                        cyberLinesGroup.rotation.y += 0.001; // Increased from 0.0002
+                    }
+                    
+                    // Reduce animation frequency for performance
+                    const time = Date.now() * 0.0002; // Increased from 0.0001 for faster animation
+                    atmosphere.scale.setScalar(1 + Math.sin(time * 3) * 0.01);
+                    networkDots.rotation.y = Math.sin(time) * 0.1; // Increased from 0.05
+                    
+                    renderer.render(scene, camera);
+                } else {
+                    // Pause animation when not visible
+                    setTimeout(() => animate(), 1000); // Check again after 1 second
+                }
+            }
+            animate();
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
+    </script>
     <script>
         document.querySelectorAll('.copy-email-btn').forEach((btn) => {
             btn.addEventListener('click', async () => {

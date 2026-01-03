@@ -1,39 +1,339 @@
 <!DOCTYPE html>
-<html>
-   <head>
-	    <title>404</title>
-	    <meta http-equiv="refresh" content="1.0; URL=https://spyboy-productions.github.io/spyboy-productions/404/index.html" />
-			
-			<link rel="icon" href="../images/logo.png">
-
-	    <meta property="og:type" content="website">
-	    <meta property="og:title" content="Redirecting">
-	    <meta property="og:description" content="lets go">
-	    <meta property="og:image" content="https://1.gravatar.com/avatar/44d8e29193e5561e53f11ad0ddefe84d?s=256&d=identicon&r=G">
-	    <meta name="theme-color" content="#F1EC40">
-
-   </head>
-   <body>
-      	<h1>404</h1>
-      	<img src="https://cdn.discordapp.com/attachments/897390115243065374/919548901713932328/redirect.gif" alt="UwU">
-   </body>
-   <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
-   		body {
-   			background: #121212;
-   			text-align: center;
-        justify-content: center;
-        padding: 10% 0;
-   		}
-   		h1 {
-   			color: #fff;
-   			font-size: 75px;
-   			font-family: 'Ubuntu', sans-serif;
-   		}
-   		p {
-   			color: #fff;
-   			font-size: 50px;
-   			font-family: sans-serif;
-   		}
-   </style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Spyboy</title>
+    
+    <link rel="icon" href="./images/logo.png" width="32" height="32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./aos/aos.css">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Oops! The page you're looking for doesn't exist. Spyboy offers powerful cybersecurity tools, apps, blog and Discord bot for ethical hackers and security researchers.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="language" content="en">
+    <meta name="theme-color" content="#F1EC40">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="404 - Page Not Found | Spyboy">
+    <meta property="og:description" content="Oops! The page you're looking for doesn't exist. Explore our cybersecurity tools and resources.">
+    <meta property="og:image" content="https://spyboy.in/images/logo.png">
+    <meta property="og:url" content="https://spyboy.in/404.html">
+    <meta property="og:site_name" content="Spyboy">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@itisspyboy">
+    <meta name="twitter:site" content="@itisspyboy">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        .particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px 20px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .error-code {
+            font-size: 150px;
+            font-weight: 700;
+            color: #F1EC40;
+            text-shadow: 0 0 30px rgba(241, 236, 64, 0.5);
+            margin-bottom: 20px;
+            font-family: 'Ubuntu', sans-serif;
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 30px rgba(241, 236, 64, 0.5); }
+            25% { text-shadow: -2px 0 #ff0080, 2px 0 #00ffff; }
+            50% { text-shadow: 2px 0 #ff0080, -2px 0 #00ffff; }
+            75% { text-shadow: 0 0 30px rgba(241, 236, 64, 0.5); }
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .error-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f1ec40, #dc143c);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(241, 236, 64, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #f1ec40;
+            border: 2px solid #f1ec40;
+        }
+        
+        .btn-secondary:hover {
+            background: #f1ec40;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        .links-section {
+            margin-top: 60px;
+        }
+        
+        .links-title {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #f1ec40;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .link-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(241, 236, 64, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .link-card:hover {
+            background: rgba(241, 236, 64, 0.1);
+            border-color: rgba(241, 236, 64, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .link-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #f1ec40;
+        }
+        
+        .link-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .link-description {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+        
+        .report-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(241, 236, 64, 0.2);
+        }
+        
+        .report-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #f1ec40;
+        }
+        
+        .report-description {
+            margin-bottom: 20px;
+            color: #b0b0b0;
+        }
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 100px;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-bg" id="particles-js"></div>
+    
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-description">
+            Oops! The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+        </p>
+        
+        <div class="buttons">
+            <a href="https://spyboy.in" class="btn btn-primary">
+                <i class="fas fa-home"></i>
+                Go Home
+            </a>
+            <a href="https://spyboy.in/#projects" class="btn btn-secondary">
+                <i class="fas fa-code"></i>
+                Browse Projects
+            </a>
+            <a href="https://spyboy.in/#bot" class="btn btn-secondary">
+                <i class="fas fa-robot"></i>
+                Try Our Bot
+            </a>
+        </div>
+        
+        <div class="links-section">
+            <h2 class="links-title">Popular Pages</h2>
+            <div class="links-grid">
+                <a href="https://spyboy.in/#projects" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="link-title">Projects</div>
+                    <div class="link-description">Open-source security tools</div>
+                </a>
+                <a href="https://spyboy.in/#bot" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="link-title">Spyo Bot</div>
+                    <div class="link-description">Discord cybersecurity bot</div>
+                </a>
+                <a href="https://spyboy.in/#blog" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="link-title">Blog</div>
+                    <div class="link-description">Cybersecurity articles</div>
+                </a>
+                <a href="https://spyboy.in/#apps" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="link-title">Mobile Apps</div>
+                    <div class="link-description">Android security apps</div>
+                </a>
+                <a href="https://spyboy.in/#ctf" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="link-title">CTF Challenges</div>
+                    <div class="link-description">Hacking challenges</div>
+                </a>
+                <a href="https://spyboy.in/#about" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="link-title">About</div>
+                    <div class="link-description">Learn more about Spyboy</div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <h3 class="report-title">Found a broken link?</h3>
+            <p class="report-description">
+                Help us improve! Report broken links or issues you encounter.
+            </p>
+            <div class="buttons">
+                <a href="https://github.com/spyboy-productions/spyboy-productions/issues" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-github"></i>
+                    Report on GitHub
+                </a>
+                <a href="mailto:contact@spyboy.in?subject=Broken Link Report" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+                <a href="https://discord.gg/ZChEmMwE8d" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-discord"></i>
+                    Discord Support
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./particles/particles.js"></script>
+    <script src="./particles/app.js"></script>
+    
+    <script>
+        // Track 404 errors (optional)
+        const currentPath = window.location.pathname;
+        console.log('404 Error:', currentPath);
+        
+        // You can add analytics tracking here
+        // gtag('event', '404_error', { 'page_path': currentPath });
+    </script>
+</body>
 </html>

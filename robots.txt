@@ -1,0 +1,53 @@
+# Robots.txt for Spyboy Website
+# https://spyboy.in/
+
+User-agent: *
+Allow: /
+
+# Prioritize important content
+Crawl-delay: 1
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.well-known/
+Disallow: /temp/
+Disallow: /cache/
+
+# Disallow test and development files
+Disallow: /test/
+Disallow: /dev/
+Disallow: /staging/
+
+# Disallow duplicate content
+Disallow: /404/
+Disallow: /redirect/
+
+# Allow specific bots for better SEO
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Disallow aggressive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://spyboy.in/sitemap.xml
+
+# Host directive for Yandex
+Host: https://spyboy.in/

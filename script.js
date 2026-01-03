@@ -35,8 +35,8 @@ $(document).ready(function() {
         "Free Learning Resources",
         "CTF Challenges & Labs",
       ],
-      typeSpeed: 100,
-      backSpeed: 60,
+      typeSpeed: 50,
+      backSpeed: 30,
       loop: true,
     });
   } else {
