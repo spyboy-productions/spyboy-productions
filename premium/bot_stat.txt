@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spyboy - Bot Statistics Dashboard</title>
+  <meta name="description" content="Real-time statistics for Spyo bot: 6,500+ servers, 100K+ users, 11M+ blog hits, 4K+ GitHub stars, and growing global community">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0a0a1a;
+      --bg-secondary: #12122a;
+      --text-primary: #f0f0ff;
+      --text-muted: #6b7280;
+      --accent-cyan: #22d3ee;
+      --accent-purple: #a855f7;
+      --accent-emerald: #10b981;
+      --accent-pink: #f472b6;
+      --glass-bg: rgba(18, 18, 42, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .font-display {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* Background gradients */
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, rgba(88, 28, 135, 0.3) 100%);
+      z-index: 0;
+    }
+
+    .bottom-glow {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(to top, rgba(147, 51, 234, 0.3), transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .bottom-line {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 3px;
+      background: #a855f7;
+      filter: blur(8px);
+      opacity: 0.8;
+      z-index: 3;
+    }
+
+    /* Stats overlay */
+    .stats-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      padding: 24px;
+      pointer-events: none;
+    }
+
+    .stats-overlay > * {
+      pointer-events: auto;
+    }
+
+    /* Glass card */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+    }
+
+    /* Top left - Main stats */
+    .main-stats {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+    }
+
+    .main-stats .label {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .main-stats .big-number {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .main-stats .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Top right - Forecast */
+    .forecast {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      text-align: right;
+    }
+
+    .forecast .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .forecast .stat-row {
+      margin-top: 12px;
+    }
+
+    .forecast .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .forecast .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .forecast .trend-up {
+      color: var(--accent-emerald);
+      font-size: 14px;
+      margin-left: 8px;
+    }
+
+    /* Left panel - Activity */
+    .activity-panel {
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 220px;
+      padding: 16px;
+    }
+
+    .activity-panel h3 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .activity-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .activity-country {
+      flex: 1;
+      color: var(--text-muted);
+    }
+
+    .activity-value {
+      font-weight: 500;
+    }
+
+    .activity-percent {
+      color: var(--text-muted);
+      width: 35px;
+      text-align: right;
+    }
+
+    /* Bottom stats cards */
+    .bottom-stats {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      min-width: 160px;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-card .icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .stat-card .card-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .card-value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .stat-card .card-trend {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--accent-emerald);
+      margin-top: 4px;
+    }
+
+    /* Center trend card */
+    .trend-card {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .trend-info .trend-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .trend-info .trend-value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .trend-info .trend-compare {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .divider {
+      width: 1px;
+      height: 50px;
+      background: var(--glass-border);
+    }
+
+    .coverage-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 4px solid var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .coverage-info .coverage-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .coverage-info .coverage-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* Right indicator */
+    .global-reach {
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      transform: translateY(-50%);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reach-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--accent-cyan);
+    }
+
+    .reach-info .reach-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .reach-info .reach-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .delay-100 { animation-delay: 0.1s; opacity: 0; }
+    .delay-200 { animation-delay: 0.2s; opacity: 0; }
+    .delay-300 { animation-delay: 0.3s; opacity: 0; }
+    .delay-400 { animation-delay: 0.4s; opacity: 0; }
+    .delay-500 { animation-delay: 0.5s; opacity: 0; }
+    .delay-600 { animation-delay: 0.6s; opacity: 0; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .animate-pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .activity-panel, .global-reach, .trend-card {
+        display: none;
+      }
+      .bottom-stats {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .forecast {
+        display: none;
+      }
+      .bottom-stats {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+      .stat-card {
+        min-width: 120px;
+        padding: 12px;
+      }
+      .stat-card .card-value {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bottom-glow"></div>
+  <div class="bottom-line"></div>
+  
+  <div id="canvas-container"></div>
+
+  <div class="stats-overlay">
+    <!-- Top Left - Main Stats -->
+    <div class="main-stats animate-fade-in">
+      <p class="label">Global Statistics</p>
+      <h1 class="big-number font-display" id="main-counter">0</h1>
+      <p class="subtitle">Blog hits worldwide</p>
+    </div>
+
+    <!-- Top Right - GitHub Stats -->
+    <div class="forecast animate-fade-in delay-100">
+      <p class="section-label">GitHub Stats</p>
+      <div class="stat-row">
+        <p class="stat-label">Stars</p>
+        <p class="stat-value font-display">4,000+ <span class="trend-up">▲15%</span></p>
+      </div>
+      <div class="stat-row">
+        <p class="stat-label">Forks</p>
+        <p class="stat-value font-display">1,000+</p>
+      </div>
+    </div>
+
+    <!-- Left - Activity Panel -->
+    <div class="activity-panel glass-card animate-fade-in delay-200">
+      <h3>Current activity</h3>
+      <div class="activity-item">
+        <div class="activity-dot" style="background: #22d3ee;"></div>
+        <span class="activity-country">United States</span>
+        <span class="activity-value">4,504,210</span>
+        <span class="activity-percent">35%</span>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background: #fbbf24;"></div>
+        <span class="activity-country">India</span>
+        <span class="activity-value">3,204,210</span>
+        <span class="activity-percent">25%</span>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background: #a78bfa;"></div>
+        <span class="activity-country">France</span>
+        <span class="activity-value">2,100,950</span>
+        <span class="activity-percent">17%</span>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background: #f472b6;"></div>
+        <span class="activity-country">China</span>
+        <span class="activity-value">1,980,240</span>
+        <span class="activity-percent">15%</span>
+      </div>
+      <div class="activity-item">
+        <div class="activity-dot" style="background: #10b981;"></div>
+        <span class="activity-country">Brazil</span>
+        <span class="activity-value">1,504,210</span>
+        <span class="activity-percent">8%</span>
+      </div>
+    </div>
+
+    <!-- Bottom - Stat Cards -->
+    <div class="bottom-stats">
+      <div class="stat-card glass-card animate-fade-in delay-300" style="border-color: rgba(34, 211, 238, 0.3); box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);">
+        <div class="icon-wrap" style="background: rgba(34, 211, 238, 0.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+          </svg>
+        </div>
+        <p class="card-label">Servers</p>
+        <p class="card-value font-display" style="color: #22d3ee;" id="servers-counter">0</p>
+        <div class="card-trend">
+          <span>▲</span>
+          <span>+12%</span>
+        </div>
+      </div>
+
+      <div class="stat-card glass-card animate-fade-in delay-400" style="border-color: rgba(16, 185, 129, 0.3); box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);">
+        <div class="icon-wrap" style="background: rgba(16, 185, 129, 0.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <p class="card-label">Users</p>
+        <p class="card-value font-display" style="color: #10b981;" id="users-counter">0</p>
+        <div class="card-trend">
+          <span>▲</span>
+          <span>+8%</span>
+        </div>
+      </div>
+
+      <div class="stat-card glass-card animate-fade-in delay-500" style="border-color: rgba(168, 85, 247, 0.3); box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);">
+        <div class="icon-wrap" style="background: rgba(168, 85, 247, 0.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+          </svg>
+        </div>
+        <p class="card-label">Premium</p>
+        <p class="card-value font-display" style="color: #a855f7;" id="premium-counter">0</p>
+        <div class="card-trend">
+          <span>▲</span>
+          <span>+15%</span>
+        </div>
+      </div>
+
+      <div class="stat-card glass-card animate-fade-in delay-500" style="border-color: rgba(251, 191, 36, 0.3); box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);">
+        <div class="icon-wrap" style="background: rgba(251, 191, 36, 0.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <p class="card-label">App Installs</p>
+        <p class="card-value font-display" style="color: #fbbf24;">1M+</p>
+        <div class="card-trend">
+          <span>▲</span>
+          <span>+22%</span>
+        </div>
+      </div>
+
+      <div class="stat-card glass-card animate-fade-in delay-500" style="border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 30px rgba(239, 68, 68, 0.1);">
+        <div class="icon-wrap" style="background: rgba(239, 68, 68, 0.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </div>
+        <p class="card-label">Discord Members</p>
+        <p class="card-value font-display" style="color: #ef4444;">13K+</p>
+        <div class="card-trend">
+          <span>▲</span>
+          <span>+18%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center - Trend Card -->
+    <div class="trend-card glass-card animate-fade-in delay-600">
+      <div class="trend-info">
+        <p class="trend-label">Open Source Projects</p>
+        <p class="trend-value font-display">14</p>
+        <p class="trend-compare">Across GitHub repositories</p>
+      </div>
+      <div class="divider"></div>
+      <div class="coverage-circle font-display">5+</div>
+      <div class="coverage-info">
+        <p class="coverage-label">Published Apps</p>
+        <p class="coverage-value font-display">Android & iOS</p>
+      </div>
+    </div>
+
+    <!-- Right - Projects Info -->
+    <div class="global-reach glass-card animate-fade-in delay-600">
+      <svg class="reach-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        <line x1="5" y1="7" x2="19" y2="7"></line>
+      </svg>
+      <div class="reach-info">
+        <p class="reach-title">Security Tools</p>
+        <p class="reach-subtitle">OSINT, Crypto, Forensics</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Counter animation
+    function animateCounter(elementId, target, duration = 2500, delay = 0, formatter = (n) => n.toLocaleString()) {
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        const start = performance.now();
+        
+        function update(currentTime) {
+          const elapsed = currentTime - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeOut = 1 - Math.pow(1 - progress, 4);
+          const current = Math.floor(easeOut * target);
+          
+          element.textContent = formatter(current);
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            element.textContent = formatter(target);
+          }
+        }
+        
+        requestAnimationFrame(update);
+      }, delay);
+    }
+
+    function formatK(num) {
+      if (num >= 1000) {
+        return (num / 1000).toFixed(num >= 10000 ? 0 : 1) + 'K+';
+      }
+      return num.toLocaleString() + '+';
+    }
+
+    // Start counters
+    animateCounter('main-counter', 11202248, 3000, 300);
+    animateCounter('servers-counter', 6500, 2500, 600, formatK);
+    animateCounter('users-counter', 100000, 2500, 800, formatK);
+    animateCounter('premium-counter', 2000, 2500, 1000, formatK);
+
+    // Three.js Globe
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    camera.position.z = 8;
+
+    // Continent data (simplified lat/lng ranges)
+    const continents = [
+      { latMin: 25, latMax: 70, lngMin: -170, lngMax: -50 },   // North America
+      { latMin: -55, latMax: 12, lngMin: -80, lngMax: -35 },   // South America
+      { latMin: 35, latMax: 70, lngMin: -10, lngMax: 40 },     // Europe
+      { latMin: -35, latMax: 37, lngMin: -20, lngMax: 50 },    // Africa
+      { latMin: 5, latMax: 75, lngMin: 40, lngMax: 145 },      // Asia
+      { latMin: -45, latMax: -10, lngMin: 110, lngMax: 155 },  // Australia
+    ];
+
+    function isLand(lat, lng) {
+      for (const c of continents) {
+        if (lat >= c.latMin && lat <= c.latMax && lng >= c.lngMin && lng <= c.lngMax) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Create hexagonal dots for globe
+    const globeGroup = new THREE.Group();
+    const radius = 3;
+    const dotCount = 10000;
+
+    for (let i = 0; i < dotCount; i++) {
+      const phi = Math.acos(-1 + (2 * i) / dotCount);
+      const theta = Math.sqrt(dotCount * Math.PI) * phi;
+      
+      const lat = 90 - (phi * 180) / Math.PI;
+      const lng = ((theta * 180) / Math.PI) % 360 - 180;
+      
+      const x = radius * Math.cos(theta) * Math.sin(phi);
+      const y = radius * Math.sin(theta) * Math.sin(phi);
+      const z = radius * Math.cos(phi);
+      
+      const land = isLand(lat, lng);
+      
+      const geometry = new THREE.CircleGeometry(land ? 0.035 : 0.02, 6);
+      const material = new THREE.MeshBasicMaterial({
+        color: land ? 0xa78bfa : 0x3b3b6d,
+        transparent: true,
+        opacity: land ? 0.9 : 0.25,
+        side: THREE.DoubleSide
+      });
+      
+      const dot = new THREE.Mesh(geometry, material);
+      dot.position.set(x, y, z);
+      dot.lookAt(0, 0, 0);
+      globeGroup.add(dot);
+    }
+
+    scene.add(globeGroup);
+
+    // Atmosphere glow spheres
+    const atmosphereGeometry = new THREE.SphereGeometry(3.1, 64, 64);
+    const atmosphereMaterial = new THREE.MeshBasicMaterial({
+      color: 0x4c1d95,
+      transparent: true,
+      opacity: 0.15,
+      side: THREE.BackSide
+    });
+    const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+    scene.add(atmosphere);
+
+    const outerGlowGeometry = new THREE.SphereGeometry(3.5, 64, 64);
+    const outerGlowMaterial = new THREE.MeshBasicMaterial({
+      color: 0x7c3aed,
+      transparent: true,
+      opacity: 0.08,
+      side: THREE.BackSide
+    });
+    const outerGlow = new THREE.Mesh(outerGlowGeometry, outerGlowMaterial);
+    scene.add(outerGlow);
+
+    // Network lines in background
+    const linesMaterial = new THREE.LineBasicMaterial({ 
+      color: 0x3b82f6, 
+      transparent: true, 
+      opacity: 0.12 
+    });
+    
+    for (let i = 0; i < 80; i++) {
+      const points = [];
+      const x1 = (Math.random() - 0.5) * 20;
+      const y1 = (Math.random() - 0.5) * 20;
+      const z1 = (Math.random() - 0.5) * 10 - 8;
+      const x2 = x1 + (Math.random() - 0.5) * 4;
+      const y2 = y1 + (Math.random() - 0.5) * 4;
+      const z2 = z1 + (Math.random() - 0.5) * 4;
+      
+      points.push(new THREE.Vector3(x1, y1, z1));
+      points.push(new THREE.Vector3(x2, y2, z2));
+      
+      const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(lineGeometry, linesMaterial);
+      scene.add(line);
+    }
+
+    // Network dots
+    const dotGeometry = new THREE.BufferGeometry();
+    const dotPositions = [];
+    for (let i = 0; i < 150; i++) {
+      dotPositions.push(
+        (Math.random() - 0.5) * 20,
+        (Math.random() - 0.5) * 20,
+        (Math.random() - 0.5) * 10 - 8
+      );
+    }
+    dotGeometry.setAttribute('position', new THREE.Float32BufferAttribute(dotPositions, 3));
+    const dotMaterial = new THREE.PointsMaterial({ color: 0x60a5fa, size: 0.08, transparent: true, opacity: 0.5 });
+    const networkDots = new THREE.Points(dotGeometry, dotMaterial);
+    scene.add(networkDots);
+
+    // Animation
+    let isDragging = false;
+    let previousMousePosition = { x: 0, y: 0 };
+
+    document.addEventListener('mousedown', () => isDragging = true);
+    document.addEventListener('mouseup', () => isDragging = false);
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const deltaX = e.clientX - previousMousePosition.x;
+        const deltaY = e.clientY - previousMousePosition.y;
+        globeGroup.rotation.y += deltaX * 0.005;
+        globeGroup.rotation.x += deltaY * 0.005;
+      }
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      if (!isDragging) {
+        globeGroup.rotation.y += 0.001;
+      }
+      
+      atmosphere.scale.setScalar(1 + Math.sin(Date.now() * 0.0003) * 0.02);
+      networkDots.rotation.y = Math.sin(Date.now() * 0.0001) * 0.1;
+      
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>

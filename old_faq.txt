@@ -1,0 +1,416 @@
+
+<!doctype html>
+<html>
+<head>
+
+<title>Spyboy FAQ - Everything You Need to Know</title>
+<script src="//code.jquery.com/jquery-latest.min.js" type="97e396dcb22d340a137faeb5-text/javascript"></script>
+<link rel="icon" href="../images/logo.png" style="border-radius: 50%;">
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.css" rel="stylesheet">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="og:title" content="Spyboy FAQ - Everything You Need to Know" />
+<meta property="og:site_name" content="spyboy.in" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Comprehensive FAQ covering Spyboy ecosystem, Spyo Discord bot, premium features, services, and more." />
+<meta property="og:url" content="https://spyboy.in/faq" />
+<meta property="theme-color" content="#B81217" />
+<meta property="og:image" content="../images/logo.png" />
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://kit.fontawesome.com/9a19702cee.js" crossorigin="anonymous" type="97e396dcb22d340a137faeb5-text/javascript"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body style="background-color:#272934;">
+<div class="z-50" style="position: relative; top: 1%; background-color: #272934;">
+
+<header class="hidden md:block text-gray-600 body-font rounded-lg mx-5">
+<div class="container mx-auto flex flex-wrap gap-4 md:gap-0 p-5 flex-row justify-center items-center">
+<a class="flex flex-wrap title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+<a id="nav-image" href="https://spyboy.in"><img src="../images/logo.png" class="w-12 h-12 bg-red-0" style="border-radius: 50%;"></a>
+<h1 class="text-2xl text-white ml-0 md:ml-3" style="font-family: 'Open Sans', sans-serif; font-weight: 700;">Spyo</h1>
+</a>
+<nav class="flex sm:flex-row gap-x-4 ml-auto">
+<a class="mr-5 font-medium text-gray-300 hover:text-white transform transition duration-75 two" href="https://spyboy.in">
+<span class="absolute -bottom-1 left-1/2 w-0 h-1 bg-white"></span>
+<span class="absolute -bottom-1 right-1/2 w-0 h-1 bg-white"></span>Home</a>
+<a class="mr-5 font-medium text-gray-300 hover:text-white transform transition duration-75 two" href="https://spyboy.in/premium">
+<span class="absolute -bottom-1 left-1/2 w-0 h-1 bg-white"></span>
+<span class="absolute -bottom-1 right-1/2 w-0 h-1 bg-white"></span>Premium</a>
+<a class="mr-5 font-medium text-gray-300 hover:text-white transform transition duration-75 two" href="https://spyboy.in/Discord">
+<span class="absolute -bottom-1 left-1/2 w-0 h-1 bg-white"></span>
+<span class="absolute -bottom-1 right-1/2 w-0 h-1 bg-white"></span>Contact</a>
+
+
+</ul>
+</div>
+</div>
+<i class="ml-auto fa-solid fa-bars fa-2x text-red-500 transform transition duration-100 hover:text-white cursor-pointer" onclick="if (!window.__cfRLUnblockHandlers) return false; mobileMenu(document.getElementById('mobilemenu'))" data-cf-modified-97e396dcb22d340a137faeb5-=""></i>
+<div id="overlay-bg" class="hidden fixed top-0 opacity-75 bg-black w-full h-full"></div>
+</div>
+<div id="mobilemenu" class="no-scrollbar overflow-auto fixed md:hidden transform transition duration-500 -translate-x-full md:translate-x-0 top-0 w-1/2 h-full" style="background-color: #1d1d20;">
+<div class="flex flex-col gap-4 p-6">
+<div class="flex flex-col gap-8">
+<div class="flex flex-row cursor-pointer" onclick="if (!window.__cfRLUnblockHandlers) return false; mobileMenu(document.getElementById('mobilemenu'))" data-cf-modified-97e396dcb22d340a137faeb5-="">
+<i class="fa-solid fa-angles-left fa-lg mt-3 mr-2"></i>
+<a class='text-white font-bold text-lg'>Close Menu</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<header class="hidden md:block text-gray-600 body-font rounded-lg mx-5">
+<div class="container mx-auto flex flex-wrap gap-4 md:gap-0 p-5 flex-row justify-center items-center">
+</header>
+</div>
+<div class="inline-flex absolute mx-5 md:mx-32 mt-3 md:mt-14">
+<a href="https://spyboy.in/premium"><i class="fas fa-arrow-left fa-lg mt-2 md:mt-3 mr-1 md:mr-3" style="color:white"></i><button class="bg-red-50 p-1 md:p-2 mt-0 md:mt-1 md:mt-0 text-white font-bold rounded-sm ml-auto hover:bg-red-700 hover:shadow-lg">
+🛒
+</button></a>
+</div>
+<h1 class="text-white font-bold text-lg md:text-3xl mt-6 ml-2 md:ml-0 md:mt-16 mb-5 text-center" style="font-family: 'Ubuntu', sans-serif;">
+Spyboy FAQ - Everything You Need to Know
+</h1>
+<section id="faq" class="rounded-md mx-2 md:mx-32 shadow-lg p-4 md:p-12 mb-5 mt-5 md:mt-16" style="background-color:#323443;">
+<div class="text-white font-small text-lg">
+    
+    <!-- General FAQ Section -->
+    <div class="inline-flex mb-5">
+        <div class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+        <h1 class="text-white font-bold text-2xl mt-5">
+            General Questions
+        </h1>
+    </div>
+    
+    <div class="space-y-4 mb-8">
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-blue-500">
+            <h3 class="text-blue-400 font-semibold mb-2">What is Spyboy?</h3>
+            <p class="text-gray-300">Spyboy is a cybersecurity ecosystem that builds powerful tools, apps, blogs, and Discord bots for security enthusiasts. We create OSINT suites, reconnaissance tools, CTF challenges, and educational content with 20+ open-source projects and 4,000+ GitHub stars. Our flagship product is Spyo, a Discord bot with 300+ cybersecurity commands.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-purple-500">
+            <h3 class="text-purple-400 font-semibold mb-2">Who owns/founded Spyboy?</h3>
+            <p class="text-gray-300">Spyboy was founded by Shubham Kumar, a cybersecurity developer and researcher. The project has grown into a collaborative open-source community with multiple contributors and maintains an active presence on GitHub and Discord.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-green-500">
+            <h3 class="text-green-400 font-semibold mb-2">What is the Spyboy Discord server?</h3>
+            <p class="text-gray-300">The Spyboy Discord server is our community hub where you can get support, discuss cybersecurity, participate in CTF challenges, and interact with other security enthusiasts. Join us at <a href="https://discord.gg/ZChEmMwE8d" class="text-blue-400 hover:underline">discord.gg/ZChEmMwE8d</a>. The server has over 5,000 members and offers exclusive channels for premium users.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-yellow-500">
+            <h3 class="text-yellow-400 font-semibold mb-2">About Spyboy.blog?</h3>
+            <p class="text-gray-300">Spyboy.blog is our cybersecurity education platform featuring 500+ hacking tutorials with 11M+ lifetime reads. It covers ethical hacking, penetration testing, digital forensics, OSINT, bug bounty hunting, and security tips. The blog is completely free and updated regularly with practical, hands-on content.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-red-500">
+            <h3 class="text-red-400 font-semibold mb-2">What's the difference between spyboy.in and spyboy.blog?</h3>
+            <p class="text-gray-300">Spyboy.in is our main website showcasing projects, tools, Discord bot, and services. Spyboy.blog is specifically dedicated to cybersecurity tutorials and educational content. While spyboy.in focuses on tools and products, spyboy.blog provides in-depth guides and learning resources.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-indigo-500">
+            <h3 class="text-indigo-400 font-semibold mb-2">Spyboy GitHub?</h3>
+            <p class="text-gray-300">Our GitHub organization hosts 20+ open-source security projects including R4ven, CloakQuest3r, Valid8Proxy, Facad1ng, Omnisci3nt, and more. Explore our repositories at <a href="https://github.com/spyboy-productions" class="text-blue-400 hover:underline">github.com/spyboy-productions</a>. Our projects have accumulated 4,000+ stars and 1,000+ forks.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-pink-500">
+            <h3 class="text-pink-400 font-semibold mb-2">Spyboy social links?</h3>
+            <p class="text-gray-300">Connect with us on:
+            <br>• <strong>Discord:</strong> <a href="https://discord.gg/ZChEmMwE8d" class="text-blue-400 hover:underline">discord.gg/ZChEmMwE8d</a>
+            <br>• <strong>GitHub:</strong> <a href="https://github.com/spyboy-productions" class="text-blue-400 hover:underline">github.com/spyboy-productions</a>
+            <br>• <strong>Blog:</strong> <a href="https://spyboy.blog" class="text-blue-400 hover:underline">spyboy.blog</a>
+            <br>• <strong>Twitter:</strong> <a href="https://twitter.com/itisspyboy" class="text-blue-400 hover:underline">@itisspyboy</a></p>
+        </div>
+    </div>
+
+    <!-- Spyo Bot FAQ Section -->
+    <div class="inline-flex mb-5">
+        <div class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+        <h1 class="text-white font-bold text-2xl mt-5">
+            Spyo Bot Questions
+        </h1>
+    </div>
+    
+    <div class="space-y-4 mb-8">
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-cyan-500">
+            <h3 class="text-cyan-400 font-semibold mb-2">How to invite Spyo bot?</h3>
+            <p class="text-gray-300">Invite Spyo to your Discord server using our official invite link: <a href="https://discord.com/api/oauth2/authorize?client_id=877644741339144244&permissions=8&scope=bot%20applications.commands" class="text-blue-400 hover:underline">Invite Spyo</a>. Make sure you have admin permissions in the server you're inviting it to.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-orange-500">
+            <h3 class="text-orange-400 font-semibold mb-2">How to play Spyboy CTF?</h3>
+            <p class="text-gray-300">Spyo includes a built-in CTF engine with challenges, certifications, and leaderboards. Use commands like <code>sudo ctf</code> to start challenges, <code>sudo submit flag</code> to submit answers, and <code>sudo leaderboard</code> to view rankings. Join our Discord server for regular CTF events and competitions.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-teal-500">
+            <h3 class="text-teal-400 font-semibold mb-2">How to use Spyo commands?</h3>
+            <p class="text-gray-300">Spyo uses the prefix <code>sudo</code> or you can mention <code>@Spyo#0756</code>. Start with <code>sudo help</code> to see all available commands. Navigate modules using <code>sudo cd &lt;folder&gt;</code> (e.g., <code>sudo cd tools</code>). Commands work in server channels, not DMs.</p>
+        </div>
+    </div>
+
+    <!-- Premium FAQ Section -->
+    <div class="inline-flex mb-5">
+        <div class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+        <h1 class="text-white font-bold text-2xl mt-5">
+            Premium Questions
+        </h1>
+    </div>
+    
+    <div class="space-y-4 mb-8">
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-amber-500">
+            <h3 class="text-amber-400 font-semibold mb-2">How to buy Spyo bot premium?</h3>
+            <p class="text-gray-300">Visit our <a href="https://spyboy.in/premium" class="text-blue-400 hover:underline">premium page</a> to purchase lifetime access for $25 (40% off regular $45). We offer monthly ($5), yearly ($12), and lifetime ($25) plans through secure PayPal payment. Premium includes 30+ exclusive commands and priority support.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-lime-500">
+            <h3 class="text-lime-400 font-semibold mb-2">Why isn't Spyboy app on Play Store?</h3>
+            <p class="text-gray-300">While we do have Android apps available, some of our security tools may not be on Google Play Store due to policy restrictions on cybersecurity tools. You can download our apps directly from our GitHub releases or official website. Check our <a href="https://play.google.com/store/apps/dev?id=6188034454598466210" class="text-blue-400 hover:underline">Play Store developer page</a> for available apps.</p>
+        </div>
+        
+        <div id="refunds" class="inline-flex mb-5">
+            <div class="vertical text-red-700 mr-5" style="height: auto; border-left: 8px solid;"></div>
+            <a class="text-red-500 font-medium text-md mt-2 p-2">
+                We don't offer refunds under normal circumstances. However in case of missed delivery or Payments made without parental permissions, you are eligible for a refund within 7 days of purchase.
+            </a>
+        </div>
+        
+        <!-- Business & Services FAQ Section -->
+    <div class="inline-flex mb-5">
+        <div class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+        <h1 class="text-white font-bold text-2xl mt-5">
+            Business & Services
+        </h1>
+    </div>
+    
+    <div class="space-y-4 mb-8">
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-emerald-500">
+            <h3 class="text-emerald-400 font-semibold mb-2">Can I hire Spyboy?</h3>
+            <p class="text-gray-300">Yes! Spyboy offers custom development services for cybersecurity tools, Discord bots, automation scripts, mobile apps, CTF challenges, and security research. Services start at ₹25,000/$300 USD. Contact us at <a href="mailto:contact@spyboy.in" class="text-blue-400 hover:underline">contact@spyboy.in</a> with your project requirements. Visit our <a href="https://spyboy.in/hire" class="text-blue-400 hover:underline">hire page</a> for detailed pricing and services.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-violet-500">
+            <h3 class="text-violet-400 font-semibold mb-2">How to advertise with Spyboy?</h3>
+            <p class="text-gray-300">Partner with us to reach 10,000+ monthly cybersecurity professionals and enthusiasts. We offer sponsored blog posts ($20), banner ads ($50/month), tool sponsorships ($100/month), Discord promotions, and CTF event branding ($300/event). Email <a href="mailto:contact@spyboy.in" class="text-blue-400 hover:underline">contact@spyboy.in</a> or visit our <a href="https://spyboy.in/advertise" class="text-blue-400 hover:underline">advertise page</a> for media kit and custom packages.</p>
+        </div>
+    </div>
+
+    <!-- Additional FAQ Section -->
+    <div class="inline-flex mb-5">
+        <div class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+        <h1 class="text-white font-bold text-2xl mt-5">
+            Additional Questions
+        </h1>
+    </div>
+    
+    <div class="space-y-4 mb-8">
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-rose-500">
+            <h3 class="text-rose-400 font-semibold mb-2">What makes Spyo different from other Discord bots?</h3>
+            <p class="text-gray-300">Spyo is exclusively built for cybersecurity - no moderation, music, or generic features. It offers 300+ specialized commands for OSINT, reconnaissance, cryptography, forensics, and CTF challenges. Unlike other bots, Spyo is designed by security professionals for actual security work and research.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-sky-500">
+            <h3 class="text-sky-400 font-semibold mb-2">Is Spyboy open source?</h3>
+            <p class="text-gray-300">Yes! Most of our tools and projects are open source and available on GitHub. The Spyo bot itself is closed source to maintain security and prevent abuse, but our 20+ security tools including R4ven, CloakQuest3r, and Omnisci3nt are fully open source with active community contributions.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-fuchsia-500">
+            <h3 class="text-fuchsia-400 font-semibold mb-2">How can I contribute to Spyboy projects?</h3>
+            <p class="text-gray-300">We welcome contributions! Fork our repositories on GitHub, submit pull requests, report issues, or suggest features. Join our Discord server to discuss development ideas. For significant contributions, you may get special recognition in our projects and Discord community.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-stone-500">
+            <h3 class="text-stone-400 font-semibold mb-2">What programming languages does Spyboy use?</h3>
+            <p class="text-gray-300">Our projects use various languages depending on the requirements: Python for most security tools and automation, JavaScript for web applications and Discord bot, Java/Kotlin for Android apps, and Go for high-performance tools. Check individual GitHub repositories for specific tech stacks.</p>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 border-l-4 border-zinc-500">
+            <h3 class="text-zinc-400 font-semibold mb-2">How can I report security issues or bugs?</h3>
+            <p class="text-gray-300">For security vulnerabilities in our tools, please email us privately at <a href="mailto:contact@spyboy.in" class="text-blue-400 hover:underline">contact@spyboy.in</a>. For general bugs and feature requests, use GitHub issues on the respective repository or join our Discord server for real-time discussion.</p>
+        </div>
+    </div>
+
+    <!-- Support & Contact Section -->
+    <div class="inline-flex mb-5">
+        <div class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+        <h1 class="text-white font-bold text-2xl mt-5">
+            Need More Help?
+        </h1>
+    </div>
+    
+    <div class="bg-gradient-to-r from-blue-900 to-purple-900 rounded-lg p-6 mb-8">
+        <p class="text-white text-lg mb-4">Can't find what you're looking for? We're here to help!</p>
+        <div class="flex flex-wrap gap-4">
+            <a href="https://discord.gg/ZChEmMwE8d" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                <i class="fab fa-discord mr-2"></i>Join Discord Support
+            </a>
+            <a href="mailto:contact@spyboy.in" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                <i class="fas fa-envelope mr-2"></i>Email Us
+            </a>
+            <a href="https://github.com/spyboy-productions" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                <i class="fab fa-github mr-2"></i>Check GitHub
+            </a>
+        </div>
+    </div>
+<div class="grid grid-cols-1 mt-5 gap-2 bg-gray-700 rounded-lg shadow-lg p-2">
+<img src='https://spyboy.in/images/checkout.png' class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
+
+</div>
+<div class="text-center">
+<a class="text-gray-300 font-bold text-sm">Premium Page</a>
+</div>
+<br>
+<div class="inline-flex mb-5">
+<div id="why-premium" class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+<h1 class="text-white font-bold text-2xl mt-5">
+Why Spyo Premium ?
+</h1>
+</div>
+<br>
+You may question yourself why Spyo Premium. Spyo without premium is pretty premium as well. Here is why to buy Spyo Premium when there are other bots available as well? actually, do believe me when we say there's no other bot like spyo.
+<br>
+<br>
+Spyo is not just another discord bot. if you have used the bot you know why we are saying so, no offence to other developers but we don't do that server moderation and log stuff like every 2nd bot on discord.
+<br>
+<br>
+Spyo is a cybersecurity bot, that helps with OSINT, Pen-Testing, Bug-Bounty, CTF etc.
+<br>
+<br>
+there are no other bots available with the same features. Spyo has been perfectly handcrafted for cybersec enthusiasts, you get access to all of those perfect commands by choosing Premium.
+<br>
+<br>
+Other than that, buying premium helps us survive the cost of running and maintaining Spyo.
+<br>
+<div class="grid grid-cols-1 md:grid-cols-2 mt-5 gap-2 bg-gray-700 rounded-lg shadow-lg p-2">
+<img src="https://spyboy.in/images/exploitdb.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
+<img src="https://spyboy.in/images/fakeprofile.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
+<img src="https://spyboy.in/images/phlookup.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
+<img src="https://spyboy.in/images/socail.gif" class="rounded-md shadow-lg w-auto h-auto md:h-full max-h-screen-sm">
+</div>
+<h1 class="text-center font-bold text-sm text-gray-300 mt-3">
+Previews of some features
+</h1>
+<div id="commands" class="inline-flex mb-5 mt-5">
+<div class="vertical text-green-300 mr-5 mt-2" style="height: 60px; border-left: 4px solid;"></div>
+<h1 class="text-white font-bold text-2xl mt-5">
+Premium Commands
+</h1>
+</div>
+<br>
+<ul class="mx-auto">
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo phlookup {number} {country}</a>
+<a class="text-white text-lg font-small ml-3">Caller id lookup</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo social {username}</a>
+<a class="text-white text-lg font-small ml-3">Find profiles by username. checked on over 100+ websites within few seconds.</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo portscan {ip} {port}</a>
+<a class="text-white text-lg font-small ml-3">Scan specific ip for open or close port. </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo pagelink {domain}</a>
+<a class="text-white text-lg font-small ml-3">Extract All Pagelinks From Website. </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo shareddns {domain}</a>
+<a class="text-white text-lg font-small ml-3">Find Shared DNS Server. </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo reversedns {domain}</a>
+<a class="text-white text-lg font-small ml-3">Reverse DNS Lookup. </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo hostsearch {domain}</a>
+<a class="text-white text-lg font-small ml-3">Find subdomains for given host. </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo dnslookup {domain}</a>
+<a class="text-white text-lg font-small ml-3">DNS lookup Of a given host. </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo dork</a>
+<a class="text-white text-lg font-small ml-3">All google dorks for Cybersecurity. </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo ssl {domain}</a>
+<a class="text-white text-lg font-small ml-3">Crawl website ssl certificate </a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo exploitdb {exploitname}</a>
+<a class="text-white text-lg font-small ml-3">Search exploits form Exploit Database</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo fakeprofile</a>
+<a class="text-white text-lg font-small ml-3">Genraten fake profile</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo gist {name}{desc}</a>
+<a class="text-white text-lg font-small ml-3">Make unlimited gist using bot</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo urlscan {url}</a>
+<a class="text-white text-lg font-small ml-3">Scan for suspicious & malicious URLs</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">sudo ts {text} {lang}</a>
+<a class="text-white text-lg font-small ml-3">Convert text to speech in any language.</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">Early access</a>
+<a class="text-white text-lg font-small ml-3">Get early command access</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">Whitelist</a>
+<a class="text-white text-lg font-small ml-3">Get whitelist for files command</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">exclusive role</a>
+<a class="text-white text-lg font-small ml-3">Get custom Role in our Discord servers.</a>
+</li>
+<li class="mb-2">
+<i class="fas fa-circle fa-xs mr-2" style="color:#C41E3A"></i>
+<a class='bg-red-500 bg-opacity-10 px-1 rounded-sm text-red-500 text-sm p-1 font-medium' style="border:0.35px solid red">private channel</a>
+<a class="text-white text-lg font-small ml-3">Get private channel Support</a>
+</li>
+</ul>
+<div class="inline-flex mb-5 mt-5">
+<div id="rights" class="vertical text-yellow-500 mr-5 mt-2" style="height: auto; border-left: 8px solid;"></div>
+<h1 class="text-yellow-400 font-bold text-sm p-2 mt-2">
+We have all the rights to change the premium commands. Some commands that exist today may not be available tomorrow. Some commands might become public. We have the right to shut down the bot. In the event of a complete shutdown, there will be no refund for premium purchases.
+</h1>
+</div>
+<br>
+If you have any concerns about buying premium, do not hesitate to join our <a href="https://spyboy.in/Discord" class="text-blue-400 hover:text-blue-300 hover:underline">support server</a>💪🏻
+<h1 class="mt-8 text-center text-gray-300 font-small text-sm">
+Last Update: 21 / 05 / 2022
+</h1>
+</div>
+</div>
+</section>
+
+</body>
+</html>

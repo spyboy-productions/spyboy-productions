@@ -10,31 +10,71 @@
 
     <title>Spyboy - Crafting CyberSecurity app, blog, bot & tools</title>
 
+    <!-- Critical CSS inline for above-the-fold content -->
+    <style>
+        body { margin: 0; padding: 0; background: #050505; font-family: 'Poppins', sans-serif; }
+        .navbar { position: fixed; background: rgba(5, 5, 5, 0.9); backdrop-filter: blur(10px); z-index: 999; }
+        .logo { font-size: 2.1rem; font-weight: 600; color: #fff; text-decoration: none; }
+        .logo span { color: #f1ec40; }
+        .loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+        .loader-hidden { opacity: 0; visibility: hidden; transition: opacity 0.5s ease; }
+    </style>
+
     <link rel="icon" href="./images/logo.png" width="32" height="32">
+
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//code.jquery.com">
+    <link rel="dns-prefetch" href="//cdn.discordapp.com">
+
+    <!-- Preconnect for critical resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Preload critical CSS -->
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" as="style">
-    <link rel="preload" href="./aos/aos.css" as="style">
     
     <!-- Load critical CSS first -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Preload non-critical CSS -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" as="style">
+    <link rel="preload" href="./aos/aos.css" as="style">
+    
+    <!-- Load non-critical CSS asynchronously -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></noscript>
     <link rel="stylesheet" type="text/css" href="./aos/aos.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" type="text/css" href="./aos/aos.css"></noscript>
+    
+    <!-- Preload critical scripts -->
+    <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Load critical scripts with defer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="script.js" defer></script>
     
     <!-- Preload non-critical scripts -->
-    <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" as="script">
     
-    <!-- Load scripts with defer -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <!-- Load non-critical scripts with defer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" defer></script>
+    
+    <!-- Preload fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap"></noscript>
     <link rel="canonical" href="https://spyboy.in/">
 
     <meta property="og:type" content="website">
@@ -1451,52 +1491,82 @@
         </div>
     </footer>
 
-    <!-- Preload heavy scripts -->
-    <link rel="preload" href="/aos/aos.js" as="script">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="stats.js" as="script">
-    <link rel="preload" href="./particles/particles.js" as="script">
-    <link rel="preload" href="./particles/app.js" as="script">
-
-    <script src="/aos/aos.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="script.js" defer></script>
-    <script src="stats.js" defer></script>
+    <!-- Optimized script loading -->
     <script>
+        // Load non-critical scripts after page load
+        function loadScript(src, async = false, defer = true) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = async;
+            script.defer = defer;
+            document.head.appendChild(script);
+        }
+        
+        // Load heavy scripts after initial page load
         window.addEventListener('load', function() {
+            // Hide loader immediately
             document.querySelector('.loader-wrapper')?.classList.add('loader-hidden');
-        });
-    </script>
-    <script src="./particles/particles.js" defer></script>
-    <script src="./particles/app.js" defer></script>
-    
-    <!-- Stats Section Scripts -->
-    <script>
-        // Counter animation
-        function animateCounter(elementId, target, duration = 2500, delay = 0, formatter = (n) => n.toLocaleString()) {
+            
+            // Load non-critical scripts after 100ms delay
             setTimeout(() => {
+                loadScript('/aos/aos.js');
+                loadScript('stats.js');
+                loadScript('./particles/particles.js');
+                loadScript('./particles/app.js');
+                
+                // Load Three.js after 200ms (heaviest script)
+                setTimeout(() => {
+                    loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js');
+                }, 200);
+            }, 100);
+        });
+        
+        // Preload critical resources
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                // Preload Three.js during idle time
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'script';
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+                document.head.appendChild(link);
+            });
+        }
+    </script>
+    
+    <!-- Stats Section Scripts - Optimized Loading -->
+    <script>
+        // Counter animation - optimized
+        function animateCounter(elementId, target, duration = 2500, delay = 0, formatter = (n) => n.toLocaleString()) {
+            // Use requestAnimationFrame for better performance
+            const startAnimation = () => {
                 const element = document.getElementById(elementId);
                 if (!element) return;
-                const start = performance.now();
                 
-                function update(currentTime) {
-                    const elapsed = currentTime - start;
+                const startTime = performance.now();
+                const animate = (currentTime) => {
+                    const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
-                    const easeOut = 1 - Math.pow(1 - progress, 4);
-                    const current = Math.floor(easeOut * target);
+                    
+                    // Use easeOutQuart for smoother animation
+                    const easeProgress = 1 - Math.pow(1 - progress, 4);
+                    const current = Math.floor(target * easeProgress);
                     
                     element.textContent = formatter(current);
                     
                     if (progress < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        element.textContent = formatter(target);
+                        requestAnimationFrame(animate);
                     }
-                }
+                };
                 
-                requestAnimationFrame(update);
-            }, delay);
+                requestAnimationFrame(animate);
+            };
+            
+            if (delay > 0) {
+                setTimeout(startAnimation, delay);
+            } else {
+                startAnimation();
+            }
         }
 
         function formatK(num) {
@@ -1506,17 +1576,36 @@
             return num.toLocaleString() + '+';
         }
 
-        // Initialize stats animations when page loads
+        // Initialize stats animations when page is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load stats values immediately
+            Object.entries(STAT_VALUES).forEach(([id, value]) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = value;
+            });
+        });
+
+        // Start counters after page load and scripts are ready
         window.addEventListener('load', function() {
-            document.querySelector('.loader-wrapper')?.classList.add('loader-hidden');
-            
-            // Start counters
-            animateCounter('main-counter', 11202248, 3000, 300);
-            animateCounter('stat-bot-servers', 6500, 2500, 600, formatK);
-            animateCounter('stat-active-users', 100000, 2500, 800, formatK);
-            
-            // Initialize Three.js globe for stats section
-            initStatsGlobe();
+            // Start counters with delay for better UX
+            setTimeout(() => {
+                animateCounter('main-counter', 11202248, 3000, 300);
+                animateCounter('stat-bot-servers', 6500, 2500, 600, formatK);
+                animateCounter('stat-active-users', 100000, 2500, 800, formatK);
+                
+                // Initialize Three.js globe only when stats section is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            initStatsGlobe();
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                const statsSection = document.getElementById('stats');
+                if (statsSection) observer.observe(statsSection);
+            }, 500);
         });
 
         // Three.js Globe for Stats Section
