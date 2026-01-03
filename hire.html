@@ -590,6 +590,222 @@
         width: 100%;
       }
     }
+
+    /* Penetration Testing Section Styles */
+    .pentest-hero {
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(241,236,64,0.12), rgba(220,20,60,0.08));
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+
+    .pentest-intro h3 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pentest-intro p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .pentest-sections {
+      margin-top: 3rem;
+    }
+
+    .pentest-category {
+      margin-bottom: 4rem;
+    }
+
+    .pentest-category.standout {
+      background: linear-gradient(135deg, rgba(220,20,60,0.06), rgba(241,236,64,0.04));
+      padding: 2rem;
+      border-radius: 28px;
+      border: 1px solid rgba(220,20,60,0.2);
+      position: relative;
+    }
+
+    .pentest-category.standout::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 26px;
+      border: 1px dashed rgba(241,236,64,0.3);
+      pointer-events: none;
+    }
+
+    .category-title {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    .pentest-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pentest-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .pentest-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.5);
+    }
+
+    .pentest-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .pentest-card.featured {
+      background: linear-gradient(135deg, rgba(241,236,64,0.08), rgba(255,255,255,0.02));
+      border-color: rgba(241,236,64,0.3);
+    }
+
+    .pentest-card.featured .service-title {
+      color: var(--accent);
+    }
+
+    .engagement-types,
+    .target-audience,
+    .why-choose {
+      margin: 3rem 0;
+      padding: 2rem;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .engagement-grid,
+    .audience-grid,
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .engagement-item,
+    .audience-item,
+    .why-item {
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .engagement-item:hover,
+    .audience-item:hover,
+    .why-item:hover {
+      border-color: rgba(241,236,64,0.4);
+      background: rgba(241,236,64,0.05);
+      transform: translateX(4px);
+    }
+
+    .pentest-cta {
+      margin: 3rem 0;
+    }
+
+    .pentest-pricing {
+      background: linear-gradient(135deg, rgba(241,236,64,0.15), rgba(220,20,60,0.08));
+      border: 1px solid rgba(241,236,64,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pentest-pricing::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(241,236,64,0.1), transparent 70%);
+      animation: float 20s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .pentest-pricing .btn-primary {
+      position: relative;
+      z-index: 10;
+      pointer-events: auto !important;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(120deg); }
+      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    .security-quote {
+      margin: 3rem 0;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 24px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .security-quote blockquote {
+      margin: 0;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .security-quote blockquote strong {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    @media (max-width: 768px) {
+      .pentest-hero,
+      .pentest-category.standout,
+      .engagement-types,
+      .target-audience,
+      .why-choose,
+      .security-quote {
+        padding: 1.5rem;
+      }
+
+      .engagement-grid,
+      .audience-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pentest-intro h3 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -730,6 +946,220 @@
       </div>
     </section>
 
+    <section id="pentesting">
+      <p class="section-heading">Professional Penetration Testing</p>
+      <h2 class="section-title">Real-World Security Assessment Services</h2>
+      <p class="section-copy">Spyboy provides <strong>attacker-mindset penetration testing</strong> designed to uncover security flaws before malicious actors do. We don't run automated scans and send generic PDFs — we think like hackers, test deeply, and explain risks clearly.</p>
+
+      <div class="pentest-hero">
+        <div class="pentest-intro">
+          <h3>🔐 Hire Spyboy for Professional Penetration Testing</h3>
+          <p>Whether you're a <strong>startup, SaaS company, enterprise, or individual project</strong>, Spyboy helps you identify, validate, and fix critical security weaknesses with real-world attack scenarios.</p>
+        </div>
+      </div>
+
+      <div class="pentest-sections">
+        <div class="pentest-category">
+          <h3 class="category-title">🔹 What Most Penetration Testers Offer (Industry Standard)</h3>
+          
+          <div class="service-grid">
+            <article class="service-card pentest-card">
+              <div class="service-icon">🌐</div>
+              <h3 class="service-title">Web Application Penetration Testing</h3>
+              <ul class="service-list">
+                <li>Authentication & authorization flaws</li>
+                <li>Broken access control (IDOR, privilege escalation)</li>
+                <li>SQL Injection, NoSQL Injection</li>
+                <li>Cross-Site Scripting (XSS)</li>
+                <li>CSRF (Cross-Site Request Forgery)</li>
+                <li>File upload vulnerabilities</li>
+                <li>SSRF (Server-Side Request Forgery)</li>
+                <li>Business logic flaws</li>
+                <li>Rate-limit & brute-force testing</li>
+                <li>Insecure password reset flows</li>
+                <li>API security testing (REST / GraphQL)</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card">
+              <div class="service-icon">🖥️</div>
+              <h3 class="service-title">Network & Infrastructure Testing</h3>
+              <ul class="service-list">
+                <li>Open ports & exposed services</li>
+                <li>Weak firewall rules</li>
+                <li>Misconfigured servers</li>
+                <li>Insecure services (FTP, SSH, RDP, SMB, etc.)</li>
+                <li>Internal vs external network testing</li>
+                <li>Cloud misconfigurations (AWS / GCP / Azure basics)</li>
+                <li>VPN & gateway security review</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card">
+              <div class="service-icon">🔌</div>
+              <h3 class="service-title">API Penetration Testing</h3>
+              <ul class="service-list">
+                <li>Broken object level authorization (BOLA)</li>
+                <li>Broken function level authorization (BFLA)</li>
+                <li>Mass assignment</li>
+                <li>Rate-limit bypass</li>
+                <li>Token handling flaws</li>
+                <li>Improper authentication</li>
+                <li>Insecure API endpoints exposure</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card">
+              <div class="service-icon">🕵️</div>
+              <h3 class="service-title">OSINT & Reconnaissance</h3>
+              <ul class="service-list">
+                <li>Subdomain discovery</li>
+                <li>Asset mapping</li>
+                <li>Public data exposure</li>
+                <li>Leaked credentials & secrets</li>
+                <li>GitHub / public repo leaks</li>
+                <li>DNS, email, and infrastructure recon</li>
+                <li>Shodan & passive intelligence analysis</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card">
+              <div class="service-icon">✅</div>
+              <h3 class="service-title">Vulnerability Validation</h3>
+              <ul class="service-list">
+                <li>Proof-of-Concept (PoC) for every valid issue</li>
+                <li>False-positive elimination</li>
+                <li>Manual verification (not scanner noise)</li>
+                <li>Risk severity classification (Critical → Low)</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card">
+              <div class="service-icon">📋</div>
+              <h3 class="service-title">Reporting & Documentation</h3>
+              <ul class="service-list">
+                <li>Clean, professional pentest report</li>
+                <li>Clear vulnerability explanations</li>
+                <li>Real attack scenarios</li>
+                <li>Impact assessment</li>
+                <li>Step-by-step reproduction steps</li>
+                <li>Actionable remediation guidance</li>
+                <li>Developer-friendly explanations</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="pentest-category standout">
+          <h3 class="category-title">🚀 What Spyboy Offers (Beyond Standard Pentesting)</h3>
+          
+          <div class="service-grid">
+            <article class="service-card pentest-card featured">
+              <div class="service-icon">💥</div>
+              <h3 class="service-title">Real Attacker Mindset Testing</h3>
+              <ul class="service-list">
+                <li>Bug-bounty style exploitation</li>
+                <li>Chain vulnerabilities for real impact</li>
+                <li>Focus on <strong>what can actually be abused</strong></li>
+                <li>Not just CVEs — <strong>real business risk</strong></li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card featured">
+              <div class="service-icon">🧠</div>
+              <h3 class="service-title">Manual + Automated Hybrid Approach</h3>
+              <ul class="service-list">
+                <li>Industry-grade tools + deep manual testing</li>
+                <li>Custom payloads and logic attacks</li>
+                <li>No copy-paste scanner reports</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card featured">
+              <div class="service-icon">🕵️‍♂️</div>
+              <h3 class="service-title">Ethical Hacker–Driven Testing</h3>
+              <ul class="service-list">
+                <li>Tested by real security researchers</li>
+                <li>Experience with CTFs, bug bounty, OSINT</li>
+                <li>Thinks like adversaries, not compliance bots</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card featured">
+              <div class="service-icon">🔄</div>
+              <h3 class="service-title">Retesting & Fix Validation (Optional)</h3>
+              <ul class="service-list">
+                <li>Verify fixes after remediation</li>
+                <li>Ensure vulnerabilities are truly closed</li>
+                <li>No extra surprises after deployment</li>
+              </ul>
+            </article>
+
+            <article class="service-card pentest-card featured">
+              <div class="service-icon">💬</div>
+              <h3 class="service-title">Direct Communication</h3>
+              <ul class="service-list">
+                <li>Talk directly with the tester</li>
+                <li>No sales layer, no confusion</li>
+                <li>Clear explanations for non-technical teams</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="engagement-types">
+        <h3 class="category-title">Types of Engagements We Offer</h3>
+        <div class="engagement-grid">
+          <div class="engagement-item">✅ One-time penetration test</div>
+          <div class="engagement-item">✅ Pre-launch security audit</div>
+          <div class="engagement-item">✅ Bug bounty readiness testing</div>
+          <div class="engagement-item">✅ Continuous security assessments</div>
+          <div class="engagement-item">✅ Red-team style attack simulation</div>
+          <div class="engagement-item">✅ Security consultation & guidance</div>
+        </div>
+      </div>
+
+      <div class="target-audience">
+        <h3 class="category-title">Who Should Hire Spyboy?</h3>
+        <div class="audience-grid">
+          <div class="audience-item">🏢 SaaS & Web App owners</div>
+          <div class="audience-item">🚀 Startups before launch</div>
+          <div class="audience-item">📊 Companies handling user data</div>
+          <div class="audience-item">🐛 Bug bounty hunters validating findings</div>
+          <div class="audience-item">💻 Developers wanting real security feedback</div>
+          <div class="audience-item">🤖 Discord bots, APIs, tools & platforms</div>
+        </div>
+      </div>
+
+      <div class="why-choose">
+        <h3 class="category-title">Why Choose Spyboy?</h3>
+        <div class="why-grid">
+          <div class="why-item">✔ No fake vulnerabilities</div>
+          <div class="why-item">✔ No automated noise</div>
+          <div class="why-item">✔ No inflated pricing</div>
+          <div class="why-item">✔ Hacker-level depth</div>
+          <div class="why-item">✔ Clear & actionable reports</div>
+          <div class="why-item">✔ Privacy-focused & ethical</div>
+        </div>
+      </div>
+
+      <div class="pentest-cta">
+        <div class="pricing-panel pentest-pricing">
+          <p class="tagline">Base Penetration Testing Pricing</p>
+          <div class="price">Starting $350 USD</div>
+          <p>Basic web application penetration testing starts at $350. Complex applications, infrastructure assessments, and comprehensive security programs receive custom quotations based on scope and complexity.</p>
+          <button class="btn-primary js-open-contact" type="button" onclick="console.log('Button clicked directly!'); document.getElementById('contactModal').classList.add('active');">Email us for custom price quote</button>
+        </div>
+      </div>
+
+      <div class="security-quote">
+        <blockquote>
+          <p><strong>Security isn't about checking boxes — it's about understanding how you can be hacked.</strong><br>Spyboy helps you see your system the way attackers do.</p>
+        </blockquote>
+      </div>
+    </section>
+
     <section id="process">
       <p class="section-heading">How we collaborate</p>
       <h2 class="section-title">Transparent build, test, and delivery</h2>
@@ -810,45 +1240,56 @@
   </div>
 
   <script>
-    (function () {
-      const CONTACT_EMAIL = 'contact@spyboy.in';
-      const modal = document.getElementById('contactModal');
-      const closeBtn = modal?.querySelector('.modal-close');
-      const copyBtn = document.getElementById('copyContactEmail');
-      const statusEl = document.getElementById('copyStatus');
-      const emailDisplay = document.getElementById('contactEmailDisplay');
-      const openers = document.querySelectorAll('.js-open-contact');
+    console.log('Script loaded, initializing contact modal...');
+    const CONTACT_EMAIL = 'contact@spyboy.in';
+    const modal = document.getElementById('contactModal');
+    const closeBtn = modal?.querySelector('.modal-close');
+    const copyBtn = document.getElementById('copyContactEmail');
+    const statusEl = document.getElementById('copyStatus');
+    const emailDisplay = document.getElementById('contactEmailDisplay');
+    const openers = document.querySelectorAll('.js-open-contact');
+    
+    console.log('Found buttons with js-open-contact class:', openers.length);
+    console.log('Buttons:', openers);
 
-      if (emailDisplay) emailDisplay.textContent = CONTACT_EMAIL;
+    if (emailDisplay) emailDisplay.textContent = CONTACT_EMAIL;
 
-      const openModal = () => modal?.classList.add('active');
-      const closeModal = () => {
-        modal?.classList.remove('active');
-        if (statusEl) statusEl.textContent = '';
-      };
+    const openModal = () => {
+      console.log('Opening modal...');
+      modal?.classList.add('active');
+    };
+    
+    const closeModal = () => {
+      console.log('Closing modal...');
+      modal?.classList.remove('active');
+      if (statusEl) statusEl.textContent = '';
+    };
 
-      openers.forEach((btn) => btn.addEventListener('click', openModal));
-      closeBtn?.addEventListener('click', closeModal);
-      modal?.addEventListener('click', (event) => {
-        if (event.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeModal();
-      });
+    openers.forEach((btn, index) => {
+      console.log(`Adding click listener to button ${index}`);
+      btn.addEventListener('click', openModal);
+    });
+    
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeModal();
+    });
 
-      copyBtn?.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(CONTACT_EMAIL);
-          if (statusEl) statusEl.textContent = 'Copied!';
-        } catch (err) {
-          window.prompt('Copy email', CONTACT_EMAIL);
-        } finally {
-          setTimeout(() => {
-            if (statusEl) statusEl.textContent = '';
-          }, 1500);
-        }
-      });
-    })();
+    copyBtn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(CONTACT_EMAIL);
+        if (statusEl) statusEl.textContent = 'Copied!';
+      } catch (err) {
+        window.prompt('Copy email', CONTACT_EMAIL);
+      } finally {
+        setTimeout(() => {
+          if (statusEl) statusEl.textContent = '';
+        }, 1500);
+      }
+    });
   </script>
 </body>
 </html>
