@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Payment Confirmed - Spyboy</title>
+
+    <!-- Critical CSS inline for above-the-fold content -->
+    <style>
+        body { 
+            margin: 0; padding: 0; background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%); 
+            font-family: 'Poppins', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            position: relative; overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(241, 236, 64, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(241, 236, 64, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .success-container { 
+            text-align: center; color: #fff; max-width: 700px; padding: 2rem; 
+            position: relative; z-index: 1;
+        }
+        
+        .success-header {
+            margin-bottom: 3rem;
+        }
+        
+        .success-icon { 
+            font-size: 4.5rem; color: #4CAF50; margin-bottom: 1.5rem; 
+            animation: pulse 2s infinite, glow 3s ease-in-out infinite alternate;
+            display: inline-block;
+        }
+        
+        .success-title { 
+            font-size: 2.8rem; font-weight: 700; margin-bottom: 0.5rem; 
+            color: #f1ec40; text-shadow: 0 0 20px rgba(241, 236, 64, 0.3);
+        }
+        
+        .success-subtitle {
+            font-size: 1.3rem; color: #ccc; margin-bottom: 0;
+        }
+        
+        .success-content {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .message-box {
+            background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px);
+            padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;
+            border: 1px solid rgba(241, 236, 64, 0.2);
+            display: flex; align-items: center; gap: 1.5rem;
+        }
+        
+        .message-icon {
+            font-size: 2.5rem; color: #f1ec40; opacity: 0.8;
+        }
+        
+        .message-text h3 {
+            margin: 0 0 0.5rem 0; color: #f1ec40; font-size: 1.3rem;
+        }
+        
+        .message-text p {
+            margin: 0; color: #ddd; line-height: 1.6;
+        }
+        
+        .timeline-info {
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+            padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;
+        }
+        
+        .timeline-icon {
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+        }
+        
+        .timeline-icon.normal {
+            background: rgba(76, 175, 80, 0.2); color: #4CAF50;
+        }
+        
+        .timeline-icon.rush {
+            background: rgba(255, 152, 0, 0.2); color: #FF9800;
+        }
+        
+        .timeline-content h4 {
+            margin: 0 0 0.3rem 0; color: #fff; font-size: 1.1rem;
+        }
+        
+        .timeline-content p {
+            margin: 0; color: #bbb; font-size: 0.95rem;
+        }
+        
+        .urgent-support {
+            background: linear-gradient(135deg, rgba(241, 236, 64, 0.1) 0%, rgba(241, 236, 64, 0.05) 100%);
+            padding: 2rem; border-radius: 15px; margin-bottom: 2rem;
+            border: 1px solid rgba(241, 236, 64, 0.3);
+            text-align: center;
+        }
+        
+        .urgent-support h3 {
+            margin: 0 0 1rem 0; color: #f1ec40; font-size: 1.4rem;
+        }
+        
+        .urgent-support p {
+            margin: 0 0 1.5rem 0; color: #ddd; line-height: 1.6;
+        }
+        
+        .contact-section {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px);
+            padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(241, 236, 64, 0.2);
+            display: flex; align-items: center; gap: 1.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem; color: #f1ec40; opacity: 0.8;
+        }
+        
+        .contact-details h4 {
+            margin: 0 0 0.5rem 0; color: #fff; font-size: 1.2rem;
+        }
+        
+        .contact-link {
+            color: #f1ec40; text-decoration: none; font-weight: 600; font-size: 1.1rem;
+            display: inline-block; margin-bottom: 0.5rem; transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            color: #fff; transform: translateY(-2px);
+        }
+        
+        .contact-details p {
+            margin: 0; color: #bbb; font-size: 0.9rem;
+        }
+        
+        .btn { 
+            display: inline-block; padding: 14px 28px; background: #f1ec40; color: #050505; 
+            text-decoration: none; border-radius: 8px; font-weight: 600; 
+            transition: all 0.3s; border: none; cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover { 
+            background: #fff; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(241, 236, 64, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #6772e5 0%, #5865F2 100%);
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
+        }
+        
+        .btn-secondary { 
+            background: transparent; border: 2px solid #f1ec40; color: #f1ec40; 
+        }
+        
+        .btn-secondary:hover { 
+            background: #f1ec40; color: #050505; 
+        }
+        
+        .action-buttons {
+            text-align: center;
+        }
+        
+        @keyframes pulse { 
+            0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } 
+        }
+        
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.8)); }
+        }
+        
+        @media (max-width: 768px) {
+            .success-container { padding: 1rem; }
+            .success-title { font-size: 2.2rem; }
+            .message-box, .contact-card { flex-direction: column; text-align: center; }
+            .timeline-item { flex-direction: column; text-align: center; }
+        }
+    </style>
+
+    <link rel="icon" href="./images/logo.png" width="32" height="32">
+
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+    <!-- Preconnect for critical resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Load critical CSS first -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="stylesheet" href="./aos/aos.css">
+</head>
+<body>
+    <div class="success-container" data-aos="fade-up">
+        <div class="success-header">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="success-title">Payment Confirmed</h1>
+            <p class="success-subtitle">Thank you for your trust in us!</p>
+        </div>
+        
+        <div class="success-content">
+            <div class="message-box">
+                <div class="message-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <div class="message-text">
+                    <h3>What happens next?</h3>
+                    <p>We'll reach you soon through email with further details about your consultation.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-info">
+                <div class="timeline-item">
+                    <div class="timeline-icon normal">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Normal Response Time</h4>
+                        <p>We'll get back to you ASAP</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon rush">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>During Rush Hours</h4>
+                        <p>May take up to 24 hours</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="urgent-support">
+                <h3><i class="fas fa-bolt"></i> Need faster response?</h3>
+                <p>Join our Discord server and ping a moderator for immediate assistance!</p>
+                <a href="https://discord.gg/ZChEmMwE8d" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-discord"></i> Join Discord Server
+                </a>
+            </div>
+            
+            <div class="contact-section">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email Support</h4>
+                        <a href="mailto:contact@spyboy.in" class="contact-link">
+                            contact@spyboy.in
+                        </a>
+                        <p>For any questions or concerns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="./index.html" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
