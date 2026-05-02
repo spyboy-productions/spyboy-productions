@@ -76,72 +76,125 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.35rem clamp(1.5rem, 4vw, 3rem);
+      padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(18px);
-      background: transparent;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(0, 0, 0, 0.7);
+      border-bottom: 1px solid rgba(100,149,237,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
     .brand-mark {
-      font-size: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(100,149,237,0.5);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #6495ed, transparent, #6495ed);
+      border-radius: 4px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+
+    .brand-mark:hover::before {
+      opacity: 0.3;
     }
 
     .brand-mark span {
-      color: var(--accent);
+      color: #6495ed;
+      font-weight: 800;
+      position: relative;
+    }
+
+    .brand-mark span::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #6495ed, transparent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .brand-mark:hover span::after {
+      transform: scaleX(1);
     }
 
     .hire-nav a.btn-link {
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      border: 2px solid rgba(100,149,237,0.3);
       text-transform: uppercase;
       font-size: 0.85rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
-      transition: 0.2s ease;
+      transition: all 0.3s ease;
+      background: rgba(100,149,237,0.1);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hire-nav a.btn-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(100,149,237,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .hire-nav a.btn-link:hover::before {
+      left: 100%;
     }
 
     .hire-nav a.btn-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+      border-color: #6495ed;
+      color: #6495ed;
+      background: rgba(100,149,237,0.15);
+      box-shadow: 0 0 20px rgba(100,149,237,0.3);
+      transform: translateY(-2px);
     }
 
     .hero {
       margin-top: clamp(1rem, 4vw, 3rem);
       padding: clamp(2rem, 5vw, 4rem);
       border-radius: 40px;
-      border: 1px solid rgba(241, 236, 64, 0.35);
+      border: 1px solid rgba(100,149,237,0.35);
       background: linear-gradient(135deg, rgba(8,8,15,0.95), rgba(3,3,6,0.9));
       box-shadow: 0 35px 80px rgba(0,0,0,0.6);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: clamp(1.5rem, 3vw, 2.5rem);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border-radius: 34px;
-      border: 1px dashed rgba(255,255,255,0.08);
-      pointer-events: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 3.8rem);
-      font-weight: 600;
-      background: linear-gradient(120deg, #fef9b0, var(--accent-strong));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: #6495ed;
+      text-shadow: 0 0 20px rgba(100,149,237,0.3);
     }
 
     .hero p {
@@ -149,6 +202,23 @@
       font-size: 1.05rem;
       margin-bottom: 1.5rem;
       max-width: 48ch;
+    }
+
+    .hero-points {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .hero-points li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(100,149,237,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-points li:last-child {
+      border-bottom: none;
     }
 
     .hero-panel-stats,
@@ -591,101 +661,410 @@
       }
     }
 
-    /* Penetration Testing Section Styles */
-    .pentest-hero {
-      margin: 2rem 0;
-      padding: 2rem;
+    /* Build Section Styles */
+    .build-section {
+      background: linear-gradient(135deg, rgba(241,236,64,0.12), rgba(255,255,255,0.02));
+      border: 1px solid rgba(241,236,64,0.3);
       border-radius: 32px;
-      background: linear-gradient(135deg, rgba(241,236,64,0.12), rgba(220,20,60,0.08));
-      border: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: 0 25px 50px rgba(241,236,64,0.15);
     }
 
-    .pentest-intro h3 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      margin-bottom: 1rem;
-      background: linear-gradient(120deg, var(--accent), var(--accent-strong));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .build-section .section-heading {
+      color: var(--accent);
     }
 
-    .pentest-intro p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.7;
+    .build-section .service-card {
+      border-color: rgba(241,236,64,0.2);
+      background: linear-gradient(135deg, rgba(241,236,64,0.05), rgba(255,255,255,0.02));
     }
 
-    .pentest-sections {
-      margin-top: 3rem;
+    .build-section .service-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 35px 70px rgba(241,236,64,0.25);
     }
 
-    .pentest-category {
-      margin-bottom: 4rem;
+    /* Pentest Section Styles */
+    .pentest-section {
+      background: linear-gradient(135deg, rgba(220,20,60,0.12), rgba(255,255,255,0.02));
+      border: 1px solid rgba(220,20,60,0.3);
+      border-radius: 32px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: 0 25px 50px rgba(220,20,60,0.15);
     }
 
-    .pentest-category.standout {
-      background: linear-gradient(135deg, rgba(220,20,60,0.06), rgba(241,236,64,0.04));
-      padding: 2rem;
-      border-radius: 28px;
-      border: 1px solid rgba(220,20,60,0.2);
-      position: relative;
+    .pentest-section .section-heading {
+      color: var(--accent-strong);
     }
 
-    .pentest-category.standout::before {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      border-radius: 26px;
-      border: 1px dashed rgba(241,236,64,0.3);
-      pointer-events: none;
+    .pentest-section .service-card {
+      border-color: rgba(220,20,60,0.2);
+      background: linear-gradient(135deg, rgba(220,20,60,0.05), rgba(255,255,255,0.02));
     }
 
-    .category-title {
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
+    .pentest-section .service-card:hover {
+      border-color: var(--accent-strong);
+      box-shadow: 0 35px 70px rgba(220,20,60,0.25);
+    }
+
+    /* Consultation Section Styles */
+    .consultation-section {
+      background: linear-gradient(135deg, rgba(100,149,237,0.12), rgba(255,255,255,0.02));
+      border: 1px solid rgba(100,149,237,0.3);
+      border-radius: 32px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: 0 25px 50px rgba(100,149,237,0.15);
+    }
+
+    .consultation-section .section-heading {
+      color: #6495ed;
+    }
+
+    .consultation-section .service-card {
+      border-color: rgba(100,149,237,0.2);
+      background: linear-gradient(135deg, rgba(100,149,237,0.05), rgba(255,255,255,0.02));
+    }
+
+    .consultation-section .service-card:hover {
+      border-color: #6495ed;
+      box-shadow: 0 35px 70px rgba(100,149,237,0.25);
+    }
+
+    /* Section Navigation */
+    .service-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .service-nav button {
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      border: 2px solid transparent;
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
       font-weight: 600;
-      margin-bottom: 2rem;
-      text-align: center;
-      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
     }
 
-    .pentest-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .service-nav button:hover {
+      transform: translateY(-2px);
+    }
+
+    .service-nav button.build-btn:hover {
+      border-color: var(--accent);
+      background: rgba(241,236,64,0.1);
+    }
+
+    .service-nav button.pentest-btn:hover {
+      border-color: var(--accent-strong);
+      background: rgba(220,20,60,0.1);
+    }
+
+    .service-nav button.consultation-btn:hover {
+      border-color: #6495ed;
+      background: rgba(100,149,237,0.1);
+    }
+
+    /* Enhanced Pricing Panels */
+    .pricing-panel.build-pricing {
+      background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+      border: 1px solid rgba(241,236,64,0.2);
+      border-radius: 20px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(241,236,64,0.1);
     }
 
-    .pentest-card::before {
+    .pricing-panel.build-pricing::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #d4c020, var(--accent));
+      animation: shimmer 4s ease-in-out infinite;
     }
 
-    .pentest-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 35px 70px rgba(0,0,0,0.5);
-    }
-
-    .pentest-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .pentest-card.featured {
-      background: linear-gradient(135deg, rgba(241,236,64,0.08), rgba(255,255,255,0.02));
-      border-color: rgba(241,236,64,0.3);
-    }
-
-    .pentest-card.featured .service-title {
+    .pricing-panel.build-pricing .tagline {
       color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    .pricing-panel.build-pricing .price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(241,236,64,0.3);
+      line-height: 1;
+    }
+
+    .pricing-panel.build-pricing p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .pricing-panel.build-pricing ul {
+      list-style: none;
+      padding: 0 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .pricing-panel.build-pricing ul li {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(241,236,64,0.08);
+      border-radius: 12px;
+      border: 1px solid rgba(241,236,64,0.15);
+      font-size: 0.95rem;
+      text-align: left;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-panel.build-pricing ul li:hover {
+      background: rgba(241,236,64,0.12);
+      border-color: rgba(241,236,64,0.25);
+      transform: translateX(5px);
+    }
+
+    .pricing-panel.build-pricing ul li::before {
+      content: "✓";
+      color: var(--accent);
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      font-size: 1.1rem;
+      background: #1a1a1a;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(241,236,64,0.3);
+    }
+
+    .pricing-panel.build-pricing .btn-primary {
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(135deg, var(--accent), #d4c020);
+      border: none;
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1rem 2.5rem;
+      margin: 0 auto 2rem;
+      display: block;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(241,236,64,0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pricing-panel.build-pricing .btn-primary:hover {
+      background: linear-gradient(135deg, #fef9b0, var(--accent));
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(241,236,64,0.5);
+    }
+
+    @keyframes float-build {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(-30px, 30px) rotate(-120deg); }
+      66% { transform: translate(25px, -25px) rotate(240deg); }
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.3; transform: scaleX(0.8); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+
+    .pricing-panel.pentest-pricing {
+      background: linear-gradient(135deg, rgba(241,236,64,0.15), rgba(220,20,60,0.08));
+      border: 1px solid rgba(241,236,64,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-panel.pentest-pricing::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(241,236,64,0.1), transparent 70%);
+      animation: float 20s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .pricing-panel.pentest-pricing .btn-primary {
+      position: relative;
+      z-index: 10;
+      pointer-events: auto !important;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(120deg); }
+      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    .pricing-panel.consultation-pricing {
+      background: linear-gradient(145deg, #1a1a2e, #16213e);
+      border: 2px solid rgba(100,149,237,0.4);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(100,149,237,0.2);
+    }
+
+    .pricing-panel.consultation-pricing::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #6495ed, #4169e1, #6495ed);
+      animation: shimmer-consultation 4s ease-in-out infinite;
+    }
+
+    .pricing-panel.consultation-pricing .tagline {
+      color: #6495ed;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    .pricing-panel.consultation-pricing .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(100,149,237,0.3);
+      line-height: 1;
+    }
+
+    .pricing-panel.consultation-pricing p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .pricing-panel.consultation-pricing ul {
+      list-style: none;
+      padding: 0 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .pricing-panel.consultation-pricing ul li {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.8rem;
+      padding: 0.75rem 1rem;
+      background: rgba(100,149,237,0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(100,149,237,0.2);
+      font-size: 0.95rem;
+      text-align: left;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-panel.consultation-pricing ul li:hover {
+      background: rgba(100,149,237,0.15);
+      border-color: rgba(100,149,237,0.3);
+      transform: translateX(5px);
+    }
+
+    .pricing-panel.consultation-pricing ul li::before {
+      content: "•";
+      color: #6495ed;
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      font-size: 1.1rem;
+      background: #1a1a2e;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(100,149,237,0.3);
+    }
+
+    .pricing-panel.consultation-pricing .btn-primary {
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(135deg, #6495ed, #4169e1);
+      border: none;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1rem 2.5rem;
+      margin: 0 auto 2rem;
+      display: block;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(100,149,237,0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .pricing-panel.consultation-pricing .btn-primary:hover {
+      background: linear-gradient(135deg, #87ceeb, #6495ed);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(100,149,237,0.5);
+      color: #ffffff;
+    }
+
+    @keyframes shimmer-consultation {
+      0%, 100% { opacity: 0.6; transform: scaleX(0.8); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+
+    .pentest-cta {
+      margin: 2.5rem 0;
     }
 
     .engagement-types,
@@ -729,39 +1108,12 @@
       transform: translateX(4px);
     }
 
-    .pentest-cta {
-      margin: 3rem 0;
-    }
-
-    .pentest-pricing {
-      background: linear-gradient(135deg, rgba(241,236,64,0.15), rgba(220,20,60,0.08));
-      border: 1px solid rgba(241,236,64,0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pentest-pricing::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(241,236,64,0.1), transparent 70%);
-      animation: float 20s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .pentest-pricing .btn-primary {
-      position: relative;
-      z-index: 10;
-      pointer-events: auto !important;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(30px, -30px) rotate(120deg); }
-      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    .category-title {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 0.05em;
     }
 
     .security-quote {
@@ -787,13 +1139,32 @@
     }
 
     @media (max-width: 768px) {
-      .pentest-hero,
-      .pentest-category.standout,
+      .build-section, .pentest-section, .consultation-section {
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .pentest-cta {
+        margin: 2rem 0;
+        padding: 1rem;
+      }
+
+      .pricing-panel {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
       .engagement-types,
       .target-audience,
       .why-choose,
       .security-quote {
         padding: 1.5rem;
+        margin: 2rem 0;
       }
 
       .engagement-grid,
@@ -802,8 +1173,42 @@
         grid-template-columns: 1fr;
       }
 
-      .pentest-intro h3 {
-        font-size: 1.6rem;
+      .two-column {
+        flex-direction: column;
+      }
+
+      .info-card {
+        padding: 1.5rem;
+      }
+
+      .hero-section {
+        padding: 4rem 1rem;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-copy {
+        font-size: 1.1rem;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero-stat {
+        width: 100%;
+      }
+
+      .hero-points {
+        flex-direction: column;
+      }
+
+      .hero-cta .btn-primary,
+      .hero-cta .btn-secondary {
+        width: 100%;
       }
     }
   </style>
@@ -873,10 +1278,105 @@
       </aside>
     </section>
 
-    <section id="offerings">
-      <p class="section-heading">What we can build &amp; deliver</p>
-      <h2 class="section-title">Product engineering across the security stack</h2>
-      <p class="section-copy">Every project is scoped for legal, ethical, and authorized use only. Below are baseline deliverables and starting budgets—real quotes account for complexity, integrations, research time, and post-launch support.</p>
+    <section id="consultation-services" class="consultation-section">
+      <p class="section-heading">Ethical Hacking Consultations</p>
+      <h2 class="section-title">💬 Talk to a Real Ethical Hacker</h2>
+      <p class="section-copy">Get personalized guidance from experienced ethical hackers — not just automated tools. Whether you need security advice, OSINT assistance, or custom recovery solutions, we provide expert consultation tailored to your specific needs.</p>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3 class="service-title">Web Security Guidance</h3>
+          <ul class="service-list">
+            <li>Security architecture review</li>
+            <li>Vulnerability assessment</li>
+            <li>Secure coding practices</li>
+            <li>Incident response planning</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🕵️</div>
+          <h3 class="service-title">OSINT & Tracking</h3>
+          <ul class="service-list">
+            <li>Digital footprint analysis</li>
+            <li>Online investigation</li>
+            <li>Asset discovery</li>
+            <li>Threat intelligence</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3 class="service-title">Custom Tools</h3>
+          <ul class="service-list">
+            <li>Bespoke security utilities</li>
+            <li>Automation scripts</li>
+            <li>Reconnaissance tools</li>
+            <li>Tailored solutions</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🔄</div>
+          <h3 class="service-title">Recovery Services</h3>
+          <ul class="service-list">
+            <li>Account recovery</li>
+            <li>Data recovery strategies</li>
+            <li>Digital forensics</li>
+            <li>Incident analysis</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🦠</div>
+          <h3 class="service-title">Malware Analysis</h3>
+          <ul class="service-list">
+            <li>Malware reverse engineering</li>
+            <li>Threat intelligence</li>
+            <li>Incident response</li>
+            <li>Custom signature development</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🎣</div>
+          <h3 class="service-title">Social Engineering</h3>
+          <ul class="service-list">
+            <li>Phishing campaign assessment</li>
+            <li>Security awareness training</li>
+            <li>Human element vulnerability</li>
+            <li>Policy and procedure review</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="pentest-cta">
+        <div class="pricing-panel consultation-pricing">
+          <p class="tagline">Ethical Hacking Consultation</p>
+          <div class="price">$15.00 USD / hour</div>
+          <p>💸 Starting at $15 per hour for expert ethical hacking consultations. Get personalized security guidance, OSINT assistance, and custom tool development.</p>
+          <ul>
+            <li>🔍 Web Security • OSINT • Tracking</li>
+            <li>🛡️ Ethical hacking • Recovery • Custom Tools</li>
+            <li>💸 Starting at $15</li>
+            <li>💬 Talk Privately</li>
+          </ul>
+          <a href="https://www.paypal.com/ncp/payment/2X98A3T2J8JZY" class="btn-primary" target="_blank" rel="noopener">Start consultation now</a>
+        </div>
+      </div>
+
+      <div class="security-quote">
+        <blockquote>
+          <p><strong>Real security expertise comes from experience, not just tools.</strong><br>Get personalized guidance from ethical hackers who understand the threat landscape.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="build-services" class="build-section">
+      <p class="section-heading">Build Services</p>
+      <h2 class="section-title">🛠️ Custom Security Products & Tools</h2>
+      <p class="section-copy">From concept to deployment, we build security-grade software including bots, automation tools, mobile apps, CTF labs, and research utilities. Every project is engineered with offensive security insight and production polish.</p>
 
       <div class="service-grid">
         <article class="service-card">
@@ -944,167 +1444,69 @@
           </ul>
         </article>
       </div>
-    </section>
 
-    <section id="pentesting">
-      <p class="section-heading">Professional Penetration Testing</p>
-      <h2 class="section-title">Real-World Security Assessment Services</h2>
-      <p class="section-copy">Spyboy provides <strong>attacker-mindset penetration testing</strong> designed to uncover security flaws before malicious actors do. We don't run automated scans and send generic PDFs — we think like hackers, test deeply, and explain risks clearly.</p>
-
-      <div class="pentest-hero">
-        <div class="pentest-intro">
-          <h3>🔐 Hire Spyboy for Professional Penetration Testing</h3>
-          <p>Whether you're a <strong>startup, SaaS company, enterprise, or individual project</strong>, Spyboy helps you identify, validate, and fix critical security weaknesses with real-world attack scenarios.</p>
+      <div class="pentest-cta">
+        <div class="pricing-panel build-pricing">
+          <p class="tagline">Build Services Pricing</p>
+          <div class="price">Starting $100 USD</div>
+          <p>Custom security products and tools development. Educational hacking tools & PoCs begin at $100 USD. Complex builds receive custom quotations after scoping.</p>
+          <ul>
+            <li>Feature complexity & integrations</li>
+            <li>Platform (bot / app / API / course)</li>
+            <li>Timeline & support requirements</li>
+            <li>Research depth & infrastructure</li>
+          </ul>
+          <button class="btn-primary js-open-contact" type="button">Get custom build quote</button>
         </div>
       </div>
+    </section>
 
-      <div class="pentest-sections">
-        <div class="pentest-category">
-          <h3 class="category-title">🔹 What Most Penetration Testers Offer (Industry Standard)</h3>
-          
-          <div class="service-grid">
-            <article class="service-card pentest-card">
-              <div class="service-icon">🌐</div>
-              <h3 class="service-title">Web Application Penetration Testing</h3>
-              <ul class="service-list">
-                <li>Authentication & authorization flaws</li>
-                <li>Broken access control (IDOR, privilege escalation)</li>
-                <li>SQL Injection, NoSQL Injection</li>
-                <li>Cross-Site Scripting (XSS)</li>
-                <li>CSRF (Cross-Site Request Forgery)</li>
-                <li>File upload vulnerabilities</li>
-                <li>SSRF (Server-Side Request Forgery)</li>
-                <li>Business logic flaws</li>
-                <li>Rate-limit & brute-force testing</li>
-                <li>Insecure password reset flows</li>
-                <li>API security testing (REST / GraphQL)</li>
-              </ul>
-            </article>
+    <section id="pentest-services" class="pentest-section">
+      <p class="section-heading">Penetration Testing</p>
+      <h2 class="section-title">🔐 Professional Security Assessment</h2>
+      <p class="section-copy">Spyboy provides attacker-mindset penetration testing designed to uncover security flaws before malicious actors do. We think like hackers, test deeply, and explain risks clearly with actionable remediation guidance.</p>
 
-            <article class="service-card pentest-card">
-              <div class="service-icon">🖥️</div>
-              <h3 class="service-title">Network & Infrastructure Testing</h3>
-              <ul class="service-list">
-                <li>Open ports & exposed services</li>
-                <li>Weak firewall rules</li>
-                <li>Misconfigured servers</li>
-                <li>Insecure services (FTP, SSH, RDP, SMB, etc.)</li>
-                <li>Internal vs external network testing</li>
-                <li>Cloud misconfigurations (AWS / GCP / Azure basics)</li>
-                <li>VPN & gateway security review</li>
-              </ul>
-            </article>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3 class="service-title">Web Application Testing</h3>
+          <ul class="service-list">
+            <li>Authentication & authorization flaws</li>
+            <li>SQL Injection, XSS, CSRF</li>
+            <li>Business logic vulnerabilities</li>
+            <li>API security testing</li>
+          </ul>
+        </article>
 
-            <article class="service-card pentest-card">
-              <div class="service-icon">🔌</div>
-              <h3 class="service-title">API Penetration Testing</h3>
-              <ul class="service-list">
-                <li>Broken object level authorization (BOLA)</li>
-                <li>Broken function level authorization (BFLA)</li>
-                <li>Mass assignment</li>
-                <li>Rate-limit bypass</li>
-                <li>Token handling flaws</li>
-                <li>Improper authentication</li>
-                <li>Insecure API endpoints exposure</li>
-              </ul>
-            </article>
+        <article class="service-card">
+          <div class="service-icon">🖥️</div>
+          <h3 class="service-title">Network & Infrastructure</h3>
+          <ul class="service-list">
+            <li>Open ports & service enumeration</li>
+            <li>Misconfiguration assessment</li>
+            <li>Cloud security review</li>
+            <li>Internal/external testing</li>
+          </ul>
+        </article>
 
-            <article class="service-card pentest-card">
-              <div class="service-icon">🕵️</div>
-              <h3 class="service-title">OSINT & Reconnaissance</h3>
-              <ul class="service-list">
-                <li>Subdomain discovery</li>
-                <li>Asset mapping</li>
-                <li>Public data exposure</li>
-                <li>Leaked credentials & secrets</li>
-                <li>GitHub / public repo leaks</li>
-                <li>DNS, email, and infrastructure recon</li>
-                <li>Shodan & passive intelligence analysis</li>
-              </ul>
-            </article>
+        <article class="service-card">
+          <div class="service-icon">🕵️</div>
+          <h3 class="service-title">OSINT & Reconnaissance</h3>
+          <ul class="service-list">
+            <li>Asset discovery & mapping</li>
+            <li>Public data exposure</li>
+            <li>Leaked credentials detection</li>
+            <li>Threat intelligence gathering</li>
+          </ul>
+        </article>
+      </div>
 
-            <article class="service-card pentest-card">
-              <div class="service-icon">✅</div>
-              <h3 class="service-title">Vulnerability Validation</h3>
-              <ul class="service-list">
-                <li>Proof-of-Concept (PoC) for every valid issue</li>
-                <li>False-positive elimination</li>
-                <li>Manual verification (not scanner noise)</li>
-                <li>Risk severity classification (Critical → Low)</li>
-              </ul>
-            </article>
-
-            <article class="service-card pentest-card">
-              <div class="service-icon">📋</div>
-              <h3 class="service-title">Reporting & Documentation</h3>
-              <ul class="service-list">
-                <li>Clean, professional pentest report</li>
-                <li>Clear vulnerability explanations</li>
-                <li>Real attack scenarios</li>
-                <li>Impact assessment</li>
-                <li>Step-by-step reproduction steps</li>
-                <li>Actionable remediation guidance</li>
-                <li>Developer-friendly explanations</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-
-        <div class="pentest-category standout">
-          <h3 class="category-title">🚀 What Spyboy Offers (Beyond Standard Pentesting)</h3>
-          
-          <div class="service-grid">
-            <article class="service-card pentest-card featured">
-              <div class="service-icon">💥</div>
-              <h3 class="service-title">Real Attacker Mindset Testing</h3>
-              <ul class="service-list">
-                <li>Bug-bounty style exploitation</li>
-                <li>Chain vulnerabilities for real impact</li>
-                <li>Focus on <strong>what can actually be abused</strong></li>
-                <li>Not just CVEs — <strong>real business risk</strong></li>
-              </ul>
-            </article>
-
-            <article class="service-card pentest-card featured">
-              <div class="service-icon">🧠</div>
-              <h3 class="service-title">Manual + Automated Hybrid Approach</h3>
-              <ul class="service-list">
-                <li>Industry-grade tools + deep manual testing</li>
-                <li>Custom payloads and logic attacks</li>
-                <li>No copy-paste scanner reports</li>
-              </ul>
-            </article>
-
-            <article class="service-card pentest-card featured">
-              <div class="service-icon">🕵️‍♂️</div>
-              <h3 class="service-title">Ethical Hacker–Driven Testing</h3>
-              <ul class="service-list">
-                <li>Tested by real security researchers</li>
-                <li>Experience with CTFs, bug bounty, OSINT</li>
-                <li>Thinks like adversaries, not compliance bots</li>
-              </ul>
-            </article>
-
-            <article class="service-card pentest-card featured">
-              <div class="service-icon">🔄</div>
-              <h3 class="service-title">Retesting & Fix Validation (Optional)</h3>
-              <ul class="service-list">
-                <li>Verify fixes after remediation</li>
-                <li>Ensure vulnerabilities are truly closed</li>
-                <li>No extra surprises after deployment</li>
-              </ul>
-            </article>
-
-            <article class="service-card pentest-card featured">
-              <div class="service-icon">💬</div>
-              <h3 class="service-title">Direct Communication</h3>
-              <ul class="service-list">
-                <li>Talk directly with the tester</li>
-                <li>No sales layer, no confusion</li>
-                <li>Clear explanations for non-technical teams</li>
-              </ul>
-            </article>
-          </div>
+      <div class="pentest-cta">
+        <div class="pricing-panel pentest-pricing">
+          <p class="tagline">Base Penetration Testing Pricing</p>
+          <div class="price">Starting $350 USD</div>
+          <p>Basic web application penetration testing starts at $350. Complex applications, infrastructure assessments, and comprehensive security programs receive custom quotations based on scope and complexity.</p>
+          <button class="btn-primary js-open-contact" type="button" onclick="console.log('Button clicked directly!'); document.getElementById('contactModal').classList.add('active');">Email us for custom price quote</button>
         </div>
       </div>
 
@@ -1144,15 +1546,6 @@
         </div>
       </div>
 
-      <div class="pentest-cta">
-        <div class="pricing-panel pentest-pricing">
-          <p class="tagline">Base Penetration Testing Pricing</p>
-          <div class="price">Starting $350 USD</div>
-          <p>Basic web application penetration testing starts at $350. Complex applications, infrastructure assessments, and comprehensive security programs receive custom quotations based on scope and complexity.</p>
-          <button class="btn-primary js-open-contact" type="button" onclick="console.log('Button clicked directly!'); document.getElementById('contactModal').classList.add('active');">Email us for custom price quote</button>
-        </div>
-      </div>
-
       <div class="security-quote">
         <blockquote>
           <p><strong>Security isn't about checking boxes — it's about understanding how you can be hacked.</strong><br>Spyboy helps you see your system the way attackers do.</p>
@@ -1183,21 +1576,6 @@
             <li>Source code, documentation, and credentials handed off securely</li>
           </ul>
         </article>
-      </div>
-    </section>
-
-    <section id="quote">
-      <div class="pricing-panel">
-        <p class="tagline">Base pricing</p>
-        <div class="price">Starting $300 USD</div>
-        <p>Educational hacking tools &amp; PoCs begin at $100 USD. Complex builds (multi-surface apps, infra, research) receive a custom quotation after scoping.</p>
-        <ul>
-          <li>Feature complexity &amp; integrations</li>
-          <li>Platform (bot / app / API / course)</li>
-          <li>Timeline &amp; support requirements</li>
-          <li>Research depth &amp; infrastructure spend</li>
-        </ul>
-        <button class="btn-primary js-open-contact" type="button">Get a custom quote</button>
       </div>
     </section>
 
