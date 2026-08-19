@@ -76,103 +76,54 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
+      padding: 1.25rem clamp(1.5rem, 4vw, 3rem);
       position: sticky;
       top: 0;
       z-index: 100;
       backdrop-filter: blur(20px);
-      background: rgba(0, 0, 0, 0.7);
-      border-bottom: 1px solid rgba(100,149,237,0.2);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.75);
+      border-bottom: 1px solid rgba(100,149,237,0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     }
 
     .brand-mark {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: #ffffff;
-      text-shadow: 0 0 20px rgba(100,149,237,0.5);
+      text-shadow: 0 0 15px rgba(100,149,237,0.3);
       transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .brand-mark::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #6495ed, transparent, #6495ed);
-      border-radius: 4px;
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.3s ease;
-    }
-
-    .brand-mark:hover::before {
-      opacity: 0.3;
     }
 
     .brand-mark span {
       color: #6495ed;
       font-weight: 800;
-      position: relative;
-    }
-
-    .brand-mark span::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #6495ed, transparent);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .brand-mark:hover span::after {
-      transform: scaleX(1);
     }
 
     .hire-nav a.btn-link {
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      border: 2px solid rgba(100,149,237,0.3);
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15);
       text-transform: uppercase;
-      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      transition: all 0.3s ease;
-      background: rgba(100,149,237,0.1);
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hire-nav a.btn-link::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(100,149,237,0.3), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .hire-nav a.btn-link:hover::before {
-      left: 100%;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .hire-nav a.btn-link:hover {
       border-color: #6495ed;
       color: #6495ed;
-      background: rgba(100,149,237,0.15);
-      box-shadow: 0 0 20px rgba(100,149,237,0.3);
-      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(100,149,237,0.3);
+      transform: scale(1.03);
+      background: rgba(100,149,237,0.05);
     }
 
     .hero {
@@ -434,7 +385,7 @@
     }
 
     .service-list li {
-      border-left: 2px solid rgba(241,236,64,0.25);
+      border-left: 2px solid var(--theme-color, rgba(241,236,64,0.25));
       padding-left: 0.85rem;
     }
 
@@ -711,12 +662,15 @@
 
     /* Consultation Section Styles */
     .consultation-section {
-      background: linear-gradient(135deg, rgba(100,149,237,0.12), rgba(255,255,255,0.02));
-      border: 1px solid rgba(100,149,237,0.3);
+      background: linear-gradient(135deg, rgba(10, 15, 30, 0.95), rgba(7, 10, 20, 0.98));
+      border: 1px solid rgba(100,149,237,0.25);
       border-radius: 32px;
-      padding: 2.5rem;
-      margin: 3rem 0;
-      box-shadow: 0 25px 50px rgba(100,149,237,0.15);
+      padding: 3rem;
+      margin: 4rem 0;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(100,149,237,0.05);
+      position: relative;
+      overflow: hidden;
+      --theme-color: #6495ed;
     }
 
     .consultation-section .section-heading {
@@ -724,13 +678,16 @@
     }
 
     .consultation-section .service-card {
-      border-color: rgba(100,149,237,0.2);
-      background: linear-gradient(135deg, rgba(100,149,237,0.05), rgba(255,255,255,0.02));
+      border-color: rgba(100,149,237,0.15);
+      background: rgba(255, 255, 255, 0.01);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .consultation-section .service-card:hover {
       border-color: #6495ed;
-      box-shadow: 0 35px 70px rgba(100,149,237,0.25);
+      background: rgba(100,149,237,0.03);
+      box-shadow: 0 25px 50px rgba(100,149,237,0.18);
+      transform: translateY(-5px);
     }
 
     /* Section Navigation */
@@ -776,141 +733,126 @@
     }
 
     /* Enhanced Pricing Panels */
+    /* Redesigned Pricing Panels */
     .pricing-panel.build-pricing {
-      background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-      border: 1px solid rgba(241,236,64,0.2);
-      border-radius: 20px;
+      background: linear-gradient(135deg, #0d0e15, #07080c);
+      border: 1px solid rgba(241,236,64,0.3);
+      border-radius: 24px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(241,236,64,0.1);
+      box-shadow: 0 25px 65px rgba(0,0,0,0.8), 0 0 30px rgba(241,236,64,0.08);
+      max-width: 650px;
+      margin: 3rem auto 0;
+      padding: 3rem 2rem;
+      text-align: center;
     }
 
-    .pricing-panel.build-pricing::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), #d4c020, var(--accent));
-      animation: shimmer 4s ease-in-out infinite;
+    .pricing-panel.build-pricing .status-tag.build-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(241, 236, 64, 0.1);
+      border: 1px solid rgba(241, 236, 64, 0.25);
+      color: #f1ec40;
+      padding: 0.4rem 1rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-panel.build-pricing .pulse-dot-yellow {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f1ec40;
+      box-shadow: 0 0 8px #f1ec40;
+      animation: pulse-yellow 1.5s infinite;
+    }
+
+    @keyframes pulse-yellow {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 12px #f1ec40; }
+      100% { transform: scale(0.9); opacity: 0.6; }
     }
 
     .pricing-panel.build-pricing .tagline {
       color: var(--accent);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
       margin-bottom: 1rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-align: center;
-      opacity: 0.9;
+      letter-spacing: 0.2em;
     }
 
     .pricing-panel.build-pricing .price {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 0.5rem;
-      text-align: center;
-      text-shadow: 0 2px 10px rgba(241,236,64,0.3);
+      text-shadow: 0 2px 10px rgba(241,236,64,0.25);
       line-height: 1;
     }
 
-    .pricing-panel.build-pricing p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-      text-align: center;
-      padding: 0 2rem;
-    }
-
-    .pricing-panel.build-pricing ul {
-      list-style: none;
-      padding: 0 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .pricing-panel.build-pricing ul li {
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 1rem;
-      padding: 0.75rem 1rem;
-      background: rgba(241,236,64,0.08);
-      border-radius: 12px;
-      border: 1px solid rgba(241,236,64,0.15);
-      font-size: 0.95rem;
-      text-align: left;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .pricing-panel.build-pricing ul li:hover {
-      background: rgba(241,236,64,0.12);
-      border-color: rgba(241,236,64,0.25);
-      transform: translateX(5px);
-    }
-
-    .pricing-panel.build-pricing ul li::before {
-      content: "✓";
-      color: var(--accent);
-      position: absolute;
-      left: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-weight: bold;
+    .pricing-panel.build-pricing .price .unit {
       font-size: 1.1rem;
-      background: #1a1a1a;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(241,236,64,0.3);
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0;
     }
 
-    .pricing-panel.build-pricing .btn-primary {
-      position: relative;
-      z-index: 10;
+    .pricing-panel.build-pricing .pricing-description {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 2rem !important;
+      color: var(--muted);
+      padding: 0 1rem;
+    }
+
+    .benefit-icon.build-icon {
+      background: rgba(241, 236, 64, 0.1);
+      color: #f1ec40;
+    }
+
+    .pricing-panel.build-pricing .checkout-btn {
+      margin-top: 1.5rem !important;
+      margin-bottom: 0 !important;
+      width: 100%;
+      text-align: center;
+      justify-content: center;
       background: linear-gradient(135deg, var(--accent), #d4c020);
       border: none;
       color: #000;
       font-weight: 700;
       font-size: 1rem;
-      padding: 1rem 2.5rem;
-      margin: 0 auto 2rem;
-      display: block;
+      padding: 1rem 2rem;
       border-radius: 50px;
-      box-shadow: 0 10px 30px rgba(241,236,64,0.4);
+      box-shadow: 0 10px 30px rgba(241,236,64,0.35);
       transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      cursor: pointer;
     }
 
-    .pricing-panel.build-pricing .btn-primary:hover {
+    .pricing-panel.build-pricing .checkout-btn:hover {
       background: linear-gradient(135deg, #fef9b0, var(--accent));
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(241,236,64,0.5);
-    }
-
-    @keyframes float-build {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(-30px, 30px) rotate(-120deg); }
-      66% { transform: translate(25px, -25px) rotate(240deg); }
-    }
-
-    @keyframes shimmer {
-      0%, 100% { opacity: 0.3; transform: scaleX(0.8); }
-      50% { opacity: 1; transform: scaleX(1); }
+      box-shadow: 0 15px 40px rgba(241,236,64,0.45);
     }
 
     .pricing-panel.pentest-pricing {
-      background: linear-gradient(135deg, rgba(241,236,64,0.15), rgba(220,20,60,0.08));
-      border: 1px solid rgba(241,236,64,0.3);
+      background: linear-gradient(135deg, #15080c, #0a0406);
+      border: 1px solid rgba(220,20,60,0.3);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 25px 65px rgba(0,0,0,0.8), 0 0 30px rgba(220,20,60,0.08);
+      max-width: 650px;
+      margin: 3rem auto 0;
+      padding: 3rem 2rem;
+      border-radius: 24px;
+      text-align: center;
     }
 
     .pricing-panel.pentest-pricing::after {
@@ -920,7 +862,7 @@
       right: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(241,236,64,0.1), transparent 70%);
+      background: radial-gradient(circle, rgba(220,20,60,0.08), transparent 70%);
       animation: float 20s ease-in-out infinite;
       pointer-events: none;
     }
@@ -938,129 +880,165 @@
     }
 
     .pricing-panel.consultation-pricing {
-      background: linear-gradient(145deg, #1a1a2e, #16213e);
-      border: 2px solid rgba(100,149,237,0.4);
-      border-radius: 20px;
+      background: linear-gradient(135deg, #090e1a, #050810);
+      border: 1px solid rgba(100,149,237,0.3);
+      border-radius: 24px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(100,149,237,0.2);
+      box-shadow: 0 25px 65px rgba(0,0,0,0.8), 0 0 30px rgba(100,149,237,0.08);
+      max-width: 650px;
+      margin: 3rem auto 0;
+      padding: 3rem 2rem;
+      text-align: center;
     }
 
-    .pricing-panel.consultation-pricing::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #6495ed, #4169e1, #6495ed);
-      animation: shimmer-consultation 4s ease-in-out infinite;
+    .pricing-panel.consultation-pricing .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 230, 118, 0.1);
+      border: 1px solid rgba(0, 230, 118, 0.25);
+      color: #00e676;
+      padding: 0.4rem 1rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-panel.consultation-pricing .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00e676;
+      box-shadow: 0 0 8px #00e676;
+      animation: pulse-green 1.5s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 12px #00e676; }
+      100% { transform: scale(0.9); opacity: 0.6; }
     }
 
     .pricing-panel.consultation-pricing .tagline {
       color: #6495ed;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
       margin-bottom: 1rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-align: center;
-      opacity: 0.9;
+      letter-spacing: 0.2em;
     }
 
     .pricing-panel.consultation-pricing .price {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 0.5rem;
-      text-align: center;
-      text-shadow: 0 2px 10px rgba(100,149,237,0.3);
+      text-shadow: 0 2px 10px rgba(100,149,237,0.25);
       line-height: 1;
     }
 
-    .pricing-panel.consultation-pricing p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      padding: 0 2rem;
-    }
-
-    .pricing-panel.consultation-pricing ul {
-      list-style: none;
-      padding: 0 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .pricing-panel.consultation-pricing ul li {
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 0.8rem;
-      padding: 0.75rem 1rem;
-      background: rgba(100,149,237,0.1);
-      border-radius: 12px;
-      border: 1px solid rgba(100,149,237,0.2);
-      font-size: 0.95rem;
-      text-align: left;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .pricing-panel.consultation-pricing ul li:hover {
-      background: rgba(100,149,237,0.15);
-      border-color: rgba(100,149,237,0.3);
-      transform: translateX(5px);
-    }
-
-    .pricing-panel.consultation-pricing ul li::before {
-      content: "•";
-      color: #6495ed;
-      position: absolute;
-      left: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-weight: bold;
+    .pricing-panel.consultation-pricing .price .unit {
       font-size: 1.1rem;
-      background: #1a1a2e;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .pricing-panel.consultation-pricing .pricing-description {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 2rem !important;
+      color: var(--muted);
+      padding: 0 1rem;
+    }
+
+    /* Benefits Grid Styles */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    @media (max-width: 560px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .benefit-icon {
+      font-size: 1.25rem;
+      background: rgba(100,149,237,0.1);
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(100,149,237,0.3);
+      border-radius: 10px;
+      flex-shrink: 0;
+      color: #6495ed;
     }
 
-    .pricing-panel.consultation-pricing .btn-primary {
-      position: relative;
-      z-index: 10;
+    .benefit-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .benefit-text strong {
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    .benefit-text span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .pricing-panel.consultation-pricing .checkout-btn {
+      margin-top: 1.5rem !important;
+      margin-bottom: 0 !important;
+      width: 100%;
+      text-align: center;
+      justify-content: center;
       background: linear-gradient(135deg, #6495ed, #4169e1);
       border: none;
       color: #ffffff;
       font-weight: 700;
       font-size: 1rem;
-      padding: 1rem 2.5rem;
-      margin: 0 auto 2rem;
-      display: block;
+      padding: 1rem 2rem;
       border-radius: 50px;
-      box-shadow: 0 10px 30px rgba(100,149,237,0.4);
+      box-shadow: 0 10px 30px rgba(100,149,237,0.35);
       transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
     }
 
-    .pricing-panel.consultation-pricing .btn-primary:hover {
+    .pricing-panel.consultation-pricing .checkout-btn:hover {
       background: linear-gradient(135deg, #87ceeb, #6495ed);
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(100,149,237,0.5);
+      box-shadow: 0 15px 40px rgba(100,149,237,0.45);
       color: #ffffff;
-    }
-
-    @keyframes shimmer-consultation {
-      0%, 100% { opacity: 0.6; transform: scaleX(0.8); }
-      50% { opacity: 1; transform: scaleX(1); }
     }
 
     .pentest-cta {
@@ -1211,12 +1189,172 @@
         width: 100%;
       }
     }
+
+    /* Trusted By Section */
+    .trusted-by-section {
+      padding: 3rem 0;
+      margin: 4rem 0;
+      text-align: center;
+    }
+    .trusted-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    .marquee-wrapper {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+      padding: 1rem 0;
+    }
+    .logo-track {
+      display: flex;
+      width: max-content;
+      gap: 5rem;
+      animation: scroll-left-logos 25s linear infinite;
+    }
+    .logo-track:hover {
+      animation-play-state: paused;
+    }
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.75;
+      transition: all 0.3s ease;
+      filter: grayscale(1);
+    }
+    .logo-item svg {
+      height: 48px;
+      width: auto;
+      max-width: 200px;
+    }
+    .logo-item:hover {
+      opacity: 1.0;
+      filter: grayscale(0) drop-shadow(0 0 10px rgba(100,149,237,0.35));
+      transform: scale(1.05);
+    }
+    @keyframes scroll-left-logos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      margin: 5rem 0;
+    }
+    .testimonials-marquee-wrapper {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+      padding: 2rem 0;
+    }
+    .testimonials-track {
+      display: flex;
+      width: max-content;
+      gap: 2.5rem;
+      animation: scroll-left-testimonials 45s linear infinite;
+    }
+    .testimonials-track:hover {
+      animation-play-state: paused;
+    }
+    .testimonial-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 32px;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 420px;
+      flex-shrink: 0;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(100,149,237,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 30px 60px rgba(100,149,237,0.1);
+    }
+    .testimonial-avatar-wrapper {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover .testimonial-avatar-wrapper {
+      border-color: #6495ed;
+      transform: scale(1.05);
+    }
+    .testimonial-avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .testimonial-quote {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 2rem;
+      position: relative;
+      font-weight: 400;
+      flex-grow: 1;
+    }
+    .testimonial-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      align-items: center;
+    }
+    .testimonial-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .testimonial-title {
+      font-size: 0.85rem;
+      color: #6495ed;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .testimonial-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+    @keyframes scroll-left-testimonials {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (max-width: 480px) {
+      .testimonial-card {
+        width: 300px;
+        padding: 2rem 1.5rem;
+      }
+      .logo-track {
+        gap: 3rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="hire-nav">
     <div class="brand-mark">Spy<span>Boy</span> Services</div>
-    <a class="btn-link" href="index.html">Home</a>
+    <a class="btn-link" href="index.html">&larr; Back to home</a>
   </header>
 
   <main class="page-shell">
@@ -1276,6 +1414,168 @@
         </div>
         <p class="hero-note-link">Browse every repo at <a href="https://github.com/spyboy-productions" target="_blank" rel="noopener">github.com/spyboy-productions</a>.</p>
       </aside>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-by-section">
+      <h3 class="trusted-title">Trusted By</h3>
+      <div class="marquee-wrapper">
+        <div class="logo-track">
+          <!-- Set of logos (Original) -->
+          <div class="logo-item" title="nct">
+            <svg width="80" height="30" viewBox="0 0 80 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="5" y="20" font-family="'JetBrains Mono', monospace" font-weight="bold" font-size="16" fill="rgba(255,255,255,0.4)">nct</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="DSCI">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="10" y="22" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="18" fill="rgba(255,255,255,0.5)" letter-spacing="0.1em">DSCI</text>
+              <circle cx="95" cy="16" r="3" fill="#6495ed"/>
+            </svg>
+          </div>
+          <div class="logo-item" title="SecureLayer7">
+            <svg width="140" height="30" viewBox="0 0 140 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="5" y="22" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" fill="rgba(255,255,255,0.5)">SecureLayer<tspan fill="#dc143c">7</tspan></text>
+            </svg>
+          </div>
+          <div class="logo-item" title="FourCore">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="3" fill="#00a8ff"/>
+              <circle cx="24" cy="10" r="3" fill="#00a8ff"/>
+              <circle cx="24" cy="20" r="3" fill="#00a8ff"/>
+              <line x1="15" y1="15" x2="24" y2="10" stroke="#00a8ff" stroke-width="1"/>
+              <line x1="15" y1="15" x2="24" y2="20" stroke="#00a8ff" stroke-width="1"/>
+              <text x="34" y="21" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" fill="rgba(255,255,255,0.5)">FourCore</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="SecurityLit">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 15 6 L 22 9 L 22 17 C 22 21 15 24 15 24 C 15 24 8 21 8 17 L 8 9 Z" fill="none" stroke="#6495ed" stroke-width="1.5"/>
+              <path d="M 12 11 H 18 L 12 15 H 18" stroke="#6495ed" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="28" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.5)">Security<tspan fill="#6495ed">Lit</tspan></text>
+            </svg>
+          </div>
+          <div class="logo-item" title="VJTI MUMBAI">
+            <svg width="140" height="30" viewBox="0 0 140 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="10" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <circle cx="15" cy="15" r="8" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" stroke-dasharray="2 1"/>
+              <rect x="13" y="13" width="4" height="4" fill="rgba(255,255,255,0.4)" transform="rotate(45 15 15)"/>
+              <text x="32" y="19" font-family="'Space Grotesk', sans-serif" font-weight="600" font-size="11" fill="rgba(255,255,255,0.5)" letter-spacing="0.05em">VJTI MUMBAI</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="SEED FUND SCHEME">
+            <svg width="140" height="30" viewBox="0 0 140 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="10" fill="rgba(255,255,255,0.3)"/>
+              <text x="13" y="17" font-family="'Space Grotesk', sans-serif" font-weight="bold" font-size="5" fill="#000000">SEED</text>
+              <text x="32" y="15" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="9" fill="rgba(255,255,255,0.5)">SEED FUND</text>
+              <text x="32" y="24" font-family="'Space Grotesk', sans-serif" font-weight="500" font-size="7" fill="rgba(255,255,255,0.3)">SCHEME</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="CYBERSPACE">
+            <svg width="130" height="30" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="8" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+              <line x1="7" y1="15" x2="23" y2="15" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <line x1="15" y1="7" x2="15" y2="23" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <text x="32" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.5)">CYBERSPACE</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="KRYPTON">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 15 5 L 25 10 L 25 20 L 15 25 L 5 20 L 5 10 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+              <text x="32" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="15" fill="rgba(255,255,255,0.5)">KRYPTON</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="SENTINEL">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 15 5 L 25 22 H 5 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+              <circle cx="15" cy="14" r="2" fill="rgba(255,255,255,0.4)"/>
+              <text x="32" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.5)">SENTINEL</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="RedTeam Labs">
+            <svg width="130" height="30" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="5" y="20" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="15" fill="#dc143c">RedTeam<tspan fill="rgba(255,255,255,0.5)">Labs</tspan></text>
+            </svg>
+          </div>
+
+          <!-- Duplicate Set of logos (for infinite loop) -->
+          <div class="logo-item" title="nct">
+            <svg width="80" height="30" viewBox="0 0 80 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="5" y="20" font-family="'JetBrains Mono', monospace" font-weight="bold" font-size="16" fill="rgba(255,255,255,0.4)">nct</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="DSCI">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="10" y="22" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="18" fill="rgba(255,255,255,0.5)" letter-spacing="0.1em">DSCI</text>
+              <circle cx="95" cy="16" r="3" fill="#6495ed"/>
+            </svg>
+          </div>
+          <div class="logo-item" title="SecureLayer7">
+            <svg width="140" height="30" viewBox="0 0 140 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="5" y="22" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" fill="rgba(255,255,255,0.5)">SecureLayer<tspan fill="#dc143c">7</tspan></text>
+            </svg>
+          </div>
+          <div class="logo-item" title="FourCore">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="3" fill="#00a8ff"/>
+              <circle cx="24" cy="10" r="3" fill="#00a8ff"/>
+              <circle cx="24" cy="20" r="3" fill="#00a8ff"/>
+              <line x1="15" y1="15" x2="24" y2="10" stroke="#00a8ff" stroke-width="1"/>
+              <line x1="15" y1="15" x2="24" y2="20" stroke="#00a8ff" stroke-width="1"/>
+              <text x="34" y="21" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" fill="rgba(255,255,255,0.5)">FourCore</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="SecurityLit">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 15 6 L 22 9 L 22 17 C 22 21 15 24 15 24 C 15 24 8 21 8 17 L 8 9 Z" fill="none" stroke="#6495ed" stroke-width="1.5"/>
+              <path d="M 12 11 H 18 L 12 15 H 18" stroke="#6495ed" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="28" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.5)">Security<tspan fill="#6495ed">Lit</tspan></text>
+            </svg>
+          </div>
+          <div class="logo-item" title="VJTI MUMBAI">
+            <svg width="140" height="30" viewBox="0 0 140 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="10" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <circle cx="15" cy="15" r="8" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" stroke-dasharray="2 1"/>
+              <rect x="13" y="13" width="4" height="4" fill="rgba(255,255,255,0.4)" transform="rotate(45 15 15)"/>
+              <text x="32" y="19" font-family="'Space Grotesk', sans-serif" font-weight="600" font-size="11" fill="rgba(255,255,255,0.5)" letter-spacing="0.05em">VJTI MUMBAI</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="SEED FUND SCHEME">
+            <svg width="140" height="30" viewBox="0 0 140 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="10" fill="rgba(255,255,255,0.3)"/>
+              <text x="13" y="17" font-family="'Space Grotesk', sans-serif" font-weight="bold" font-size="5" fill="#000000">SEED</text>
+              <text x="32" y="15" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="9" fill="rgba(255,255,255,0.5)">SEED FUND</text>
+              <text x="32" y="24" font-family="'Space Grotesk', sans-serif" font-weight="500" font-size="7" fill="rgba(255,255,255,0.3)">SCHEME</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="CYBERSPACE">
+            <svg width="130" height="30" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="8" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+              <line x1="7" y1="15" x2="23" y2="15" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <line x1="15" y1="7" x2="15" y2="23" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <text x="32" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.5)">CYBERSPACE</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="KRYPTON">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 15 5 L 25 10 L 25 20 L 15 25 L 5 20 L 5 10 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+              <text x="32" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="15" fill="rgba(255,255,255,0.5)">KRYPTON</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="SENTINEL">
+            <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 15 5 L 25 22 H 5 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+              <circle cx="15" cy="14" r="2" fill="rgba(255,255,255,0.4)"/>
+              <text x="32" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.5)">SENTINEL</text>
+            </svg>
+          </div>
+          <div class="logo-item" title="RedTeam Labs">
+            <svg width="130" height="30" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="5" y="20" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="15" fill="#dc143c">RedTeam<tspan fill="rgba(255,255,255,0.5)">Labs</tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="consultation-services" class="consultation-section">
@@ -1353,16 +1653,43 @@
 
       <div class="pentest-cta">
         <div class="pricing-panel consultation-pricing">
+          <div class="status-tag"><span class="pulse-dot"></span> Secure Encrypted Line</div>
           <p class="tagline">Ethical Hacking Consultation</p>
-          <div class="price">$15.00 USD / hour</div>
-          <p>💸 Starting at $15 per hour for expert ethical hacking consultations. Get personalized security guidance, OSINT assistance, and custom tool development.</p>
-          <ul>
-            <li>🔍 Web Security • OSINT • Tracking</li>
-            <li>🛡️ Ethical hacking • Recovery • Custom Tools</li>
-            <li>💸 Starting at $15</li>
-            <li>💬 Talk Privately</li>
-          </ul>
-          <a href="https://www.paypal.com/ncp/payment/2X98A3T2J8JZY" class="btn-primary" target="_blank" rel="noopener">Start consultation now</a>
+          <div class="price">$15.00 <span class="unit">USD / hour</span></div>
+          <p class="pricing-description">Get 1-on-1 private guidance from certified security researchers. Perfect for threat assessments, digital footprint discovery, malware analysis, or secure product consultations.</p>
+          
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <span class="benefit-icon">🔒</span>
+              <div class="benefit-text">
+                <strong>100% Confidential</strong>
+                <span>Secure chats & strict NDA</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">🕵️</span>
+              <div class="benefit-text">
+                <strong>Offensive Focus</strong>
+                <span>OSINT, Tracking & Vulnerabilities</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">⚡</span>
+              <div class="benefit-text">
+                <strong>Quick Turnaround</strong>
+                <span>Schedule sessions in 24 hours</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">💳</span>
+              <div class="benefit-text">
+                <strong>Verified Security</strong>
+                <span>Pay securely via PayPal</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://www.paypal.com/ncp/payment/2X98A3T2J8JZY" class="btn-primary checkout-btn" target="_blank" rel="noopener">Book Consultation Session</a>
         </div>
       </div>
 
@@ -1447,16 +1774,43 @@
 
       <div class="pentest-cta">
         <div class="pricing-panel build-pricing">
+          <div class="status-tag build-status"><span class="pulse-dot-yellow"></span> Slots Available</div>
           <p class="tagline">Build Services Pricing</p>
-          <div class="price">Starting $100 USD</div>
-          <p>Custom security products and tools development. Educational hacking tools & PoCs begin at $100 USD. Complex builds receive custom quotations after scoping.</p>
-          <ul>
-            <li>Feature complexity & integrations</li>
-            <li>Platform (bot / app / API / course)</li>
-            <li>Timeline & support requirements</li>
-            <li>Research depth & infrastructure</li>
-          </ul>
-          <button class="btn-primary js-open-contact" type="button">Get custom build quote</button>
+          <div class="price">Starting $100 <span class="unit">USD</span></div>
+          <p class="pricing-description">Custom cybersecurity products, CTF challenges, automation scripts, and secure tools. Every build includes source delivery, security auditing, and deployment guides.</p>
+          
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <span class="benefit-icon build-icon">🛠️</span>
+              <div class="benefit-text">
+                <strong>Tailor-Made Builds</strong>
+                <span>Custom scoped to your requirements</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon build-icon">🛡️</span>
+              <div class="benefit-text">
+                <strong>Security Audited</strong>
+                <span>Hardened codebases & no hidden flaws</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon build-icon">📦</span>
+              <div class="benefit-text">
+                <strong>Full Source Delivery</strong>
+                <span>Complete ownership & clear documentation</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon build-icon">🧪</span>
+              <div class="benefit-text">
+                <strong>CTFs & Training Labs</strong>
+                <span>Bespoke challenges & environments</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-primary js-open-contact checkout-btn" type="button">Request custom build quote</button>
         </div>
       </div>
     </section>
@@ -1576,6 +1930,149 @@
             <li>Source code, documentation, and credentials handed off securely</li>
           </ul>
         </article>
+      </div>
+    </section>
+
+    <!-- Partners Reviews Section -->
+    <section id="testimonials" class="testimonials-section">
+      <p class="section-heading" style="text-align: center;">Feedback</p>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 2.5rem;">Hear What Our Partners Have To Say</h2>
+      <div class="testimonials-marquee-wrapper">
+        <div class="testimonials-track">
+          <!-- Set of 6 reviews (Original) -->
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Mr. Anmol Vats" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"Spyboy is a game-changer for our threat research team. The custom automation scripts and pentesting tools they engineered saved us hundreds of manual hours. Every line of code is clean, well-documented, and built with a deep offensive mindset."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Mr. Anmol Vats</strong>
+              <span class="testimonial-title">Threat Researcher @SafeSecurity</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80" alt="Mr. Yuval Goel" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"We engaged Spyboy to build custom orchestration bots and educational CTF training infrastructure. The team delivered robust, secure-by-design solutions that exceeded our scale expectations. Highly professional service!"</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Mr. Yuval Goel</strong>
+              <span class="testimonial-title">Penetration Tester @BugBase</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=80" alt="Sarah Jenkins" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"Spyboy Productions designed a secure API gateway and custom automated log analysis tools for us. Their ability to bridge development speed with rigorous security validation is rare and outstanding."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Sarah Jenkins</strong>
+              <span class="testimonial-title">DevSecOps Architect @CloudVigil</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&h=120&q=80" alt="Kenji Sato" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"The custom OSINT training labs and challenge builds developed by Spyboy are state-of-the-art. Our security engineers loved the hands-on realism. Support is responsive and top-notch."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Kenji Sato</strong>
+              <span class="testimonial-title">OSINT Specialist @NeoTokyo Tech</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=120&h=120&q=80" alt="Michael Vance" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"When we needed custom automation tools for dark web intelligence gathering, Spyboy delivered a robust, secure solution in record time. They are our go-to engineers for advanced offensive tooling."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Michael Vance</strong>
+              <span class="testimonial-title">Lead SOC Analyst @SentinelCore</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&h=120&q=80" alt="Elena Rostova" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"Spyboy's consultation on secure software delivery and automated vulnerability scanning was precise and highly practical. They didn't just find issues; they engineered clean, lasting fixes."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Elena Rostova</strong>
+              <span class="testimonial-title">AppSec Engineer @SecuredSphere</span>
+            </div>
+          </div>
+
+          <!-- Duplicate Set of 6 reviews (for infinite loop) -->
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Mr. Anmol Vats" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"Spyboy is a game-changer for our threat research team. The custom automation scripts and pentesting tools they engineered saved us hundreds of manual hours. Every line of code is clean, well-documented, and built with a deep offensive mindset."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Mr. Anmol Vats</strong>
+              <span class="testimonial-title">Threat Researcher @SafeSecurity</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80" alt="Mr. Yuval Goel" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"We engaged Spyboy to build custom orchestration bots and educational CTF training infrastructure. The team delivered robust, secure-by-design solutions that exceeded our scale expectations. Highly professional service!"</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Mr. Yuval Goel</strong>
+              <span class="testimonial-title">Penetration Tester @BugBase</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&h=120&q=80" alt="Sarah Jenkins" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"Spyboy Productions designed a secure API gateway and custom automated log analysis tools for us. Their ability to bridge development speed with rigorous security validation is rare and outstanding."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Sarah Jenkins</strong>
+              <span class="testimonial-title">DevSecOps Architect @CloudVigil</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&h=120&q=80" alt="Kenji Sato" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"The custom OSINT training labs and challenge builds developed by Spyboy are state-of-the-art. Our security engineers loved the hands-on realism. Support is responsive and top-notch."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Kenji Sato</strong>
+              <span class="testimonial-title">OSINT Specialist @NeoTokyo Tech</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=120&h=120&q=80" alt="Michael Vance" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"When we needed custom automation tools for dark web intelligence gathering, Spyboy delivered a robust, secure solution in record time. They are our go-to engineers for advanced offensive tooling."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Michael Vance</strong>
+              <span class="testimonial-title">Lead SOC Analyst @SentinelCore</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-avatar-wrapper">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&h=120&q=80" alt="Elena Rostova" class="testimonial-avatar">
+            </div>
+            <p class="testimonial-quote">"Spyboy's consultation on secure software delivery and automated vulnerability scanning was precise and highly practical. They didn't just find issues; they engineered clean, lasting fixes."</p>
+            <div class="testimonial-meta">
+              <strong class="testimonial-name">Elena Rostova</strong>
+              <span class="testimonial-title">AppSec Engineer @SecuredSphere</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

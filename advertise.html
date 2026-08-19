@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advertise with Spyboy | Cybersecurity Audience Packages</title>
-  <meta name="description" content="Partner with Spyboy to reach a global cybersecurity audience through blog features, tool sponsorships, Discord promotions, CTF events, and bundled campaigns.">
+  <title>Advertise with Us – SpyBoy Blog</title>
+  <meta name="description" content="Advertise on SpyBoy Blog, a cybersecurity and technology publication focused on ethical hacking, penetration testing, OSINT, digital forensics, Linux, networking, privacy, and security tools.">
   <link rel="icon" href="./images/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,15 +58,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 0;
+      margin-bottom: 3rem;
     }
 
     .brand {
-      font-size: 1.1rem;
-      letter-spacing: 0.18em;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
+      color: var(--text);
     }
 
     .brand span {
@@ -74,12 +76,26 @@
     }
 
     .nav-link {
-      padding: 0.7rem 1.5rem;
+      padding: 0.6rem 1.4rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.15);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+    }
+
+    .nav-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text);
+      box-shadow: 0 0 15px rgba(220, 20, 60, 0.25);
     }
 
     .hero {
@@ -337,19 +353,174 @@
       font-size: 0.85rem;
       color: var(--accent);
     }
+
+    /* New styles for updated pricing and guidelines */
+    .pricing-table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.01);
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .pricing-table th, .pricing-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-table th {
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+    .pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+    .pricing-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .guidelines-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+    }
+    .guidelines-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .guidelines-list li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--muted);
+    }
+    .guidelines-list.accept li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #00ff66;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .guidelines-list.reject li::before {
+      content: "×";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.3rem;
+      top: -2px;
+    }
+    .guidelines-list.premium li::before {
+      content: "$";
+      position: absolute;
+      left: 0;
+      color: #ff9900;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .payments-container {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .payment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .payment-badge span {
+      color: var(--accent);
+    }
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text);
+    }
+    .card-cta:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: #fff;
+    }
+    .card-inclusions {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .card-inclusions-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .card-inclusions-list {
+      list-style: none;
+      color: var(--muted);
+      padding-left: 0;
+    }
+    .card-inclusions-list li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .card-inclusions-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
   <header class="page-shell">
     <div class="brand">Spy<span>boy</span></div>
-    <a class="nav-link" href="index.html">Back to home</a>
+    <a class="nav-link" href="index.html"><span>&larr;</span> Back to home</a>
   </header>
 
   <main class="page-shell">
     <section class="hero">
-      <p class="section-label">Advertise with Spyboy</p>
+      <p class="section-label">Advertise with Us — SpyBoy Blog</p>
       <h1>Reach the security minds who actually build.</h1>
-      <p>Spyboy connects cybersecurity founders, researchers, and learners across blogs, Discord, GitHub, tools, and CTF labs. Every placement is ethical, community-friendly, and tuned for real engagement—not vanity traffic.</p>
+      <p>Welcome to SpyBoy Blog, a cybersecurity and technology publication focused on ethical hacking, cybersecurity, penetration testing, OSINT, digital forensics, Linux, networking, privacy, and security tools. Our content reaches a growing audience of cybersecurity enthusiasts, developers, IT professionals, ethical hackers, and technology readers.</p>
       <div class="cta">
         <button class="btn-primary js-open-contact" type="button">Book a slot</button>
         <a class="btn-secondary" href="#pricing">View pricing</a>
@@ -357,64 +528,280 @@
     </section>
 
     <section id="pitch">
-      <p class="section-label">Pitch</p>
-      <h2 class="section-title">Advertise where security minds gather.</h2>
-      <p class="copy">Spyboy is a growing cybersecurity ecosystem trusted by hackers, developers, and security professionals. We don’t sell fake traffic—we connect brands with real, engaged, tech-savvy users across blogs, tools, bots, Discord, GitHub, and CTF platforms.</p>
-      <p class="copy"><strong>Audience:</strong> Security researchers, ethical hackers, developers, students, and professionals.</p>
+      <p class="section-label">Why SpyBoy?</p>
+      <h2 class="section-title">Why Advertise on SpyBoy?</h2>
+      <p class="copy">SpyBoy Blog connects your brand directly with a focused audience of tech builders, security researchers, and technology learners. No vanity metrics or empty clicks—just genuine attention.</p>
+      <div class="media-grid">
+        <div class="media-item">
+          <strong>10,000+ Monthly Visitors</strong><br>
+          Steady organic traffic coming directly from search engine queries and direct visits.
+        </div>
+        <div class="media-item">
+          <strong>Global Reach</strong><br>
+          Our audience is primarily located in the USA, India, and the United Kingdom.
+        </div>
+        <div class="media-item">
+          <strong>Cybersecurity Core</strong><br>
+          100% focused on ethical hacking, pentesting, OSINT, forensics, Linux, networking, and privacy.
+        </div>
+        <div class="media-item">
+          <strong>High-Quality Research</strong><br>
+          Content covers practical tutorials, deep research, tool reviews, vulnerabilities, and emerging tech.
+        </div>
+        <div class="media-item">
+          <strong>Flexible Placements</strong><br>
+          Multiple tailored options including guest articles, link insertions, and homepage features.
+        </div>
+      </div>
     </section>
 
     <section id="pricing">
-      <p class="section-label">Pricing</p>
-      <h2 class="section-title">Advertising & Sponsorship Menu</h2>
-      <div class="grid">
+      <p class="section-label">Pricing Menu</p>
+      <h2 class="section-title">Advertising & Sponsorship Pricing</h2>
+      <p class="copy">Choose from our individual advertising services or discounted packages. Select any option below to inquire.</p>
+      
+      <div class="pricing-table-wrapper">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Guest post</strong> — advertiser provides article</td>
+              <td class="pricing-tag">$30</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>Sponsored post</strong> — you provide the article</td>
+              <td class="pricing-tag">$40</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>Sponsored post + SpyBoy writes the article</strong></td>
+              <td class="pricing-tag">$60–$75</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>Link insertion</strong></td>
+              <td class="pricing-tag">$20</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>Homepage featured placement</strong></td>
+              <td class="pricing-tag">$50/month</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>Newsletter/social promotion add-on</strong></td>
+              <td class="pricing-tag">$15–$25</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>3 sponsored posts package</strong></td>
+              <td class="pricing-tag">$100–$150</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid" style="margin-top: 3rem;">
         <article class="card">
-          <h3>Blog Advertising</h3>
-          <ul class="pricing-list">
-            <li><strong>Sponsored blog post</strong> – SEO article + social push <span class="pricing-tag">$20 / post</span></li>
-            <li><strong>Link insertion</strong> in existing article <span class="pricing-tag">$10 / link</span></li>
-            <li><strong>Banner ads</strong> (header/sidebar/footer) <span class="pricing-tag">$50 / month</span></li>
-            <li><strong>Newsletter feature</strong> with sponsored post <span class="pricing-tag">Free</span></li>
-          </ul>
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
+          <h3>Guest Post</h3>
+          <p class="pricing-tag">$30</p>
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Submit your own original article for publication on SpyBoy Blog.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>Permanent publication</li>
+              <li>1–2 relevant links</li>
+              <li>Author/company attribution</li>
+              <li>Editorial review</li>
+            </ul>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--muted); margin-top: 1rem; font-style: italic;">Note: The article must be original, high-quality, and relevant to cybersecurity, technology, software, or related topics.</p>
+          <button class="card-cta js-open-contact" type="button">Book Guest Post</button>
         </article>
+
         <article class="card">
-          <h3>Tools, Bots & Apps</h3>
-          <p class="copy">Brand placements inside Spyboy tooling with high recurring traffic.</p>
-          <p class="pricing-tag">$100 / month per tool</p>
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💼</div>
+          <h3>Sponsored Post</h3>
+          <p class="pricing-tag">$40</p>
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Have your company, product, service, or technology featured through a dedicated sponsored article.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>Permanent publication</li>
+              <li>1–2 relevant links</li>
+              <li>Product/company mention</li>
+              <li>Editorial review</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" type="button">Book Sponsored Post</button>
         </article>
+
         <article class="card">
-          <h3>GitHub & Discord</h3>
-          <ul class="pricing-list">
-            <li><strong>GitHub post sharing</strong> to Discord – <span class="pricing-tag">Included</span></li>
-            <li><strong>Pinned post</strong> (Discord/platform) – <span class="pricing-tag">$50 / month</span></li>
-          </ul>
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">✍️</div>
+          <h3>Sponsored Post + Content</h3>
+          <p class="pricing-tag">$60–$75</p>
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Don’t have an article ready? SpyBoy can write it for you. Price depends on research & length.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>Original article written by SpyBoy</li>
+              <li>SEO-friendly structure</li>
+              <li>1–2 relevant links</li>
+              <li>Permanent publication</li>
+              <li>Editorial review</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" type="button">Book Post + Writing</button>
         </article>
+
         <article class="card">
-          <h3>Discord CTF Events (3 days)</h3>
-          <ul class="pricing-list">
-            <li>CTF creation – <span class="pricing-tag">$80</span></li>
-            <li>CTF hosting – <span class="pricing-tag">$120</span></li>
-            <li>CTF management – <span class="pricing-tag">$100</span></li>
-            <li><strong>Total</strong> – <span class="pricing-tag">$300 / event</span></li>
-          </ul>
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔗</div>
+          <h3>Link Insertion</h3>
+          <p class="pricing-tag">$20</p>
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Add one relevant contextual link to an existing SpyBoy Blog article.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>1 contextual link</li>
+              <li>Placement in relevant article</li>
+              <li>Permanent placement</li>
+              <li>Editorial approval</li>
+            </ul>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--muted); margin-top: 1rem; font-style: italic;">Note: Links must be relevant to the article and provide value to readers.</p>
+          <button class="card-cta js-open-contact" type="button">Book Link Insertion</button>
         </article>
+
+        <article class="card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⭐</div>
+          <h3>Homepage Placement</h3>
+          <p class="pricing-tag">$50 / month</p>
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Get your content, company, product, or campaign featured on the SpyBoy Blog homepage for maximum visibility.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title">Details:</div>
+            <ul class="card-inclusions-list">
+              <li>High-visibility homepage slot</li>
+              <li>Monthly recurring placement</li>
+              <li>Subject to editorial approval</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" type="button">Book Homepage slot</button>
+        </article>
+
+        <article class="card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">📣</div>
+          <h3>Newsletter & Social</h3>
+          <p class="pricing-tag">$15–$25</p>
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Add promotional distribution to your sponsored content across our email newsletter and social channels.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title">Inclusions:</div>
+            <ul class="card-inclusions-list">
+              <li>Targeted email list blast</li>
+              <li>Social media channel shares</li>
+              <li>Flexible campaign sizes</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" type="button">Add Promotion</button>
+        </article>
+
         <article class="card bundle">
-          <h3>Promotion bundle</h3>
-          <p class="copy">Sponsored blog post + Discord promotion + tool/bot sponsorship option.</p>
-          <p class="pricing-tag">Starting from $150</p>
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">📦</div>
+          <h3>3 Sponsored Posts</h3>
+          <p class="pricing-tag">$100–$150</p>
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Save with a multi-post campaign. Price varies based on content creation options.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>3 sponsored publications</li>
+              <li>Permanent publication</li>
+              <li>1–2 relevant links per article</li>
+              <li>Editorial review</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" type="button">Book Package</button>
         </article>
       </div>
     </section>
 
-    <section id="media-kit">
-      <p class="section-label">Media kit</p>
-      <h2 class="section-title">Spyboy reach & inventory</h2>
-      <div class="media-grid">
-        <div class="media-item"><strong>Brand:</strong> Spyboy<br>Cybersecurity, OSINT, CTF, automation.</div>
-        <div class="media-item"><strong>Audience:</strong> Security researchers, ethical hackers, devs, students.</div>
-        <div class="media-item"><strong>Traffic:</strong> 10,000+ monthly blog visitors + active Discord & GitHub.</div>
-        <div class="media-item"><strong>Regions:</strong> USA, India, UK.</div>
-        <div class="media-item"><strong>Platforms:</strong> Blog, tools, bots, Discord, GitHub, CTF labs.</div>
-        <div class="media-item"><strong>Ad formats:</strong> Sponsored posts, banner ads, tool/bot sponsorship, Discord promos, CTF branding.</div>
+    <section id="guidelines">
+      <p class="section-label">Guidelines</p>
+      <h2 class="section-title">Editorial Guidelines</h2>
+      <p class="copy">SpyBoy Blog focuses on quality, relevance, and useful technology content. All submissions are subject to editorial review. Payment does not guarantee publication if the content does not meet our editorial requirements.</p>
+      
+      <div class="guidelines-grid">
+        <div class="guidelines-card">
+          <h3 style="color: #00ff66; display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem;">
+            <span style="font-size: 1.5rem;">✓</span> We Accept
+          </h3>
+          <ul class="guidelines-list accept">
+            <li>Cybersecurity topics</li>
+            <li>Ethical hacking & tutorials</li>
+            <li>Penetration testing</li>
+            <li>OSINT & Bug bounty</li>
+            <li>Privacy and security tools</li>
+            <li>Linux & Operating systems</li>
+            <li>Networking & Programming</li>
+            <li>Developer tools</li>
+            <li>AI and emerging technologies</li>
+            <li>Cloud & Infrastructure</li>
+            <li>Security products & services</li>
+          </ul>
+        </div>
+
+        <div class="guidelines-card">
+          <h3 style="color: #ff9900; display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem;">
+            <span style="font-size: 1.5rem;">$</span> Accept With Fees
+          </h3>
+          <p class="copy" style="font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+            We focus primarily on cybersecurity and technology. However, we may accept certain off-topic commercial content at a <strong>25% premium</strong> over our standard pricing, subject to review.
+          </p>
+          <ul class="guidelines-list premium">
+            <li>Gambling and casino content</li>
+            <li>Pharmaceutical-related content</li>
+            <li>Other unrelated/off-topic commercial content</li>
+          </ul>
+        </div>
+        
+        <div class="guidelines-card">
+          <h3 style="color: var(--accent); display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem;">
+            <span style="font-size: 1.5rem;">×</span> We Do Not Accept
+          </h3>
+          <ul class="guidelines-list reject">
+            <li>Adult/explicit sexual content</li>
+            <li>Illegal or harmful content</li>
+            <li>Spam or low-quality articles</li>
+            <li>Keyword-stuffed content</li>
+            <li>Misleading or deceptive content</li>
+            <li>Content that violates applicable laws or our editorial standards</li>
+          </ul>
+        </div>
+      </div>
+      
+      <p class="copy" style="margin-top: 1.5rem; font-style: italic; font-size: 0.9rem;">
+        * All off-topic submissions remain subject to editorial approval. SpyBoy Blog reserves the right to edit content for formatting, clarity, accuracy, and editorial quality.
+      </p>
+    </section>
+
+    <section id="payment">
+      <p class="section-label">Transactions</p>
+      <h2 class="section-title">Supported Payment Methods</h2>
+      <p class="copy">Payment details will be provided after your submission or campaign has been reviewed and approved by our editorial team.</p>
+      <div class="payments-container">
+        <div class="payment-badge">
+          <span>💳</span> PayPal
+        </div>
+        <div class="payment-badge">
+          <span>📲</span> UPI (Unified Payments Interface)
+        </div>
       </div>
     </section>
 
@@ -426,8 +813,8 @@
         <p>Cybersecurity tools, SaaS products, developer platforms, education services, privacy tools, and ethical tech brands.</p>
       </div>
       <div class="faq-item">
-        <h4>Do you accept gambling or shady promos?</h4>
-        <p>No. We reject gambling, scams, malware, illegal hacking services, and unethical products.</p>
+        <h4>Do you accept gambling or off-topic commercial content?</h4>
+        <p>We may accept gambling, casino, pharmaceutical, or other off-topic commercial content at a 25% premium over our standard pricing, subject to editorial review. We strictly reject scams, malware, illegal hacking services, adult content, and deceptive or unethical products.</p>
       </div>
       <div class="faq-item">
         <h4>Is the traffic real?</h4>
@@ -453,24 +840,48 @@
 
     <section class="cta-panel">
       <h2>Promote where cybersecurity actually happens.</h2>
-      <p>Spyboy helps ethical brands reach the builders shaping security—blogs, bots, Discord, GitHub, and CTFs.</p>
+      <p>Interested in advertising, sponsoring content, or publishing on SpyBoy Blog?</p>
+      
+      <div style="text-align: left; max-width: 500px; margin: 1.5rem auto; background: rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 1.5rem; border-radius: 16px;">
+        <h4 style="margin-bottom: 0.8rem; font-family: var(--mono); color: var(--accent); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em;">Please include in your email:</h4>
+        <ul style="list-style: none; padding: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.6;">
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Your company / website URL</li>
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Advertising service you are interested in</li>
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Proposed article topic or URL</li>
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Number of posts or placements required</li>
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Any specific guidelines or requirements</li>
+        </ul>
+      </div>
+
       <div class="contact-email">
         <span>contact@spyboy.in</span>
-        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Spyboy%20Advertising">Email us</a>
+        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Inquiry:%20SpyBoy%20Blog%20Advertising">Email us</a>
       </div>
+      <p style="margin-top: 1.5rem; font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em;">Think Like an Attacker. Secure Like a Pro. Where Curiosity Meets Cybersecurity.</p>
     </section>
   </main>
 
   <div class="contact-modal" id="advertiseModal" role="dialog" aria-modal="true" aria-labelledby="advertiseModalTitle">
-    <div class="contact-modal-card">
+    <div class="contact-modal-card" style="width: min(500px, 100%); position: relative;">
       <button class="modal-close" type="button" aria-label="Close pop-up">&times;</button>
       <p class="section-label" id="advertiseModalTitle">Contact Spyboy</p>
       <h2>Send your campaign brief</h2>
-      <p class="copy">Share your goals, audience, and preferred surfaces (blog, Discord, tools, CTF). We reply within 24 hours.</p>
+      <p class="copy" style="margin-bottom: 1rem;">To help us review your request faster, please include the following details in your email:</p>
+      
+      <div style="text-align: left; background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 1.2rem; border-radius: 12px; margin-bottom: 1.2rem; font-size: 0.85rem; color: var(--muted); line-height: 1.6;">
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Your company / website URL</li>
+          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Advertising service of interest</li>
+          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Proposed article topic or URL</li>
+          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Number of posts / placements required</li>
+          <li><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Any specific requirements</li>
+        </ul>
+      </div>
+      
       <div class="modal-email" id="modalEmailValue">contact@spyboy.in</div>
       <div class="modal-actions">
         <button class="btn-primary" type="button" id="modalCopyBtn">Copy email</button>
-        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Spyboy%20Advertising">Open mail app</a>
+        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Inquiry:%20SpyBoy%20Blog%20Advertising">Open mail app</a>
         <div class="modal-copy-status" id="modalCopyStatus" aria-live="polite"></div>
       </div>
     </div>

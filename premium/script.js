@@ -150,10 +150,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updatePurchaseBadges();
         initEmailPopup();
+        initStickyNavbar();
+        initMobileMenu();
     } catch (error) {
         console.error('Failed to initialize premium timers or badges', error);
     }
 });
+
+function initStickyNavbar() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    const handleScroll = () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('sticky');
+        } else {
+            navbar.classList.remove('sticky');
+        }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+}
+
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const menu = document.querySelector('.navbar .menu');
+    if (!menuBtn || !menu) return;
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        const icon = menuBtn.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+    });
+}
 
 const CONTACT_EMAIL = 'contact@spyboy.in';
 
