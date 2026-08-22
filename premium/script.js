@@ -172,16 +172,23 @@ function initStickyNavbar() {
 }
 
 function initMobileMenu() {
-    const menuBtn = document.querySelector('.menu-btn');
+    const toggleBtn = document.getElementById('mobileNavToggle') || document.querySelector('.mobile-nav-toggle');
     const menu = document.querySelector('.navbar .menu');
-    if (!menuBtn || !menu) return;
-    menuBtn.addEventListener('click', () => {
+    if (!toggleBtn || !menu) return;
+    
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         menu.classList.toggle('active');
-        const icon = menuBtn.querySelector('i');
-        if (icon) {
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        }
+        toggleBtn.classList.toggle('active');
+    });
+
+    // Close when clicking links
+    const navLinks = menu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('active');
+            toggleBtn.classList.remove('active');
+        });
     });
 }
 

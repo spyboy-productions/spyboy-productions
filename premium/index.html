@@ -22,9 +22,9 @@
 <meta property="og:url" content="https://spyboy.in/premium" />
 <meta property="theme-color" content="#B81217" />
 <meta property="og:image" content="../images/logo.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link rel="stylesheet" href="style.css">
-<script src="https://kit.fontawesome.com/9a19702cee.js" crossorigin="anonymous" type="999db75a1c624f19b5d2ccbe-text/javascript"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,17 +41,18 @@
     <nav class="navbar">
         <div class="max-width">
             <div class="logo"><a href="https://spyboy.in">Spyo</a></div>
-            <ul class="menu">
-                <li><a href="https://spyboy.in" class="menu-btn">Home</a></li>
-                <li><a href="https://spyboy.in/Discord" class="menu-btn">Discord</a></li>
-                <li><a href="https://discord.com/api/oauth2/authorize?client_id=877644741339144244&permissions=8&scope=bot%20applications.commands" class="menu-btn">Add Bot</a></li>
-                <li><a href="https://spyboy.in/bot-commands.html" class="menu-btn">Commands</a></li>
-                <!-- <li><a onclick="openPortal()" class="menu-btn">Portal</a></li> -->
-                <li><a href="#" class="menu-btn" id="contactEmailBtn">Email</a></li>
+            <ul class="menu" id="navbarMenu">
+                <li><a href="https://spyboy.in" class="nav-link">Home</a></li>
+                <li><a href="https://spyboy.in/Discord" class="nav-link">Discord</a></li>
+                <li><a href="https://discord.com/api/oauth2/authorize?client_id=877644741339144244&permissions=8&scope=bot%20applications.commands" class="nav-link">Add Bot</a></li>
+                <li><a href="https://spyboy.in/bot-commands.html" class="nav-link">Commands</a></li>
+                <li><a href="#" class="nav-link" id="contactEmailBtn">Email</a></li>
             </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </nav>
 
@@ -489,6 +490,77 @@
 
     <!-- Scoped Styles for Redesigned Why Premium & Pricing Section -->
     <style>
+        /* ════ NAVBAR & MOBILE MENU STYLES ════ */
+        .navbar .max-width {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .navbar .menu li a.nav-link {
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .navbar .menu li a.nav-link:hover {
+            color: #dc143c;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .mobile-nav-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 9px;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            z-index: 10001;
+            transition: all 0.25s ease;
+        }
+        .mobile-nav-toggle:hover {
+            background: rgba(220, 20, 60, 0.15);
+            border-color: rgba(220, 20, 60, 0.4);
+        }
+        .hamburger-bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 99px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-nav-toggle.active {
+            background: rgba(220, 20, 60, 0.2);
+            border-color: #dc143c;
+        }
+        .mobile-nav-toggle.active .hamburger-bar:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background-color: #dc143c;
+        }
+        .mobile-nav-toggle.active .hamburger-bar:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .mobile-nav-toggle.active .hamburger-bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background-color: #dc143c;
+        }
+
         /* ════ TOP PRICING SECTION STYLES ════ */
         .pricing-section {
             padding: 145px 0 70px;
@@ -1361,21 +1433,204 @@
             gap: 6px;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .practitioners-grid { grid-template-columns: repeat(2, 1fr); }
-            .why-cta-banner { flex-direction: column; text-align: center; }
-            .why-cta-content p { margin: 0 auto; }
+        /* ════ RESPONSIVE ADAPTATIONS (MOBILE & TABLET REFINED) ════ */
+        @media (max-width: 1100px) {
+            .pricing-grid {
+                gap: 20px;
+            }
+            .plan-inner {
+                padding: 28px 20px 24px;
+            }
         }
+
+        @media (max-width: 950px) {
+            .mobile-nav-toggle {
+                display: flex;
+            }
+            .navbar .menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 12, 18, 0.98);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 10000;
+                padding: 40px 20px;
+            }
+            .navbar .menu.active {
+                left: 0;
+            }
+            .navbar .menu li {
+                width: 100%;
+                text-align: center;
+            }
+            .navbar .menu li a.nav-link {
+                font-family: 'Space Grotesk', 'Poppins', sans-serif;
+                font-size: 1.35rem;
+                font-weight: 700;
+                display: inline-block;
+                padding: 12px 28px;
+            }
+            .pricing-section {
+                padding: 40px 0 60px;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+                gap: 32px;
+            }
+            .plan-card.card-featured {
+                transform: none;
+                order: -1; /* Place the featured Lifetime plan at top on mobile */
+            }
+            .plan-card.card-featured:hover {
+                transform: translateY(-4px);
+            }
+            .plan-card:hover {
+                transform: translateY(-4px);
+            }
+            .pricing-trust-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            .practitioners-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+            .why-cta-banner { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            .why-cta-content p { 
+                margin: 0 auto; 
+            }
+        }
+
         @media (max-width: 768px) {
-            .creator-manifesto { padding: 24px 18px; }
-            .manifesto-quote { font-size: 1.05rem; }
-            .why-grid { grid-template-columns: 1fr; }
-            .practitioners-grid { grid-template-columns: 1fr; }
-            .why-card { padding: 26px 20px; }
-            .comparison-card { padding: 22px 16px; }
-            .why-cta-banner { padding: 32px 20px; }
-            .why-cta-btn { width: 100%; }
+            .pricing-section .max-width {
+                padding: 0 18px;
+            }
+            .pricing-header {
+                margin-bottom: 36px;
+            }
+            .pricing-main-title {
+                font-size: 2.2rem;
+            }
+            .pricing-main-tagline {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+            .pricing-grid {
+                max-width: 100%;
+                gap: 26px;
+            }
+            .plan-card {
+                border-radius: 20px;
+            }
+            .plan-inner {
+                padding: 24px 18px 20px;
+            }
+            .plan-name {
+                font-size: 1.3rem;
+            }
+            .amount {
+                font-size: 3rem;
+            }
+            .plan-meta-box {
+                padding: 10px 12px;
+                margin-bottom: 20px;
+            }
+            .timer-value {
+                font-size: 1.05rem;
+            }
+            .plan-features {
+                gap: 10px;
+                margin-bottom: 22px;
+            }
+            .plan-features li {
+                font-size: 0.88rem;
+            }
+            .plan-btn {
+                padding: 14px 18px;
+                font-size: 0.95rem;
+                border-radius: 12px;
+            }
+            .trust-card {
+                padding: 20px 18px;
+            }
+            .creator-manifesto { 
+                padding: 26px 18px; 
+                border-radius: 20px;
+            }
+            .manifesto-quote { 
+                font-size: 1.05rem; 
+                padding-left: 14px;
+            }
+            .why-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px;
+            }
+            .practitioners-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .why-card { 
+                padding: 28px 20px; 
+                border-radius: 18px;
+            }
+            .comparison-card { 
+                padding: 24px 16px; 
+                border-radius: 20px;
+            }
+            .why-cta-banner { 
+                padding: 32px 20px; 
+                border-radius: 20px;
+            }
+            .why-cta-btn { 
+                width: 100%; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-section .max-width {
+                padding: 0 14px;
+            }
+            .pricing-main-title {
+                font-size: 1.95rem;
+            }
+            .amount {
+                font-size: 2.7rem;
+            }
+            .currency {
+                font-size: 1.4rem;
+            }
+            .plan-inner {
+                padding: 20px 15px 18px;
+            }
+            .trust-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+                padding: 18px 14px;
+            }
+            .payment-logos-row {
+                justify-content: center;
+                gap: 8px;
+            }
+            .pay-chip {
+                height: 38px;
+                padding: 0 12px;
+            }
+            .buyers-row {
+                font-size: 0.76rem;
+            }
         }
     </style>
 
