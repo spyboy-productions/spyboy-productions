@@ -295,10 +295,159 @@ img{max-width:100%;height:auto}
 .cta-discord{background:rgba(88,101,242,.12);color:#fff;border:1.5px solid rgba(88,101,242,.3)}
 .cta-discord:hover{background:rgba(88,101,242,.22);border-color:rgba(88,101,242,.55);transform:translateY(-2px)}
 
-/* ACCESS GRANTED badge */
-.access-badge{position:absolute;top:calc(var(--nav-h) + 62px);right:48px;display:flex;align-items:center;gap:8px;padding:8px 14px;background:rgba(8,10,15,.84);border:1px solid rgba(220,20,60,.55);border-radius:8px;font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--red);text-transform:uppercase;z-index:3;backdrop-filter:blur(12px);animation:fadeRight .8s ease .6s both}
+/* ── HERO VISITOR TELEMETRY & ACCESS BADGE ── */
+.hero-telemetry-panel {
+  position: absolute;
+  top: calc(var(--nav-h) + 26px);
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  z-index: 3;
+  animation: fadeRight .8s ease .6s both;
+}
+.access-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  background: rgba(8,10,15,.88);
+  border: 1px solid rgba(220,20,60,.55);
+  border-radius: 8px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--red);
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
 @keyframes fadeRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 .access-badge::before{content:'';width:7px;height:7px;background:var(--red);border-radius:50%;animation:pulse 1.6s infinite}
+
+.visitor-telemetry-card {
+  width: 255px;
+  background: rgba(6, 8, 14, 0.85);
+  border: 1px solid rgba(220, 20, 60, 0.28);
+  border-radius: 14px;
+  padding: 11px 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65), 0 0 25px rgba(220, 20, 60, 0.08);
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+.visitor-telemetry-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #dc143c, #00e676, transparent);
+}
+.telemetry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 7px;
+  margin-bottom: 7px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+}
+.telemetry-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.telemetry-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00e676;
+  box-shadow: 0 0 8px #00e676;
+  animation: telemetryPulse 2s infinite;
+}
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+.telemetry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.telemetry-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.72rem;
+  padding: 1px 0;
+}
+.telemetry-label {
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  flex-shrink: 0;
+}
+.telemetry-label i {
+  color: var(--red);
+  font-size: 0.68rem;
+  width: 12px;
+  text-align: center;
+}
+.telemetry-val {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 155px;
+}
+.telemetry-val.ip-highlight {
+  color: #00e676;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
+}
+.telemetry-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: rgba(220, 20, 60, 0.08);
+  border: 1px solid rgba(220, 20, 60, 0.35);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.telemetry-action-btn:hover {
+  background: rgba(220, 20, 60, 0.22);
+  border-color: #ff4d6d;
+  color: #ff4d6d;
+  box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+  transform: translateY(-1px);
+}
+.telemetry-action-btn i {
+  font-size: 0.65rem;
+  transition: transform 0.25s ease;
+}
+.telemetry-action-btn:hover i {
+  transform: translateX(3px);
+}
 
 /* ── EXPLORE BAR ── */
 .explore-bar{position:relative;z-index:2;padding:0 32px 18px;background:transparent}
@@ -747,7 +896,7 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
 @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){
   .nav-links{display:none}.nav-hamburger{display:flex}
-  .hero-bg-img{width:100%;opacity:.18}.access-badge{display:none}
+  .hero-bg-img{width:100%;opacity:.18}.hero-telemetry-panel{display:none}
   .cybersuite-split,.bot-grid,.about-grid,.blog-grid{grid-template-columns:1fr}
 }
 @media(max-width:640px){
@@ -842,7 +991,53 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
 <!-- ════ HERO ════ -->
 <section class="hero" id="home">
   <img src="images/hero_hacker.jpg" alt="Cybersecurity hacker visualization" class="hero-bg-img" loading="eager" fetchpriority="high">
-  <div class="access-badge"><i class="fas fa-triangle-exclamation"></i> Access Granted</div>
+  <div class="hero-telemetry-panel">
+    <div class="access-badge"><i class="fas fa-triangle-exclamation"></i> Access Granted</div>
+    <div class="visitor-telemetry-card">
+      <div class="telemetry-header">
+        <span class="telemetry-tag"><span class="telemetry-live-dot"></span> VISITOR TELEMETRY</span>
+        <span style="color:rgba(255,255,255,0.3);font-size:0.58rem">LIVE HUD</span>
+      </div>
+      <div class="telemetry-grid">
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-network-wired"></i> IP</span>
+          <span class="telemetry-val ip-highlight" id="hudIp">resolving...</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-flag"></i> Country</span>
+          <span class="telemetry-val" id="hudCountry">—</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-map-location-dot"></i> State</span>
+          <span class="telemetry-val" id="hudRegion">—</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-city"></i> City</span>
+          <span class="telemetry-val" id="hudCity">—</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-envelope"></i> ZIP</span>
+          <span class="telemetry-val" id="hudZip">—</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-tower-broadcast"></i> ISP</span>
+          <span class="telemetry-val" id="hudIsp" title="">—</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-shield-halved"></i> ASN</span>
+          <span class="telemetry-val" id="hudAsn" title="">—</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label"><i class="fas fa-globe"></i> Timezone</span>
+          <span class="telemetry-val" id="hudTz">—</span>
+        </div>
+      </div>
+      <a href="whoami.html" target="_blank" rel="noopener" class="telemetry-action-btn">
+        <span>Analyze in Whoami Lab</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
   <div class="hero-content">
     <div class="hero-badge"><span class="hero-badge-dot"></span> Ethical Hacker &bull; Developer &bull; Researcher</div>
     <p class="hero-greeting">Hello <a href="whoami.html" target="_blank" rel="noopener" id="visitorIpAddr" class="hero-ip-link">...</a>, I'm</p>
@@ -853,7 +1048,6 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
     <div class="hero-ctas">
       <a href="hire.html" class="cta-btn cta-primary"><i class="fas fa-terminal"></i> Hire Spyboy</a>
       <a href="https://discord.gg/ZChEmMwE8d" class="cta-btn cta-discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Join Discord</a>
-      <a href="whoami.html" class="cta-btn cta-outline" target="_blank" rel="noopener"><i class="fas fa-code"></i> Run Whoami Lab</a>
       <button class="cta-btn cta-outline" id="contactBtn" type="button"><i class="fas fa-envelope"></i> Contact</button>
     </div>
 
@@ -2263,20 +2457,89 @@ $(document).ready(initCarousels);
 window.addEventListener('load', initCarousels);
 </script>
 
-<!-- ═══ VISITOR IP LOOKUP ═══ -->
+<!-- ═══ VISITOR TELEMETRY LOOKUP (CLIENT-SIDE) ═══ -->
 <script>
 (function(){
-  const el = document.getElementById('visitorIpAddr');
-  if (!el) return;
-  fetch('https://ipwho.is/')
+  const greetingIp = document.getElementById('visitorIpAddr');
+  const hudIp      = document.getElementById('hudIp');
+  const hudCountry = document.getElementById('hudCountry');
+  const hudRegion  = document.getElementById('hudRegion');
+  const hudCity    = document.getElementById('hudCity');
+  const hudZip     = document.getElementById('hudZip');
+  const hudIsp     = document.getElementById('hudIsp');
+  const hudAsn     = document.getElementById('hudAsn');
+  const hudTz      = document.getElementById('hudTz');
+
+  function renderData(data) {
+    if (!data) return;
+    if (greetingIp) greetingIp.textContent = data.ip || '—';
+    if (hudIp)      hudIp.textContent      = data.ip || '—';
+    if (hudCountry) hudCountry.textContent = data.country || '—';
+    if (hudRegion)  hudRegion.textContent  = data.region || '—';
+    if (hudCity)    hudCity.textContent    = data.city || '—';
+    if (hudZip)     hudZip.textContent     = data.zip || '—';
+    if (hudIsp) {
+      hudIsp.textContent = data.isp || '—';
+      hudIsp.title       = data.isp || '';
+    }
+    if (hudAsn) {
+      const asnClean = data.asn ? data.asn.split(' ')[0] : '—';
+      hudAsn.textContent = asnClean;
+      hudAsn.title       = data.asn || '';
+    }
+    if (hudTz) hudTz.textContent = data.timezone || '—';
+  }
+
+  // Check sessionStorage cache first for instant 0ms render
+  try {
+    const cached = sessionStorage.getItem('spyboy_visitor_telemetry');
+    if (cached) {
+      renderData(JSON.parse(cached));
+      return;
+    }
+  } catch(e){}
+
+  // Primary: ip-api.com
+  fetch('http://ip-api.com/json/?fields=status,query,country,regionName,city,district,zip,isp,org,as,timezone')
     .then(r => r.json())
-    .then(d => { if (!d || !d.ip) throw 0; el.textContent = d.ip; })
-    .catch(() =>
-      fetch('https://ip-api.com/json/?fields=status,query')
+    .then(d => {
+      if (!d || d.status !== 'success') throw new Error('ip-api failed');
+      const payload = {
+        ip: d.query,
+        country: d.country || '—',
+        region: d.regionName || '—',
+        city: d.city || '—',
+        zip: d.zip || '—',
+        isp: d.isp || d.org || '—',
+        asn: d.as || '—',
+        timezone: d.timezone || '—'
+      };
+      renderData(payload);
+      try { sessionStorage.setItem('spyboy_visitor_telemetry', JSON.stringify(payload)); } catch(e){}
+    })
+    .catch(() => {
+      // Fallback: ipwho.is
+      fetch('https://ipwho.is/')
         .then(r => r.json())
-        .then(d => { el.textContent = (d.status === 'success' ? d.query : null) || '—'; })
-        .catch(() => { el.textContent = '—'; })
-    );
+        .then(d => {
+          if (!d || !d.ip) throw new Error('ipwho failed');
+          const payload = {
+            ip: d.ip,
+            country: d.country || '—',
+            region: d.region || '—',
+            city: d.city || '—',
+            zip: d.postal || '—',
+            isp: d.connection?.isp || d.connection?.org || '—',
+            asn: d.connection?.asn ? 'AS' + d.connection.asn : '—',
+            timezone: d.timezone?.id || '—'
+          };
+          renderData(payload);
+          try { sessionStorage.setItem('spyboy_visitor_telemetry', JSON.stringify(payload)); } catch(e){}
+        })
+        .catch(() => {
+          renderData({ ip:'—', country:'—', region:'—', city:'—', zip:'—', isp:'—', asn:'—', timezone:'—' });
+        });
+    });
 })();
 </script>
 
