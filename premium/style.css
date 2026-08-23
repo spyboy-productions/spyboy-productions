@@ -70,7 +70,13 @@ html {
 }
 
 .purchase-badge {
-  color: #FCD34D;
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.82);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 1.2rem;
+  transition: opacity 0.35s ease;
 }
 
 .email-popup-overlay {

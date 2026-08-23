@@ -125,6 +125,49 @@ function getPurchaseCounts(planKeys) {
     return ensurePurchaseState(validKeys) || { counts: {} };
 }
 
+const RECENT_LIVE_BOOKINGS = {
+    monthly: [
+        '⚡ Subscribed by SecOps Lead (6m ago)',
+        '⚡ Subscribed by SOC Tier-2 Analyst (12m ago)',
+        '⚡ Monthly pass renewed by Security Researcher (19m ago)',
+        '⚡ Starter pack activated by DevOps Engineer (27m ago)',
+        '⚡ Subscribed by Ethical Hacker (34m ago)',
+        '⚡ Monthly access unlocked by Network Engineer (41m ago)',
+        '⚡ Subscribed by Incident Response Specialist (49m ago)',
+        '⚡ Starter pack activated by Cloud Sec Architect (55m ago)',
+        '⚡ Monthly pass renewed by AppSec Tester (1h ago)',
+        '⚡ Subscribed by Malware Analyst (1h ago)',
+        '⚡ Monthly access unlocked by Sysadmin (2h ago)',
+        '⚡ Subscribed by Forensic Investigator (2h ago)'
+    ],
+    lifetime: [
+        '⚡ Lifetime license bought by Penetration Tester (9m ago)',
+        '⚡ Lifetime Premium unlocked by Bug Bounty Hunter (15m ago)',
+        '⚡ Lifetime VIP activated by Threat Hunter (23m ago)',
+        '⚡ Lifetime access bought by Red Team Operator (31m ago)',
+        '⚡ Perpetual license unlocked by Security Consultant (38m ago)',
+        '⚡ Lifetime license bought by Offensive Sec Researcher (46m ago)',
+        '⚡ Lifetime VIP unlocked by CISO / Team Lead (53m ago)',
+        '⚡ Perpetual access purchased by Lead Pentester (1h ago)',
+        '⚡ Lifetime VIP activated by Vulnerability Analyst (1h ago)',
+        '⚡ Lifetime license bought by Exploit Developer (2h ago)',
+        '⚡ Lifetime pass unlocked by Reverse Engineer (2h ago)',
+        '⚡ Perpetual license bought by Cybersecurity Director (3h ago)'
+    ],
+    yearly: [
+        '⚡ Annual pass purchased by CTF Competitor (11m ago)',
+        '⚡ Yearly pass upgraded by Red Team Specialist (21m ago)',
+        '⚡ Annual plan activated by InfoSec Engineer (36m ago)',
+        '⚡ 1-Year access unlocked by Security Auditor (44m ago)',
+        '⚡ Annual subscription renewed by Threat Intel Analyst (58m ago)',
+        '⚡ 1-Year pass bought by Cyber Defense Analyst (1h ago)',
+        '⚡ Yearly access unlocked by VAPT Consultant (1h ago)',
+        '⚡ Annual subscription activated by Blue Team Lead (2h ago)',
+        '⚡ 1-Year access upgraded by Security Engineer (2h ago)',
+        '⚡ Annual plan purchased by Independent Researcher (3h ago)'
+    ]
+};
+
 function updatePurchaseBadges() {
     const badges = document.querySelectorAll('[data-purchase-badge]');
     if (!badges.length) return;
@@ -137,7 +180,29 @@ function updatePurchaseBadges() {
         const count = key && Number.isFinite(state.counts[key])
             ? state.counts[key]
             : randomInt(PURCHASE_MIN, PURCHASE_MAX);
-        badge.textContent = `${count}+ bought ${plan} in past month`;
+
+        const primaryText = `${count}+ bought ${plan} in past month`;
+        const list = RECENT_LIVE_BOOKINGS[key];
+        
+        badge.textContent = primaryText;
+        badge.style.transition = 'opacity 0.35s ease';
+
+        // Alternate smoothly between monthly count and recent live booking
+        let showLive = false;
+        let eventIdx = Math.floor(Math.random() * (list ? list.length : 1));
+        setInterval(() => {
+            showLive = !showLive;
+            badge.style.opacity = '0';
+            setTimeout(() => {
+                if (showLive && list && list.length) {
+                    badge.textContent = list[eventIdx % list.length];
+                    eventIdx++;
+                } else {
+                    badge.textContent = primaryText;
+                }
+                badge.style.opacity = '1';
+            }, 350);
+        }, 6000 + Math.random() * 2500);
     });
 }
 
