@@ -451,7 +451,7 @@ img{max-width:100%;height:auto}
 
 /* ── EXPLORE BAR ── */
 .explore-bar{position:relative;z-index:2;padding:0 32px 18px;background:transparent}
-.explore-inner{max-width:1220px;margin:14px auto;position:relative;display:flex;align-items:center;justify-content:space-between;height:72px;cursor:pointer;border-radius:9999px;padding:0 24px 0 16px;background:linear-gradient(90deg, rgba(11,13,20,0.85) 0%, rgba(11,13,20,0.45) 50%, rgba(11,13,20,0.05) 100%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .35s ease, box-shadow .35s ease;isolation:isolate}
+.explore-inner{max-width:1220px;margin:14px auto;position:relative;display:flex;align-items:center;justify-content:space-between;min-height:72px;cursor:pointer;border-radius:9999px;padding:12px 24px 12px 16px;background:linear-gradient(90deg, rgba(11,13,20,0.85) 0%, rgba(11,13,20,0.45) 50%, rgba(11,13,20,0.05) 100%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .35s ease, box-shadow .35s ease;isolation:isolate}
 .explore-inner:hover{background:rgba(8,10,15,0.92)}
 .explore-inner::before{content:'';position:absolute;inset:-1.5px;border-radius:9999px;padding:1.5px;background:linear-gradient(90deg,#dc143c 0%,rgba(220,20,60,.7) 20%,rgba(160,50,140,.3) 50%,rgba(88,101,242,.7) 80%,#5865f2 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;transition:all .35s ease}
 .explore-inner:hover::before{background:linear-gradient(90deg,#ff2050 0%,rgba(220,20,60,.9) 20%,rgba(180,60,160,.45) 50%,rgba(88,101,242,.9) 80%,#7b8aff 100%);box-shadow:0 0 25px rgba(220,20,60,0.2)}
@@ -904,6 +904,14 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
   .project-grid{grid-template-columns:1fr}.hero-name{font-size:3rem}
   .max-w{padding:0 20px}
   .footer-grid{grid-template-columns:1fr}
+  .explore-bar{padding:0 16px 14px}
+  .explore-inner{border-radius:20px;padding:12px 14px;min-height:auto}
+  .explore-inner::before,.explore-inner::after{border-radius:20px}
+  .explore-left{gap:10px}
+  .explore-title{font-size:.82rem}
+  .explore-sub{font-size:.72rem;line-height:1.45;margin-top:1px}
+  .explore-icon-wrap{width:34px;height:34px;font-size:.8rem}
+  .explore-chevron{width:26px;height:26px;font-size:.68rem}
 }
 </style>
 <style>
