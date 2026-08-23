@@ -38,7 +38,8 @@
   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="dns-prefetch" href="//ipapi.co">
+  <link rel="dns-prefetch" href="//ip-api.com">
+  <link rel="dns-prefetch" href="//ipwho.is">
   <link rel="dns-prefetch" href="//api64.ipify.org">
   <link rel="dns-prefetch" href="//edns.ip-api.com">
   <link rel="dns-prefetch" href="//openstreetmap.org">
@@ -2184,56 +2185,111 @@
 
     // 1. Fetch IP & Geolocation
     async function scanNetworkAndGeo() {
+      let data = null;
+
+      // 1. Primary: ip-api.com (most accurate city, state, lat/lon matching Discord bot)
       try {
-        const res = await fetch('https://ipapi.co/json/');
-        const data = await res.json();
-        telemetryDossier.network = data;
-        telemetryDossier.geolocation = {
-          city: data.city,
-          region: data.region,
-          country: data.country_name,
-          country_code: data.country_code,
-          lat: data.latitude,
-          lon: data.longitude,
-          timezone: data.timezone
-        };
+        const res = await fetch('http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,query');
+        const raw = await res.json();
+        if (raw && raw.status === 'success') {
+          data = {
+            ip: raw.query,
+            city: raw.city || 'Unknown',
+            region: raw.regionName || raw.region || 'Unknown',
+            country_name: raw.country || 'Unknown',
+            country_code: raw.countryCode || 'IN',
+            latitude: raw.lat,
+            longitude: raw.lon,
+            timezone: raw.timezone || 'UTC',
+            asn: raw.as ? raw.as.split(' ')[0] : 'Unknown',
+            asn_full: raw.as || 'Unknown',
+            org: raw.org || raw.isp || 'Unknown',
+            isp: raw.isp || raw.org || 'Unknown',
+            version: raw.query && raw.query.includes(':') ? 'IPv6' : 'IPv4',
+            postal: raw.zip || 'N/A',
+            country_calling_code: '+91',
+            currency: raw.currency || 'INR'
+          };
+        }
+      } catch (e) {}
 
-        // Hero Update
-        document.getElementById('heroIpAddress').innerHTML = `
-          <span>${data.ip || 'Unknown'}</span>
-          <button class="copy-ip-btn" onclick="copyToClipboard('${data.ip}', 'Copied Public IP!')"><i class="fas fa-copy"></i> Copy IP</button>
-        `;
-        document.getElementById('heroGeo').textContent = `${data.city || 'Unknown'}, ${data.country_name || 'Unknown'}`;
-        document.getElementById('heroAsn').textContent = `${data.asn || 'ASN'} · ${data.org || 'ISP'}`;
-        document.getElementById('heroTimezone').textContent = data.timezone || 'UTC';
-        document.getElementById('ipVersionChip').textContent = data.version || 'IPv4';
+      // 2. Fallback: ipwho.is
+      if (!data) {
+        try {
+          const res = await fetch('https://ipwho.is/');
+          const raw = await res.json();
+          if (raw && raw.ip) {
+            data = {
+              ip: raw.ip,
+              city: raw.city || 'Unknown',
+              region: raw.region || 'Unknown',
+              country_name: raw.country || 'Unknown',
+              country_code: raw.country_code || 'IN',
+              latitude: raw.latitude,
+              longitude: raw.longitude,
+              timezone: raw.timezone?.id || 'UTC',
+              asn: raw.connection?.asn ? 'AS' + raw.connection.asn : 'Unknown',
+              asn_full: raw.connection?.org || raw.connection?.isp || 'Unknown',
+              org: raw.connection?.org || raw.connection?.isp || 'Unknown',
+              isp: raw.connection?.isp || raw.connection?.org || 'Unknown',
+              version: raw.type || 'IPv4',
+              postal: raw.postal || 'N/A',
+              country_calling_code: raw.calling_code ? '+' + raw.calling_code : '--',
+              currency: raw.currency?.code || '--'
+            };
+          }
+        } catch (e) {}
+      }
 
-        // Tab 1 Metrics
-        document.getElementById('networkMetrics').innerHTML = `
-          ${createRow('Public IPv4', data.ip || 'Unknown', 'highlight')}
-          ${createRow('ASN Network', data.asn || 'Unknown')}
-          ${createRow('ISP Organization', data.org || 'Unknown')}
-          ${createRow('IP Version', data.version || 'IPv4')}
-          ${createRow('Postal Code', data.postal || 'N/A')}
-        `;
-
-        document.getElementById('geoMetrics').innerHTML = `
-          ${createRow('Country', `${data.country_name} (${data.country_code})`)}
-          ${createRow('Region / State', data.region || 'Unknown')}
-          ${createRow('City Location', data.city || 'Unknown')}
-          ${createRow('Latitude / Longitude', `${data.latitude}, ${data.longitude}`, 'highlight')}
-          ${createRow('Calling Code', data.country_calling_code || '--')}
-          ${createRow('Currency', data.currency || '--')}
-        `;
-
-        // Render Map
-        renderReconMap(data);
-        checkTimezoneMismatch(data.timezone);
-        analyzeVpnLikelihood(data);
-      } catch (err) {
+      if (!data) {
         document.getElementById('heroIpAddress').innerHTML = `<span>Scan Failed</span>`;
         document.getElementById('networkMetrics').innerHTML = createRow('Status', 'Network lookup failed or blocked by adblock');
+        return;
       }
+
+      telemetryDossier.network = data;
+      telemetryDossier.geolocation = {
+        city: data.city,
+        region: data.region,
+        country: data.country_name,
+        country_code: data.country_code,
+        lat: data.latitude,
+        lon: data.longitude,
+        timezone: data.timezone
+      };
+
+      // Hero Update
+      document.getElementById('heroIpAddress').innerHTML = `
+        <span>${data.ip || 'Unknown'}</span>
+        <button class="copy-ip-btn" onclick="copyToClipboard('${data.ip}', 'Copied Public IP!')"><i class="fas fa-copy"></i> Copy IP</button>
+      `;
+      document.getElementById('heroGeo').textContent = `${data.city || 'Unknown'}, ${data.country_name || 'Unknown'}`;
+      document.getElementById('heroAsn').textContent = `${data.asn || 'ASN'} · ${data.org || 'ISP'}`;
+      document.getElementById('heroTimezone').textContent = data.timezone || 'UTC';
+      document.getElementById('ipVersionChip').textContent = data.version || 'IPv4';
+
+      // Tab 1 Metrics
+      document.getElementById('networkMetrics').innerHTML = `
+        ${createRow('Public IP', data.ip || 'Unknown', 'highlight')}
+        ${createRow('ASN Network', data.asn_full || data.asn || 'Unknown')}
+        ${createRow('ISP Organization', data.isp || data.org || 'Unknown')}
+        ${createRow('IP Version', data.version || 'IPv4')}
+        ${createRow('Postal / ZIP Code', data.postal || 'N/A')}
+      `;
+
+      document.getElementById('geoMetrics').innerHTML = `
+        ${createRow('Country', `${data.country_name} (${data.country_code})`)}
+        ${createRow('Region / State', data.region || 'Unknown')}
+        ${createRow('City Location', data.city || 'Unknown')}
+        ${createRow('Latitude / Longitude', `${data.latitude}, ${data.longitude}`, 'highlight')}
+        ${createRow('Calling Code', data.country_calling_code || '--')}
+        ${createRow('Currency', data.currency || '--')}
+      `;
+
+      // Render Map & Visuals
+      renderReconMap(data);
+      checkTimezoneMismatch(data.timezone);
+      analyzeVpnLikelihood(data);
     }
 
     function renderReconMap(data) {
