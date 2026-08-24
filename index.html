@@ -2574,33 +2574,33 @@ window.addEventListener('load', initCarousels);
 
   // Check sessionStorage cache first for instant 0ms render
   try {
-    const cached = sessionStorage.getItem('spyboy_visitor_telemetry');
+    const cached = sessionStorage.getItem('spyboy_telemetry_v3');
     if (cached) {
       renderData(JSON.parse(cached));
       return;
     }
   } catch(e){}
 
-  // Primary: Native HTTPS endpoint (ipwho.is) - prevents mixed content blocking
-  fetch('https://ipwho.is/')
+  // Primary: ip-api.com (highest precision for accurate city/state ISP routing)
+  fetch('http://ip-api.com/json/?fields=status,query,country,regionName,city,district,zip,isp,org,as,timezone')
     .then(r => r.json())
     .then(d => {
-      if (!d || !d.ip) throw new Error('ipwho failed');
+      if (!d || d.status !== 'success') throw new Error('ip-api failed');
       const payload = {
-        ip: d.ip,
+        ip: d.query,
         country: d.country || '—',
-        region: d.region || '—',
+        region: d.regionName || '—',
         city: d.city || '—',
-        zip: d.postal || '—',
-        isp: d.connection?.isp || d.connection?.org || '—',
-        asn: d.connection?.asn ? 'AS' + d.connection.asn : '—',
-        timezone: d.timezone?.id || '—'
+        zip: d.zip || '—',
+        isp: d.isp || d.org || '—',
+        asn: d.as ? d.as.split(' ')[0] : '—',
+        timezone: d.timezone || '—'
       };
       renderData(payload);
-      try { sessionStorage.setItem('spyboy_visitor_telemetry', JSON.stringify(payload)); } catch(e){}
+      try { sessionStorage.setItem('spyboy_telemetry_v3', JSON.stringify(payload)); } catch(e){}
     })
     .catch(() => {
-      // Fallback: ipapi.co (HTTPS)
+      // Fallback 1: ipapi.co (HTTPS with high regional accuracy)
       fetch('https://ipapi.co/json/')
         .then(r => r.json())
         .then(d => {
@@ -2616,10 +2616,30 @@ window.addEventListener('load', initCarousels);
             timezone: d.timezone || '—'
           };
           renderData(payload);
-          try { sessionStorage.setItem('spyboy_visitor_telemetry', JSON.stringify(payload)); } catch(e){}
+          try { sessionStorage.setItem('spyboy_telemetry_v3', JSON.stringify(payload)); } catch(e){}
         })
         .catch(() => {
-          renderData({ ip:'127.0.0.1', country:'Localhost', region:'—', city:'—', zip:'—', isp:'—', asn:'—', timezone:'—' });
+          // Fallback 2: ipwho.is (HTTPS)
+          fetch('https://ipwho.is/')
+            .then(r => r.json())
+            .then(d => {
+              if (!d || !d.ip) throw new Error('ipwho failed');
+              const payload = {
+                ip: d.ip,
+                country: d.country || '—',
+                region: d.region || '—',
+                city: d.city || '—',
+                zip: d.postal || '—',
+                isp: d.connection?.isp || d.connection?.org || '—',
+                asn: d.connection?.asn ? 'AS' + d.connection.asn : '—',
+                timezone: d.timezone?.id || '—'
+              };
+              renderData(payload);
+              try { sessionStorage.setItem('spyboy_telemetry_v3', JSON.stringify(payload)); } catch(e){}
+            })
+            .catch(() => {
+              renderData({ ip:'127.0.0.1', country:'Localhost', region:'—', city:'—', zip:'—', isp:'—', asn:'—', timezone:'—' });
+            });
         });
     });
 })();

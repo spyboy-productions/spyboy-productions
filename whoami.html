@@ -2187,35 +2187,61 @@
     async function scanNetworkAndGeo() {
       let data = null;
 
-      // 1. Primary: HTTPS endpoint or ip-api.com if HTTP
-      if (location.protocol !== 'https:') {
+      // 1. Primary: ip-api.com (highest precision for accurate city/state ISP routing)
+      try {
+        const res = await fetch('http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,query');
+        const raw = await res.json();
+        if (raw && raw.status === 'success') {
+          data = {
+            ip: raw.query,
+            city: raw.city || 'Unknown',
+            region: raw.regionName || raw.region || 'Unknown',
+            country_name: raw.country || 'Unknown',
+            country_code: raw.countryCode || 'IN',
+            latitude: raw.lat,
+            longitude: raw.lon,
+            timezone: raw.timezone || 'UTC',
+            asn: raw.as ? raw.as.split(' ')[0] : 'Unknown',
+            asn_full: raw.as || 'Unknown',
+            org: raw.org || raw.isp || 'Unknown',
+            isp: raw.isp || raw.org || 'Unknown',
+            version: raw.query && raw.query.includes(':') ? 'IPv6' : 'IPv4',
+            postal: raw.zip || 'N/A',
+            country_calling_code: '+91',
+            currency: raw.currency || 'INR'
+          };
+        }
+      } catch (e) {}
+
+      // 2. Fallback 1: ipapi.co (HTTPS with high regional accuracy)
+      if (!data) {
         try {
-          const res = await fetch('http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,query');
+          const res = await fetch('https://ipapi.co/json/');
           const raw = await res.json();
-          if (raw && raw.status === 'success') {
+          if (raw && raw.ip) {
             data = {
-              ip: raw.query,
+              ip: raw.ip,
               city: raw.city || 'Unknown',
-              region: raw.regionName || raw.region || 'Unknown',
-              country_name: raw.country || 'Unknown',
-              country_code: raw.countryCode || 'IN',
-              latitude: raw.lat,
-              longitude: raw.lon,
+              region: raw.region || 'Unknown',
+              country_name: raw.country_name || 'Unknown',
+              country_code: raw.country_code || 'IN',
+              latitude: raw.latitude,
+              longitude: raw.longitude,
               timezone: raw.timezone || 'UTC',
-              asn: raw.as ? raw.as.split(' ')[0] : 'Unknown',
-              asn_full: raw.as || 'Unknown',
-              org: raw.org || raw.isp || 'Unknown',
-              isp: raw.isp || raw.org || 'Unknown',
-              version: raw.query && raw.query.includes(':') ? 'IPv6' : 'IPv4',
-              postal: raw.zip || 'N/A',
-              country_calling_code: '+91',
+              asn: raw.asn || 'Unknown',
+              asn_full: raw.org || 'Unknown',
+              org: raw.org || 'Unknown',
+              isp: raw.org || 'Unknown',
+              version: raw.version || 'IPv4',
+              postal: raw.postal || 'N/A',
+              country_calling_code: raw.country_calling_code || '+91',
               currency: raw.currency || 'INR'
             };
           }
         } catch (e) {}
       }
 
-      // 2. Primary for HTTPS / Fallback: ipwho.is
+      // 3. Fallback 2: ipwho.is (HTTPS)
       if (!data) {
         try {
           const res = await fetch('https://ipwho.is/');
