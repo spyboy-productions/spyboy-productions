@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Payment Confirmed · Spyboy</title>
+  <meta name="description" content="Your payment to Spyboy has been successfully confirmed. Project onboarding and scoping details.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Spyboy">
+  <meta property="og:title" content="Payment Confirmed · Spyboy">
+  <meta property="og:description" content="Your engagement payment has been received. Project kickoff is underway.">
+  <meta property="og:image" content="images/logo.png">
+  <meta property="og:url" content="https://spyboy.in/success.html">
+  <meta name="theme-color" content="#dc143c">
+  
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #07090e;
+      --surface: #0e121a;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --red: #dc143c;
+      --red-glow: rgba(220, 20, 60, 0.35);
+      --green: #00e676;
+      --green-glow: rgba(0, 230, 118, 0.3);
+      --cyan: #22d3ee;
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --text-dim: rgba(255, 255, 255, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background Cyber Glow & Grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(120px);
+      opacity: 0.18;
+    }
+    .glow-green {
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00e676;
+    }
+    .glow-red {
+      bottom: -150px;
+      right: 10%;
+      background: #dc143c;
+    }
+
+    /* Card Container */
+    .success-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 680px;
+      background: rgba(14, 18, 26, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--surface-border);
+      border-radius: 24px;
+      padding: 48px 36px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 230, 118, 0.06);
+      text-align: center;
+      animation: cardAppear 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Top Logo & Status Badge */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px var(--red-glow);
+    }
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-name span {
+      color: var(--red);
+    }
+
+    /* Verified Success Icon */
+    .success-icon-wrap {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 230, 118, 0.2) 0%, rgba(0, 230, 118, 0.05) 70%);
+      border: 2px solid rgba(0, 230, 118, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: var(--green);
+      box-shadow: 0 0 30px var(--green-glow);
+      animation: pulseGlow 2.5s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 20px rgba(0, 230, 118, 0.25); transform: scale(1); }
+      100% { box-shadow: 0 0 35px rgba(0, 230, 118, 0.5); transform: scale(1.04); }
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: rgba(0, 230, 118, 0.1);
+      border: 1px solid rgba(0, 230, 118, 0.3);
+      border-radius: 999px;
+      color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .success-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+
+    /* Receipt / Order Meta Box */
+    .receipt-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .receipt-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .receipt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) {
+      .receipt-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .receipt-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .receipt-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+    .receipt-val {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      word-break: break-all;
+    }
+    .receipt-val.highlight {
+      color: var(--cyan);
+    }
+
+    /* Onboarding Steps */
+    .steps-section {
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .steps-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: border-color 0.2s;
+    }
+    .step-item:hover {
+      border-color: rgba(220, 20, 60, 0.3);
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(220, 20, 60, 0.12);
+      color: var(--red);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-content h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+    .step-content p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Direct Contact Banner */
+    .contact-fast-box {
+      background: linear-gradient(135deg, rgba(88, 101, 242, 0.12), rgba(220, 20, 60, 0.08));
+      border: 1px solid rgba(88, 101, 242, 0.3);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+    }
+    @media (max-width: 580px) {
+      .contact-fast-box {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .contact-fast-text h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .contact-fast-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .contact-fast-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #5865f2;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 4px 16px rgba(88, 101, 242, 0.35);
+    }
+    .contact-fast-btn:hover {
+      background: #4752c4;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
+    }
+
+    /* Action Buttons */
+    .actions-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      font-family: inherit;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(120deg, #dc143c, #ff3a5c);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(220, 20, 60, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(220, 20, 60, 0.5);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Footer text */
+    .success-footer {
+      margin-top: 28px;
+      font-size: 0.76rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .success-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .success-footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow glow-green"></div>
+  <div class="ambient-glow glow-red"></div>
+
+  <main class="success-card">
+    
+    <!-- Brand Header -->
+    <div class="brand-header">
+      <img src="images/logo.png" alt="Spyboy Logo" class="brand-logo">
+      <div class="brand-name">Spy<span>Boy</span></div>
+    </div>
+
+    <!-- Success Verified Icon -->
+    <div class="success-icon-wrap">
+      <i class="fas fa-check"></i>
+    </div>
+
+    <!-- Status Badge -->
+    <div class="badge-status">
+      <span class="status-dot"></span> Payment Confirmed &bull; Transaction Logged
+    </div>
+
+    <h1>Payment Successfully Received</h1>
+    <p class="success-subtitle">
+      Thank you for your engagement. Your payment has been verified. <strong>We will reach out to you soon through the email you provided</strong> with your project kickoff details and next steps.
+    </p>
+
+    <!-- Receipt / Query Parameters Meta Box -->
+    <div class="receipt-box">
+      <div class="receipt-header">
+        <span><i class="fas fa-receipt"></i> Transaction Summary</span>
+        <span id="timestampNow">UTC NOW</span>
+      </div>
+      <div class="receipt-grid">
+        <div class="receipt-item">
+          <span class="receipt-label">Reference / TX ID</span>
+          <span class="receipt-val highlight" id="txIdVal">PAYPAL-VERIFIED</span>
+        </div>
+        <div class="receipt-item">
+          <span class="receipt-label">Target Engagement</span>
+          <span class="receipt-val" id="serviceNameVal">Custom Security Engagement</span>
+        </div>
+        <div class="receipt-item">
+          <span class="receipt-label">Payment Status</span>
+          <span class="receipt-val" style="color: var(--green);"><i class="fas fa-circle-check"></i> Cleared / Authorized</span>
+        </div>
+        <div class="receipt-item">
+          <span class="receipt-label">Lead Engineer</span>
+          <span class="receipt-val">Spyboy (@spyboy)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- What Happens Next -->
+    <div class="steps-section">
+      <div class="steps-title">
+        <i class="fas fa-list-check" style="color: var(--cyan);"></i> What Happens Next
+      </div>
+      <div class="steps-list">
+        
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Direct Email Outreach</h4>
+            <p>We will reach out to you soon through the email address you provided with full onboarding details, scope review, and kickoff timeline.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Scoping &amp; Deliverable Timeline</h4>
+            <p>Spyboy will review your target scope, environment parameters, and requirements. Normal response turnaround is under 12 hours.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Encrypted Communication &amp; Handover</h4>
+            <p>All investigation logs, deliverables, reports, and binaries will be securely transferred over encrypted channels.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Fast Response Box -->
+    <div class="contact-fast-box">
+      <div class="contact-fast-text">
+        <h4><i class="fab fa-discord" style="color: #5865f2;"></i> Need Immediate Priority Dispatch?</h4>
+        <p>Join our Discord server and open a private ticket or direct message for real-time progress updates.</p>
+      </div>
+      <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener" class="contact-fast-btn">
+        <i class="fab fa-discord"></i> Open VIP Ticket
+      </a>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions-grid">
+      <a href="index.html" class="btn btn-primary">
+        <i class="fas fa-house"></i> Return to Homepage
+      </a>
+      <a href="mailto:contact@spyboy.in" class="btn btn-outline" id="emailSupportBtn">
+        <i class="fas fa-envelope"></i> Email Support
+      </a>
+      <a href="whoami.html" class="btn btn-outline" target="_blank" rel="noopener">
+        <i class="fas fa-terminal"></i> Whoami Lab
+      </a>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="success-footer">
+      <span>&copy; Spyboy. All rights reserved.</span>
+      <a href="hire.html">Hire Portal</a>
+      <a href="index.html#projects">Open Source</a>
+      <a href="mailto:contact@spyboy.in">contact@spyboy.in</a>
+    </div>
+
+  </main>
+
+  <!-- Script for Dynamic URL Param Parsing & Timestamp -->
+  <script>
+    (function(){
+      // 1. Dynamic Timestamp
+      const now = new Date();
+      const timeStr = now.toUTCString().replace('GMT', 'UTC');
+      const timeEl = document.getElementById('timestampNow');
+      if (timeEl) timeEl.textContent = timeStr;
+
+      // 2. Parse PayPal / Query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const tx = urlParams.get('tx') || urlParams.get('PayerID') || urlParams.get('token') || urlParams.get('paymentId');
+      const service = urlParams.get('item_name') || urlParams.get('service') || urlParams.get('plan');
+      const amt = urlParams.get('amt') || urlParams.get('amount');
+
+      if (tx) {
+        const txEl = document.getElementById('txIdVal');
+        if (txEl) txEl.textContent = tx.length > 20 ? tx.substring(0, 18) + '...' : tx;
+      }
+      if (service) {
+        const serviceEl = document.getElementById('serviceNameVal');
+        if (serviceEl) serviceEl.textContent = decodeURIComponent(service);
+      }
+    })();
+  </script>
+
+</body>
+</html>
