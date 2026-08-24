@@ -279,7 +279,7 @@ img{max-width:100%;height:auto}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .hero-greeting{font-size:1.15rem;color:var(--muted);margin-bottom:2px;animation:fadeUp .6s ease .1s both}
 .hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(3.2rem,6.5vw,5.5rem);font-weight:800;line-height:.96;color:#fff;letter-spacing:-.03em;display:flex;align-items:flex-end;gap:10px;margin-bottom:14px;animation:fadeUp .6s ease .15s both}
-.hero-cursor{color:var(--red);font-weight:300;font-size:.62em;line-height:1;margin-bottom:10px;animation:blink 1.1s step-end infinite}
+.hero-cursor{color:var(--red);font-weight:300;font-size:.62em;line-height:1;margin-bottom:10px;animation:blink 1.1s step-end infinite;display:inline-block;user-select:none}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero-underbar{width:56px;height:4px;background:linear-gradient(90deg,var(--red),#ff4d6d);border-radius:99px;margin-bottom:20px;animation:fadeUp .6s ease .2s both}
 .hero-tagline{font-size:clamp(1.45rem,2.8vw,2.05rem);font-weight:700;color:#fff;margin-bottom:16px;line-height:1.25;animation:fadeUp .6s ease .22s both}
@@ -916,20 +916,72 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
 </style>
 <style>
 .hero-ip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   color: #00e676;
   font-family: 'JetBrains Mono', monospace;
-  font-size: inherit;
+  font-size: 0.9em;
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 1px dashed rgba(0,230,118,0.4);
-  text-shadow: 0 0 12px rgba(0,230,118,0.45);
-  transition: color .2s, border-color .2s, text-shadow .2s;
-  letter-spacing: .04em;
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.28);
+  border-radius: 6px;
+  padding: 2px 8px;
+  margin: 0 4px;
+  vertical-align: middle;
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.45);
+  transition: all .2s ease;
+  letter-spacing: .02em;
 }
 .hero-ip-link:hover {
   color: #69ffb3;
-  border-color: rgba(105,255,179,0.7);
-  text-shadow: 0 0 18px rgba(0,230,118,0.7);
+  background: rgba(0, 230, 118, 0.16);
+  border-color: rgba(105, 255, 179, 0.65);
+  text-shadow: 0 0 16px rgba(0, 230, 118, 0.7);
+  transform: translateY(-1px);
+}
+.hero-ip-bracket {
+  color: rgba(0, 230, 118, 0.45);
+  font-weight: 400;
+  user-select: none;
+}
+.opsec-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 24px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 999px;
+  max-width: 960px;
+  margin: 0 auto 36px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75);
+}
+.opsec-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+.opsec-trust-item i {
+  color: #00e676;
+}
+.card-opsec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  color: #00e676;
+  margin-top: 4px;
 }
 </style>
 
@@ -1048,15 +1100,13 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
   </div>
   <div class="hero-content">
     <div class="hero-badge"><span class="hero-badge-dot"></span> Ethical Hacker &bull; Developer &bull; Researcher</div>
-    <p class="hero-greeting">Hello <a href="whoami.html" target="_blank" rel="noopener" id="visitorIpAddr" class="hero-ip-link">...</a>, I'm</p>
+    <p class="hero-greeting">Hello <a href="whoami.html" target="_blank" rel="noopener" id="visitorIpAddr" class="hero-ip-link" title="Click to analyze connection in Whoami Lab"><span class="hero-ip-bracket">[</span><span class="hero-ip-text">127.0.0.1</span><span class="hero-ip-bracket">]</span></a>, I'm</p>
     <h1 class="hero-name">Spyboy <span class="hero-cursor">_</span></h1>
     <div class="hero-underbar"></div>
     <div class="hero-tagline">Building <span class="accent" id="hero-type"></span></div>
-    <p class="hero-desc">Custom security builds &bull; Discord bots &bull; CLI tools &bull; OSINT tools<br>Ethical hacking consultations and more.</p>
+    <p class="hero-desc">Security builds &bull; Bots &bull; CLI utilities &bull; OSINT &amp; Recon<br>Ethical hacking consultations and penetration testing.</p>
     <div class="hero-ctas">
       <a href="hire.html" class="cta-btn cta-primary"><i class="fas fa-terminal"></i> Hire Spyboy</a>
-      <a href="https://discord.gg/ZChEmMwE8d" class="cta-btn cta-discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Join Discord</a>
-      <button class="cta-btn cta-outline" id="contactBtn" type="button"><i class="fas fa-envelope"></i> Contact</button>
     </div>
 
 
@@ -1102,9 +1152,17 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
   </div>
 
   <div class="max-w">
-    <p class="section-eyebrow">Proof of Scale</p>
-    <h2 class="section-h2">Global Statistics &amp; Ecosystem Traction</h2>
+    <p class="section-eyebrow">Proof of Scale &amp; Trust</p>
+    <h2 class="section-h2">A Unified Cross-Platform Security Ecosystem</h2>
     <p class="section-sub">Verified real-time metrics powering defensive testing, cybersecurity education, and OSINT operations worldwide.</p>
+
+    <!-- OPSEC & Privacy Assurance Strip -->
+    <div class="opsec-trust-strip">
+      <div class="opsec-trust-item"><i class="fas fa-shield-halved"></i> 100% Client-Side Execution</div>
+      <div class="opsec-trust-item"><i class="fas fa-ban"></i> Zero Target Cloud Logging</div>
+      <div class="opsec-trust-item"><i class="fas fa-lock"></i> OPSEC &amp; Red-Team Safe</div>
+      <div class="opsec-trust-item"><i class="fas fa-cubes"></i> Multi-Surface (CLI · Browser · Discord · Android)</div>
+    </div>
 
     <div class="stats-dash">
       <!-- 1. Blog Reads & Tutorials -->
@@ -1185,6 +1243,10 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
         </div>
         <div class="feat-title">CyberSuite Extension</div>
         <p class="feat-desc">Powerful browser extension for security researchers. Web recon, cookie audits, and OSINT directly from your toolbar — 100% client-side.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+          <span class="card-opsec-pill"><i class="fas fa-lock"></i> 100% Client-Side</span>
+          <span class="card-opsec-pill"><i class="fas fa-shield-halved"></i> Zero Cloud Logs</span>
+        </div>
         <a href="#cybersuite" class="feat-link cyan">Explore CyberSuite <i class="fas fa-arrow-right"></i></a>
       </div>
 
@@ -1207,6 +1269,10 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
         </div>
         <div class="feat-title">OSINT &amp; Footprint Recon</div>
         <p class="feat-desc">Specialized intelligence tools — uncover digital footprints, phone lookups, breach leaks, and hidden web infrastructure.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+          <span class="card-opsec-pill"><i class="fas fa-terminal"></i> PyPI Libraries</span>
+          <span class="card-opsec-pill"><i class="fas fa-user-secret"></i> OPSEC Hardened</span>
+        </div>
         <a href="#projects" class="feat-link green">Explore OSINT <i class="fas fa-arrow-right"></i></a>
       </div>
 
@@ -2241,6 +2307,7 @@ section:nth-child(even){background:rgba(255,255,255,.01)}
       <p>Whether you need custom tools, ethical hacking consultations, or want to join the community — Spyboy is here.</p>
       <div class="cta-banner-btns">
         <a href="hire.html" class="cta-btn cta-primary"><i class="fas fa-terminal"></i> Hire Spyboy</a>
+        <button class="cta-btn cta-outline trigger-email-btn" id="contactBtn" type="button"><i class="fas fa-envelope"></i> Contact</button>
         <a href="advertise.html" class="cta-btn" style="background:rgba(245,158,11,.15);border:1.5px solid rgba(245,158,11,.45);color:#fbbf24"><i class="fas fa-bullhorn"></i> Advertise / Work With Us</a>
         <a href="https://discord.gg/ZChEmMwE8d" class="cta-btn cta-discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Join Discord</a>
         <a href="https://github.com/spyboy-productions" class="cta-btn cta-outline" target="_blank" rel="noopener"><i class="fab fa-github"></i> Explore GitHub</a>
@@ -2480,7 +2547,14 @@ window.addEventListener('load', initCarousels);
 
   function renderData(data) {
     if (!data) return;
-    if (greetingIp) greetingIp.textContent = data.ip || '—';
+    if (greetingIp) {
+      const ipSpan = greetingIp.querySelector('.hero-ip-text');
+      if (ipSpan) {
+        ipSpan.textContent = data.ip || '127.0.0.1';
+      } else {
+        greetingIp.textContent = data.ip || '127.0.0.1';
+      }
+    }
     if (hudIp)      hudIp.textContent      = data.ip || '—';
     if (hudCountry) hudCountry.textContent = data.country || '—';
     if (hudRegion)  hudRegion.textContent  = data.region || '—';
@@ -2507,45 +2581,45 @@ window.addEventListener('load', initCarousels);
     }
   } catch(e){}
 
-  // Primary: ip-api.com
-  fetch('http://ip-api.com/json/?fields=status,query,country,regionName,city,district,zip,isp,org,as,timezone')
+  // Primary: Native HTTPS endpoint (ipwho.is) - prevents mixed content blocking
+  fetch('https://ipwho.is/')
     .then(r => r.json())
     .then(d => {
-      if (!d || d.status !== 'success') throw new Error('ip-api failed');
+      if (!d || !d.ip) throw new Error('ipwho failed');
       const payload = {
-        ip: d.query,
+        ip: d.ip,
         country: d.country || '—',
-        region: d.regionName || '—',
+        region: d.region || '—',
         city: d.city || '—',
-        zip: d.zip || '—',
-        isp: d.isp || d.org || '—',
-        asn: d.as || '—',
-        timezone: d.timezone || '—'
+        zip: d.postal || '—',
+        isp: d.connection?.isp || d.connection?.org || '—',
+        asn: d.connection?.asn ? 'AS' + d.connection.asn : '—',
+        timezone: d.timezone?.id || '—'
       };
       renderData(payload);
       try { sessionStorage.setItem('spyboy_visitor_telemetry', JSON.stringify(payload)); } catch(e){}
     })
     .catch(() => {
-      // Fallback: ipwho.is
-      fetch('https://ipwho.is/')
+      // Fallback: ipapi.co (HTTPS)
+      fetch('https://ipapi.co/json/')
         .then(r => r.json())
         .then(d => {
-          if (!d || !d.ip) throw new Error('ipwho failed');
+          if (!d || !d.ip) throw new Error('ipapi failed');
           const payload = {
             ip: d.ip,
-            country: d.country || '—',
+            country: d.country_name || '—',
             region: d.region || '—',
             city: d.city || '—',
             zip: d.postal || '—',
-            isp: d.connection?.isp || d.connection?.org || '—',
-            asn: d.connection?.asn ? 'AS' + d.connection.asn : '—',
-            timezone: d.timezone?.id || '—'
+            isp: d.org || '—',
+            asn: d.asn || '—',
+            timezone: d.timezone || '—'
           };
           renderData(payload);
           try { sessionStorage.setItem('spyboy_visitor_telemetry', JSON.stringify(payload)); } catch(e){}
         })
         .catch(() => {
-          renderData({ ip:'—', country:'—', region:'—', city:'—', zip:'—', isp:'—', asn:'—', timezone:'—' });
+          renderData({ ip:'127.0.0.1', country:'Localhost', region:'—', city:'—', zip:'—', isp:'—', asn:'—', timezone:'—' });
         });
     });
 })();
