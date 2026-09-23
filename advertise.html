@@ -38,11 +38,11 @@
       {
         "@type": "Service",
         "@id": "https://spyboy.in/advertise#service",
-        "name": "SpyBoy Blog Advertising & Sponsorship",
+        "name": "SpyBoy Blog & Community Advertising & Sponsorship",
         "url": "https://spyboy.in/advertise",
         "logo": "https://spyboy.in/images/logo.png",
         "image": "https://spyboy.in/images/logo.png",
-        "description": "Sponsored articles, guest posts, contextual link insertions, and homepage featured advertising targeting a verified cybersecurity audience.",
+        "description": "Sitewide sidebar ads, sponsored articles, guest posts, contextual link insertions, and Discord community sponsorships reaching a global cybersecurity and developer audience.",
         "provider": {
           "@type": "Person",
           "name": "Shubham Kumar",
@@ -53,6 +53,36 @@
           "@type": "OfferCatalog",
           "name": "Advertising & Sponsorship Packages",
           "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sitewide Sidebar Ad",
+                "description": "Sitewide sidebar banner advertisement across all pages of SpyBoy Blog. Monthly $50, 3 months $135 ($45/mo), 6 months $240 ($40/mo)."
+              },
+              "price": "50.00",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Discord Announcement (@everyone ping)",
+                "description": "Sponsored announcement sent with @everyone ping to 15,000+ member Discord community."
+              },
+              "price": "40.00",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Discord Event Sponsorship",
+                "description": "Dedicated community event, AMA, CTF, workshop, or sponsored giveaway for 15,000+ Discord members."
+              },
+              "price": "300.00",
+              "priceCurrency": "USD"
+            },
             {
               "@type": "Offer",
               "itemOffered": {
@@ -92,16 +122,6 @@
               },
               "price": "20.00",
               "priceCurrency": "USD"
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Homepage Featured Placement",
-                "description": "High-visibility monthly recurring homepage spotlight placement on SpyBoy Blog."
-              },
-              "price": "50.00",
-              "priceCurrency": "USD"
             }
           ]
         }
@@ -112,10 +132,26 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What brands can advertise on SpyBoy Blog?",
+            "name": "What brands can advertise on SpyBoy Blog & Community?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Cybersecurity tools, SaaS products, developer platforms, education services, privacy tools, and ethical tech brands."
+              "text": "Cybersecurity tools, SaaS products, developer platforms, education services, privacy tools, hardware, and ethical tech brands."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the Sitewide Sidebar Ad work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Sitewide Sidebar Ad remains visible across the entire website on every page and article, providing repeated brand exposure and continuous click opportunities as visitors browse."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How large is the Discord community?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our Discord community has over 15,000+ active members including security researchers, developers, ethical hackers, and tech enthusiasts."
             }
           },
           {
@@ -161,6 +197,7 @@
       --cyan-glow: rgba(34,211,238,0.3);
       --amber: #fbbf24;
       --green: #10b981;
+      --discord: #5865f2;
       --border: rgba(255,255,255,0.08);
       --mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
     }
@@ -370,7 +407,7 @@
       font-size: 1rem;
       line-height: 1.7;
       margin-bottom: 1.75rem;
-      max-width: 60ch;
+      max-width: 65ch;
     }
 
     .hero .cta { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -455,7 +492,7 @@
 
     .hero-stats-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
       gap: 0.75rem;
       margin: 1.8rem 0;
     }
@@ -473,7 +510,7 @@
     }
     .hero-stat-num {
       font-family: var(--mono);
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       font-weight: 700;
       color: #fff;
       display: flex;
@@ -484,12 +521,130 @@
     .hero-stat-num.cyan { color: var(--cyan); }
     .hero-stat-num.amber { color: var(--amber); }
     .hero-stat-num.purple { color: #c084fc; }
+    .hero-stat-num.discord { color: #5865f2; }
     .hero-stat-label {
       font-size: 0.72rem;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-top: 2px;
+    }
+
+    /* ════ AUDIENCE & DEMOGRAPHICS ════ */
+    .demographics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .demographics-card {
+      background: var(--bg-card);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      padding: 1.6rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+    .demographics-card:hover {
+      border-color: rgba(34,211,238,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+    }
+    .countries-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+    .country-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+    .country-chip:hover {
+      border-color: var(--cyan);
+      background: rgba(34,211,238,0.1);
+      transform: translateY(-1px);
+    }
+    .audience-roles-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+    .audience-role-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 13px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: all 0.2s ease;
+    }
+    .audience-role-chip:hover {
+      color: #fff;
+      border-color: var(--crimson);
+      background: rgba(220,20,60,0.1);
+    }
+    .audience-role-chip i {
+      color: var(--cyan);
+    }
+    .tier-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(16,185,129,0.15);
+      color: var(--green);
+      border: 1px solid rgba(16,185,129,0.3);
+      margin-left: 6px;
+    }
+    .pricing-tier-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.65rem 0.95rem;
+      margin-top: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+    .pricing-tier-box:hover {
+      border-color: rgba(34,211,238,0.3);
+      background: rgba(34,211,238,0.05);
+    }
+    .pricing-tier-box .tier-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+    }
+    .pricing-tier-box .tier-price {
+      font-family: var(--mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-align: right;
+    }
+    .pricing-tier-box .tier-rate {
+      font-size: 0.72rem;
+      color: var(--muted);
     }
 
     /* ════ MEDIA GRID (Why section) ════ */
@@ -514,6 +669,7 @@
     .media-icon.crimson { background: rgba(220,20,60,0.15); color: #ff4d6d; border: 1px solid rgba(220,20,60,0.3); }
     .media-icon.amber { background: rgba(251,191,36,0.15); color: var(--amber); border: 1px solid rgba(251,191,36,0.3); }
     .media-icon.green { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+    .media-icon.discord { background: rgba(88,101,242,0.15); color: #5865f2; border: 1px solid rgba(88,101,242,0.3); }
 
     .media-item {
       background: var(--bg-card);
@@ -640,6 +796,30 @@
     }
 
     .card:hover::before { opacity: 1; }
+
+    .card.sidebar-ad-card {
+      border-color: rgba(34,211,238,0.35);
+      background: linear-gradient(145deg, rgba(34,211,238,0.08), var(--bg-card));
+    }
+    .card.sidebar-ad-card::before {
+      background: linear-gradient(90deg, var(--cyan), var(--amber), transparent) !important;
+    }
+    .card.sidebar-ad-card:hover {
+      border-color: rgba(34,211,238,0.55);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(34,211,238,0.18);
+    }
+
+    .card.discord-card {
+      border-color: rgba(88,101,242,0.35);
+      background: linear-gradient(145deg, rgba(88,101,242,0.1), var(--bg-card));
+    }
+    .card.discord-card::before {
+      background: linear-gradient(90deg, #5865f2, var(--cyan), transparent) !important;
+    }
+    .card.discord-card:hover {
+      border-color: rgba(88,101,242,0.55);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(88,101,242,0.2);
+    }
 
     .card-emoji {
       font-size: 2rem;
@@ -937,9 +1117,88 @@
     }
 
     .modal-copy-status {
-      min-height: 1.2rem;
-      font-size: 0.85rem;
-      color: var(--green);
+    /* ════ TARGET DESTINATION BADGES ════ */
+    .target-links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .target-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+      text-decoration: none;
+    }
+    .target-badge.site {
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.32);
+      color: var(--cyan);
+    }
+    .target-badge.site:hover {
+      background: rgba(34,211,238,0.18);
+      border-color: var(--cyan);
+      box-shadow: 0 0 18px var(--cyan-glow);
+      transform: translateY(-2px);
+      color: #fff;
+    }
+    .target-badge.discord {
+      background: rgba(88,101,242,0.1);
+      border: 1px solid rgba(88,101,242,0.38);
+      color: #7289da;
+    }
+    .target-badge.discord:hover {
+      background: rgba(88,101,242,0.24);
+      border-color: #5865f2;
+      box-shadow: 0 0 18px rgba(88,101,242,0.35);
+      transform: translateY(-2px);
+      color: #fff;
+    }
+    .card-link-preview {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0.65rem 0 0.35rem 0;
+      font-size: 0.8rem;
+      font-family: var(--mono);
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.09);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      width: fit-content;
+    }
+    .card-link-preview:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+    .card-link-preview.cyan-link {
+      color: var(--cyan);
+      border-color: rgba(34,211,238,0.3);
+      background: rgba(34,211,238,0.05);
+    }
+    .card-link-preview.cyan-link:hover {
+      background: rgba(34,211,238,0.12);
+      border-color: var(--cyan);
+      color: #fff;
+    }
+    .card-link-preview.discord-link {
+      color: #7289da;
+      border-color: rgba(88,101,242,0.35);
+      background: rgba(88,101,242,0.06);
+    }
+    .card-link-preview.discord-link:hover {
+      background: rgba(88,101,242,0.18);
+      border-color: #5865f2;
+      color: #fff;
     }
 
     /* ════ RESPONSIVE ════ */
@@ -947,6 +1206,7 @@
       .header-inner { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
       .hero .cta { flex-direction: column; }
       .contact-email { flex-direction: column; align-items: flex-start; }
+      .target-links-row { flex-direction: column; }
     }
   </style>
 </head>
@@ -964,32 +1224,108 @@
 
   <main class="page-shell">
     <section class="hero">
-      <div class="hero-badge-pill"><span class="pulse-dot"></span><i class="fas fa-bullhorn"></i> Advertise · SpyBoy Blog</div>
+      <div class="hero-badge-pill"><span class="pulse-dot"></span><i class="fas fa-bullhorn"></i> Advertise · SpyBoy Blog &amp; Community</div>
       <h1>Reach the security minds<br>who <span class="hero-gradient-text">actually build.</span></h1>
-      <p>Welcome to <strong>SpyBoy Blog</strong> — a premier cybersecurity publication focused on ethical hacking, OSINT, penetration testing, digital forensics, Linux, networking, privacy, and security tools. Our content reaches a verified audience of security researchers, developers, IT professionals, and ethical hackers.</p>
+      <p>Welcome to <strong>SpyBoy</strong> — reaching practitioners across our publication <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline; font-weight:600;">spyboy.blog ↗</a> and our 15,000+ member <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" style="color:#7289da; text-decoration:underline; font-weight:600;">Discord community ↗</a> focused on ethical hacking, OSINT, penetration testing, digital forensics, Linux, networking, privacy, and security tools.</p>
       
+      <!-- Live Destinations -->
+      <div class="target-links-row">
+        <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="target-badge site">
+          <i class="fas fa-globe"></i> Target Website: <strong>https://spyboy.blog</strong> <i class="fas fa-arrow-up-right-from-square" style="font-size:0.72rem;"></i>
+        </a>
+        <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" class="target-badge discord">
+          <i class="fab fa-discord"></i> Discord Community: <strong>discord.gg/ZChEmMwE8d</strong> <i class="fas fa-arrow-up-right-from-square" style="font-size:0.72rem;"></i>
+        </a>
+      </div>
+
       <div class="hero-stats-row">
-        <div class="hero-stat-box">
+        <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="hero-stat-box" style="text-decoration:none;">
           <div class="hero-stat-num purple"><i class="fas fa-eye" style="font-size:1rem"></i> 11M+</div>
           <div class="hero-stat-label">Lifetime Reads</div>
-        </div>
-        <div class="hero-stat-box">
-          <div class="hero-stat-num crimson"><i class="fas fa-file-code" style="font-size:1rem"></i> 500+</div>
-          <div class="hero-stat-label">Security Guides</div>
-        </div>
-        <div class="hero-stat-box">
-          <div class="hero-stat-num cyan"><i class="fas fa-chart-line" style="font-size:1rem"></i> 10K+</div>
+        </a>
+        <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="hero-stat-box" style="text-decoration:none;">
+          <div class="hero-stat-num cyan"><i class="fas fa-users" style="font-size:1rem"></i> 10,000+</div>
           <div class="hero-stat-label">Monthly Visitors</div>
-        </div>
-        <div class="hero-stat-box">
-          <div class="hero-stat-num amber"><i class="fas fa-globe" style="font-size:1rem"></i> US·IN·UK</div>
-          <div class="hero-stat-label">Top Demographics</div>
-        </div>
+        </a>
+        <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="hero-stat-box" style="text-decoration:none;">
+          <div class="hero-stat-num crimson"><i class="fas fa-chart-line" style="font-size:1rem"></i> 15K–20K</div>
+          <div class="hero-stat-label">Monthly Page Views</div>
+        </a>
+        <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" class="hero-stat-box" style="text-decoration:none;">
+          <div class="hero-stat-num discord"><i class="fab fa-discord" style="font-size:1rem"></i> 15K+</div>
+          <div class="hero-stat-label">Discord Members</div>
+        </a>
       </div>
 
       <div class="cta">
         <button class="btn-primary js-open-contact" type="button"><i class="fas fa-paper-plane"></i> Book a slot</button>
         <a class="btn-secondary" href="#pricing"><i class="fas fa-tags"></i> View pricing</a>
+      </div>
+    </section>
+
+    <!-- ════ AUDIENCE & REACH ════ -->
+    <section id="audience">
+      <p class="section-label">Audience &amp; Global Reach</p>
+      <h2 class="section-title">Verified Infosec Demographics</h2>
+      <p class="copy">SpyBoy Blog (<a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline;">spyboy.blog</a>) and Discord community (<a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" style="color:#7289da; text-decoration:underline;">discord.gg/ZChEmMwE8d</a>) connect your brand directly with a focused, high-intent technical readership across the globe. No vanity metrics or empty clicks — just genuine attention from people who build, test, and protect modern digital systems.</p>
+      
+      <div class="demographics-grid">
+        <div class="demographics-card">
+          <div class="media-icon cyan"><i class="fas fa-chart-pie"></i></div>
+          <strong style="font-size: 1.05rem; color: #fff; margin-bottom: 0.3rem;">Traffic &amp; Reach Overview</strong>
+          <p class="copy" style="font-size: 0.88rem; margin-bottom: 1rem;">Steady organic growth driven by technical tutorials, tool reviews, and hands-on infosec guides on <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline;">spyboy.blog ↗</a>.</p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div class="pricing-tier-box" style="margin-top:0;">
+              <span class="tier-name"><i class="fas fa-users" style="color:var(--cyan); margin-right:8px; font-size:0.85rem;"></i> Monthly Visitors</span>
+              <span class="tier-price" style="color:var(--cyan);">10,000+</span>
+            </div>
+            <div class="pricing-tier-box" style="margin-top:0;">
+              <span class="tier-name"><i class="fas fa-file-lines" style="color:#ff4d6d; margin-right:8px; font-size:0.85rem;"></i> Estimated Monthly Page Views</span>
+              <span class="tier-price" style="color:#ff4d6d;">~15K–20K</span>
+            </div>
+            <div class="pricing-tier-box" style="margin-top:0;">
+              <span class="tier-name"><i class="fas fa-book-open" style="color:#c084fc; margin-right:8px; font-size:0.85rem;"></i> Lifetime Reads</span>
+              <span class="tier-price" style="color:#c084fc;">11M+</span>
+            </div>
+            <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" class="pricing-tier-box" style="margin-top:0; text-decoration:none;">
+              <span class="tier-name"><i class="fab fa-discord" style="color:#5865f2; margin-right:8px; font-size:0.85rem;"></i> Discord Community</span>
+              <span class="tier-price" style="color:#5865f2;">15,000+ <i class="fas fa-arrow-up-right-from-square" style="font-size:0.7rem; margin-left:4px;"></i></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="demographics-card">
+          <div class="media-icon amber"><i class="fas fa-earth-americas"></i></div>
+          <strong style="font-size: 1.05rem; color: #fff; margin-bottom: 0.3rem;">Top Audience Countries</strong>
+          <p class="copy" style="font-size: 0.88rem; margin-bottom: 0.5rem;">Global reach with core readers and technical decision-makers concentrated across leading tech economies:</p>
+          <div class="countries-flex">
+            <span class="country-chip">🇺🇸 USA</span>
+            <span class="country-chip">🇮🇳 India</span>
+            <span class="country-chip">🇨🇳 China</span>
+            <span class="country-chip">🇬🇧 UK</span>
+            <span class="country-chip">🇵🇭 Philippines</span>
+            <span class="country-chip">🇩🇪 Germany</span>
+            <span class="country-chip">🇳🇱 Netherlands</span>
+            <span class="country-chip" style="border-color: rgba(34,211,238,0.3); color: var(--cyan); background: rgba(34,211,238,0.06);"><i class="fas fa-globe"></i> Global Reach (Worldwide)</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--muted); margin-top: 1rem; line-height: 1.5;">
+            * Global reach: Active readers and subscribers engaging from multiple countries worldwide across all continents.
+          </p>
+        </div>
+
+        <div class="demographics-card">
+          <div class="media-icon green"><i class="fas fa-user-shield"></i></div>
+          <strong style="font-size: 1.05rem; color: #fff; margin-bottom: 0.3rem;">Core Audience</strong>
+          <p class="copy" style="font-size: 0.88rem; margin-bottom: 0.5rem;">A targeted demographic of tech professionals, researchers, and practitioners who actively evaluate and adopt tools:</p>
+          <div class="audience-roles-flex">
+            <span class="audience-role-chip"><i class="fas fa-shield-halved"></i> Cybersecurity Professionals</span>
+            <span class="audience-role-chip"><i class="fas fa-code"></i> Developers &amp; Engineers</span>
+            <span class="audience-role-chip"><i class="fas fa-terminal"></i> Ethical Hackers</span>
+            <span class="audience-role-chip"><i class="fas fa-magnifying-glass"></i> OSINT Researchers</span>
+            <span class="audience-role-chip"><i class="fas fa-server"></i> IT / Security Enthusiasts</span>
+            <span class="audience-role-chip"><i class="fas fa-microchip"></i> Technology Readers</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1003,7 +1339,7 @@
           <div class="media-icon purple"><i class="fas fa-book-open"></i></div>
           <div class="stat-num" style="color:#c084fc">11M+ Reads</div>
           <strong>Established Global Authority</strong>
-          Trusted across the international infosec community with over 500+ published technical walkthroughs and deep-dives.
+          Trusted across the international infosec community with over 500+ published technical walkthroughs on <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:#c084fc; text-decoration:underline;">spyboy.blog</a>.
         </div>
 
         <div class="media-item">
@@ -1024,73 +1360,93 @@
           <div class="media-icon amber"><i class="fas fa-earth-americas"></i></div>
           <div class="stat-num" style="color:var(--amber)">Global Reach</div>
           <strong>Tier-1 Audience Distribution</strong>
-          Core audience concentrated across the United States, India, United Kingdom, and European technology hubs.
+          Core audience concentrated across USA, India, China, UK, Philippines, Germany, Netherlands, and worldwide tech hubs.
         </div>
 
         <div class="media-item">
-          <div class="media-icon crimson"><i class="fas fa-microchip"></i></div>
-          <div class="stat-num" style="color:#ff4d6d">Hands-On Tech</div>
-          <strong>High-Quality Research &amp; Tooling</strong>
-          Content covers practical tutorials, deep research, tool reviews, vulnerabilities, and emerging security tech.
+          <div class="media-icon discord"><i class="fab fa-discord"></i></div>
+          <div class="stat-num" style="color:#5865f2">15,000+ Members</div>
+          <strong>Active Discord Community</strong>
+          Direct promotional access to an engaged server on <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" style="color:#7289da; text-decoration:underline;">discord.gg/ZChEmMwE8d</a>.
         </div>
 
         <div class="media-item">
           <div class="media-icon purple"><i class="fas fa-layer-group"></i></div>
-          <div class="stat-num" style="color:#c084fc">Permanent SEO</div>
+          <div class="stat-num" style="color:#c084fc">Sitewide Impact</div>
           <strong>Flexible Sponsorship Placements</strong>
-          Permanent publications, 1–2 contextual links, editorial review, and homepage features for maximum ROI.
+          Sitewide sidebar ads on <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:#c084fc; text-decoration:underline;">spyboy.blog</a>, permanent sponsored articles, and Discord announcements.
         </div>
       </div>
     </section>
 
     <section id="pricing">
       <p class="section-label">Pricing Menu</p>
-      <h2 class="section-title">Advertising & Sponsorship Pricing</h2>
-      <p class="copy">Choose from our individual advertising services or discounted packages. Select any option below to inquire.</p>
+      <h2 class="section-title">Advertising &amp; Sponsorship Pricing</h2>
+      <p class="copy">Choose from our individual advertising services, sitewide banner placements on <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline;">spyboy.blog</a>, or Discord community sponsorships (<a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" style="color:#7289da; text-decoration:underline;">discord.gg/ZChEmMwE8d</a>). Select any option below to inquire.</p>
       
       <div class="pricing-table-wrapper">
         <table class="pricing-table">
           <thead>
             <tr>
-              <th>Service</th>
+              <th>Service / Placement</th>
+              <th>Target Channel</th>
               <th>Price</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td><strong>Sitewide Sidebar Ad</strong> — persistent banner across entire site</td>
+              <td><a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline; font-size:0.85rem;">spyboy.blog ↗</a></td>
+              <td class="pricing-tag">$50/month <span style="font-size:0.8rem; color:var(--muted); font-weight:normal;">(3 mo: $135 | 6 mo: $240)</span></td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>Discord Announcement</strong> — @everyone ping to 15,000+ members</td>
+              <td><a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" style="color:#7289da; text-decoration:underline; font-size:0.85rem;">Discord Server ↗</a></td>
+              <td class="pricing-tag">$40</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
+              <td><strong>Discord Event Sponsorship</strong> — custom live event, AMA, CTF, workshop</td>
+              <td><a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" style="color:#7289da; text-decoration:underline; font-size:0.85rem;">Discord Server ↗</a></td>
+              <td class="pricing-tag">Starts from $300</td>
+              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
+            </tr>
+            <tr>
               <td><strong>Guest post</strong> — advertiser provides article</td>
+              <td><a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline; font-size:0.85rem;">spyboy.blog ↗</a></td>
               <td class="pricing-tag">$30</td>
               <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
             </tr>
             <tr>
               <td><strong>Sponsored post</strong> — you provide the article</td>
+              <td><a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline; font-size:0.85rem;">spyboy.blog ↗</a></td>
               <td class="pricing-tag">$40</td>
               <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
             </tr>
             <tr>
               <td><strong>Sponsored post + SpyBoy writes the article</strong></td>
+              <td><a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline; font-size:0.85rem;">spyboy.blog ↗</a></td>
               <td class="pricing-tag">$60–$75</td>
               <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
             </tr>
             <tr>
-              <td><strong>Link insertion</strong></td>
+              <td><strong>Link insertion</strong> — 1 contextual link in existing article</td>
+              <td><a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline; font-size:0.85rem;">spyboy.blog ↗</a></td>
               <td class="pricing-tag">$20</td>
               <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
             </tr>
             <tr>
-              <td><strong>Homepage featured placement</strong></td>
-              <td class="pricing-tag">$50/month</td>
+              <td><strong>3 sponsored posts package</strong></td>
+              <td><a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline; font-size:0.85rem;">spyboy.blog ↗</a></td>
+              <td class="pricing-tag">$100–$150</td>
               <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
             </tr>
             <tr>
               <td><strong>Newsletter/social promotion add-on</strong></td>
+              <td>Email &amp; Social</td>
               <td class="pricing-tag">$15–$25</td>
-              <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
-            </tr>
-            <tr>
-              <td><strong>3 sponsored posts package</strong></td>
-              <td class="pricing-tag">$100–$150</td>
               <td><button class="card-cta js-open-contact" style="margin: 0; padding: 0.4rem 1rem; width: auto;" type="button">Inquire</button></td>
             </tr>
           </tbody>
@@ -1098,16 +1454,113 @@
       </div>
 
       <div class="grid" style="margin-top: 3rem;">
+        <!-- Sitewide Sidebar Ad -->
+        <article class="card sidebar-ad-card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">📌</div>
+          <h3>Sitewide Sidebar Ad</h3>
+          <p class="pricing-tag">$50 / month</p>
+          
+          <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="card-link-preview cyan-link">
+            <i class="fas fa-globe"></i> Live on spyboy.blog ↗
+          </a>
+
+          <p class="copy" style="font-size: 0.88rem; min-height: 4rem;">This placement remains visible across the website, so it can provide repeated exposure and additional opportunities for clicks as visitors browse different pages on <strong>spyboy.blog</strong>.</p>
+          
+          <div style="margin: 0.6rem 0;">
+            <div class="pricing-tier-box">
+              <span class="tier-name">1 Month</span>
+              <span class="tier-price">$50/mo</span>
+            </div>
+            <div class="pricing-tier-box">
+              <span class="tier-name">3 Months <span class="tier-badge">Save 10%</span></span>
+              <div>
+                <div class="tier-price">$135</div>
+                <div class="tier-rate">($45/month)</div>
+              </div>
+            </div>
+            <div class="pricing-tier-box">
+              <span class="tier-name">6 Months <span class="tier-badge">Save 20%</span></span>
+              <div>
+                <div class="tier-price">$240</div>
+                <div class="tier-rate">($40/month)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-inclusions">
+            <div class="card-inclusions-title" style="color:var(--cyan);">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>Persistent sitewide sidebar visibility on spyboy.blog</li>
+              <li>Repeated brand exposure across all articles &amp; pages</li>
+              <li>Custom banner graphic &amp; direct tracking URL</li>
+              <li>Continuous click opportunities as visitors browse</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" style="border-color: rgba(34,211,238,0.4);" type="button">Book Sidebar Ad</button>
+        </article>
+
+        <!-- Discord Announcement -->
+        <article class="card discord-card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fab fa-discord" style="color:#5865f2"></i></div>
+          <h3>Discord Announcement</h3>
+          <p class="pricing-tag" style="color: #5865f2;">$40</p>
+          
+          <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" class="card-link-preview discord-link">
+            <i class="fab fa-discord"></i> discord.gg/ZChEmMwE8d ↗
+          </a>
+
+          <p class="copy" style="font-size: 0.88rem; min-height: 4rem;">Broadcast your campaign, tool, or product with an <strong>@everyone</strong> ping directly to our active community of <strong>15,000+</strong> infosec and tech members.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title" style="color:#5865f2;">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>Direct @everyone ping to 15,000+ members</li>
+              <li>Custom message copy with links &amp; rich embed</li>
+              <li>High instant reach, clicks, and engagement</li>
+              <li>Archived permanently in announcements channel</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" style="border-color: rgba(88,101,242,0.4);" type="button">Book Discord Ping</button>
+        </article>
+
+        <!-- Discord Event Sponsorship -->
+        <article class="card discord-card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏆</div>
+          <h3>Discord Event</h3>
+          <p class="pricing-tag" style="color: #5865f2;">Starts from $300</p>
+          
+          <a href="https://discord.gg/ZChEmMwE8d" target="_blank" rel="noopener noreferrer" class="card-link-preview discord-link">
+            <i class="fab fa-discord"></i> discord.gg/ZChEmMwE8d ↗
+          </a>
+
+          <p class="copy" style="font-size: 0.88rem; min-height: 4rem;">Host or sponsor a dedicated live community event, technical workshop, AMA, CTF challenge, or giveaway for 15,000+ members.</p>
+          <div class="card-inclusions">
+            <div class="card-inclusions-title" style="color:#5865f2;">Includes:</div>
+            <ul class="card-inclusions-list">
+              <li>Dedicated event channel / live voice stage</li>
+              <li>Pre-event promotional pings to 15k+ members</li>
+              <li>Custom event branding, roles, and banner tags</li>
+              <li>Live community interaction &amp; lead generation</li>
+            </ul>
+          </div>
+          <button class="card-cta js-open-contact" style="border-color: rgba(88,101,242,0.4);" type="button">Book Discord Event</button>
+        </article>
+
+        <!-- Guest Post -->
         <article class="card">
           <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
           <h3>Guest Post</h3>
           <p class="pricing-tag">$30</p>
-          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Submit your own original article for publication on SpyBoy Blog.</p>
+          
+          <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="card-link-preview cyan-link">
+            <i class="fas fa-arrow-up-right-from-square"></i> Published on spyboy.blog ↗
+          </a>
+
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Submit your own original article for publication on <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline;">SpyBoy Blog (spyboy.blog)</a>.</p>
           <div class="card-inclusions">
             <div class="card-inclusions-title">Includes:</div>
             <ul class="card-inclusions-list">
-              <li>Permanent publication</li>
-              <li>1–2 relevant links</li>
+              <li>Permanent publication on spyboy.blog</li>
+              <li>1–2 relevant do-follow contextual links</li>
               <li>Author/company attribution</li>
               <li>Editorial review</li>
             </ul>
@@ -1116,15 +1569,21 @@
           <button class="card-cta js-open-contact" type="button">Book Guest Post</button>
         </article>
 
+        <!-- Sponsored Post -->
         <article class="card">
           <div style="font-size: 2rem; margin-bottom: 0.5rem;">💼</div>
           <h3>Sponsored Post</h3>
           <p class="pricing-tag">$40</p>
-          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Have your company, product, service, or technology featured through a dedicated sponsored article.</p>
+          
+          <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="card-link-preview cyan-link">
+            <i class="fas fa-arrow-up-right-from-square"></i> Published on spyboy.blog ↗
+          </a>
+
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Have your company, product, service, or technology featured through a dedicated sponsored article on <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline;">spyboy.blog</a>.</p>
           <div class="card-inclusions">
             <div class="card-inclusions-title">Includes:</div>
             <ul class="card-inclusions-list">
-              <li>Permanent publication</li>
+              <li>Permanent publication on spyboy.blog</li>
               <li>1–2 relevant links</li>
               <li>Product/company mention</li>
               <li>Editorial review</li>
@@ -1133,34 +1592,46 @@
           <button class="card-cta js-open-contact" type="button">Book Sponsored Post</button>
         </article>
 
+        <!-- Sponsored Post + Content -->
         <article class="card">
           <div style="font-size: 2rem; margin-bottom: 0.5rem;">✍️</div>
           <h3>Sponsored Post + Content</h3>
           <p class="pricing-tag">$60–$75</p>
-          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Don’t have an article ready? SpyBoy can write it for you. Price depends on research & length.</p>
+          
+          <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="card-link-preview cyan-link">
+            <i class="fas fa-arrow-up-right-from-square"></i> Published on spyboy.blog ↗
+          </a>
+
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Don’t have an article ready? SpyBoy can write it for you. Price depends on research &amp; length.</p>
           <div class="card-inclusions">
             <div class="card-inclusions-title">Includes:</div>
             <ul class="card-inclusions-list">
               <li>Original article written by SpyBoy</li>
               <li>SEO-friendly structure</li>
               <li>1–2 relevant links</li>
-              <li>Permanent publication</li>
+              <li>Permanent publication on spyboy.blog</li>
               <li>Editorial review</li>
             </ul>
           </div>
           <button class="card-cta js-open-contact" type="button">Book Post + Writing</button>
         </article>
 
+        <!-- Link Insertion -->
         <article class="card">
           <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔗</div>
           <h3>Link Insertion</h3>
           <p class="pricing-tag">$20</p>
-          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Add one relevant contextual link to an existing SpyBoy Blog article.</p>
+          
+          <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="card-link-preview cyan-link">
+            <i class="fas fa-arrow-up-right-from-square"></i> In articles on spyboy.blog ↗
+          </a>
+
+          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Add one relevant contextual link to an existing SpyBoy Blog (<a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline;">spyboy.blog</a>) article.</p>
           <div class="card-inclusions">
             <div class="card-inclusions-title">Includes:</div>
             <ul class="card-inclusions-list">
               <li>1 contextual link</li>
-              <li>Placement in relevant article</li>
+              <li>Placement in relevant high-traffic article</li>
               <li>Permanent placement</li>
               <li>Editorial approval</li>
             </ul>
@@ -1169,25 +1640,10 @@
           <button class="card-cta js-open-contact" type="button">Book Link Insertion</button>
         </article>
 
-        <article class="card">
-          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⭐</div>
-          <h3>Homepage Placement</h3>
-          <p class="pricing-tag">$50 / month</p>
-          <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Get your content, company, product, or campaign featured on the SpyBoy Blog homepage for maximum visibility.</p>
-          <div class="card-inclusions">
-            <div class="card-inclusions-title">Details:</div>
-            <ul class="card-inclusions-list">
-              <li>High-visibility homepage slot</li>
-              <li>Monthly recurring placement</li>
-              <li>Subject to editorial approval</li>
-            </ul>
-          </div>
-          <button class="card-cta js-open-contact" type="button">Book Homepage slot</button>
-        </article>
-
+        <!-- Newsletter & Social -->
         <article class="card">
           <div style="font-size: 2rem; margin-bottom: 0.5rem;">📣</div>
-          <h3>Newsletter & Social</h3>
+          <h3>Newsletter &amp; Social</h3>
           <p class="pricing-tag">$15–$25</p>
           <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Add promotional distribution to your sponsored content across our email newsletter and social channels.</p>
           <div class="card-inclusions">
@@ -1201,15 +1657,21 @@
           <button class="card-cta js-open-contact" type="button">Add Promotion</button>
         </article>
 
+        <!-- 3 Sponsored Posts Bundle -->
         <article class="card bundle">
           <div style="font-size: 2rem; margin-bottom: 0.5rem;">📦</div>
           <h3>3 Sponsored Posts</h3>
           <p class="pricing-tag">$100–$150</p>
+          
+          <a href="https://spyboy.blog" target="_blank" rel="noopener noreferrer" class="card-link-preview cyan-link">
+            <i class="fas fa-arrow-up-right-from-square"></i> Published on spyboy.blog ↗
+          </a>
+
           <p class="copy" style="font-size: 0.9rem; min-height: 4.5rem;">Save with a multi-post campaign. Price varies based on content creation options.</p>
           <div class="card-inclusions">
             <div class="card-inclusions-title">Includes:</div>
             <ul class="card-inclusions-list">
-              <li>3 sponsored publications</li>
+              <li>3 sponsored publications on spyboy.blog</li>
               <li>Permanent publication</li>
               <li>1–2 relevant links per article</li>
               <li>Editorial review</li>
@@ -1232,16 +1694,16 @@
           </h3>
           <ul class="guidelines-list accept">
             <li>Cybersecurity topics</li>
-            <li>Ethical hacking & tutorials</li>
+            <li>Ethical hacking &amp; tutorials</li>
             <li>Penetration testing</li>
-            <li>OSINT & Bug bounty</li>
+            <li>OSINT &amp; Bug bounty</li>
             <li>Privacy and security tools</li>
-            <li>Linux & Operating systems</li>
-            <li>Networking & Programming</li>
+            <li>Linux &amp; Operating systems</li>
+            <li>Networking &amp; Programming</li>
             <li>Developer tools</li>
             <li>AI and emerging technologies</li>
-            <li>Cloud & Infrastructure</li>
-            <li>Security products & services</li>
+            <li>Cloud &amp; Infrastructure</li>
+            <li>Security products &amp; services</li>
           </ul>
         </div>
 
@@ -1301,20 +1763,24 @@
         <p>Cybersecurity tools, SaaS products, developer platforms, education services, privacy tools, and ethical tech brands.</p>
       </div>
       <div class="faq-item">
+        <h4>How does the Sitewide Sidebar Ad placement work?</h4>
+        <p>The Sitewide Sidebar Ad is prominently placed across the entire website on all blog articles, tutorials, and pages. It remains persistently visible as visitors browse between posts, delivering repetitive brand impressions and continuous click opportunities.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How do Discord Announcements &amp; Events work?</h4>
+        <p>We broadcast your custom announcement with an @everyone ping to our 15,000+ member Discord community of cybersecurity enthusiasts and developers. For events ($300+), we host and co-brand live community sessions, workshops, AMAs, CTFs, or giveaways with dedicated channels and promotional announcements.</p>
+      </div>
+      <div class="faq-item">
         <h4>Do you accept gambling or off-topic commercial content?</h4>
         <p>We may accept gambling, casino, pharmaceutical, or other off-topic commercial content at a 25% premium over our standard pricing, subject to editorial review. We strictly reject scams, malware, illegal hacking services, adult content, and deceptive or unethical products.</p>
       </div>
       <div class="faq-item">
         <h4>Is the traffic real?</h4>
-        <p>Yes. Everything is organic and community-driven—no bots, no paid traffic.</p>
+        <p>Yes. Everything is 100% organic search and community-driven — no bots, no inflated click farms.</p>
       </div>
       <div class="faq-item">
         <h4>Can I get a custom package?</h4>
-        <p>Absolutely. We scope bundles based on your goal, platform, and budget.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Do you guarantee conversions?</h4>
-        <p>We guarantee relevant exposure, not vanity metrics. You get a real security audience.</p>
+        <p>Absolutely. We scope bundles combining Sitewide Ads, Discord Pings, and Sponsored Posts based on your goal and budget.</p>
       </div>
       <div class="faq-item">
         <h4>How long do sponsored posts stay live?</h4>
@@ -1322,28 +1788,28 @@
       </div>
       <div class="faq-item">
         <h4>How do I start?</h4>
-        <p>Email <a href="mailto:contact@spyboy.in">contact@spyboy.in</a> with your requirements.</p>
+        <p>Email <a href="mailto:contact@spyboy.in">contact@spyboy.in</a> with your campaign requirements or click any of the "Inquire / Book" buttons above.</p>
       </div>
     </section>
 
     <section class="cta-panel">
       <h2>Promote where cybersecurity actually happens.</h2>
-      <p>Interested in advertising, sponsoring content, or publishing on SpyBoy Blog?</p>
+      <p>Interested in sitewide advertising, Discord community sponsorships, or sponsored content on SpyBoy?</p>
       
       <div style="text-align: left; max-width: 500px; margin: 1.5rem auto; background: rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 1.5rem; border-radius: 16px;">
         <h4 style="margin-bottom: 0.8rem; font-family: var(--mono); color: var(--accent); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em;">Please include in your email:</h4>
         <ul style="list-style: none; padding: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.6;">
           <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Your company / website URL</li>
-          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Advertising service you are interested in</li>
-          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Proposed article topic or URL</li>
-          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Number of posts or placements required</li>
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Advertising service (e.g. Sidebar Ad, Discord Ping, Sponsored Post)</li>
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Proposed duration, topic, or banner creative</li>
+          <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Number of placements or target launch date</li>
           <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">•</span> Any specific guidelines or requirements</li>
         </ul>
       </div>
 
       <div class="contact-email">
         <span>contact@spyboy.in</span>
-        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Inquiry:%20SpyBoy%20Blog%20Advertising">Email us</a>
+        <a class="btn-secondary" href="mailto:contact@spyboy.in?subject=Inquiry:%20SpyBoy%20Advertising">Email us</a>
       </div>
       <p style="margin-top: 1.5rem; font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.05em;">Think Like an Attacker. Secure Like a Pro. Where Curiosity Meets Cybersecurity.</p>
     </section>
@@ -1359,8 +1825,8 @@
       <div style="text-align: left; background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 1.2rem; border-radius: 12px; margin-bottom: 1.2rem; font-size: 0.85rem; color: var(--muted); line-height: 1.6;">
         <ul style="list-style: none; padding: 0;">
           <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Your company / website URL</li>
-          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Advertising service of interest</li>
-          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Proposed article topic or URL</li>
+          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Advertising placement / service of interest</li>
+          <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Duration / proposed article topic / banner details</li>
           <li style="margin-bottom: 0.3rem;"><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Number of posts / placements required</li>
           <li><span style="color: var(--accent); margin-right: 0.4rem;">•</span> Any specific requirements</li>
         </ul>
