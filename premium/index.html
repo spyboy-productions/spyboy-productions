@@ -123,9 +123,18 @@
 
                         <!-- CTA Button -->
                         <div class="plan-btn-wrap">
-                            <button onclick="window.location.href='https://www.paypal.com/ncp/payment/CVPLSDZ3ECULW'" class="plan-btn btn-secondary">
+                            <button onclick="openPaymentModal('monthly')" class="plan-btn btn-secondary">
                                 <span>Get Monthly Access</span>
                             </button>
+                            <div class="plan-pay-choices">
+                                <span class="pay-choice-btn" onclick="openPaymentModal('monthly', 'paypal')" title="Pay via PayPal or Credit / Debit Cards">
+                                    <i class="fab fa-paypal"></i> PayPal
+                                </span>
+                                <span class="pay-choice-sep">·</span>
+                                <span class="pay-choice-btn upi-highlight" onclick="openPaymentModal('monthly', 'upi')" title="Pay via UPI QR (GPay, PhonePe, Paytm)">
+                                    <i class="fas fa-qrcode"></i> UPI (₹420)
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,9 +182,18 @@
 
                         <!-- CTA Button -->
                         <div class="plan-btn-wrap">
-                            <button onclick="window.location.href='https://www.paypal.com/ncp/payment/X92PUHTV6U9TU'" class="plan-btn btn-primary">
+                            <button onclick="openPaymentModal('lifetime')" class="plan-btn btn-primary">
                                 <span><i class="fas fa-crown"></i> Get Lifetime Access — $25</span>
                             </button>
+                            <div class="plan-pay-choices choices-featured">
+                                <span class="pay-choice-btn" onclick="openPaymentModal('lifetime', 'paypal')" title="Pay via PayPal or Credit / Debit Cards">
+                                    <i class="fab fa-paypal"></i> PayPal
+                                </span>
+                                <span class="pay-choice-sep">·</span>
+                                <span class="pay-choice-btn upi-highlight" onclick="openPaymentModal('lifetime', 'upi')" title="Pay via UPI QR (GPay, PhonePe, Paytm)">
+                                    <i class="fas fa-qrcode"></i> UPI (₹2,100)
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,9 +241,18 @@
 
                         <!-- CTA Button -->
                         <div class="plan-btn-wrap">
-                            <button onclick="window.location.href='https://www.paypal.com/ncp/payment/TPU3F6BXN258E'" class="plan-btn btn-secondary">
+                            <button onclick="openPaymentModal('yearly')" class="plan-btn btn-secondary">
                                 <span>Get Yearly Access</span>
                             </button>
+                            <div class="plan-pay-choices">
+                                <span class="pay-choice-btn" onclick="openPaymentModal('yearly', 'paypal')" title="Pay via PayPal or Credit / Debit Cards">
+                                    <i class="fab fa-paypal"></i> PayPal
+                                </span>
+                                <span class="pay-choice-sep">·</span>
+                                <span class="pay-choice-btn upi-highlight" onclick="openPaymentModal('yearly', 'upi')" title="Pay via UPI QR (GPay, PhonePe, Paytm)">
+                                    <i class="fas fa-qrcode"></i> UPI (₹1,000)
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,7 +272,7 @@
                     </div>
                     <div class="trust-content">
                         <h4>100% Secure Payments</h4>
-                        <p>Your payment data is protected with industry-standard 256-bit encryption via PayPal.</p>
+                        <p>Protected with industry-standard 256-bit encryption via PayPal and verified instant UPI transfer.</p>
                     </div>
                 </div>
 
@@ -272,12 +299,21 @@
                                 </svg>
                             </div>
                             <!-- PayPal Official Logo -->
-                            <div class="pay-chip" title="PayPal">
+                            <div class="pay-chip" title="PayPal" onclick="openPaymentModal('lifetime', 'paypal')" style="cursor: pointer;">
                                 <svg width="74" height="18" viewBox="0 0 100 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.5 2.1H3.6C3 2.1 2.5 2.5 2.4 3.1L0 18.6C0 18.9 0.2 19.1 0.5 19.1H4.3C4.8 19.1 5.2 18.7 5.3 18.2L6.3 12.2C6.4 11.6 6.9 11.2 7.5 11.2H9.6C14 11.2 16.8 9.3 17.5 5.5C17.9 3.5 17 2.1 11.5 2.1Z" fill="#0079C1"/>
                                     <path d="M14.6 7.4C14.1 10.3 12 11.9 8.7 11.9H6.6L5.4 19.5C5.3 19.9 5.6 20.2 6 20.2H9.2C9.7 20.2 10.1 19.8 10.2 19.3L10.9 14.8C11 14.2 11.5 13.8 12.1 13.8H12.9C16.5 13.8 19.1 12.3 19.8 8.8C20.1 7.2 19.8 5.9 18.8 5.1C17.7 6.3 16.3 7.1 14.6 7.4Z" fill="#00457C"/>
                                     <text x="24" y="18" font-family="'Space Grotesk', 'Helvetica', sans-serif" font-weight="800" font-size="17" fill="#0079C1">Pay<tspan fill="#00457C">Pal</tspan></text>
                                 </svg>
+                            </div>
+                            <!-- UPI Official Logo -->
+                            <div class="pay-chip pay-chip-upi" title="UPI (Unified Payments Interface) - GPay, PhonePe, Paytm, BHIM" onclick="openPaymentModal('lifetime', 'upi')">
+                                <svg width="54" height="18" viewBox="0 0 68 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L2 20H8.5L12 13.5H16.5L14 8.5H12L13.5 5.5L12 2Z" fill="#097F5B"/>
+                                    <path d="M17 2L7 20H13.5L17 13.5H21.5L19 8.5H17L18.5 5.5L17 2Z" fill="#F3722C"/>
+                                    <text x="25" y="17" font-family="'Space Grotesk', 'Montserrat', sans-serif" font-weight="900" font-style="italic" font-size="17" fill="#ffffff" letter-spacing="1">UPI</text>
+                                </svg>
+                                <span class="upi-chip-tag">🇮🇳 QR</span>
                             </div>
                         </div>
                     </div>
@@ -478,10 +514,17 @@
                     <p>No monthly subscriptions, no hidden renewal fees. One single investment for perpetual access to every current and future premium command.</p>
                 </div>
                 <div class="why-cta-action">
-                    <button onclick="window.location.href='https://www.paypal.com/ncp/payment/X92PUHTV6U9TU'" class="why-cta-btn">
+                    <button onclick="openPaymentModal('lifetime')" class="why-cta-btn">
                         <span><i class="fas fa-crown"></i> Get Lifetime Deal — $25</span>
                     </button>
-                    <span class="why-cta-sub"><i class="fas fa-shield-halved"></i> Instant automated activation via PayPal</span>
+                    <div class="why-cta-methods">
+                        <span onclick="openPaymentModal('lifetime', 'paypal')"><i class="fab fa-paypal"></i> PayPal</span>
+                        <span class="why-sep">/</span>
+                        <span onclick="openPaymentModal('lifetime', 'paypal')"><i class="fas fa-credit-card"></i> Credit &amp; Debit Cards</span>
+                        <span class="why-sep">/</span>
+                        <span class="why-upi-link" onclick="openPaymentModal('lifetime', 'upi')"><i class="fas fa-qrcode"></i> UPI QR (₹2,100)</span>
+                    </div>
+                    <span class="why-cta-sub"><i class="fas fa-shield-halved"></i> Instant automated activation via PayPal &amp; UPI</span>
                 </div>
             </div>
 
@@ -1628,11 +1671,1175 @@
                 height: 38px;
                 padding: 0 12px;
             }
-            .buyers-row {
+            .plan-pay-choices {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                margin-top: 10px;
                 font-size: 0.76rem;
+            }
+            .pay-choice-btn {
+                padding: 2px 7px;
+                font-size: 0.74rem;
+            }
+        }
+
+        /* ════ PAYMENT METHOD BADGES ON PRICING CARDS ════ */
+        .plan-pay-choices {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .pay-choice-btn {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 9px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+        }
+        .pay-choice-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+        .pay-choice-btn.upi-highlight {
+            color: #22d3ee;
+            border-color: rgba(34, 211, 238, 0.3);
+            background: rgba(34, 211, 238, 0.08);
+            font-weight: 600;
+        }
+        .pay-choice-btn.upi-highlight:hover {
+            background: rgba(34, 211, 238, 0.2);
+            border-color: #22d3ee;
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+        }
+        .choices-featured .pay-choice-btn.upi-highlight {
+            color: #fbbf24;
+            border-color: rgba(251, 191, 36, 0.35);
+            background: rgba(251, 191, 36, 0.1);
+        }
+        .choices-featured .pay-choice-btn.upi-highlight:hover {
+            background: rgba(251, 191, 36, 0.22);
+            border-color: #fbbf24;
+            box-shadow: 0 0 14px rgba(251, 191, 36, 0.4);
+        }
+        .pay-choice-sep {
+            color: rgba(255, 255, 255, 0.25);
+            user-select: none;
+        }
+
+        /* Why CTA banner methods subline */
+        .why-cta-methods {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.72);
+        }
+        .why-cta-methods span {
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .why-cta-methods span:hover {
+            color: #ffffff;
+        }
+        .why-cta-methods .why-upi-link {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+        .why-cta-methods .why-upi-link:hover {
+            color: #fef08a;
+            text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+        }
+        .why-sep {
+            color: rgba(255, 255, 255, 0.3);
+            user-select: none;
+        }
+
+        /* UPI Pay Chip in Trust Badges row */
+        .pay-chip-upi {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-color: rgba(34, 211, 238, 0.25);
+        }
+        .pay-chip-upi:hover {
+            border-color: rgba(34, 211, 238, 0.55);
+            background: rgba(34, 211, 238, 0.1);
+            box-shadow: 0 0 16px rgba(34, 211, 238, 0.25);
+        }
+        .upi-chip-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #22d3ee;
+            letter-spacing: 0.04em;
+            background: rgba(34, 211, 238, 0.14);
+            padding: 2px 7px;
+            border-radius: 4px;
+        }
+
+        /* ════ PAYMENT MODAL SYSTEM ════ */
+        .payment-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 7, 10, 0.86);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100005;
+            padding: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+        }
+        .payment-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .payment-modal {
+            background: linear-gradient(180deg, #1b1d24 0%, #101115 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            max-width: 660px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px 32px 26px;
+            color: #ffffff;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(220, 20, 60, 0.15);
+            transform: scale(0.95) translateY(12px);
+            transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .payment-modal-overlay.active .payment-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Close Button */
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        .modal-close-btn:hover {
+            background: rgba(220, 20, 60, 0.25);
+            border-color: #dc143c;
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        /* Modal Header */
+        .modal-head {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-right: 24px;
+            padding-left: 24px;
+        }
+        .modal-crown-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+        .modal-main-title {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        .modal-sub {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin: 0;
+        }
+
+        /* Modal Plan Switcher */
+        .modal-plan-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+        .plan-select-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(255, 255, 255, 0.09);
+            border-radius: 14px;
+            padding: 10px 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            position: relative;
+            transition: all 0.22s ease;
+            color: #ffffff;
+        }
+        .plan-select-pill:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .plan-select-pill.active {
+            background: rgba(220, 20, 60, 0.12);
+            border-color: #dc143c;
+            box-shadow: 0 0 16px rgba(220, 20, 60, 0.25);
+        }
+        .plan-select-pill.featured.active {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: #fbbf24;
+            box-shadow: 0 0 18px rgba(251, 191, 36, 0.25);
+        }
+        .pill-badge {
+            position: absolute;
+            top: -8px;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            background: linear-gradient(90deg, #dc143c, #f59e0b);
+            color: #ffffff;
+            padding: 2px 7px;
+            border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .pill-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .pill-price {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 600;
+        }
+        .plan-select-pill.active .pill-price {
+            color: #ffffff;
+        }
+
+        /* Payment Method Tabs */
+        .payment-method-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .method-tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(255, 255, 255, 0.09);
+            border-radius: 16px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            text-align: left;
+            color: #ffffff;
+        }
+        .method-tab-btn:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .method-tab-btn.active {
+            background: rgba(0, 121, 193, 0.12);
+            border-color: #0079C1;
+            box-shadow: 0 0 20px rgba(0, 121, 193, 0.25);
+        }
+        .method-tab-btn#tabBtnUpi.active {
+            background: rgba(0, 186, 242, 0.12);
+            border-color: #00baf2;
+            box-shadow: 0 0 20px rgba(0, 186, 242, 0.25);
+        }
+        .tab-icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #0079C1;
+            flex-shrink: 0;
+        }
+        .tab-icon-wrap.upi-accent {
+            color: #00baf2;
+        }
+        .tab-text-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+        .tab-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tab-sub {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.55);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .india-flag-badge {
+            font-size: 0.7rem;
+            background: rgba(34, 211, 238, 0.15);
+            color: #22d3ee;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Tab Contents */
+        .payment-tab-content {
+            display: none;
+            animation: fadeInTab 0.25s ease;
+        }
+        .payment-tab-content.active {
+            display: block;
+        }
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Method Detail Card */
+        .method-detail-card {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 22px 24px;
+        }
+        .method-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 16px;
+        }
+        .card-plan-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .summary-plan-name {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .summary-price-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .summary-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .summary-price.text-upi {
+            color: #00baf2;
+        }
+        .summary-cadence {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .card-accepted-icons {
+            display: flex;
+            gap: 8px;
+        }
+        .card-mini-chip {
+            width: 34px;
+            height: 26px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .method-perks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .perk-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.86rem;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.4;
+        }
+        .perk-item i {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Proceed to PayPal Button */
+        .btn-proceed-paypal {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 22px;
+            background: linear-gradient(135deg, #0079C1, #00457C);
+            border-radius: 14px;
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0, 121, 193, 0.35);
+            transition: all 0.25s ease;
+        }
+        .btn-proceed-paypal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 121, 193, 0.55);
+            filter: brightness(1.1);
+            color: #ffffff;
+        }
+        .paypal-micro-note {
+            display: block;
+            text-align: center;
+            font-size: 0.74rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 12px;
+        }
+
+        /* ════ UPI TAB SPECIFIC STYLES ════ */
+        .upi-header-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 18px;
+        }
+        .upi-zero-fee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+        .upi-body-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        /* QR Code Section */
+        .upi-qr-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .qr-scan-box {
+            position: relative;
+            padding: 6px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 186, 242, 0.25);
+            overflow: hidden;
+            max-width: 190px;
+            width: 100%;
+        }
+        .upi-qr-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+        .qr-corner {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-color: #00baf2;
+            border-style: solid;
+            pointer-events: none;
+        }
+        .qr-corner.top-left { top: 4px; left: 4px; border-width: 3px 0 0 3px; border-top-left-radius: 6px; }
+        .qr-corner.top-right { top: 4px; right: 4px; border-width: 3px 3px 0 0; border-top-right-radius: 6px; }
+        .qr-corner.bottom-left { bottom: 4px; left: 4px; border-width: 0 0 3px 3px; border-bottom-left-radius: 6px; }
+        .qr-corner.bottom-right { bottom: 4px; right: 4px; border-width: 0 3px 3px 0; border-bottom-right-radius: 6px; }
+
+        .upi-apps-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px;
+        }
+        .app-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        /* UPI Info Column */
+        .upi-info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .upi-id-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 10px 12px;
+        }
+        .upi-id-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.74rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .verified-tag {
+            color: #10b981;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .upi-id-field {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 186, 242, 0.35);
+            border-radius: 10px;
+            padding: 7px 10px;
+        }
+        .upi-id-field code {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #22d3ee;
+            letter-spacing: 0.02em;
+        }
+        .btn-copy-upi {
+            background: rgba(0, 186, 242, 0.15);
+            border: 1px solid rgba(0, 186, 242, 0.4);
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 11px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .btn-copy-upi:hover {
+            background: rgba(0, 186, 242, 0.3);
+            border-color: #00baf2;
+            transform: translateY(-1px);
+        }
+        .btn-copy-upi.copied {
+            background: rgba(16, 185, 129, 0.25);
+            border-color: #10b981;
+            color: #34d399;
+        }
+
+        /* Mobile Intent Button */
+        .upi-mobile-intent-wrap {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .upi-mobile-intent-wrap {
+                display: block;
+            }
+        }
+        .btn-upi-intent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 11px;
+            background: linear-gradient(135deg, #00baf2, #0079C1);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 186, 242, 0.3);
+            transition: all 0.2s ease;
+        }
+        .btn-upi-intent:hover {
+            filter: brightness(1.1);
+            color: #ffffff;
+        }
+
+        /* 3 Verification Steps Box */
+        .upi-steps-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 12px 14px;
+        }
+        .steps-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .upi-steps-list {
+            margin: 0 0 10px 18px;
+            padding: 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.4;
+        }
+        .upi-steps-list li {
+            margin-bottom: 3px;
+        }
+        .upi-steps-list code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1px 5px;
+            border-radius: 4px;
+            color: #22d3ee;
+            font-family: monospace;
+        }
+        .upi-contact-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .btn-upi-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .btn-upi-action.btn-discord {
+            background: #5865F2;
+            color: #ffffff;
+        }
+        .btn-upi-action.btn-discord:hover {
+            background: #4752c4;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+            color: #ffffff;
+        }
+        .btn-upi-action.btn-email {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+        .btn-upi-action.btn-email:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+            color: #ffffff;
+        }
+
+        /* ════ INLINE EMAIL PROOF DRAWER ════ */
+        .upi-email-drawer {
+            display: none;
+            margin-top: 12px;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1.5px solid rgba(0, 186, 242, 0.35);
+            border-radius: 14px;
+            padding: 12px 14px;
+            animation: drawerSlideDown 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+        }
+        .upi-email-drawer.active {
+            display: block;
+        }
+        @keyframes drawerSlideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .email-drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+        }
+        .btn-close-drawer {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            transition: all 0.2s;
+        }
+        .btn-close-drawer:hover {
+            background: rgba(220, 20, 60, 0.3);
+            border-color: #dc143c;
+            color: #ffffff;
+        }
+        .email-drawer-address {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 186, 242, 0.3);
+            border-radius: 10px;
+            padding: 7px 10px;
+            margin-bottom: 8px;
+        }
+        .email-drawer-address code {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #22d3ee;
+            letter-spacing: 0.02em;
+        }
+        .btn-copy-email {
+            background: rgba(0, 186, 242, 0.18);
+            border: 1px solid rgba(0, 186, 242, 0.45);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 11px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .btn-copy-email:hover {
+            background: rgba(0, 186, 242, 0.35);
+            border-color: #00baf2;
+            transform: translateY(-1px);
+        }
+        .btn-copy-email.copied {
+            background: rgba(16, 185, 129, 0.25);
+            border-color: #10b981;
+            color: #34d399;
+        }
+        .email-drawer-guide {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.74rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 8px;
+            padding: 7px 9px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+        }
+        .drawer-guide-item {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .drawer-guide-item .guide-label {
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        .drawer-guide-item code {
+            font-size: 0.76rem;
+            color: #fbbf24;
+            font-family: monospace;
+        }
+        .email-drawer-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .btn-launch-mailapp {
+            font-size: 0.74rem;
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: underline;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+        .btn-launch-mailapp:hover {
+            color: #22d3ee;
+        }
+        .upi-guarantee-note {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.35;
+        }
+
+        /* Modal Footer */
+        .modal-footer {
+            text-align: center;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .safe-note {
+            font-size: 0.74rem;
+            color: rgba(255, 255, 255, 0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Mobile Media Queries for Payment Modal */
+        @media (max-width: 640px) {
+            .payment-modal {
+                padding: 24px 16px 20px;
+                max-height: 94vh;
+            }
+            .modal-main-title {
+                font-size: 1.3rem;
+            }
+            .modal-plan-selector {
+                gap: 6px;
+            }
+            .plan-select-pill {
+                padding: 8px 4px;
+            }
+            .pill-title {
+                font-size: 0.82rem;
+            }
+            .pill-price {
+                font-size: 0.7rem;
+            }
+            .payment-method-tabs {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .method-tab-btn {
+                padding: 10px 12px;
+            }
+            .method-detail-card {
+                padding: 16px 14px;
+            }
+            .upi-body-layout {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+            .qr-scan-box {
+                max-width: 170px;
+            }
+            .upi-contact-actions {
+                grid-template-columns: 1fr;
+            }
+            .btn-proceed-paypal {
+                font-size: 0.95rem;
+                padding: 14px 16px;
             }
         }
     </style>
+
+    <!-- ════ PAYMENT SELECTION MODAL (PAYPAL & UPI) ════ -->
+    <div class="payment-modal-overlay" id="paymentModalOverlay" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+        <div class="payment-modal">
+            <!-- Close Button -->
+            <button class="modal-close-btn" id="closePaymentModalBtn" onclick="closePaymentModal()" aria-label="Close Payment Modal">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="modal-head">
+                <div class="modal-crown-tag">
+                    <i class="fas fa-shield-halved"></i> SECURE UPGRADE
+                </div>
+                <h3 id="paymentModalTitle" class="modal-main-title">Select Payment Method</h3>
+                <p class="modal-sub">Choose your preferred gateway to activate Spyo Premium</p>
+            </div>
+
+            <!-- Plan Selector Switcher inside Modal -->
+            <div class="modal-plan-selector">
+                <button type="button" class="plan-select-pill" data-plan-select="monthly" onclick="selectModalPlan('monthly')">
+                    <span class="pill-title">Monthly</span>
+                    <span class="pill-price">$5 / ₹420</span>
+                </button>
+                <button type="button" class="plan-select-pill active featured" data-plan-select="lifetime" onclick="selectModalPlan('lifetime')">
+                    <span class="pill-badge">★ BEST VALUE</span>
+                    <span class="pill-title">Lifetime</span>
+                    <span class="pill-price">$25 / ₹2,100</span>
+                </button>
+                <button type="button" class="plan-select-pill" data-plan-select="yearly" onclick="selectModalPlan('yearly')">
+                    <span class="pill-title">Yearly</span>
+                    <span class="pill-price">$12 / ₹1,000</span>
+                </button>
+            </div>
+
+            <!-- Payment Method Tabs -->
+            <div class="payment-method-tabs">
+                <button type="button" class="method-tab-btn active" id="tabBtnPaypal" onclick="switchPaymentMethod('paypal')">
+                    <div class="tab-icon-wrap">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <div class="tab-text-wrap">
+                        <span class="tab-name">PayPal &amp; Cards</span>
+                        <span class="tab-sub">International · Instant Activation</span>
+                    </div>
+                </button>
+                <button type="button" class="method-tab-btn" id="tabBtnUpi" onclick="switchPaymentMethod('upi')">
+                    <div class="tab-icon-wrap upi-accent">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="tab-text-wrap">
+                        <span class="tab-name">UPI Payment <span class="india-flag-badge">🇮🇳 India</span></span>
+                        <span class="tab-sub">GPay, PhonePe, Paytm, BHIM</span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Tab 1: PayPal Content -->
+            <div class="payment-tab-content active" id="paypalTabContent">
+                <div class="method-detail-card">
+                    <div class="method-card-header">
+                        <div class="card-plan-summary">
+                            <span class="summary-plan-name" id="paypalPlanName">Lifetime Plan</span>
+                            <div class="summary-price-wrap">
+                                <span class="summary-price" id="paypalPlanPrice">$25</span>
+                                <span class="summary-cadence" id="paypalPlanCadence">one-time payment</span>
+                            </div>
+                        </div>
+                        <div class="card-accepted-icons">
+                            <span class="card-mini-chip" title="PayPal"><i class="fab fa-paypal"></i></span>
+                            <span class="card-mini-chip" title="Visa"><i class="fab fa-cc-visa"></i></span>
+                            <span class="card-mini-chip" title="Mastercard"><i class="fab fa-cc-mastercard"></i></span>
+                            <span class="card-mini-chip" title="Amex"><i class="fab fa-cc-amex"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="method-perks-list">
+                        <div class="perk-item">
+                            <i class="fas fa-bolt c-gold"></i>
+                            <span><strong>Instant automated activation</strong> linked directly to your Discord account.</span>
+                        </div>
+                        <div class="perk-item">
+                            <i class="fas fa-lock c-green"></i>
+                            <span>Protected by <strong>PayPal Buyer Protection</strong> &amp; 256-bit encryption.</span>
+                        </div>
+                    </div>
+
+                    <a id="paypalProceedBtn" href="https://www.paypal.com/ncp/payment/X92PUHTV6U9TU" target="_blank" rel="noopener noreferrer" class="btn-proceed-paypal">
+                        <span><i class="fab fa-paypal"></i> Continue with PayPal — <span id="paypalProceedPrice">$25</span></span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="paypal-micro-note"><i class="fas fa-shield-alt"></i> You do not need a PayPal account to pay with a Credit or Debit card.</span>
+                </div>
+            </div>
+
+            <!-- Tab 2: UPI Content -->
+            <div class="payment-tab-content" id="upiTabContent">
+                <div class="method-detail-card upi-detail-card">
+                    
+                    <div class="upi-header-banner">
+                        <div class="card-plan-summary">
+                            <span class="summary-plan-name" id="upiPlanName">Lifetime Plan</span>
+                            <div class="summary-price-wrap">
+                                <span class="summary-price text-upi" id="upiPlanPrice">₹2,100</span>
+                                <span class="summary-cadence" id="upiPlanCadence">one-time payment (approx $25 USD)</span>
+                            </div>
+                        </div>
+                        <span class="upi-zero-fee-badge"><i class="fas fa-check-circle"></i> 0% Gateway Fee</span>
+                    </div>
+
+                    <div class="upi-body-layout">
+                        <!-- Left: QR Code -->
+                        <div class="upi-qr-wrapper">
+                            <div class="qr-scan-box">
+                                <img src="../images/upi_qr.jpg" onerror="this.src='upi_qr.jpg'" alt="Spyo UPI Payment QR Code" class="upi-qr-img" id="upiQrImg">
+                                <div class="qr-corner top-left"></div>
+                                <div class="qr-corner top-right"></div>
+                                <div class="qr-corner bottom-left"></div>
+                                <div class="qr-corner bottom-right"></div>
+                            </div>
+                            <div class="upi-apps-row">
+                                <span class="app-tag">GPay</span>
+                                <span class="app-tag">PhonePe</span>
+                                <span class="app-tag">Paytm</span>
+                                <span class="app-tag">BHIM</span>
+                                <span class="app-tag">CRED</span>
+                            </div>
+                        </div>
+
+                        <!-- Right: UPI ID & Steps -->
+                        <div class="upi-info-column">
+                            <div class="upi-id-box">
+                                <div class="upi-id-label">
+                                    <span><i class="fas fa-fingerprint"></i> UPI ID / VPA</span>
+                                    <span class="verified-tag"><i class="fas fa-check-circle"></i> Verified Merchant</span>
+                                </div>
+                                <div class="upi-id-field">
+                                    <code id="upiIdValue">shubh7248@ptyes</code>
+                                    <button type="button" class="btn-copy-upi" id="copyUpiIdBtn" onclick="copyUpiId()">
+                                        <i class="fas fa-copy" id="copyIcon"></i>
+                                        <span id="copyText">Copy ID</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Direct UPI Mobile App Button (visible on mobile) -->
+                            <div class="upi-mobile-intent-wrap">
+                                <a id="upiIntentLink" href="upi://pay?pa=shubh7248@ptyes&pn=Spyo%20Productions&am=2100&cu=INR&tn=Spyo%20Lifetime%20Premium" class="btn-upi-intent">
+                                    <i class="fas fa-mobile-alt"></i> Pay via UPI App (Mobile)
+                                </a>
+                            </div>
+
+                            <!-- 3 Quick Verification Steps -->
+                            <div class="upi-steps-box">
+                                <h5 class="steps-title"><i class="fas fa-list-check"></i> 3 Simple Steps to Activate:</h5>
+                                <ol class="upi-steps-list">
+                                    <li><strong>Scan QR or transfer</strong> the exact amount (<span id="upiStepAmount">₹2,100</span>) to <code>shubh7248@ptyes</code></li>
+                                    <li><strong>Capture a screenshot</strong> showing the Transaction / UTR ID</li>
+                                    <li><strong>Send proof + your Discord username</strong> to Discord ticket or <code>contact@spyboy.in</code>:</li>
+                                </ol>
+                                <div class="upi-contact-actions">
+                                    <a href="https://spyboy.in/Discord" target="_blank" rel="noopener" class="btn-upi-action btn-discord">
+                                        <i class="fab fa-discord"></i> Discord Ticket
+                                    </a>
+                                    <button type="button" id="upiEmailProofBtn" class="btn-upi-action btn-email" onclick="toggleEmailProofBox()">
+                                        <i class="fas fa-envelope"></i> Email Proof
+                                    </button>
+                                </div>
+
+                                <!-- Inline Expandable Email Proof Box -->
+                                <div class="upi-email-drawer" id="upiEmailDrawer">
+                                    <div class="email-drawer-header">
+                                        <span><i class="fas fa-paper-plane" style="color: #00baf2; margin-right: 5px;"></i> Send Proof to Email:</span>
+                                        <button type="button" class="btn-close-drawer" onclick="toggleEmailProofBox(false)" aria-label="Close Email Box">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="email-drawer-address">
+                                        <code id="contactEmailAddress">contact@spyboy.in</code>
+                                        <button type="button" class="btn-copy-email" id="copyContactEmailBtn" onclick="copyContactEmail()">
+                                            <i class="fas fa-copy" id="copyEmailIcon"></i>
+                                            <span id="copyEmailText">Copy</span>
+                                        </button>
+                                    </div>
+                                    <div class="email-drawer-guide">
+                                        <div class="drawer-guide-item">
+                                            <span class="guide-label">Subject:</span>
+                                            <code id="emailSubjectPreview">UPI Payment Proof - Spyo Lifetime Premium</code>
+                                        </div>
+                                        <div class="drawer-guide-item">
+                                            <span class="guide-label">Attach:</span>
+                                            <span>Payment screenshot + UTR ID + Discord username</span>
+                                        </div>
+                                    </div>
+                                    <div class="email-drawer-actions">
+                                        <a id="upiDirectMailtoBtn" href="mailto:contact@spyboy.in?subject=UPI%20Payment%20Proof%20-%20Spyo%20Lifetime%20Premium" class="btn-launch-mailapp">
+                                            <i class="fas fa-envelope-open-text"></i> Open in Mail Client
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="upi-guarantee-note">
+                                <i class="fas fa-clock c-gold"></i>
+                                <span>Activations are processed promptly (typically within 15–30 minutes). Support is 24/7.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <span class="safe-note"><i class="fas fa-shield-alt"></i> 100% Secure Checkout · Discord VIP Role &amp; Premium Commands</span>
+            </div>
+
+        </div>
+    </div>
 
     <div class="email-popup-overlay" id="emailPopup">
         <div class="email-popup">

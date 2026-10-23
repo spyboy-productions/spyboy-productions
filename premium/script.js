@@ -217,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initEmailPopup();
         initStickyNavbar();
         initMobileMenu();
+        initPaymentModal();
     } catch (error) {
         console.error('Failed to initialize premium timers or badges', error);
     }
@@ -296,3 +297,300 @@ function initEmailPopup() {
         });
     }
 }
+
+// ════ PAYMENT MODAL & UPI INTEGRATION ════
+const PREMIUM_PLANS = {
+    monthly: {
+        id: 'monthly',
+        name: 'Monthly Plan',
+        priceUsd: '$5',
+        cadenceUsd: '/ month · Cancel anytime',
+        priceInr: '₹420',
+        cadenceInr: '/ month · Cancel anytime',
+        paypalUrl: 'https://www.paypal.com/ncp/payment/CVPLSDZ3ECULW',
+        rawInr: 420
+    },
+    lifetime: {
+        id: 'lifetime',
+        name: 'Lifetime Plan',
+        priceUsd: '$25',
+        cadenceUsd: 'one-time payment · perpetual access',
+        priceInr: '₹2,100',
+        cadenceInr: 'one-time payment (approx $25 USD)',
+        paypalUrl: 'https://www.paypal.com/ncp/payment/X92PUHTV6U9TU',
+        rawInr: 2100
+    },
+    yearly: {
+        id: 'yearly',
+        name: 'Yearly Plan',
+        priceUsd: '$12',
+        cadenceUsd: '/ year · effective $1/mo',
+        priceInr: '₹1,000',
+        cadenceInr: '/ year · effective ~₹83/mo',
+        paypalUrl: 'https://www.paypal.com/ncp/payment/TPU3F6BXN258E',
+        rawInr: 1000
+    }
+};
+
+const UPI_DETAILS = {
+    upiId: 'shubh7248@ptyes',
+    payeeName: 'Spyo Productions',
+    supportEmail: 'contact@spyboy.in',
+    supportDiscord: 'https://spyboy.in/Discord'
+};
+
+let currentModalPlan = 'lifetime';
+let currentModalMethod = 'paypal';
+
+function openPaymentModal(planKey = 'lifetime', preferredMethod = null) {
+    if (PREMIUM_PLANS[planKey]) {
+        currentModalPlan = planKey;
+    }
+    if (preferredMethod === 'upi' || preferredMethod === 'paypal') {
+        currentModalMethod = preferredMethod;
+    }
+
+    updateModalUI();
+
+    const overlay = document.getElementById('paymentModalOverlay');
+    if (overlay) {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closePaymentModal() {
+    const overlay = document.getElementById('paymentModalOverlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    toggleEmailProofBox(false);
+}
+
+function selectModalPlan(planKey) {
+    if (!PREMIUM_PLANS[planKey]) return;
+    currentModalPlan = planKey;
+    updateModalUI();
+}
+
+function switchPaymentMethod(method) {
+    if (method !== 'paypal' && method !== 'upi') return;
+    currentModalMethod = method;
+    updateModalUI();
+}
+
+function updateModalUI() {
+    const plan = PREMIUM_PLANS[currentModalPlan] || PREMIUM_PLANS.lifetime;
+
+    // 1. Update plan pills active state
+    const pills = document.querySelectorAll('.plan-select-pill');
+    pills.forEach((pill) => {
+        if (pill.dataset.planSelect === currentModalPlan) {
+            pill.classList.add('active');
+        } else {
+            pill.classList.remove('active');
+        }
+    });
+
+    // 2. Update method tabs
+    const tabPaypal = document.getElementById('tabBtnPaypal');
+    const tabUpi = document.getElementById('tabBtnUpi');
+    const contentPaypal = document.getElementById('paypalTabContent');
+    const contentUpi = document.getElementById('upiTabContent');
+
+    if (currentModalMethod === 'upi') {
+        if (tabUpi) tabUpi.classList.add('active');
+        if (tabPaypal) tabPaypal.classList.remove('active');
+        if (contentUpi) contentUpi.classList.add('active');
+        if (contentPaypal) contentPaypal.classList.remove('active');
+    } else {
+        if (tabPaypal) tabPaypal.classList.add('active');
+        if (tabUpi) tabUpi.classList.remove('active');
+        if (contentPaypal) contentPaypal.classList.add('active');
+        if (contentUpi) contentUpi.classList.remove('active');
+    }
+
+    // 3. Update PayPal tab details
+    const elPaypalPlanName = document.getElementById('paypalPlanName');
+    const elPaypalPlanPrice = document.getElementById('paypalPlanPrice');
+    const elPaypalPlanCadence = document.getElementById('paypalPlanCadence');
+    const elPaypalProceedBtn = document.getElementById('paypalProceedBtn');
+    const elPaypalProceedPrice = document.getElementById('paypalProceedPrice');
+
+    if (elPaypalPlanName) elPaypalPlanName.textContent = plan.name;
+    if (elPaypalPlanPrice) elPaypalPlanPrice.textContent = plan.priceUsd;
+    if (elPaypalPlanCadence) elPaypalPlanCadence.textContent = plan.cadenceUsd;
+    if (elPaypalProceedPrice) elPaypalProceedPrice.textContent = plan.priceUsd;
+    if (elPaypalProceedBtn) {
+        elPaypalProceedBtn.href = plan.paypalUrl;
+    }
+
+    // 4. Update UPI tab details
+    const elUpiPlanName = document.getElementById('upiPlanName');
+    const elUpiPlanPrice = document.getElementById('upiPlanPrice');
+    const elUpiPlanCadence = document.getElementById('upiPlanCadence');
+    const elUpiStepAmount = document.getElementById('upiStepAmount');
+    const elUpiIntentLink = document.getElementById('upiIntentLink');
+    const elEmailSubjectPreview = document.getElementById('emailSubjectPreview');
+    const elUpiDirectMailtoBtn = document.getElementById('upiDirectMailtoBtn');
+
+    if (elUpiPlanName) elUpiPlanName.textContent = plan.name;
+    if (elUpiPlanPrice) elUpiPlanPrice.textContent = plan.priceInr;
+    if (elUpiPlanCadence) elUpiPlanCadence.textContent = plan.cadenceInr;
+    if (elUpiStepAmount) elUpiStepAmount.textContent = plan.priceInr;
+
+    // Mobile UPI deep link
+    if (elUpiIntentLink) {
+        const intentUrl = `upi://pay?pa=${encodeURIComponent(UPI_DETAILS.upiId)}&pn=${encodeURIComponent(UPI_DETAILS.payeeName)}&am=${plan.rawInr}&cu=INR&tn=${encodeURIComponent('Spyo ' + plan.name + ' Premium')}`;
+        elUpiIntentLink.href = intentUrl;
+    }
+
+    // Update Email Drawer Subject and Mailto Link
+    if (elEmailSubjectPreview) {
+        elEmailSubjectPreview.textContent = `UPI Payment Proof - Spyo ${plan.name}`;
+    }
+    if (elUpiDirectMailtoBtn) {
+        const subject = encodeURIComponent(`UPI Payment Proof - Spyo ${plan.name} (${plan.priceInr})`);
+        const body = encodeURIComponent(
+`Hi Spyo Team,
+
+I have completed the UPI payment for Spyo ${plan.name}.
+
+- Selected Plan: ${plan.name} (${plan.priceUsd} / ${plan.priceInr})
+- Amount Transferred: ${plan.priceInr} INR
+- UPI Transaction ID / UTR: [Please paste your 12-digit UTR/Ref here]
+- My Discord Username or ID: [Please enter your Discord tag, e.g. user#0000 or user]
+
+Please find my payment screenshot attached to this email.
+
+Thanks!`
+        );
+        elUpiDirectMailtoBtn.href = `mailto:${UPI_DETAILS.supportEmail}?subject=${subject}&body=${body}`;
+    }
+}
+
+function toggleEmailProofBox(forceState) {
+    const drawer = document.getElementById('upiEmailDrawer');
+    if (!drawer) return;
+    if (typeof forceState === 'boolean') {
+        if (forceState) {
+            drawer.classList.add('active');
+        } else {
+            drawer.classList.remove('active');
+        }
+    } else {
+        drawer.classList.toggle('active');
+    }
+}
+
+function copyContactEmail() {
+    const email = CONTACT_EMAIL || 'contact@spyboy.in';
+    const copyBtn = document.getElementById('copyContactEmailBtn');
+    const copyIcon = document.getElementById('copyEmailIcon');
+    const copyText = document.getElementById('copyEmailText');
+
+    const handleSuccess = () => {
+        if (copyBtn) copyBtn.classList.add('copied');
+        if (copyIcon) copyIcon.className = 'fas fa-check';
+        if (copyText) copyText.textContent = 'Copied!';
+        setTimeout(() => {
+            if (copyBtn) copyBtn.classList.remove('copied');
+            if (copyIcon) copyIcon.className = 'fas fa-copy';
+            if (copyText) copyText.textContent = 'Copy';
+        }, 2200);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(handleSuccess).catch(() => {
+            fallbackCopyText(email, handleSuccess);
+        });
+    } else {
+        fallbackCopyText(email, handleSuccess);
+    }
+}
+
+function copyUpiId() {
+    const upiId = UPI_DETAILS.upiId;
+    const copyBtn = document.getElementById('copyUpiIdBtn');
+    const copyIcon = document.getElementById('copyIcon');
+    const copyText = document.getElementById('copyText');
+
+    const handleSuccess = () => {
+        if (copyBtn) copyBtn.classList.add('copied');
+        if (copyIcon) copyIcon.className = 'fas fa-check';
+        if (copyText) copyText.textContent = 'Copied!';
+        setTimeout(() => {
+            if (copyBtn) copyBtn.classList.remove('copied');
+            if (copyIcon) copyIcon.className = 'fas fa-copy';
+            if (copyText) copyText.textContent = 'Copy ID';
+        }, 2200);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(upiId).then(handleSuccess).catch(() => {
+            fallbackCopyText(upiId, handleSuccess);
+        });
+    } else {
+        fallbackCopyText(upiId, handleSuccess);
+    }
+}
+
+function fallbackCopyText(text, cb) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+        document.execCommand('copy');
+        if (cb) cb();
+    } catch (e) {
+        window.prompt('Copy UPI ID:', text);
+    }
+    document.body.removeChild(ta);
+}
+
+function initPaymentModal() {
+    const overlay = document.getElementById('paymentModalOverlay');
+    if (!overlay) return;
+
+    // Close on overlay backdrop click
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closePaymentModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closePaymentModal();
+        }
+    });
+
+    // Check URL parameters for direct link to modal / upi
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const payParam = (params.get('pay') || params.get('method') || '').toLowerCase();
+        const planParam = (params.get('plan') || '').toLowerCase();
+        if (payParam === 'upi' || window.location.hash === '#upi') {
+            openPaymentModal(planParam || 'lifetime', 'upi');
+        } else if (payParam === 'paypal') {
+            openPaymentModal(planParam || 'lifetime', 'paypal');
+        }
+    } catch (err) {
+        // Ignore URL parsing errors
+    }
+}
+
+// Expose functions globally on window
+window.openPaymentModal = openPaymentModal;
+window.closePaymentModal = closePaymentModal;
+window.selectModalPlan = selectModalPlan;
+window.switchPaymentMethod = switchPaymentMethod;
+window.copyUpiId = copyUpiId;
+window.toggleEmailProofBox = toggleEmailProofBox;
+window.copyContactEmail = copyContactEmail;
+

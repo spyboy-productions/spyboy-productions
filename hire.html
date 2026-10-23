@@ -2418,6 +2418,909 @@
       margin-bottom: 1.25rem;
       word-break: break-all;
     }
+
+    /* ════ PAYMENT METHOD BADGES ON PRICING CARDS ════ */
+    .plan-pay-choices {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .pay-choice-btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+    }
+    .pay-choice-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    .pay-choice-btn.upi-highlight {
+      color: var(--cyan);
+      border-color: rgba(34, 211, 238, 0.3);
+      background: rgba(34, 211, 238, 0.08);
+      font-weight: 600;
+    }
+    .pay-choice-btn.upi-highlight:hover {
+      background: rgba(34, 211, 238, 0.2);
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+    }
+    .choices-featured .pay-choice-btn.upi-highlight {
+      color: var(--amber);
+      border-color: rgba(251, 191, 36, 0.35);
+      background: rgba(251, 191, 36, 0.1);
+    }
+    .choices-featured .pay-choice-btn.upi-highlight:hover {
+      background: rgba(251, 191, 36, 0.22);
+      border-color: var(--amber);
+      box-shadow: 0 0 14px rgba(251, 191, 36, 0.4);
+    }
+    .pay-choice-sep {
+      color: rgba(255, 255, 255, 0.25);
+      user-select: none;
+    }
+
+    /* UPI Pay Chip in Trust Badges row */
+    .pay-chip-upi {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-color: rgba(34, 211, 238, 0.25);
+    }
+    .pay-chip-upi:hover {
+      border-color: rgba(34, 211, 238, 0.55);
+      background: rgba(34, 211, 238, 0.1);
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.25);
+    }
+    .upi-chip-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+      background: rgba(34, 211, 238, 0.14);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* ════ PAYMENT MODAL SYSTEM FOR HIRE.HTML ════ */
+    .hire-payment-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 7, 10, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100005;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+    .hire-payment-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .hire-payment-modal {
+      background: linear-gradient(180deg, #1b1d24 0%, #111217 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 30px 32px 26px;
+      color: #ffffff;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(34, 211, 238, 0.15);
+      transform: scale(0.95) translateY(12px);
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .hire-payment-modal-overlay.active .hire-payment-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Close Button */
+    .hire-modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    .hire-modal-close-btn:hover {
+      background: rgba(220, 20, 60, 0.25);
+      border-color: var(--crimson);
+      color: #ffffff;
+      transform: rotate(90deg);
+    }
+
+    /* Modal Header */
+    .hire-modal-head {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+    .hire-modal-crown-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .hire-modal-main-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .hire-modal-sub {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.65);
+      margin: 0;
+    }
+
+    /* Modal Service Switcher */
+    .hire-modal-plan-selector {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .hire-plan-select-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1.5px solid rgba(255, 255, 255, 0.09);
+      border-radius: 12px;
+      padding: 9px 6px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      position: relative;
+      transition: all 0.22s ease;
+      color: #ffffff;
+    }
+    .hire-plan-select-pill:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .hire-plan-select-pill.active {
+      background: rgba(34, 211, 238, 0.12);
+      border-color: var(--cyan);
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.25);
+    }
+    .hire-plan-select-pill.featured.active {
+      background: rgba(251, 191, 36, 0.12);
+      border-color: var(--amber);
+      box-shadow: 0 0 18px rgba(251, 191, 36, 0.25);
+    }
+    .hire-pill-badge {
+      position: absolute;
+      top: -8px;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      background: linear-gradient(90deg, #dc143c, #f59e0b);
+      color: #ffffff;
+      padding: 1px 6px;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    .hire-pill-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .hire-pill-price {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+    }
+    .hire-plan-select-pill.active .hire-pill-price {
+      color: #ffffff;
+    }
+
+    /* Payment Method Tabs */
+    .hire-payment-method-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .hire-method-tab-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1.5px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      text-align: left;
+      color: #ffffff;
+    }
+    .hire-method-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .hire-method-tab-btn.active {
+      background: rgba(0, 121, 193, 0.12);
+      border-color: #0079C1;
+      box-shadow: 0 0 20px rgba(0, 121, 193, 0.25);
+    }
+    .hire-method-tab-btn#hireTabBtnUpi.active {
+      background: rgba(0, 186, 242, 0.12);
+      border-color: #00baf2;
+      box-shadow: 0 0 20px rgba(0, 186, 242, 0.25);
+    }
+    .hire-tab-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: #0079C1;
+      flex-shrink: 0;
+    }
+    .hire-tab-icon-wrap.upi-accent {
+      color: #00baf2;
+    }
+    .hire-tab-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .hire-tab-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hire-tab-sub {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.55);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Tab Contents */
+    .hire-payment-tab-content {
+      display: none;
+      animation: hireFadeInTab 0.25s ease;
+    }
+    .hire-payment-tab-content.active {
+      display: block;
+    }
+    @keyframes hireFadeInTab {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Method Detail Card */
+    .hire-method-detail-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px 24px;
+    }
+    .hire-method-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+    .hire-card-plan-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hire-summary-plan-name {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hire-summary-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .hire-summary-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .hire-summary-price.text-upi {
+      color: #00baf2;
+    }
+    .hire-summary-cadence {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .hire-card-accepted-icons {
+      display: flex;
+      gap: 8px;
+    }
+    .hire-card-mini-chip {
+      width: 34px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .hire-method-perks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .hire-perk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.4;
+    }
+    .hire-perk-item i {
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Proceed to PayPal Button */
+    .hire-btn-proceed-paypal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 16px 22px;
+      background: linear-gradient(135deg, #0079C1, #00457C);
+      border-radius: 14px;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 121, 193, 0.35);
+      transition: all 0.25s ease;
+    }
+    .hire-btn-proceed-paypal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 121, 193, 0.55);
+      filter: brightness(1.1);
+      color: #ffffff;
+    }
+    .hire-paypal-micro-note {
+      display: block;
+      text-align: center;
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 12px;
+    }
+
+    /* ════ UPI TAB SPECIFIC STYLES FOR HIRE.HTML ════ */
+    .hire-upi-header-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 18px;
+    }
+    .hire-upi-zero-fee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .hire-upi-body-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    /* QR Code Section */
+    .hire-upi-qr-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .hire-qr-scan-box {
+      position: relative;
+      padding: 6px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 186, 242, 0.25);
+      overflow: hidden;
+      max-width: 190px;
+      width: 100%;
+    }
+    .hire-upi-qr-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+    .hire-qr-corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: #00baf2;
+      border-style: solid;
+      pointer-events: none;
+    }
+    .hire-qr-corner.top-left { top: 4px; left: 4px; border-width: 3px 0 0 3px; border-top-left-radius: 6px; }
+    .hire-qr-corner.top-right { top: 4px; right: 4px; border-width: 3px 3px 0 0; border-top-right-radius: 6px; }
+    .hire-qr-corner.bottom-left { bottom: 4px; left: 4px; border-width: 0 0 3px 3px; border-bottom-left-radius: 6px; }
+    .hire-qr-corner.bottom-right { bottom: 4px; right: 4px; border-width: 0 3px 3px 0; border-bottom-right-radius: 6px; }
+
+    .hire-upi-apps-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+    }
+    .hire-app-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    /* UPI Info Column */
+    .hire-upi-info-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hire-upi-id-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    .hire-upi-id-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .hire-verified-tag {
+      color: #10b981;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .hire-upi-id-field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 186, 242, 0.35);
+      border-radius: 10px;
+      padding: 7px 10px;
+    }
+    .hire-upi-id-field code {
+      font-family: var(--mono);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.02em;
+    }
+    .hire-btn-copy-upi {
+      background: rgba(0, 186, 242, 0.15);
+      border: 1px solid rgba(0, 186, 242, 0.4);
+      border-radius: 8px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .hire-btn-copy-upi:hover {
+      background: rgba(0, 186, 242, 0.3);
+      border-color: #00baf2;
+      transform: translateY(-1px);
+    }
+    .hire-btn-copy-upi.copied {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
+      color: #34d399;
+    }
+
+    /* Mobile Intent Button */
+    .hire-upi-mobile-intent-wrap {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .hire-upi-mobile-intent-wrap {
+        display: block;
+      }
+    }
+    .hire-btn-upi-intent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 11px;
+      background: linear-gradient(135deg, #00baf2, #0079C1);
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0, 186, 242, 0.3);
+      transition: all 0.2s ease;
+    }
+    .hire-btn-upi-intent:hover {
+      filter: brightness(1.1);
+      color: #ffffff;
+    }
+
+    /* 3 Verification Steps Box */
+    .hire-upi-steps-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+    .hire-steps-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hire-upi-steps-list {
+      margin: 0 0 10px 18px;
+      padding: 0;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.4;
+    }
+    .hire-upi-steps-list li {
+      margin-bottom: 3px;
+    }
+    .hire-upi-steps-list code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: var(--cyan);
+      font-family: var(--mono);
+    }
+    .hire-upi-contact-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .hire-btn-upi-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+    .hire-btn-upi-action.btn-discord {
+      background: #5865F2;
+      color: #ffffff;
+      border: none;
+    }
+    .hire-btn-upi-action.btn-discord:hover {
+      background: #4752c4;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+      color: #ffffff;
+    }
+    .hire-btn-upi-action.btn-email {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+    .hire-btn-upi-action.btn-email:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+      color: #ffffff;
+    }
+
+    /* ════ INLINE EMAIL PROOF DRAWER (HIRE) ════ */
+    .hire-upi-email-drawer {
+      display: none;
+      margin-top: 12px;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1.5px solid rgba(0, 186, 242, 0.35);
+      border-radius: 14px;
+      padding: 12px 14px;
+      animation: hireDrawerSlideDown 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: left;
+    }
+    .hire-upi-email-drawer.active {
+      display: block;
+    }
+    @keyframes hireDrawerSlideDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hire-email-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 8px;
+    }
+    .hire-btn-close-drawer {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      transition: all 0.2s;
+    }
+    .hire-btn-close-drawer:hover {
+      background: rgba(220, 20, 60, 0.3);
+      border-color: var(--crimson);
+      color: #ffffff;
+    }
+    .hire-email-drawer-address {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 186, 242, 0.3);
+      border-radius: 10px;
+      padding: 7px 10px;
+      margin-bottom: 8px;
+    }
+    .hire-email-drawer-address code {
+      font-family: var(--mono);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.02em;
+    }
+    .hire-btn-copy-email {
+      background: rgba(0, 186, 242, 0.18);
+      border: 1px solid rgba(0, 186, 242, 0.45);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .hire-btn-copy-email:hover {
+      background: rgba(0, 186, 242, 0.35);
+      border-color: #00baf2;
+      transform: translateY(-1px);
+    }
+    .hire-btn-copy-email.copied {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
+      color: #34d399;
+    }
+    .hire-email-drawer-guide {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 8px;
+      padding: 7px 9px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+    }
+    .hire-drawer-guide-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .hire-drawer-guide-item .guide-label {
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+    .hire-drawer-guide-item code {
+      font-size: 0.76rem;
+      color: var(--amber);
+      font-family: var(--mono);
+    }
+    .hire-email-drawer-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .hire-btn-launch-mailapp {
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s;
+    }
+    .hire-btn-launch-mailapp:hover {
+      color: var(--cyan);
+    }
+    .hire-upi-guarantee-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.35;
+    }
+
+    /* Modal Footer */
+    .hire-modal-footer {
+      text-align: center;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .hire-safe-note {
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Mobile Media Queries for Hire Payment Modal */
+    @media (max-width: 640px) {
+      .hire-payment-modal {
+        padding: 24px 16px 20px;
+        max-height: 94vh;
+      }
+      .hire-modal-main-title {
+        font-size: 1.3rem;
+      }
+      .hire-modal-plan-selector {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .hire-plan-select-pill {
+        padding: 8px 4px;
+      }
+      .hire-pill-title {
+        font-size: 0.76rem;
+      }
+      .hire-pill-price {
+        font-size: 0.68rem;
+      }
+      .hire-payment-method-tabs {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .hire-method-tab-btn {
+        padding: 10px 12px;
+      }
+      .hire-method-detail-card {
+        padding: 16px 14px;
+      }
+      .hire-upi-body-layout {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .hire-qr-scan-box {
+        max-width: 170px;
+      }
+      .hire-upi-contact-actions {
+        grid-template-columns: 1fr;
+      }
+      .hire-btn-proceed-paypal {
+        font-size: 0.95rem;
+        padding: 14px 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2793,9 +3696,14 @@
               </div>
 
               <div class="osint-btn-wrap">
-                <a href="https://www.paypal.com/ncp/payment/8PZMVHDG7L7R6" class="btn-primary checkout-btn" target="_blank" rel="noopener">
+                <button type="button" class="btn-primary checkout-btn" onclick="openHirePaymentModal('pivot')">
                   <span>Order Single Pivot — $29</span>
-                </a>
+                </button>
+                <div class="plan-pay-choices">
+                  <span class="pay-choice-btn" onclick="openHirePaymentModal('pivot', 'paypal')"><i class="fab fa-paypal"></i> PayPal</span>
+                  <span class="pay-choice-sep">/</span>
+                  <span class="pay-choice-btn upi-highlight" onclick="openHirePaymentModal('pivot', 'upi')"><i class="fas fa-qrcode"></i> UPI (₹2,450)</span>
+                </div>
               </div>
             </div>
           </div>
@@ -2841,9 +3749,14 @@
               </div>
 
               <div class="osint-btn-wrap">
-                <a href="https://www.paypal.com/ncp/payment/M6C3MLLHNNUWS" class="btn-primary checkout-btn" target="_blank" rel="noopener">
+                <button type="button" class="btn-primary checkout-btn" onclick="openHirePaymentModal('dossier')">
                   <span><i class="fas fa-shield-alt"></i> Order Deep Dossier — $89</span>
-                </a>
+                </button>
+                <div class="plan-pay-choices choices-featured">
+                  <span class="pay-choice-btn" onclick="openHirePaymentModal('dossier', 'paypal')"><i class="fab fa-paypal"></i> PayPal</span>
+                  <span class="pay-choice-sep">/</span>
+                  <span class="pay-choice-btn upi-highlight" onclick="openHirePaymentModal('dossier', 'upi')"><i class="fas fa-qrcode"></i> UPI (₹7,500)</span>
+                </div>
               </div>
             </div>
           </div>
@@ -2888,9 +3801,14 @@
               </div>
 
               <div class="osint-btn-wrap">
-                <a href="https://www.paypal.com/ncp/payment/ACTR2K8PL6XK6" class="btn-primary checkout-btn" target="_blank" rel="noopener">
+                <button type="button" class="btn-primary checkout-btn" onclick="openHirePaymentModal('corp')">
                   <span><i class="fas fa-network-wired"></i> Order Corporate Recon — $179</span>
-                </a>
+                </button>
+                <div class="plan-pay-choices">
+                  <span class="pay-choice-btn" onclick="openHirePaymentModal('corp', 'paypal')"><i class="fab fa-paypal"></i> PayPal</span>
+                  <span class="pay-choice-sep">/</span>
+                  <span class="pay-choice-btn upi-highlight" onclick="openHirePaymentModal('corp', 'upi')"><i class="fas fa-qrcode"></i> UPI (₹15,000)</span>
+                </div>
               </div>
             </div>
           </div>
@@ -2910,7 +3828,7 @@
             </div>
             <div class="pay-trust-content">
               <h4>100% Secure Payments</h4>
-              <p>Your payment data is protected with industry-standard 256-bit encryption via PayPal.</p>
+              <p>Your payment data is protected with industry-standard 256-bit encryption via PayPal &amp; instant verified UPI.</p>
             </div>
           </div>
 
@@ -2937,12 +3855,21 @@
                   </svg>
                 </div>
                 <!-- PayPal Official Logo -->
-                <div class="pay-chip" title="PayPal">
+                <div class="pay-chip" title="PayPal" style="cursor: pointer;" onclick="openHirePaymentModal('dossier', 'paypal')">
                   <svg width="74" height="18" viewBox="0 0 100 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.5 2.1H3.6C3 2.1 2.5 2.5 2.4 3.1L0 18.6C0 18.9 0.2 19.1 0.5 19.1H4.3C4.8 19.1 5.2 18.7 5.3 18.2L6.3 12.2C6.4 11.6 6.9 11.2 7.5 11.2H9.6C14 11.2 16.8 9.3 17.5 5.5C17.9 3.5 17 2.1 11.5 2.1Z" fill="#0079C1"/>
                     <path d="M14.6 7.4C14.1 10.3 12 11.9 8.7 11.9H6.6L5.4 19.5C5.3 19.9 5.6 20.2 6 20.2H9.2C9.7 20.2 10.1 19.8 10.2 19.3L10.9 14.8C11 14.2 11.5 13.8 12.1 13.8H12.9C16.5 13.8 19.1 12.3 19.8 8.8C20.1 7.2 19.8 5.9 18.8 5.1C17.7 6.3 16.3 7.1 14.6 7.4Z" fill="#00457C"/>
                     <text x="24" y="18" font-family="'Space Grotesk', 'Helvetica', sans-serif" font-weight="800" font-size="17" fill="#0079C1">Pay<tspan fill="#00457C">Pal</tspan></text>
                   </svg>
+                </div>
+                <!-- UPI Official Chip -->
+                <div class="pay-chip pay-chip-upi" title="Instant UPI Payment (Google Pay, PhonePe, Paytm, BHIM)" onclick="openHirePaymentModal('dossier', 'upi')">
+                  <svg width="44" height="22" viewBox="0 0 70 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4L4 28H14L18 16H26L30 4H12Z" fill="#097939"/>
+                    <path d="M28 4L20 28H30L38 4H28Z" fill="#ED752E"/>
+                    <path d="M42 4L34 28H44L48 16H56L60 4H42Z" fill="#097939"/>
+                  </svg>
+                  <span class="upi-chip-tag">UPI 🇮🇳 QR</span>
                 </div>
               </div>
             </div>
@@ -3077,12 +4004,17 @@
               <span class="benefit-icon">💳</span>
               <div class="benefit-text">
                 <strong>Verified Security</strong>
-                <span>Pay securely via PayPal</span>
+                <span>Pay securely via PayPal or UPI</span>
               </div>
             </div>
           </div>
 
-          <a href="https://www.paypal.com/ncp/payment/2X98A3T2J8JZY" class="btn-primary checkout-btn" target="_blank" rel="noopener">Book Consultation Session</a>
+          <button type="button" class="btn-primary checkout-btn" onclick="openHirePaymentModal('consult')">Book Consultation Session</button>
+          <div class="plan-pay-choices">
+            <span class="pay-choice-btn" onclick="openHirePaymentModal('consult', 'paypal')"><i class="fab fa-paypal"></i> PayPal ($15/hr)</span>
+            <span class="pay-choice-sep">/</span>
+            <span class="pay-choice-btn upi-highlight" onclick="openHirePaymentModal('consult', 'upi')"><i class="fas fa-qrcode"></i> UPI (₹1,250/hr)</span>
+          </div>
         </div>
       </div>
 
@@ -3224,6 +4156,12 @@
           </div>
 
           <button class="btn-primary js-open-contact checkout-btn" type="button">Request custom build quote</button>
+          <div class="plan-pay-choices" style="margin-top: 12px;">
+            <span style="font-size: 0.76rem; color: rgba(255,255,255,0.5);">Already have an agreed quote?</span>
+            <span class="pay-choice-btn" onclick="openHirePaymentModal('custom', 'paypal')" title="Pay milestone via PayPal"><i class="fab fa-paypal"></i> PayPal</span>
+            <span class="pay-choice-sep">/</span>
+            <span class="pay-choice-btn upi-highlight" onclick="openHirePaymentModal('custom', 'upi')" title="Pay milestone via UPI"><i class="fas fa-qrcode"></i> UPI QR</span>
+          </div>
         </div>
       </div>
     </section>
@@ -3647,6 +4585,211 @@
     </footer>
   </main>
 
+  <!-- Unified Payment Modal (PayPal + UPI) for Hire Services -->
+  <div class="hire-payment-modal-overlay" id="hirePaymentModalOverlay" role="dialog" aria-modal="true" aria-labelledby="hireModalMainTitle">
+    <div class="hire-payment-modal">
+      <button class="hire-modal-close-btn" type="button" aria-label="Close payment modal" onclick="closeHirePaymentModal()">&times;</button>
+      
+      <div class="hire-modal-head">
+        <span class="hire-modal-crown-tag"><i class="fas fa-shield-halved"></i> SECURE SERVICE BOOKING</span>
+        <h2 class="hire-modal-main-title" id="hireModalMainTitle">Select Payment Method</h2>
+        <p class="hire-modal-sub">Choose Global PayPal/Cards or instant Indian UPI transfer with zero gateway surcharge</p>
+      </div>
+
+      <!-- Service Selection Pills -->
+      <div class="hire-modal-plan-selector" id="hireModalPlanSelector">
+        <button type="button" class="hire-plan-select-pill" data-service-key="pivot" onclick="selectHireModalService('pivot')">
+          <span class="hire-pill-title">Single Pivot</span>
+          <span class="hire-pill-price">$29 / ₹2,450</span>
+        </button>
+        <button type="button" class="hire-plan-select-pill featured active" data-service-key="dossier" onclick="selectHireModalService('dossier')">
+          <span class="hire-pill-badge">★ POPULAR</span>
+          <span class="hire-pill-title">Deep Dossier</span>
+          <span class="hire-pill-price">$89 / ₹7,500</span>
+        </button>
+        <button type="button" class="hire-plan-select-pill" data-service-key="corp" onclick="selectHireModalService('corp')">
+          <span class="hire-pill-title">Corp Recon</span>
+          <span class="hire-pill-price">$179 / ₹15K</span>
+        </button>
+        <button type="button" class="hire-plan-select-pill" data-service-key="consult" onclick="selectHireModalService('consult')">
+          <span class="hire-pill-title">Consultation</span>
+          <span class="hire-pill-price">$15/hr / ₹1.25K</span>
+        </button>
+        <button type="button" class="hire-plan-select-pill" data-service-key="custom" onclick="selectHireModalService('custom')">
+          <span class="hire-pill-title">Custom / Milestone</span>
+          <span class="hire-pill-price">Agreed Quote</span>
+        </button>
+      </div>
+
+      <!-- Payment Method Switcher Tabs -->
+      <div class="hire-payment-method-tabs">
+        <button type="button" class="hire-method-tab-btn active" id="hireTabBtnPaypal" onclick="switchHirePaymentMethod('paypal')">
+          <div class="hire-tab-icon-wrap">
+            <i class="fab fa-paypal"></i>
+          </div>
+          <div class="hire-tab-text-wrap">
+            <span class="hire-tab-name">PayPal / Cards</span>
+            <span class="hire-tab-sub">International • Visa, Mastercard, Amex</span>
+          </div>
+        </button>
+
+        <button type="button" class="hire-method-tab-btn" id="hireTabBtnUpi" onclick="switchHirePaymentMethod('upi')">
+          <div class="hire-tab-icon-wrap upi-accent">
+            <i class="fas fa-qrcode"></i>
+          </div>
+          <div class="hire-tab-text-wrap">
+            <span class="hire-tab-name">UPI 🇮🇳 QR (Zero Fees)</span>
+            <span class="hire-tab-sub">Google Pay, PhonePe, Paytm, BHIM</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- TAB 1: PayPal / International Cards -->
+      <div class="hire-payment-tab-content active" id="hireTabContentPaypal">
+        <div class="hire-method-detail-card">
+          <div class="hire-method-card-header">
+            <div class="hire-card-plan-summary">
+              <span class="hire-summary-plan-name" id="hirePaypalPlanName">Comprehensive Target Dossier</span>
+              <div class="hire-summary-price-wrap">
+                <span class="hire-summary-price" id="hirePaypalPrice">$89</span>
+                <span class="hire-summary-cadence" id="hirePaypalCadence">USD • one-time</span>
+              </div>
+            </div>
+            <div class="hire-card-accepted-icons">
+              <span class="hire-card-mini-chip" title="Visa"><i class="fab fa-cc-visa"></i></span>
+              <span class="hire-card-mini-chip" title="Mastercard"><i class="fab fa-cc-mastercard"></i></span>
+              <span class="hire-card-mini-chip" title="Amex"><i class="fab fa-cc-amex"></i></span>
+              <span class="hire-card-mini-chip" title="PayPal"><i class="fab fa-paypal" style="color: #0079C1;"></i></span>
+            </div>
+          </div>
+
+          <div class="hire-method-perks-list">
+            <div class="hire-perk-item">
+              <i class="fas fa-lock c-cyan"></i>
+              <span><strong>Buyer Protection Guaranteed:</strong> 256-bit SSL encrypted transaction handled by PayPal's infrastructure.</span>
+            </div>
+            <div class="hire-perk-item">
+              <i class="fas fa-bolt c-gold"></i>
+              <span><strong>Instant Intake Notification:</strong> Your booking is instantly logged and our offensive engineers begin intake immediately.</span>
+            </div>
+            <div class="hire-perk-item">
+              <i class="fas fa-globe c-cyan"></i>
+              <span><strong>Global Currencies Accepted:</strong> Pay securely using USD, EUR, GBP, AUD, CAD, or your local card balance.</span>
+            </div>
+          </div>
+
+          <a href="https://www.paypal.com/ncp/payment/M6C3MLLHNNUWS" target="_blank" rel="noopener" class="hire-btn-proceed-paypal" id="hireProceedPaypalBtn">
+            <span>Proceed to Secure PayPal Checkout</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <span class="hire-paypal-micro-note">🔒 Official 256-Bit SSL Encrypted Portal. You do not need a PayPal account to pay with a debit or credit card.</span>
+        </div>
+      </div>
+
+      <!-- TAB 2: UPI QR (Zero Fees) -->
+      <div class="hire-payment-tab-content" id="hireTabContentUpi">
+        <div class="hire-method-detail-card">
+          <div class="hire-upi-header-banner">
+            <div class="hire-card-plan-summary">
+              <span class="hire-summary-plan-name" id="hireUpiPlanName">Comprehensive Target Dossier</span>
+              <div class="hire-summary-price-wrap">
+                <span class="hire-summary-price text-upi" id="hireUpiPrice">₹7,500</span>
+                <span class="hire-summary-cadence" id="hireUpiCadence">INR • one-time</span>
+              </div>
+            </div>
+            <span class="hire-upi-zero-fee-badge">
+              <i class="fas fa-check-circle"></i> Zero Extra Gateway Fees
+            </span>
+          </div>
+
+          <div class="hire-upi-body-layout">
+            <!-- QR Code Section -->
+            <div class="hire-upi-qr-wrapper">
+              <div class="hire-qr-scan-box">
+                <span class="hire-qr-corner top-left"></span>
+                <span class="hire-qr-corner top-right"></span>
+                <span class="hire-qr-corner bottom-left"></span>
+                <span class="hire-qr-corner bottom-right"></span>
+                <img src="images/upi_qr.jpg" alt="Spyboy UPI QR Code" class="hire-upi-qr-img" id="hireUpiQrImg">
+              </div>
+              <div class="hire-upi-apps-row">
+                <span class="hire-app-tag">GPay</span>
+                <span class="hire-app-tag">PhonePe</span>
+                <span class="hire-app-tag">Paytm</span>
+                <span class="hire-app-tag">BHIM</span>
+                <span class="hire-app-tag">CRED</span>
+              </div>
+              <!-- Mobile Deep Link (shown on mobile devices) -->
+              <div class="hire-upi-mobile-intent-wrap">
+                <a href="upi://pay?pa=shubh7248@ptyes&pn=Spyboy%20Productions&am=7500&cu=INR" class="hire-btn-upi-intent" id="hireUpiIntentBtn">
+                  <i class="fas fa-mobile-screen-button"></i> Open in UPI App
+                </a>
+              </div>
+            </div>
+
+            <!-- Verification & Details Column -->
+            <div class="hire-upi-info-column">
+              <div class="hire-upi-id-box">
+                <div class="hire-upi-id-label">
+                  <span>OFFICIAL UPI ID</span>
+                  <span class="hire-verified-tag"><i class="fas fa-circle-check"></i> Verified Merchant</span>
+                </div>
+                <div class="hire-upi-id-field">
+                  <code id="hireModalUpiId">shubh7248@ptyes</code>
+                  <button type="button" class="hire-btn-copy-upi" id="hireCopyUpiBtn" onclick="copyHireUpiId()" aria-label="Copy UPI ID">
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
+                </div>
+              </div>
+
+              <div class="hire-upi-steps-box">
+                <div class="hire-steps-title">
+                  <i class="fas fa-shield-alt" style="color: #00baf2;"></i> Fast 3-Step Verification
+                </div>
+                <ol class="hire-upi-steps-list">
+                  <li>Scan QR or send <strong id="hireStepAmount">₹7,500</strong> to <code>shubh7248@ptyes</code></li>
+                  <li>Copy your <strong>UTR / UPI Ref Number</strong> or take a screenshot</li>
+                  <li>Submit proof via Discord ticket or Email for instant confirmation</li>
+                </ol>
+
+                <div class="hire-upi-contact-actions">
+                  <a href="https://discord.gg/ZuzEkdscNm" target="_blank" rel="noopener" class="hire-btn-upi-action btn-discord">
+                    <i class="fab fa-discord"></i> Open Discord Ticket
+                  </a>
+                  <button type="button" class="hire-btn-upi-action btn-email" id="hireToggleEmailDrawerBtn" onclick="toggleHireEmailProofBox()">
+                    <i class="fas fa-envelope"></i> Email Proof
+                  </button>
+                </div>
+              </div>
+
+              <!-- Inline Email Proof Drawer with Explicit Address Display -->
+              <div class="hire-upi-email-drawer" id="hireUpiEmailDrawer">
+                <div class="hire-email-drawer-header">
+                  <span><i class="fas fa-envelope-open-text" style="color: var(--cyan);"></i> Send Proof to Spyboy Verification</span>
+                  <button type="button" class="hire-btn-close-drawer" onclick="toggleHireEmailProofBox(false)" aria-label="Close Email Box">&times;</button>
+                </div>
+                <div class="hire-email-drawer-address">
+                  <code id="hireDrawerEmailAddr">contact@spyboy.in</code>
+                  <button type="button" class="hire-btn-copy-email" id="hireCopyDrawerEmailBtn" onclick="copyHireContactEmail()">
+                    <i class="fas fa-copy"></i> Copy Email
+                  </button>
+                </div>
+                <div class="hire-email-drawer-actions">
+                  <a href="mailto:contact@spyboy.in?subject=UPI%20Payment%20Proof%20-%20Comprehensive%20Target%20Dossier&body=Hi%20Spyboy,%0A%0AI%20have%20completed%20the%20UPI%20transfer.%0A%0AService:%20Comprehensive%20Target%20Dossier%0AAmount%20Paid:%20%E2%82%B97,500%0AUTR%20/%20Transaction%20ID:%20[Enter%20UTR%20Here]%0ATarget%20Scope%20/%20Contact:%20[Enter%20Target%20Here]%0A%0AAttached%20is%20my%20payment%20screenshot." class="hire-btn-open-mailapp" id="hireOpenDrawerMailBtn">
+                    <i class="fas fa-paper-plane"></i> Open in Email App
+                  </a>
+                  <span class="hire-email-drawer-hint">We acknowledge and dispatch your service within 30 minutes!</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Interactive Scoped Quote Modal -->
   <div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <div class="contact-modal-card">
@@ -3973,14 +5116,239 @@
       });
     }
 
+    /* ════ HIRE PAYMENT MODAL SYSTEM (PAYPAL + UPI) ════ */
+    const HIRE_SERVICES = {
+      pivot: {
+        name: 'Single Pivot Search',
+        usdPrice: '$29',
+        inrPrice: '₹2,450',
+        cadence: 'USD • one-time',
+        inrCadence: 'INR • one-time',
+        rawInr: 2450,
+        paypalUrl: 'https://www.paypal.com/ncp/payment/8PZMVHDG7L7R6'
+      },
+      dossier: {
+        name: 'Comprehensive Target Dossier',
+        usdPrice: '$89',
+        inrPrice: '₹7,500',
+        cadence: 'USD • one-time',
+        inrCadence: 'INR • one-time',
+        rawInr: 7500,
+        paypalUrl: 'https://www.paypal.com/ncp/payment/M6C3MLLHNNUWS'
+      },
+      corp: {
+        name: 'Corporate Surface Recon',
+        usdPrice: '$179',
+        inrPrice: '₹15,000',
+        cadence: 'USD • one-time',
+        inrCadence: 'INR • one-time',
+        rawInr: 15000,
+        paypalUrl: 'https://www.paypal.com/ncp/payment/ACTR2K8PL6XK6'
+      },
+      consult: {
+        name: 'Ethical Hacking Consultation',
+        usdPrice: '$15',
+        inrPrice: '₹1,250',
+        cadence: 'USD • per hour',
+        inrCadence: 'INR • per hour',
+        rawInr: 1250,
+        paypalUrl: 'https://www.paypal.com/ncp/payment/2X98A3T2J8JZY'
+      },
+      custom: {
+        name: 'Custom Build / Milestone Retainer',
+        usdPrice: 'Custom Quote',
+        inrPrice: 'Agreed Quote',
+        cadence: 'agreed milestone',
+        inrCadence: 'agreed milestone',
+        rawInr: null,
+        paypalUrl: 'https://www.paypal.com/paypalme/iamshubhamkumar'
+      }
+    };
+
+    const HIRE_UPI_ID = 'shubh7248@ptyes';
+    const HIRE_UPI_NAME = 'Spyboy Productions';
+    const HIRE_CONTACT_EMAIL = 'contact@spyboy.in';
+    let currentHireServiceKey = 'dossier';
+    let currentHirePaymentMethod = 'paypal';
+
+    function updateHireModalDisplay() {
+      const service = HIRE_SERVICES[currentHireServiceKey] || HIRE_SERVICES.dossier;
+
+      // Update Service Selector Pills
+      document.querySelectorAll('#hireModalPlanSelector .hire-plan-select-pill').forEach(pill => {
+        if (pill.dataset.serviceKey === currentHireServiceKey) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      // Update PayPal Tab Content
+      const paypalPlanNameEl = document.getElementById('hirePaypalPlanName');
+      const paypalPriceEl = document.getElementById('hirePaypalPrice');
+      const paypalCadenceEl = document.getElementById('hirePaypalCadence');
+      const proceedPaypalBtn = document.getElementById('hireProceedPaypalBtn');
+
+      if (paypalPlanNameEl) paypalPlanNameEl.textContent = service.name;
+      if (paypalPriceEl) paypalPriceEl.textContent = service.usdPrice;
+      if (paypalCadenceEl) paypalCadenceEl.textContent = service.cadence;
+      if (proceedPaypalBtn) proceedPaypalBtn.href = service.paypalUrl;
+
+      // Update UPI Tab Content
+      const upiPlanNameEl = document.getElementById('hireUpiPlanName');
+      const upiPriceEl = document.getElementById('hireUpiPrice');
+      const upiCadenceEl = document.getElementById('hireUpiCadence');
+      const stepAmountEl = document.getElementById('hireStepAmount');
+      const upiIntentBtn = document.getElementById('hireUpiIntentBtn');
+
+      if (upiPlanNameEl) upiPlanNameEl.textContent = service.name;
+      if (upiPriceEl) upiPriceEl.textContent = service.inrPrice;
+      if (upiCadenceEl) upiCadenceEl.textContent = service.inrCadence;
+      if (stepAmountEl) stepAmountEl.textContent = service.inrPrice;
+
+      if (upiIntentBtn) {
+        if (service.rawInr) {
+          upiIntentBtn.href = `upi://pay?pa=${encodeURIComponent(HIRE_UPI_ID)}&pn=${encodeURIComponent(HIRE_UPI_NAME)}&am=${service.rawInr}&cu=INR`;
+        } else {
+          upiIntentBtn.href = `upi://pay?pa=${encodeURIComponent(HIRE_UPI_ID)}&pn=${encodeURIComponent(HIRE_UPI_NAME)}&cu=INR`;
+        }
+      }
+
+      // Update Email Drawer mailto link
+      const openDrawerMailBtn = document.getElementById('hireOpenDrawerMailBtn');
+      if (openDrawerMailBtn) {
+        const subject = encodeURIComponent(`UPI Payment Proof - ${service.name}`);
+        const body = encodeURIComponent(
+          `Hi Spyboy,\n\nI have completed the UPI transfer for: ${service.name}.\n\n• Service Scope: ${service.name}\n• Amount Paid: ${service.inrPrice}\n• UTR / UPI Transaction ID: [Paste 12-digit UTR Here]\n• Target Scope / Contact Info: [Enter Pivot/Target or Handle Here]\n\nAttached is my payment screenshot for rapid verification.`
+        );
+        openDrawerMailBtn.href = `mailto:${HIRE_CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      }
+    }
+
+    function selectHireModalService(serviceKey) {
+      if (!HIRE_SERVICES[serviceKey]) return;
+      currentHireServiceKey = serviceKey;
+      updateHireModalDisplay();
+    }
+
+    function switchHirePaymentMethod(method) {
+      currentHirePaymentMethod = method;
+      const paypalTabBtn = document.getElementById('hireTabBtnPaypal');
+      const upiTabBtn = document.getElementById('hireTabBtnUpi');
+      const paypalContent = document.getElementById('hireTabContentPaypal');
+      const upiContent = document.getElementById('hireTabContentUpi');
+
+      if (method === 'upi') {
+        paypalTabBtn?.classList.remove('active');
+        upiTabBtn?.classList.add('active');
+        paypalContent?.classList.remove('active');
+        upiContent?.classList.add('active');
+      } else {
+        upiTabBtn?.classList.remove('active');
+        paypalTabBtn?.classList.add('active');
+        upiContent?.classList.remove('active');
+        paypalContent?.classList.add('active');
+      }
+    }
+
+    function openHirePaymentModal(serviceKey = 'dossier', preferredMethod = null) {
+      if (serviceKey && HIRE_SERVICES[serviceKey]) {
+        currentHireServiceKey = serviceKey;
+      }
+      if (preferredMethod === 'upi' || preferredMethod === 'paypal') {
+        switchHirePaymentMethod(preferredMethod);
+      }
+      updateHireModalDisplay();
+      toggleHireEmailProofBox(false);
+
+      const overlay = document.getElementById('hirePaymentModalOverlay');
+      overlay?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeHirePaymentModal() {
+      const overlay = document.getElementById('hirePaymentModalOverlay');
+      overlay?.classList.remove('active');
+      toggleHireEmailProofBox(false);
+      document.body.style.overflow = '';
+    }
+
+    function copyHireUpiId() {
+      const btn = document.getElementById('hireCopyUpiBtn');
+      navigator.clipboard.writeText(HIRE_UPI_ID).then(() => {
+        if (btn) {
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+          }, 2200);
+        }
+      }).catch(() => {
+        window.prompt('Copy UPI ID:', HIRE_UPI_ID);
+      });
+    }
+
+    function toggleHireEmailProofBox(forceState) {
+      const drawer = document.getElementById('hireUpiEmailDrawer');
+      if (!drawer) return;
+      if (typeof forceState === 'boolean') {
+        if (forceState) drawer.classList.add('active');
+        else drawer.classList.remove('active');
+      } else {
+        drawer.classList.toggle('active');
+      }
+    }
+
+    function copyHireContactEmail() {
+      const btn = document.getElementById('hireCopyDrawerEmailBtn');
+      navigator.clipboard.writeText(HIRE_CONTACT_EMAIL).then(() => {
+        if (btn) {
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+          }, 2200);
+        }
+      }).catch(() => {
+        window.prompt('Copy email:', HIRE_CONTACT_EMAIL);
+      });
+    }
+
+    function initHirePaymentModal() {
+      const overlay = document.getElementById('hirePaymentModalOverlay');
+      if (overlay) {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeHirePaymentModal();
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay?.classList.contains('active')) {
+          closeHirePaymentModal();
+        }
+      });
+    }
+
+    // Expose functions globally
+    window.openHirePaymentModal = openHirePaymentModal;
+    window.closeHirePaymentModal = closeHirePaymentModal;
+    window.selectHireModalService = selectHireModalService;
+    window.switchHirePaymentMethod = switchHirePaymentMethod;
+    window.copyHireUpiId = copyHireUpiId;
+    window.toggleHireEmailProofBox = toggleHireEmailProofBox;
+    window.copyHireContactEmail = copyHireContactEmail;
+
     document.addEventListener('DOMContentLoaded', () => {
       initTimers();
       initProofBadges();
+      initHirePaymentModal();
     });
     // In case DOM is already loaded
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       initTimers();
       initProofBadges();
+      initHirePaymentModal();
     }
   </script>
 </body>
